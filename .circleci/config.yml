@@ -1,0 +1,393 @@
+version: 2.0
+
+references:
+  .working_directory: &working_directory /tmp/workspace/unity-renderer
+  #                                                     ~~~~~~~~~~~~~~ <- repo name
+
+  .working_directory_root: &working_directory_root
+    working_directory: *working_directory
+
+  .attach_root: &attach_root
+    attach_workspace:
+      at: *working_directory
+
+  .image_kernel: &image_kernel
+    - image: circleci/node:14-browsers
+      environment:
+        BUILD_PATH: /tmp/workspace/unity-renderer/unity-renderer/Builds/unity
+        #                          ~~~~~~~~~~~~~~ <- repo name
+        #                                         ~~~~~~~~~~~~~~ <- folder name
+
+  .cached_paths: &CACHED_PATHS
+    - ./unity-renderer/test-results
+    - ./unity-renderer/editmode-logs.txt
+    - ./unity-renderer/playmode-logs.txt
+    - ./unity-renderer/build-logs.txt
+    - ./unity-renderer/ab-logs.txt
+    - ./unity-renderer/playmode-results.xml
+    - ./unity-renderer/CodeCoverage
+    - ./unity-renderer/TestResources/VisualTests
+    - ./unity-renderer/Builds/
+
+  .unity_image: &unity_image
+    - image: decentraland/renderer-build:2020.3.0
+      environment:
+        BUILD_TARGET: WebGL
+        BUILD_NAME: unity
+        BUILD_PATH: /tmp/workspace/unity-renderer/unity-renderer/Builds/unity
+        #                          ~~~~~~~~~~~~~~ <- repo name
+        #                                         ~~~~~~~~~~~~~~ <- folder name
+
+  .all_branches_and_tags: &all_branches_and_tags
+    filters:
+      branches:
+        only: /(.*)/
+      tags:
+        only: /^\d+\.\d+\.\d+(.*)/ # npm tag + latest
+
+jobs:
+  checkout:
+    <<: *working_directory_root
+    docker:
+      - image: circleci/node:14-browsers
+        environment:
+          # avoid automatic download of LFS files
+          GIT_LFS_SKIP_SMUDGE: 1
+    steps:
+      # install lfs
+      - run:
+          name: "Install git-lfs"
+          command: |
+            mkdir -p ~/.ssh
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get update && sudo apt-get install -y git-lfs=2.7.2
+            ssh git@github.com git-lfs-authenticate decentraland/unity-renderer.git download
+            git lfs install
+      # checkout the actual code
+      - checkout
+
+      # restore cached lfs
+      - restore_cache:
+          name: Restore large files from CircleCI cache
+          keys:
+            - git-lfs-{{ .Branch }}
+            - git-lfs-master
+      - run:
+          name: "Download LFS files from GitHub's LFS Storage"
+          command: |
+            while true; do git reset --hard HEAD && git clean -fd && git lfs pull && break; done
+      - save_cache:
+          name: Store large files in cache
+          key: git-lfs-{{ .Branch }}
+          paths:
+            - .git/lfs
+
+      # persist to workspace to use in downstream jobs
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - "*"
+
+  ############
+  ## THIS IS TEMPORARILY DISABLED AND RUNS ONLY IN THE "editmode-branch" branch
+  ############
+  editmode-tests:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_image
+    steps:
+      - <<: *attach_root
+      - run: &HASH_UNITY_FILES
+          name: Get the hash of source files
+          command: |
+            # hash unity files
+            find ./unity-renderer -type f \( -not -path '*Library*' \) \( -not -path '*browser-interface*' \) \( -iname \*.unity -o -iname \*.sh -o -iname \*.cs -o -iname \*.meta -o -iname \*.xml -o -iname \*.shader -o -iname \*.prefab -o -iname \*.yml -o -iname \*.mat -o -iname \*.json -o -iname \*.js -o -iname \*.jspre  -o -iname \*.jslib  -o -iname \*.hlsl  -o -iname \*.asmdef  -o -iname \*.csproj  -o -iname \*.spriteatlas  -o -iname \*.asset  \) \( -exec md5sum "$PWD"/{} \; \) | sort > ../.unitysources-checksum
+
+            # hash pipeline files
+            find ./ -type f \( -iname \*.sh -o -iname \*.yml \) \( -exec md5sum "$PWD"/{} \; \) | sort >> ../.unitysources-checksum
+      - restore_cache:
+          keys:
+            - unity-editmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+      - restore_cache: &RESTORE_LIBRARY_CACHE
+          name: Restore library if exists
+          keys:
+            - library-2020-3-{{ .Branch }}
+      - run:
+          name: Run editmode tests
+          command: |
+            if [[ -e ./unity-renderer/editmode-logs.txt ]]; then
+                echo "Skipping editmode tests"
+                exit 0
+            else
+                bash ci-editmode-test.sh
+                exit $?
+            fi;
+          no_output_timeout: 30m
+      - run:
+          name: nunit-to-junit
+          when: always
+          command: |
+            apt-get update
+            apt-get install -y xsltproc
+            xsltproc --output unity-renderer/test-results/editmode-results-junit.xml nunit-to-junit.xsl unity-renderer/editmode-results.xml
+      - store_artifacts:
+          name: Store logs
+          path: ./unity-renderer/editmode-logs.txt
+      - store_artifacts:
+          name: Store test results
+          path: ./unity-renderer/editmode-results.xml
+      - store_test_results:
+          path: ./unity-renderer/test-results
+      - save_cache: &SAVE_CHECKSUM_CACHE_EDITMODE
+          name: Store editmode cache
+          key: unity-editmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+          paths: *CACHED_PATHS
+      - store_artifacts: &STORE_VISUAL_TESTS
+          name: Store visual tests result as artifacts
+          path: ./unity-renderer/TestResources/VisualTests
+
+  playmode-tests:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_image
+    steps:
+      - <<: *attach_root
+      - run: *HASH_UNITY_FILES
+      - restore_cache:
+          name: Restore hashed files if they exist
+          keys:
+            - unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+      - restore_cache: *RESTORE_LIBRARY_CACHE
+      - run:
+          name: Run playmode tests
+          command: |
+            if [[ -e ./unity-renderer/playmode-logs.txt ]]; then
+                echo "Skipping playmode tests"
+                exit 0
+            else
+                bash ci-playmode-test.sh
+                exit $?
+            fi;
+          no_output_timeout: 30m
+      - run:
+          name: nunit-to-junit
+          when: always
+          command: |
+            apt-get update
+            apt-get install -y xsltproc
+            xsltproc --output unity-renderer/test-results/playmode-results-junit.xml nunit-to-junit.xsl unity-renderer/playmode-results.xml
+      - run: apt-get -y -qq install awscli
+      - run:
+          name: upload code coverage
+          command: |
+            aws s3 sync /tmp/workspace/unity-renderer/unity-renderer/CodeCoverage/Report "s3://${S3_BUCKET}/branch-coverage/${CIRCLE_BRANCH}" --acl public-read
+      - store_test_results:
+          path: ./unity-renderer/test-results
+      - store_artifacts:
+          name: Store logs
+          path: ./unity-renderer/playmode-logs.txt
+      - store_artifacts:
+          name: Store test results
+          path: ./unity-renderer/playmode-results.xml
+      - save_cache:
+          name: Store test cache
+          key: unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+          paths: *CACHED_PATHS
+      - store_artifacts: *STORE_VISUAL_TESTS
+
+  asset-bundle-tests:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_image
+    steps:
+      - <<: *attach_root
+      - run: *HASH_UNITY_FILES
+      - restore_cache:
+          name: Restore hashed files if they exist
+          keys:
+            - unity-ab-2020-3-{{ checksum "../.unitysources-checksum" }}
+      - restore_cache: *RESTORE_LIBRARY_CACHE
+      - run:
+          name: Run AB tests
+          command: |
+            bash ./ci-asset-bundle-test.sh
+            exit $?
+          no_output_timeout: 30m
+      - run:
+          name: Cat logs
+          when: always
+          command: cat $(pwd)/ab-logs.txt
+      - run:
+          name: Print files
+          command: find ./unity-renderer/ab-output
+          when: always
+      - run:
+          name: Print files (failed)
+          command: |
+            pwd
+            find .
+          when: on_fail
+      - save_cache:
+          name: Store test cache
+          key: unity-ab-2020-3-{{ checksum "../.unitysources-checksum" }}
+          paths: *CACHED_PATHS
+      - store_artifacts:
+          name: Store logs
+          path: ./ab-logs.txt
+      - store_artifacts:
+          name: Store AB converter results
+          path: ./unity-renderer/ab-output
+      - store_artifacts: *STORE_VISUAL_TESTS
+
+  build-unity:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_image
+    steps:
+      - <<: *attach_root
+      - run: *HASH_UNITY_FILES
+      - restore_cache:
+          name: Restore hashed files if they exist
+          keys:
+            - unity-build-2020-3-{{ checksum "../.unitysources-checksum" }}
+      - restore_cache: *RESTORE_LIBRARY_CACHE
+      - run:
+          name: Build Unity Project
+          no_output_timeout: 30m
+          command: |
+            if [[ ! -e ${BUILD_PATH} ]] || [[ ! -e "./unity-renderer/build-logs.txt" ]] || [[ ! -n "$(ls -A ${BUILD_PATH})" ]]; then
+                mkdir -p ${BUILD_PATH}
+
+                ./ci-build.sh
+            else
+              echo "Skipping build, using cached artifacts."
+            fi;
+      - run:
+          name: Print build logs
+          command: cat ./unity-renderer/build-logs.txt
+          when: always
+      - save_cache:
+          name: Store test cache
+          key: unity-build-2020-3-{{ checksum "../.unitysources-checksum" }}
+          paths: *CACHED_PATHS
+      - store_artifacts:
+          path: ./unity-renderer/Builds/
+          destination: Builds
+      - save_cache:
+          name: Store library
+          key: library-2020-3-{{ .Branch }}
+          paths:
+            - ./unity-renderer/Library
+      - store_artifacts:
+          name: Store logs
+          path: ./unity-renderer/build-logs.txt
+      - store_artifacts:
+          name: Store build report
+          path: ./unity-renderer/Library/LastBuild.buildreport
+
+      # persist to workspace to use in downstream jobs
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - ./unity-renderer/Builds
+      - run:
+          name: Check there are build artifacts
+          command: |
+            if [ -z "$(ls -A "./unity-renderer/Builds")" ]; then
+              echo "directory ./unity-renderer/Builds is empty"
+              exit 1
+            fi
+      - run:
+          name: Print all files (in failure)
+          when: on_fail
+          command: |
+            find "./unity-renderer"
+      - run:
+          name: Print build summary (in failure)
+          when: on_fail
+          command: |
+            cat ./unity-renderer/Library/LastBuild.buildreport
+
+  build-js-interface:
+    <<: *working_directory_root
+    docker: *image_kernel
+
+    steps:
+      - <<: *attach_root
+      - run:
+          working_directory: &node_workspace browser-interface
+          name: npm clean install
+          command: npm ci
+      - run:
+          working_directory: *node_workspace
+          name: npm run build
+          command: npm run build
+      - run:
+          working_directory: *node_workspace
+          name: npm run test
+          command: npm run test
+      - run: sudo apt-get update && sudo apt-get -y -qq install awscli
+      - run:
+          working_directory: *node_workspace
+          name: Deploy artifacts
+          command: npm run publish-artifacts
+
+      # persist to workspace to use in downstream jobs
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - *node_workspace
+
+  publish-renderer:
+    <<: *working_directory_root
+    docker: *image_kernel
+
+    steps:
+      - <<: *attach_root
+      - run:
+          name: Set up NPM access tokens
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          when: on_success
+      - run:
+          working_directory: *node_workspace
+          name: print files to publish
+          command: find .
+      - run:
+          working_directory: *node_workspace
+          name: npm run publish
+          command: npm run publish
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - checkout:
+          <<: *all_branches_and_tags
+
+      - playmode-tests:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+      - asset-bundle-tests:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+     # - editmode-tests:
+     #    <<: *all_branches_and_tags
+     #     requires:
+     #       - checkout
+      - build-unity:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+      - build-js-interface:
+          <<: *all_branches_and_tags
+          requires:
+            - build-unity
+      - publish-renderer:
+          requires:
+            - build-unity
+            - build-js-interface
+            - playmode-tests
+            # - editmode-tests

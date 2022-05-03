@@ -1,0 +1,17 @@
+{
+    "name": "NotificationsController",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e6f5b34eba99b4ed9836f899578ee258",
+        "GUID:029e05fd02d6c49d5ac9dd7e3725a35b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

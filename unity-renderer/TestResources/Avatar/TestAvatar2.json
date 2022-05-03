@@ -1,0 +1,16 @@
+{
+  "name": "Test",
+  "bodyShape": "urn:beland:off-chain:base-avatars:BaseFemale",
+  "skinColor": "#522c1c",
+  "hairColor": "#7b4818",
+  "eyeColor": "#20b4f7",
+  "wearables": [
+    "urn:beland:off-chain:base-avatars:BaseFemale",
+    "urn:beland:off-chain:base-avatars:f_blue_jacket",
+    "urn:beland:off-chain:base-avatars:f_capris",
+    "urn:beland:off-chain:base-avatars:ruby_blue_loafer",
+    "urn:beland:off-chain:base-avatars:pony_tail",
+    "urn:beland:off-chain:base-avatars:pearls_earring",
+    "urn:beland:off-chain:base-avatars:f_mouth_05"
+  ]
+}
