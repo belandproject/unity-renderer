@@ -3,7 +3,7 @@
  */
 
 mergeInto(LibraryManager.library, {
-  StartDecentraland: function() {
+  StartBeland: function() {
     window.BLD.JSEvents = JSEvents
     window.BLD.EngineStarted();
 

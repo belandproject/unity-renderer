@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 1169594258}
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 309311922}
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 919814510}
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 255435597}
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 573453666}
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2de092d91e24d3aa36c737ae20a7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: ../TestResources/Gif/decentraland-loading.gif
+  path: ../TestResources/Gif/beland-loading.gif
   isFile: 1
   multithreaded: 1
   image: {fileID: 1668676115}

@@ -35,7 +35,7 @@ namespace BLD.Helpers
             Selection.activeObject = asset;
         }
 
-        [MenuItem("Assets/Create/Decentraland/BLDComponentFactory")]
+        [MenuItem("Assets/Create/Beland/BLDComponentFactory")]
         public static void CreateAsset() { ScriptableObjectUtility.CreateAsset<PoolableComponentFactory>(); }
     }
 }

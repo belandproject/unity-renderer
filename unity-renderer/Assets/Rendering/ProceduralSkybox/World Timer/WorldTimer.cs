@@ -12,7 +12,7 @@ namespace BLD.ServerTime
         public event OnTimeUpdated OnTimeChanged;
 
         public float serverHitFrequency;
-        public string serverURL = "https://peer.decentraland.org/lambdas/health";
+        public string serverURL = "https://hub.beland.io/health";
 
         private bool initialized = false;
         private DateTime lastTimeFromServer = DateTime.Now.ToUniversalTime();
