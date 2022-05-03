@@ -537,7 +537,7 @@
             "m_Guid": ""
         }
     },
-    "m_Path": "DCL/Skybox",
+    "m_Path": "BLD/Skybox",
     "m_ConcretePrecision": 0,
     "m_ActiveOutputNodeGuidSerialized": "4bb7535d-f777-4a73-a60c-46482f9073ee"
 }

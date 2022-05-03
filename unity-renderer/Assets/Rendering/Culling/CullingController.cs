@@ -179,7 +179,7 @@ namespace DCL.Rendering
                     bool isAvatarRenderer = false;
 
                     if (mat != null && mat.shader != null)
-                        isAvatarRenderer = mat.shader.name == "DCL/Toon Shader";
+                        isAvatarRenderer = mat.shader.name == "BLD/Toon Shader";
 
                     if (isAvatarRenderer)
                     {

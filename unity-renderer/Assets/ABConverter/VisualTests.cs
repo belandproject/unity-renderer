@@ -291,7 +291,7 @@ namespace DCL.ABConverter
                 {
                     if (asset is Material material)
                     {
-                        material.shader = Shader.Find("DCL/Universal Render Pipeline/Lit");
+                        material.shader = Shader.Find("BLD/Universal Render Pipeline/Lit");
                     }
 
                     if (asset is GameObject assetAsGameObject)

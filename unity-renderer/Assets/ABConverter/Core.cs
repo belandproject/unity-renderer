@@ -919,7 +919,7 @@ namespace DCL.ABConverter
             //NOTE(Brian): The shader asset bundle that's going to be generated doesn't need to be really used,
             //             as we are going to use the embedded one, so we are going to just delete it after the
             //             generation ended.
-            var mainShader = Shader.Find("DCL/Universal Render Pipeline/Lit");
+            var mainShader = Shader.Find("BLD/Universal Render Pipeline/Lit");
             ABConverter.Utils.MarkAssetForAssetBundleBuild(env.assetDatabase, mainShader, MAIN_SHADER_AB_NAME);
         }
 
