@@ -1,13 +1,13 @@
 using System;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using System.Collections.Generic;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class LoadableShape : BaseShape, IAssetCatalogReferenceHolder
     {
@@ -28,7 +28,7 @@ namespace DCL.Components
 
         protected static Dictionary<GameObject, LoadWrapper> attachedLoaders = new Dictionary<GameObject, LoadWrapper>();
 
-        public static LoadWrapper GetLoaderForEntity(IDCLEntity entity)
+        public static LoadWrapper GetLoaderForEntity(IBLDEntity entity)
         {
             if (entity.meshRootGameObject == null)
             {
@@ -40,7 +40,7 @@ namespace DCL.Components
             return result;
         }
 
-        public static T GetOrAddLoaderForEntity<T>(IDCLEntity entity)
+        public static T GetOrAddLoaderForEntity<T>(IBLDEntity entity)
             where T : LoadWrapper, new()
         {
             if (!attachedLoaders.TryGetValue(entity.meshRootGameObject, out LoadWrapper result))
@@ -83,7 +83,7 @@ namespace DCL.Components
     {
         private bool failed = false;
         private event Action<BaseDisposable> OnFinishCallbacks;
-        public System.Action<IDCLEntity> OnEntityShapeUpdated;
+        public System.Action<IBLDEntity> OnEntityShapeUpdated;
 
         new public LoadWrapperModelType model
         {
@@ -149,7 +149,7 @@ namespace DCL.Components
             return null;
         }
 
-        protected virtual void AttachShape(IDCLEntity entity)
+        protected virtual void AttachShape(IBLDEntity entity)
         {
             ContentProvider provider = null;
 
@@ -202,7 +202,7 @@ namespace DCL.Components
             }
         }
 
-        void ConfigureVisibility(IDCLEntity entity)
+        void ConfigureVisibility(IBLDEntity entity)
         {
             var loadable = GetLoaderForEntity(entity);
 
@@ -212,7 +212,7 @@ namespace DCL.Components
             ConfigureVisibility(entity.meshRootGameObject, model.visible, entity.meshesInfo.renderers);
         }
 
-        protected virtual void ConfigureColliders(IDCLEntity entity) { CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, model.withCollisions, true, entity, CalculateCollidersLayer(model)); }
+        protected virtual void ConfigureColliders(IBLDEntity entity) { CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, model.withCollisions, true, entity, CalculateCollidersLayer(model)); }
 
         protected void OnLoadFailed(LoadWrapper loadWrapper, Exception exception)
         {
@@ -249,7 +249,7 @@ namespace DCL.Components
 
         protected void OnLoadCompleted(LoadWrapper loadWrapper)
         {
-            IDCLEntity entity = loadWrapper.entity;
+            IBLDEntity entity = loadWrapper.entity;
 
             if (entity.meshesInfo.currentShape == null)
             {
@@ -273,7 +273,7 @@ namespace DCL.Components
             OnFinishCallbacks = null;
         }
 
-        protected virtual void DetachShape(IDCLEntity entity)
+        protected virtual void DetachShape(IBLDEntity entity)
         {
             if (entity == null || entity.meshRootGameObject == null)
                 return;
@@ -297,7 +297,7 @@ namespace DCL.Components
             }
         }
 
-        private void RaiseOnShapeUpdated(IDCLEntity entity)
+        private void RaiseOnShapeUpdated(IBLDEntity entity)
         {
             if (!isLoaded)
                 return;
@@ -305,7 +305,7 @@ namespace DCL.Components
             entity.OnShapeUpdated?.Invoke(entity);
         }
 
-        private void RaiseOnShapeLoaded(IDCLEntity entity)
+        private void RaiseOnShapeLoaded(IBLDEntity entity)
         {
             if (!isLoaded)
                 return;

@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
-using DCL;
-using DCL.Builder;
-using DCL.Configuration;
+using BLD;
+using BLD.Builder;
+using BLD.Configuration;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 using TMPro;
 using UnityEngine.UI;
 

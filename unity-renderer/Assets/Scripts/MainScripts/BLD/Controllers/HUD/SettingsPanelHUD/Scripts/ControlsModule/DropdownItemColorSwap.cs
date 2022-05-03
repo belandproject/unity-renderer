@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     public class DropdownItemColorSwap : MonoBehaviour
     {

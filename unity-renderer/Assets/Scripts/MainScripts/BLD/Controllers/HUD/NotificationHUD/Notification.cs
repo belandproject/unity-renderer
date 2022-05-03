@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using DCL.NotificationModel;
+using BLD.NotificationModel;
 
 public class Notification : MonoBehaviour, INotification
 {

@@ -3,7 +3,7 @@ using Cinemachine.Utility;
 using UnityEngine;
 
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     /// <summary>
     /// This class ensures that upon sprinting forward, the camera slowly backs down.
@@ -43,7 +43,7 @@ namespace DCL.Camera
                 return;
 
             var orbit = sourceFreeLook.m_Orbits[1];
-            if (characterYAxis.GetValue() > 0 && !DCLCharacterController.i.isWalking)
+            if (characterYAxis.GetValue() > 0 && !BLDCharacterController.i.isWalking)
             {
                 currentDampingDelay += Time.deltaTime;
 

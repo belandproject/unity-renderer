@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Cinemachine;
-using DCL.Rendering;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
-using DCL.SettingsCommon.SettingsControllers.SpecificControllers;
+using BLD.Rendering;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.SpecificControllers;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using DCL.Camera;
+using BLD.Camera;
 
-namespace DCL.SettingsCommon.SettingsControllers.Tests
+namespace BLD.SettingsCommon.SettingsControllers.Tests
 {
     public class SettingsControlsShould
     {

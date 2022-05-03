@@ -1,11 +1,11 @@
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using DCL.Interface;
-using DCL.Helpers;
-using Environment = DCL.Environment;
+using BLD.Interface;
+using BLD.Helpers;
+using Environment = BLD.Environment;
 
 public class ExternalUrlPromptHUDController : IHUD
 {

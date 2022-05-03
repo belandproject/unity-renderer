@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     [Serializable]
     public class BuilderEntity

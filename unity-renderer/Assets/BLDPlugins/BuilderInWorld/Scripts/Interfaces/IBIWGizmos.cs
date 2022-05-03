@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public interface IBIWGizmos
     {

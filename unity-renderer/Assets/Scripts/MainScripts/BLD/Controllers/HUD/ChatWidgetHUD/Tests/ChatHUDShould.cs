@@ -1,7 +1,7 @@
-using DCL.Interface;
+using BLD.Interface;
 using NUnit.Framework;
 using System.Collections;
-using DCL;
+using BLD;
 using NSubstitute;
 
 public class ChatHUDShould : IntegrationTestSuite_Legacy

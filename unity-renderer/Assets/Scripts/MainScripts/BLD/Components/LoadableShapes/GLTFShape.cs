@@ -1,7 +1,7 @@
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class GLTFShape : LoadableShape<LoadWrapper_GLTF, LoadableShape.Model>
     {

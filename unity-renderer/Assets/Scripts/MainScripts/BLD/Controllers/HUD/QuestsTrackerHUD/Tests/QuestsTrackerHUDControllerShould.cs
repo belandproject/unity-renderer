@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DCL;
-using DCL.Huds.QuestsTracker;
-using DCL.QuestsController;
+using BLD;
+using BLD.Huds.QuestsTracker;
+using BLD.QuestsController;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;

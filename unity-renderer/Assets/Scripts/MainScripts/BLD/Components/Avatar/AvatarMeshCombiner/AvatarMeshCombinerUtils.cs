@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public static class AvatarMeshCombinerUtils
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using Assert = UnityEngine.Assertions.Assert;
 
-namespace DCL
+namespace BLD
 {
     public class GlobalUsersPositionMarkerTests
     {

@@ -1,8 +1,8 @@
 using System;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCLPlugins.DebugPlugins.Commons
+namespace BLDPlugins.DebugPlugins.Commons
 {
     public class WatchSceneHandler : IDisposable
     {
@@ -19,7 +19,7 @@ namespace DCLPlugins.DebugPlugins.Commons
 
             if (scene.entities?.Values != null)
             {
-                foreach (IDCLEntity entity in scene.entities.Values)
+                foreach (IBLDEntity entity in scene.entities.Values)
                 {
                     sceneListener.OnEntityAdded(entity);
                 }
@@ -34,12 +34,12 @@ namespace DCLPlugins.DebugPlugins.Commons
             sceneListener.Dispose();
         }
 
-        private void SceneOnOnEntityAdded(IDCLEntity entity)
+        private void SceneOnOnEntityAdded(IBLDEntity entity)
         {
             sceneListener.OnEntityAdded(entity);
         }
 
-        private void SceneOnOnEntityRemoved(IDCLEntity entity)
+        private void SceneOnOnEntityRemoved(IBLDEntity entity)
         {
             sceneListener.OnEntityRemoved(entity);
         }

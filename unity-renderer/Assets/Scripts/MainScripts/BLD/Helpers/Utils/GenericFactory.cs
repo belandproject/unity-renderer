@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     [CreateAssetMenu(fileName = "GenericFactory", menuName = "GenericFactory")]
     public class GenericFactory : ScriptableObject

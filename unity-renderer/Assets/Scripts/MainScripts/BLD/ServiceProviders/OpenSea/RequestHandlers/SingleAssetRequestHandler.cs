@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.Helpers.NFT.Markets.OpenSea_Internal
+namespace BLD.Helpers.NFT.Markets.OpenSea_Internal
 {
     internal class SingleAssetRequestHandler : IRequestHandler
     {

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using DCL.Interface;
+using BLD.Interface;
 
 public class PrivateChatWindowHUDView : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class PrivateChatWindowHUDView : MonoBehaviour
 
     void Awake() { chatHudView.OnSendMessage += ChatHUDView_OnSendMessage; }
 
-    void OnEnable() { DCL.Helpers.Utils.ForceUpdateLayout(transform as RectTransform); }
+    void OnEnable() { BLD.Helpers.Utils.ForceUpdateLayout(transform as RectTransform); }
 
     public static PrivateChatWindowHUDView Create(PrivateChatWindowHUDController controller)
     {

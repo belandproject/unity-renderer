@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityGLTF.Cache;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class MaterialCachingHelper
     {

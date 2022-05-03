@@ -7,11 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InputAction_Measurable", menuName = "InputActions/Measurable")]
 public class InputAction_Measurable : ScriptableObject
 {
-    public delegate void ValueChanged(DCLAction_Measurable action, float value);
+    public delegate void ValueChanged(BLDAction_Measurable action, float value);
     public event ValueChanged OnValueChanged;
 
-    [SerializeField] internal DCLAction_Measurable dclAction;
-    public DCLAction_Measurable GetDCLAction() => dclAction;
+    [SerializeField] internal BLDAction_Measurable bldAction;
+    public BLDAction_Measurable GetBLDAction() => bldAction;
 
     [SerializeField] private float currentValue = 0;
     public float GetValue() => currentValue;
@@ -21,7 +21,7 @@ public class InputAction_Measurable : ScriptableObject
         if (Math.Abs(currentValue - value) > Mathf.Epsilon)
         {
             currentValue = value;
-            OnValueChanged?.Invoke(dclAction, currentValue);
+            OnValueChanged?.Invoke(bldAction, currentValue);
         }
     }
 

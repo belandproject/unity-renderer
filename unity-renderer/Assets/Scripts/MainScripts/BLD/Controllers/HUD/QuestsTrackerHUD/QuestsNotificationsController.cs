@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Huds.QuestsTracker;
+using BLD.Huds.QuestsTracker;
 using UnityEngine;
 
-namespace DCL.Huds.QuestsTracker
+namespace BLD.Huds.QuestsTracker
 {
     public class QuestsNotificationsController : MonoBehaviour
     {

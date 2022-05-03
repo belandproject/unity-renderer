@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class NewProjectFirstStepView : BaseComponentView
     {

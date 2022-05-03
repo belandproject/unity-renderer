@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public interface IDebugController : IDisposable
     {

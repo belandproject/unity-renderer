@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Rendering;
+using BLD.Rendering;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public interface IWorldBlockersController : IService
     {

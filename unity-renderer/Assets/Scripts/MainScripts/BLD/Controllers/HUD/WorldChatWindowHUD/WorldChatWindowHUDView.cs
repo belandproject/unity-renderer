@@ -1,10 +1,10 @@
 using System.Collections;
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using DCL;
+using BLD;
 
 public class WorldChatWindowHUDView : MonoBehaviour, IPointerClickHandler
 {

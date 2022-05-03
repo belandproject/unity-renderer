@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;

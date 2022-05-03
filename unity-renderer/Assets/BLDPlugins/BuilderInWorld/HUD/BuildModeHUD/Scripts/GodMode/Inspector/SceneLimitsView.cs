@@ -22,7 +22,7 @@ public interface ISceneLimitsView
     void SetRightDescText(string text);
     void SetTitleText(string text);
     void SetUpdateCallback(UnityAction call);
-    void ToggleSceneLimitsInfo(DCLAction_Trigger action);
+    void ToggleSceneLimitsInfo(BLDAction_Trigger action);
 }
 
 public class SceneLimitsView : MonoBehaviour, ISceneLimitsView
@@ -59,7 +59,7 @@ public class SceneLimitsView : MonoBehaviour, ISceneLimitsView
 
     public bool isBodyActived => sceneLimitsBodyGO.activeSelf;
 
-    private DCLAction_Trigger dummyActionTrigger = new DCLAction_Trigger();
+    private BLDAction_Trigger dummyActionTrigger = new BLDAction_Trigger();
     internal UnityAction updateInfoAction;
 
     private const string VIEW_PATH = "GodMode/Inspector/SceneLimitsView";
@@ -92,7 +92,7 @@ public class SceneLimitsView : MonoBehaviour, ISceneLimitsView
 
     public void SetUpdateCallback(UnityAction call) { updateInfoAction = call; }
 
-    public void ToggleSceneLimitsInfo(DCLAction_Trigger action) { OnToggleSceneLimitsInfo?.Invoke(); }
+    public void ToggleSceneLimitsInfo(BLDAction_Trigger action) { OnToggleSceneLimitsInfo?.Invoke(); }
 
     public void SetBodyActive(bool isActive) { sceneLimitsBodyGO.SetActive(isActive); }
 

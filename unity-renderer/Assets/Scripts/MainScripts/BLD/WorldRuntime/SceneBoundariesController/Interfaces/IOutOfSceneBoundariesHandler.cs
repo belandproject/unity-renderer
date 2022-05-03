@@ -1,4 +1,4 @@
-﻿namespace DCL.Controllers
+﻿namespace BLD.Controllers
 {
     public interface IOutOfSceneBoundariesHandler
     {

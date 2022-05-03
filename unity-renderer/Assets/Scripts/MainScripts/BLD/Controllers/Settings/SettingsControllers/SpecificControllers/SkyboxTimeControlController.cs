@@ -1,7 +1,7 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsControls
+namespace BLD.SettingsControls
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Skybox Time", fileName = "SkyboxTime")]
     public class SkyboxTimeControlController : SliderSettingsControlController

@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -454,5 +454,5 @@ public class PlaceCardComponentView : BaseComponentView, IPlaceCardComponentView
 
     internal void CloseModal() { Hide(); }
 
-    internal void OnCloseActionTriggered(DCLAction_Trigger action) { CloseModal(); }
+    internal void OnCloseActionTriggered(BLDAction_Trigger action) { CloseModal(); }
 }

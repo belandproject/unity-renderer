@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 
 public class MissingAsset : MonoBehaviour

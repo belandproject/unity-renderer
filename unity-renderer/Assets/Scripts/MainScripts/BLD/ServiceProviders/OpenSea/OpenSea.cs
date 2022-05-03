@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Linq;
-using DCL.Helpers.NFT.Markets.OpenSea_Internal;
+using BLD.Helpers.NFT.Markets.OpenSea_Internal;
 using UnityEngine;
 
-namespace DCL.Helpers.NFT.Markets
+namespace BLD.Helpers.NFT.Markets
 {
     public class OpenSea : INFTMarket
     {

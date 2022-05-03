@@ -1,10 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
-using DCL;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Interface;
+using BLD.Models;
 using UnityEngine;
-using Ray = DCL.Models.Ray;
+using Ray = BLD.Models.Ray;
 
 public class NativeBridgeCommunication : IKernelCommunication
 {

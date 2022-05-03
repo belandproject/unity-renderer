@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
-using DataStore = DCL.DataStore;
+using DataStore = BLD.DataStore;
 
 public static class BIWTeleportAndEdit
 {

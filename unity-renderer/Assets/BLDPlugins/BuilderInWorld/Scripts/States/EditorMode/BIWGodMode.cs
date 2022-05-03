@@ -1,13 +1,13 @@
-using DCL;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections.Generic;
-using DCL.Builder;
-using DCL.Camera;
-using CameraController = DCL.Camera.CameraController;
-using Environment = DCL.Environment;
+using BLD.Builder;
+using BLD.Camera;
+using CameraController = BLD.Camera.CameraController;
+using Environment = BLD.Environment;
 using UnityEngine;
 
 public class BIWGodMode : BIWMode
@@ -150,12 +150,12 @@ public class BIWGodMode : BIWMode
         }
     }
 
-    private void MultiSelectionInputStart(DCLAction_Hold action)
+    private void MultiSelectionInputStart(BLDAction_Hold action)
     {
         ChangeSnapTemporaryActivated();
     }
 
-    private void MultiSelectionInputEnd(DCLAction_Hold action)
+    private void MultiSelectionInputEnd(BLDAction_Hold action)
     {
         ChangeSnapTemporaryDeactivated();
     }
@@ -489,7 +489,7 @@ public class BIWGodMode : BIWMode
 
         ConfigureCamera(scene);
 
-        if (gizmoManager.GetSelectedGizmo() == DCL.Components.DCLGizmos.Gizmo.NONE)
+        if (gizmoManager.GetSelectedGizmo() == BLD.Components.BLDGizmos.Gizmo.NONE)
             gizmoManager.SetGizmoType(BIWSettings.TRANSLATE_GIZMO_NAME);
         mouseCatcher.enabled = false;
         Environment.i.world.sceneController.IsolateScene(sceneToEdit);
@@ -652,7 +652,7 @@ public class BIWGodMode : BIWMode
         }
     }
 
-    public void TryLookAtEntity(IDCLEntity entity)
+    public void TryLookAtEntity(IBLDEntity entity)
     {
         if (entity.meshRootGameObject == null
             || entity.meshesInfo == null
@@ -662,7 +662,7 @@ public class BIWGodMode : BIWMode
         LookAtEntity(entity);
     }
 
-    public void LookAtEntity(IDCLEntity entity)
+    public void LookAtEntity(IBLDEntity entity)
     {
         Vector3 pointToLook = entity.gameObject.transform.position;
         if (entity.meshesInfo != null && entity.meshesInfo.renderers.Length > 0)
@@ -671,7 +671,7 @@ public class BIWGodMode : BIWMode
         freeCameraController.SmoothLookAt(pointToLook);
     }
 
-    internal Vector3 CalculateEntityMidPoint(IDCLEntity entity)
+    internal Vector3 CalculateEntityMidPoint(IBLDEntity entity)
     {
         Vector3 midPointFromEntityMesh = Vector3.zero;
         foreach (Renderer render in entity.renderers)

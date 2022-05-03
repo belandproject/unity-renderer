@@ -1,11 +1,11 @@
-using DCL.Interface;
+using BLD.Interface;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace DCL
+namespace BLD
 {
     public class NavmapToastView : MonoBehaviour
     {

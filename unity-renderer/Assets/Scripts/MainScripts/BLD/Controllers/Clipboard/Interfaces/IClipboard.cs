@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Helpers;
+using BLD.Helpers;
 
-namespace DCL
+namespace BLD
 {
     public interface IClipboard : IService
     {

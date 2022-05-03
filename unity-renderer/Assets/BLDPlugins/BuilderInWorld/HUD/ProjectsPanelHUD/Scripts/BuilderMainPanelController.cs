@@ -1,14 +1,14 @@
-using DCL;
-using DCL.Builder;
-using DCL.Builder.Manifest;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD;
+using BLD.Builder;
+using BLD.Builder.Manifest;
+using BLD.Helpers;
+using BLD.Interface;
 using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 using Variables.RealmsInfo;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using Object = UnityEngine.Object;
 
 public class BuilderMainPanelController : IHUD, IBuilderMainPanelController

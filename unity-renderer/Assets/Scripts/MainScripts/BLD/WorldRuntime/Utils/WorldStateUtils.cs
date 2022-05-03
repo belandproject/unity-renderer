@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public static class WorldStateUtils
     {
@@ -163,7 +163,7 @@ namespace DCL
             newScene.isPersistent = true;
             newScene.SetData(data);
 
-            if (DCLCharacterController.i != null)
+            if (BLDCharacterController.i != null)
                 newScene.InitializeDebugPlane();
 
             Environment.i.world.state.scenesSortedByDistance?.Add(newScene);

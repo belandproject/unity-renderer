@@ -2,8 +2,8 @@ using System;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -18,7 +18,7 @@ namespace Tests
             yield return base.SetUp();
 
             friendsController = TestUtils.CreateComponentWithGameObject<FriendsController>("FriendsController");
-            hudController = DCL.Environment.i.hud.controller;
+            hudController = BLD.Environment.i.hud.controller;
             hudController.Cleanup();
             yield return null;
         }

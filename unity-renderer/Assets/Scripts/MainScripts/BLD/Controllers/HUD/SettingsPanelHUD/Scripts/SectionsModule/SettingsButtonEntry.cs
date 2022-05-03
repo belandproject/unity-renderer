@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace DCL.SettingsPanelHUD.Sections
+namespace BLD.SettingsPanelHUD.Sections
 {
     /// <summary>
     /// MonoBehaviour that represents a template for a menu button.

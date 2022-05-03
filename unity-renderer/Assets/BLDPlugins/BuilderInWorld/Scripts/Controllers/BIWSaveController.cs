@@ -1,8 +1,8 @@
 using System;
-using DCL;
-using DCL.Builder;
-using DCL.Builder.Manifest;
-using DCL.Controllers;
+using BLD;
+using BLD.Builder;
+using BLD.Builder.Manifest;
+using BLD.Controllers;
 using UnityEngine;
 
 public class BIWSaveController : BIWController, IBIWSaveController
@@ -54,7 +54,7 @@ public class BIWSaveController : BIWController, IBIWSaveController
     public override void EnterEditMode(IParcelScene scene)
     {
         base.EnterEditMode(scene);
-        nextTimeToSave = DCLTime.realtimeSinceStartup + MS_BETWEEN_SAVES / 1000f;
+        nextTimeToSave = BLDTime.realtimeSinceStartup + MS_BETWEEN_SAVES / 1000f;
         ResetNumberOfSaves();
     }
 
@@ -76,7 +76,7 @@ public class BIWSaveController : BIWController, IBIWSaveController
             TryToSave();
     }
 
-    public bool CanSave() { return DCLTime.realtimeSinceStartup >= nextTimeToSave && isEditModeActive && canActivateSave; }
+    public bool CanSave() { return BLDTime.realtimeSinceStartup >= nextTimeToSave && isEditModeActive && canActivateSave; }
 
     public void TryToSave()
     {
@@ -99,7 +99,7 @@ public class BIWSaveController : BIWController, IBIWSaveController
             bridge.SaveSceneState(sceneToEdit);
         }
         
-        nextTimeToSave = DCLTime.realtimeSinceStartup + MS_BETWEEN_SAVES / 1000f;
+        nextTimeToSave = BLDTime.realtimeSinceStartup + MS_BETWEEN_SAVES / 1000f;
         context.editorContext.editorHUD?.SceneSaved();
         numberOfSaves++;
     }

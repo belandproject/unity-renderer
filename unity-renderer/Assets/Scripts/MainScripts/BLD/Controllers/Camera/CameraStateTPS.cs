@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class CameraStateTPS : CameraStateBase
     {
@@ -119,7 +119,7 @@ namespace DCL.Camera
         {
             defaultVirtualCameraAsFreeLook.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
 
-            bool didHit = DCLCharacterController.i.CastGroundCheckingRays(20, 0.1f, out RaycastHit hitInfo);
+            bool didHit = BLDCharacterController.i.CastGroundCheckingRays(20, 0.1f, out RaycastHit hitInfo);
 
             cameraDampOnSprint.Update();
             cameraDampOnGroundType.Update(didHit, hitInfo);

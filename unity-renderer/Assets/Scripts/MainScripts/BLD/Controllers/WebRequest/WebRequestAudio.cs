@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public class WebRequestAudio : IWebRequestAudio
     {

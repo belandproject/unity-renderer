@@ -1,4 +1,4 @@
-namespace DCL
+namespace BLD
 {
     public abstract class AssetPromise_WithUrl<T> : AssetPromise<T> where T : Asset, new()
     {

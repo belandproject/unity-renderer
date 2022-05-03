@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -480,5 +480,5 @@ public class EventCardComponentView : BaseComponentView, IEventCardComponentView
 
     internal void CloseModal() { Hide(); }
 
-    internal void OnCloseActionTriggered(DCLAction_Trigger action) { CloseModal(); }
+    internal void OnCloseActionTriggered(BLDAction_Trigger action) { CloseModal(); }
 }

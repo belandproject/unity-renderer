@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class AvatarAudioHandlerLocal : MonoBehaviour
     {
@@ -26,7 +26,7 @@ namespace DCL
 
         private void Start()
         {
-            var characterController = DCLCharacterController.i;
+            var characterController = BLDCharacterController.i;
 
             if (characterController != null)
             {

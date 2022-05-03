@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Interface;
-using DCL.Models;
-using DCL.Helpers;
+using BLD.Controllers;
+using BLD.Interface;
+using BLD.Models;
+using BLD.Helpers;
 using Google.Protobuf;
 using UnityEngine;
-using DCL.Configuration;
-using MainScripts.DCL.WorldRuntime;
+using BLD.Configuration;
+using MainScripts.BLD.WorldRuntime;
 using Random = UnityEngine.Random;
 
-namespace DCL.Bots
+namespace BLD.Bots
 {
     /// <summary>
     /// Bots Tool: BotsController

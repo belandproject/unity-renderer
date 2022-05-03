@@ -1,12 +1,12 @@
 using System;
-using DCL;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Models;
+using BLD;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
 
 public class BIWFloorHandler : BIWController, IBIWFloorHandler
@@ -139,7 +139,7 @@ public class BIWFloorHandler : BIWController, IBIWFloorHandler
         RemovePlaceHolder(entity.rootEntity.entityId);
     }
 
-    private void OnFloorLoaded(IDCLEntity entity)
+    private void OnFloorLoaded(IBLDEntity entity)
     {
         entity.OnShapeUpdated -= OnFloorLoaded;
         loadedFloorEntities.Add(entity.entityId);

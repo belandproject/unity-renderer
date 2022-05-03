@@ -1,9 +1,9 @@
 using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_Texture : AssetPromise<Asset_Texture>
     {
@@ -55,7 +55,7 @@ namespace DCL
 
             if (!url.StartsWith(PLAIN_BASE64_PROTOCOL))
             {
-                webRequestOp = DCL.Environment.i.platform.webRequest.GetTexture(
+                webRequestOp = BLD.Environment.i.platform.webRequest.GetTexture(
                     url: url,
                     OnSuccess: (webRequestResult) =>
                     {

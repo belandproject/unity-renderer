@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Builder;
+using BLD.Builder;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal interface ISectionFactory
     {

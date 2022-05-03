@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public interface IComponent
     {

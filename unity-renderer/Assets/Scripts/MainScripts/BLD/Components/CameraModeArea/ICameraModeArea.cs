@@ -1,4 +1,4 @@
-namespace DCL.Components
+namespace BLD.Components
 {
     internal interface ICameraModeArea
     {

@@ -1,13 +1,13 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Builder;
+using BLD.Builder;
 using Tests;
 using UnityEngine;
 
@@ -44,14 +44,14 @@ public class BIWOutlinerShould : IntegrationTestSuite_Legacy
 
         TestUtils.CreateSceneEntity(scene, ENTITY_ID);
 
-        TestUtils.CreateAndSetShape(scene, ENTITY_ID, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+        TestUtils.CreateAndSetShape(scene, ENTITY_ID, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
             new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb"
             }));
 
         LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[ENTITY_ID]);
-        yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded);
 
         outlinerController = new BIWOutlinerController();
         entityHandler = new BIWEntityHandler();

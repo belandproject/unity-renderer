@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

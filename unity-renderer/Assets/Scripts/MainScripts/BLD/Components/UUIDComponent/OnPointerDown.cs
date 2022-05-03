@@ -1,9 +1,9 @@
-using DCL.Interface;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Helpers;
+using BLD.Models;
 using Ray = UnityEngine.Ray;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnPointerDown : OnPointerEvent
     {
@@ -20,7 +20,7 @@ namespace DCL.Components
             {
                 string meshName = pointerEventHandler.GetMeshName(hit.collider);
 
-                DCL.Interface.WebInterface.ReportOnPointerDownEvent(buttonId, scene.sceneData.id, model.uuid, entity.entityId, meshName, ray, hit.point, hit.normal, hit.distance);
+                BLD.Interface.WebInterface.ReportOnPointerDownEvent(buttonId, scene.sceneData.id, model.uuid, entity.entityId, meshName, ray, hit.point, hit.normal, hit.distance);
             }
         }
 

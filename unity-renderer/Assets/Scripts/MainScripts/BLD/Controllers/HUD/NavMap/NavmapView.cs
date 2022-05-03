@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DCL.Interface;
-using DCL.Helpers;
+using BLD.Interface;
+using BLD.Helpers;
 using TMPro;
 using System;
 using UnityEngine.EventSystems;
 
-namespace DCL
+namespace BLD
 {
     public class NavmapView : MonoBehaviour
     {
@@ -80,10 +80,10 @@ namespace DCL
             zoomIn.OnStarted += OnZoomPlusMinus;
             zoomOut.OnStarted += OnZoomPlusMinus;
             zoomInButton.onClick.AddListener(() => {
-                OnZoomPlusMinus(DCLAction_Hold.ZoomIn);
+                OnZoomPlusMinus(BLDAction_Hold.ZoomIn);
             });
             zoomOutButton.onClick.AddListener(() => {
-                OnZoomPlusMinus(DCLAction_Hold.ZoomOut);
+                OnZoomPlusMinus(BLDAction_Hold.ZoomOut);
             });
             ResetCameraZoom();
             Initialize();
@@ -97,22 +97,22 @@ namespace DCL
             HandleZoomButtonsAspect();
         }
 
-        private void OnZoomPlusMinus(DCLAction_Hold action)
+        private void OnZoomPlusMinus(BLDAction_Hold action)
         {
             if (!navmapVisible.Get()) return;
 
-            if (action.Equals(DCLAction_Hold.ZoomIn))
+            if (action.Equals(BLDAction_Hold.ZoomIn))
             {
                 CalculateZoomLevelAndDirection(1);
             }
-            else if (action.Equals(DCLAction_Hold.ZoomOut)) 
+            else if (action.Equals(BLDAction_Hold.ZoomOut)) 
             {
                 CalculateZoomLevelAndDirection(-1);
             }
             EventSystem.current.SetSelectedGameObject(null);
         }
 
-        private void OnMouseWheelChangeValue(DCLAction_Measurable action, float value)
+        private void OnMouseWheelChangeValue(BLDAction_Measurable action, float value)
         {
             if (value > -MOUSE_WHEEL_THRESHOLD && value < MOUSE_WHEEL_THRESHOLD) return;
             CalculateZoomLevelAndDirection(value);

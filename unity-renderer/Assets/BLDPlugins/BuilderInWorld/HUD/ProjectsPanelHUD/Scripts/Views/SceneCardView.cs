@@ -1,7 +1,7 @@
-﻿using DCL;
-using DCL.Helpers;
+﻿using BLD;
+using BLD.Helpers;
 using System;
-using DCL.Builder;
+using BLD.Builder;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -35,7 +35,7 @@ namespace Tests.BuildModeHUDViews
             sceneLimitsView.OnToggleSceneLimitsInfo += () => isToggleDone = true;
 
             // Act
-            sceneLimitsView.ToggleSceneLimitsInfo(new DCLAction_Trigger());
+            sceneLimitsView.ToggleSceneLimitsInfo(new BLDAction_Trigger());
 
             // Assert
             Assert.IsTrue(isToggleDone, "isToggleDone is false!");

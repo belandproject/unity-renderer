@@ -1,6 +1,6 @@
-using DCL.SettingsPanelHUD.Controls;
-using DCL.SettingsPanelHUD.Sections;
-using DCL.SettingsPanelHUD.Widgets;
+using BLD.SettingsPanelHUD.Controls;
+using BLD.SettingsPanelHUD.Sections;
+using BLD.SettingsPanelHUD.Widgets;
 using NSubstitute;
 using System.Collections;
 using System.Collections.Generic;

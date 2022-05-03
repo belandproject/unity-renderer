@@ -1,13 +1,13 @@
 ﻿using System;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace DCL
+namespace BLD
 {
     public class DebugBridge : MonoBehaviour
     {
@@ -44,7 +44,7 @@ namespace DCL
         {
             bool originalLoggingValue = Debug.unityLogger.logEnabled;
             Debug.unityLogger.logEnabled = true;
-            foreach (var kvp in DCL.Environment.i.world.state.loadedScenes)
+            foreach (var kvp in BLD.Environment.i.world.state.loadedScenes)
             {
                 IParcelScene scene = kvp.Value;
                 debugLogger.Log("Dumping state for scene: " + kvp.Value.sceneData.id);
@@ -108,7 +108,7 @@ namespace DCL
             
             var crashPayload = CrashPayloadUtils.ComputePayload
             (
-                DCL.Environment.i.world.state.loadedScenes,
+                BLD.Environment.i.world.state.loadedScenes,
                 debugController.GetTrackedMovements(),
                 debugController.GetTrackedTeleportPositions()
             );
@@ -134,7 +134,7 @@ namespace DCL
 
             var payload = CrashPayloadUtils.ComputePayload
             (
-                DCL.Environment.i.world.state.loadedScenes,
+                BLD.Environment.i.world.state.loadedScenes,
                 debugController.GetTrackedMovements(),
                 debugController.GetTrackedTeleportPositions()
             );

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using UnityEngine.TestTools;
-using DCL.HelpAndSupportHUD;
+using BLD.HelpAndSupportHUD;
 using System.Collections;
 
 namespace Tests

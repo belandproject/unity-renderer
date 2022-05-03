@@ -1,8 +1,8 @@
 using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
@@ -31,8 +31,8 @@ namespace SceneBoundariesCheckerTests
         public IEnumerator ResetMaterialCorrectlyWhenInvalidEntitiesAreRemoved()
         {
             var entity = TestUtils.CreateSceneEntity(scene);
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(8, 1, 8) });
-            TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(8, 1, 8) });
+            TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/PalmTree_01.glb"
@@ -45,7 +45,7 @@ namespace SceneBoundariesCheckerTests
 
             SBC_Asserts.AssertMeshIsValid(entity.meshesInfo);
             // Move object to surpass the scene boundaries
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(18, 1, 18) });
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(18, 1, 18) });
 
             yield return null;
 
@@ -59,8 +59,8 @@ namespace SceneBoundariesCheckerTests
 
             var entity2 = TestUtils.CreateSceneEntity(scene);
 
-            TestUtils.SetEntityTransform(scene, entity2, new DCLTransform.Model { position = new Vector3(8, 1, 8) });
-            TestUtils.CreateAndSetShape(scene, entity2.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.SetEntityTransform(scene, entity2, new BLDTransform.Model { position = new Vector3(8, 1, 8) });
+            TestUtils.CreateAndSetShape(scene, entity2.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/PalmTree_01.glb"

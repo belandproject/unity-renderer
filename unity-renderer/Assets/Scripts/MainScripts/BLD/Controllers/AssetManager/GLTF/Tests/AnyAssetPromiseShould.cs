@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;

@@ -1,10 +1,10 @@
-using DCL.Helpers;
-using DCL.QuestsController;
+using BLD.Helpers;
+using BLD.QuestsController;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public class QuestsPanelHUDController : IHUD
     {

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading;
 using AvatarSystem;
 using Cysharp.Threading.Tasks;
-using DCL;
-using DCL.FatalErrorReporter;
-using DCL.Interface;
-using DCL.NotificationModel;
+using BLD;
+using BLD.FatalErrorReporter;
+using BLD.Interface;
+using BLD.NotificationModel;
 using GPUSkinning;
 using UnityEngine;
-using Type = DCL.NotificationModel.Type;
+using Type = BLD.NotificationModel.Type;
 
 public class PlayerAvatarController : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class PlayerAvatarController : MonoBehaviour
     public float cameraDistanceToDeactivate = 1.0f;
 
     private UserProfile userProfile => UserProfile.GetOwnUserProfile();
-    private bool repositioningWorld => DCLCharacterController.i.characterPosition.RepositionedWorldLastFrame();
+    private bool repositioningWorld => BLDCharacterController.i.characterPosition.RepositionedWorldLastFrame();
 
     private bool enableCameraCheck = false;
     private Camera mainCamera;
@@ -38,7 +38,7 @@ public class PlayerAvatarController : MonoBehaviour
     private void Start()
     {
         DataStore.i.common.isPlayerRendererLoaded.Set(false);
-        IAnalytics analytics = DCL.Environment.i.platform.serviceProviders.analytics;
+        IAnalytics analytics = BLD.Environment.i.platform.serviceProviders.analytics;
         playerAvatarAnalytics = new PlayerAvatarAnalytics(analytics, CommonScriptableObjects.playerCoords);
 
         avatar = new AvatarSystem.Avatar(

@@ -1,7 +1,7 @@
 ﻿using Cinemachine;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class CameraDampOnGroundType
     {
@@ -41,7 +41,7 @@ namespace DCL.Camera
         }
         private void UpdateDamp(bool hitGround, RaycastHit hitInfo)
         {
-            bool isOnMovingPlatform = DCLCharacterController.i.isOnMovingPlatform;
+            bool isOnMovingPlatform = BLDCharacterController.i.isOnMovingPlatform;
 
             if ( hitGround )
             {

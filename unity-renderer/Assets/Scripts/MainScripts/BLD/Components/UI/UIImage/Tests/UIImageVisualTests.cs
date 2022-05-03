@@ -1,7 +1,7 @@
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
@@ -37,7 +37,7 @@ public class UIImageVisualTests : UIVisualTestsBase
             height = new UIValue(128f)
         }, "imageBack");
 
-        DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+        BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
         yield return texture.routine;
         yield return CreateUIComponent<UIImage, UIImage.Model>(CLASS_ID.UI_IMAGE_SHAPE, new UIImage.Model
         {

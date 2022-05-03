@@ -1,10 +1,10 @@
-using DCL.Helpers;
-using DCL.SettingsPanelHUD.Sections;
+using BLD.Helpers;
+using BLD.SettingsPanelHUD.Sections;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.SettingsPanelHUD
+namespace BLD.SettingsPanelHUD
 {
     /// <summary>
     /// MonoBehaviour that represents the main settings panel view and will act as a factory of SECTIONS.
@@ -204,13 +204,13 @@ namespace DCL.SettingsPanelHUD
             CommonScriptableObjects.isFullscreenHUDOpen.Set(DataStore.i.exploreV2.isOpen.Get() && !isActive);
         }
 
-        private void OpenAction_OnTriggered(DCLAction_Trigger action)
+        private void OpenAction_OnTriggered(BLDAction_Trigger action)
         {
             Utils.UnlockCursor();
             hudController.SetVisibility(!isOpen);
         }
 
-        private void CloseResetAllAction_OnTriggered(DCLAction_Trigger action)
+        private void CloseResetAllAction_OnTriggered(BLDAction_Trigger action)
         {
             HideResetAllConfirmation();
         }

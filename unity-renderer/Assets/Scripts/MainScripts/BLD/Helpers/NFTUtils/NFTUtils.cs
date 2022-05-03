@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using DCL.Helpers.NFT.Markets;
+using BLD.Helpers.NFT.Markets;
 
-namespace DCL.Helpers.NFT
+namespace BLD.Helpers.NFT
 {
     public static class NFTUtils
     {

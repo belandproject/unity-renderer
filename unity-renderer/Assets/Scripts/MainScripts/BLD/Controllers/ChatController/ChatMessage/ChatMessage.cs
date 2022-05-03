@@ -1,4 +1,4 @@
-namespace DCL.Interface
+namespace BLD.Interface
 {
     [System.Serializable]
     public class ChatMessage

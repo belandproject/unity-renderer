@@ -1,6 +1,6 @@
 using System;
-using DCL.Models;
-using DCLPlugins.DebugPlugins.Commons;
+using BLD.Models;
+using BLDPlugins.DebugPlugins.Commons;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -22,7 +22,7 @@ internal class EntityWireframe : IShapeListener
         CleanWireframe();
     }
 
-    void IShapeListener.OnShapeUpdated(IDCLEntity entity)
+    void IShapeListener.OnShapeUpdated(IBLDEntity entity)
     {
         entityWireframe ??= Object.Instantiate(wireframeOriginal);
 
@@ -35,7 +35,7 @@ internal class EntityWireframe : IShapeListener
         entityWireframe.SetActive(true);
     }
 
-    void IShapeListener.OnShapeCleaned(IDCLEntity entity)
+    void IShapeListener.OnShapeCleaned(IBLDEntity entity)
     {
         CleanWireframe();
     }

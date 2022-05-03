@@ -1,9 +1,9 @@
-using DCL.Bots;
-using DCL.Helpers;
+using BLD.Bots;
+using BLD.Helpers;
 using UnityEngine;
 using Variables.RealmsInfo;
 
-namespace DCL
+namespace BLD
 {
     public class DebugPluginFeature : IPlugin
     {

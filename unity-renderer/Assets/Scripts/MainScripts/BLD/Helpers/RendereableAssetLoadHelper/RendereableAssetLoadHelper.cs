@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class RendereableAssetLoadHelper
     {

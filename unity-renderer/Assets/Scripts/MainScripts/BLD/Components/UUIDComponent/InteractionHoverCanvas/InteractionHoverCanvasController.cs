@@ -1,9 +1,9 @@
-using DCL.Models;
-using DCL.Components;
+using BLD.Models;
+using BLD.Components;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using DCL;
+using BLD;
 
 public class InteractionHoverCanvasController : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class InteractionHoverCanvasController : MonoBehaviour
     Camera mainCamera;
     GameObject hoverIcon;
     Vector3 meshCenteredPos;
-    IDCLEntity entity;
+    IBLDEntity entity;
 
     const string ACTION_BUTTON_POINTER = "POINTER";
     const string ACTION_BUTTON_PRIMARY = "PRIMARY";
@@ -30,7 +30,7 @@ public class InteractionHoverCanvasController : MonoBehaviour
         backgroundTransform.gameObject.SetActive(false);
     }
 
-    public void Setup(string button, string feedbackText, IDCLEntity entity)
+    public void Setup(string button, string feedbackText, IBLDEntity entity)
     {
         text.text = feedbackText;
         this.entity = entity;
@@ -77,7 +77,7 @@ public class InteractionHoverCanvasController : MonoBehaviour
     public GameObject GetCurrentHoverIcon() { return hoverIcon; }
 
     // This method will be used when we apply a "loose aim" for the 3rd person camera
-    void CalculateMeshCenteredPos(DCLTransform.Model transformModel = null)
+    void CalculateMeshCenteredPos(BLDTransform.Model transformModel = null)
     {
         if (!canvas.enabled)
             return;

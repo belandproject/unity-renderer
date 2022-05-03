@@ -1,11 +1,11 @@
-using DCL.Models;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -73,11 +73,11 @@ namespace SceneBoundariesCheckerTests
         {
             var entity = TestUtils.CreateSceneEntity(scene);
 
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(-28, 1, 8) });
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(-28, 1, 8) });
             yield return TestUtils.CreateAudioSourceWithClipForEntity(entity);
 
-            AudioSource dclAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
-            Assert.AreEqual(0, dclAudioSource.volume);
+            AudioSource bldAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
+            Assert.AreEqual(0, bldAudioSource.volume);
         }
 
         [UnityTest]
@@ -86,11 +86,11 @@ namespace SceneBoundariesCheckerTests
             TestUtils.CreateEntityWithGLTFShape(scene, new Vector3(8, 1, 8), TestAssetsUtils.GetPath() + "/GLB/PalmTree_01.glb", out var entity);
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(entity);
             yield return new UnityEngine.WaitUntil(() => gltfShape.alreadyLoaded);
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(-28, 1, 8) });
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(-28, 1, 8) });
             yield return TestUtils.CreateAudioSourceWithClipForEntity(entity);
 
-            AudioSource dclAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
-            Assert.AreEqual(0, dclAudioSource.volume);
+            AudioSource bldAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
+            Assert.AreEqual(0, bldAudioSource.volume);
         }
 
         [UnityTest]
@@ -149,13 +149,13 @@ namespace SceneBoundariesCheckerTests
         {
             var entity = TestUtils.CreateSceneEntity(scene);
 
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(-28, 1, 8) });
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(-28, 1, 8) });
             yield return TestUtils.CreateAudioSourceWithClipForEntity(entity);
-            TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(2, 1, 2) });
+            TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(2, 1, 2) });
             yield return null;
 
-            AudioSource dclAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
-            Assert.IsTrue(dclAudioSource.enabled);
+            AudioSource bldAudioSource = entity.gameObject.GetComponentInChildren<AudioSource>();
+            Assert.IsTrue(bldAudioSource.enabled);
         }
     }
 }

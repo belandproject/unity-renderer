@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -12,7 +12,7 @@ public class WithGltfShape_SceneMetricsCounterShould : IntegrationTestSuite_Scen
     [UnityTest]
     public IEnumerator NotCountWhenAttachedToIgnoredEntities()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         DataStore.i.sceneWorldObjects.AddExcludedOwner(scene.sceneData.id, entity.entityId);
         GLTFShape gltfShape = TestUtils.AttachGLTFShape(entity,
             scene,
@@ -35,7 +35,7 @@ public class WithGltfShape_SceneMetricsCounterShould : IntegrationTestSuite_Scen
     [UnityTest]
     public IEnumerator CountWhenAdded()
     {
-        IDCLEntity entity1 = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity1 = TestUtils.CreateSceneEntity(scene);
         GLTFShape entity1shape = TestUtils.AttachGLTFShape(entity1,
             scene,
             new Vector3(8, 1, 8),
@@ -46,7 +46,7 @@ public class WithGltfShape_SceneMetricsCounterShould : IntegrationTestSuite_Scen
 
         yield return TestUtils.WaitForGLTFLoad(entity1);
 
-        IDCLEntity entity2 = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity2 = TestUtils.CreateSceneEntity(scene);
         GLTFShape entity2shape = TestUtils.AttachGLTFShape(entity2,
             scene,
             new Vector3(8, 1, 8),
@@ -73,7 +73,7 @@ public class WithGltfShape_SceneMetricsCounterShould : IntegrationTestSuite_Scen
     [UnityTest]
     public IEnumerator CountWhenRemoved()
     {
-        IDCLEntity entity1 = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity1 = TestUtils.CreateSceneEntity(scene);
         GLTFShape entity1shape = TestUtils.AttachGLTFShape(entity1,
             scene,
             new Vector3(8, 1, 8),
@@ -84,7 +84,7 @@ public class WithGltfShape_SceneMetricsCounterShould : IntegrationTestSuite_Scen
 
         yield return TestUtils.WaitForGLTFLoad(entity1);
 
-        IDCLEntity entity2 = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity2 = TestUtils.CreateSceneEntity(scene);
         GLTFShape entity2shape = TestUtils.AttachGLTFShape(entity2,
             scene,
             new Vector3(8, 1, 8),

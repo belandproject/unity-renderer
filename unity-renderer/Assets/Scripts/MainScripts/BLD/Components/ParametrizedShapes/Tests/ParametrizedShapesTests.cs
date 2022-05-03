@@ -1,11 +1,11 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -23,10 +23,10 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
     public IEnumerator BoxShapeUpdate()
     {
         string entityId = "1";
-        TestUtils.InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE, Vector3.zero);
 
         var meshName = scene.entities[entityId].gameObject.GetComponentInChildren<MeshFilter>().mesh.name;
-        Assert.AreEqual("DCL Box Instance", meshName);
+        Assert.AreEqual("BLD Box Instance", meshName);
         yield break;
     }
 
@@ -34,10 +34,10 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
     public IEnumerator SphereShapeUpdate()
     {
         string entityId = "2";
-        TestUtils.InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.SPHERE_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.SPHERE_SHAPE, Vector3.zero);
 
         var meshName = scene.entities[entityId].gameObject.GetComponentInChildren<MeshFilter>().mesh.name;
-        Assert.AreEqual("DCL Sphere Instance", meshName);
+        Assert.AreEqual("BLD Sphere Instance", meshName);
         yield break;
     }
 
@@ -45,10 +45,10 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
     public IEnumerator CylinderShapeUpdate()
     {
         string entityId = "5";
-        TestUtils.InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.CYLINDER_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.CYLINDER_SHAPE, Vector3.zero);
 
         var meshName = scene.entities[entityId].gameObject.GetComponentInChildren<MeshFilter>().mesh.name;
-        Assert.AreEqual("DCL Cylinder Instance", meshName);
+        Assert.AreEqual("BLD Cylinder Instance", meshName);
         yield break;
     }
 
@@ -56,11 +56,11 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
     public IEnumerator ConeShapeUpdate()
     {
         string entityId = "4";
-        TestUtils.InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.CONE_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.CONE_SHAPE, Vector3.zero);
 
         var meshName = scene.entities[entityId].gameObject.GetComponentInChildren<MeshFilter>().mesh.name;
 
-        Assert.AreEqual("DCL Cone50v0t1b2l2o Instance", meshName);
+        Assert.AreEqual("BLD Cone50v0t1b2l2o Instance", meshName);
         yield break;
     }
 
@@ -76,7 +76,7 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
             withCollisions = true
         });
 
-        string componentId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+        string componentId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
             componentJSON
         );
 
@@ -167,7 +167,7 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         TestUtils.CreateSceneEntity(scene, entityId);
         var entity = scene.entities[entityId];
 
-        TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(8, 1, 8) });
+        TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(8, 1, 8) });
 
         yield return null;
 
@@ -244,7 +244,7 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         TestUtils.CreateSceneEntity(scene, entityId);
         var entity = scene.entities[entityId];
 
-        TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(8, 1, 8) });
+        TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(8, 1, 8) });
 
         yield return null;
 
@@ -325,10 +325,10 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         // Arrange: set inverse of withCollision to trigger is dirty later
         BaseShape shapeComponent = TestUtils.SharedComponentCreate<BoxShape, BaseShape.Model>(scene, CLASS_ID.BOX_SHAPE, new BaseShape.Model { withCollisions = !withCollision });
         yield return shapeComponent.routine;
-        List<IDCLEntity> entities = new List<IDCLEntity>();
+        List<IBLDEntity> entities = new List<IBLDEntity>();
         for (int i = 0; i < entitiesCount; i++)
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene, $"entity{i}");
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene, $"entity{i}");
             TestUtils.SharedComponentAttach(shapeComponent, entity);
             entities.Add(entity);
         }
@@ -338,7 +338,7 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         yield return shapeComponent.routine;
 
         // Assert:
-        foreach (IDCLEntity entity in entities)
+        foreach (IBLDEntity entity in entities)
         {
             for (int i = 0; i < entity.meshesInfo.colliders.Count; i++)
             {
@@ -358,10 +358,10 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         // Arrange: set inverse of visible to trigger is dirty later
         BaseShape shapeComponent = TestUtils.SharedComponentCreate<BoxShape, BaseShape.Model>(scene, CLASS_ID.BOX_SHAPE, new BaseShape.Model { visible = !visible });
         yield return shapeComponent.routine;
-        List<IDCLEntity> entities = new List<IDCLEntity>();
+        List<IBLDEntity> entities = new List<IBLDEntity>();
         for (int i = 0; i < entitiesCount; i++)
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene, $"entity{i}");
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene, $"entity{i}");
             TestUtils.SharedComponentAttach(shapeComponent, entity);
             entities.Add(entity);
         }
@@ -371,7 +371,7 @@ public class ParametrizedShapesTests : IntegrationTestSuite_Legacy
         yield return shapeComponent.routine;
 
         // Assert:
-        foreach (IDCLEntity entity in entities)
+        foreach (IBLDEntity entity in entities)
         {
             for (int i = 0; i < entity.meshesInfo.renderers.Length; i++)
             {

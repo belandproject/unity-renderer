@@ -1,10 +1,10 @@
-using DCL;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD;
+using BLD.Helpers;
+using BLD.Interface;
 using System;
 using System.Collections;
 using UnityEngine;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using WaitUntil = UnityEngine.WaitUntil;
 
 public class ProfileHUDController : IHUD
@@ -85,7 +85,7 @@ public class ProfileHUDController : IHUD
         if (mouseCatcher != null)
             mouseCatcher.OnMouseLock += OnMouseLocked;
 
-        if (!DCL.Configuration.EnvironmentSettings.RUNNING_TESTS)
+        if (!BLD.Configuration.EnvironmentSettings.RUNNING_TESTS)
         {
             KernelConfig.i.EnsureConfigInitialized().Then(config => OnKernelConfigChanged(config, null));
             KernelConfig.i.OnChange += OnKernelConfigChanged;
@@ -145,7 +145,7 @@ public class ProfileHUDController : IHUD
         if (mouseCatcher != null)
             mouseCatcher.OnMouseLock -= OnMouseLocked;
 
-        if (!DCL.Configuration.EnvironmentSettings.RUNNING_TESTS)
+        if (!BLD.Configuration.EnvironmentSettings.RUNNING_TESTS)
         {
             KernelConfig.i.OnChange -= OnKernelConfigChanged;
         }

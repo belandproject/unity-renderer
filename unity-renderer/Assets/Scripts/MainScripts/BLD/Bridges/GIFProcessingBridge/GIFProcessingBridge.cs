@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Bridge that handles GIF processing requests for kernel (initiated at Asset_Gif.Load()), and relays the kernel converted textures back to the Asset_Gif
@@ -66,7 +66,7 @@ namespace DCL
                     status = PendingGifs.Status.PENDING
                 };
                 pendingGifs.Add(url, gif);
-                DCL.Interface.WebInterface.RequestGIFProcessor(
+                BLD.Interface.WebInterface.RequestGIFProcessor(
                     url, url, SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES2);
             }
 
@@ -99,7 +99,7 @@ namespace DCL
 
         public void FailGIFFetch(string id) { RemovePending(id); }
 
-        public void DeleteGIF(string id) { DCL.Interface.WebInterface.DeleteGIF(id); }
+        public void DeleteGIF(string id) { BLD.Interface.WebInterface.DeleteGIF(id); }
 
         private GifFrameData[] GenerateTexturesList(int width, int height, int[] pointers, float[] frameDelays)
         {

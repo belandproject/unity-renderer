@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DCL;
+using BLD;
 using UnityEngine;
 
 public class TransactionHUDController : IHUD, ITransactionHUDController
@@ -36,7 +36,7 @@ public class TransactionHUDController : IHUD, ITransactionHUDController
         model.transactions.Add(transaction);
         view.ShowTransaction(transaction, transaction.model);
     }
-    public void ShowTransaction(DCL.TransactionHUDModel.Model model)
+    public void ShowTransaction(BLD.TransactionHUDModel.Model model)
     {
         var transaction = view.ShowTransaction(model);
         this.model.transactions.Add(transaction);
@@ -44,12 +44,12 @@ public class TransactionHUDController : IHUD, ITransactionHUDController
 
     private void OnTransactionAccepted(ITransactionHUD transaction)
     {
-        DCL.Interface.WebInterface.Web3UseResponse(transaction.model.id, true);
+        BLD.Interface.WebInterface.Web3UseResponse(transaction.model.id, true);
         model.transactions.Remove(transaction);
     }
     private void OnTransactionRejected(ITransactionHUD transaction)
     {
-        DCL.Interface.WebInterface.Web3UseResponse(transaction.model.id, false);
+        BLD.Interface.WebInterface.Web3UseResponse(transaction.model.id, false);
         model.transactions.Remove(transaction);
     }
 

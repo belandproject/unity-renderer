@@ -1,11 +1,11 @@
 using System;
-using DCL.Models;
+using BLD.Models;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using DCL.Builder;
-using DCL.Controllers;
+using BLD.Builder;
+using BLD.Controllers;
 using UnityEngine;
 using static BIWCompleteAction;
 
@@ -145,7 +145,7 @@ public class BIWActionController : BIWController, IBIWActionController
         AddAction(buildAction);
     }
 
-    public void CreateActionEntityCreated(IDCLEntity entity)
+    public void CreateActionEntityCreated(IBLDEntity entity)
     {
         BIWEntityAction biwEntityAction = new BIWEntityAction(entity, entity.entityId, BIWUtils.ConvertEntityToJSON(entity));
 
@@ -190,7 +190,7 @@ public class BIWActionController : BIWController, IBIWActionController
 
             case IBIWCompleteAction.ActionType.SCALE:
                 Vector3 convertedScale = (Vector3) value;
-                IDCLEntity entityToApply = entityHandler.GetConvertedEntity(entityIdToApply).rootEntity;
+                IBLDEntity entityToApply = entityHandler.GetConvertedEntity(entityIdToApply).rootEntity;
                 Transform parent = entityToApply.gameObject.transform.parent;
 
                 entityToApply.gameObject.transform.localScale = new Vector3(convertedScale.x / parent.localScale.x, convertedScale.y / parent.localScale.y, convertedScale.z / parent.localScale.z);

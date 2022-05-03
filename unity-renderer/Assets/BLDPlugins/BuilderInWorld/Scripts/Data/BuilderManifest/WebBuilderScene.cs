@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Builder.Manifest
+namespace BLD.Builder.Manifest
 {
     [Serializable]
     public class WebBuilderScene

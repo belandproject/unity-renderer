@@ -1,4 +1,4 @@
-using DCL.Interface;
+using BLD.Interface;
 using System;
 using System.Collections;
 using System.Linq;
@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Huds.QuestsTracker
+namespace BLD.Huds.QuestsTracker
 {
     public class QuestsTrackerTask : MonoBehaviour
     {

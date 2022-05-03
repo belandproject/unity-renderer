@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public interface IPublishProjectDetailView
     {
@@ -122,7 +122,7 @@ namespace DCL.Builder
         private string GetScreenshotText(Vector2Int[] parcels)
         {
             Vector2Int sceneSize = BIWUtils.GetSceneSize(parcels);
-            return string.Format(SCREENSHOT_TEXT, parcels.Length, sceneSize.x * DCL.Configuration.ParcelSettings.PARCEL_SIZE,  DCL.Configuration.ParcelSettings.PARCEL_SIZE * sceneSize.y);
+            return string.Format(SCREENSHOT_TEXT, parcels.Length, sceneSize.x * BLD.Configuration.ParcelSettings.PARCEL_SIZE,  BLD.Configuration.ParcelSettings.PARCEL_SIZE * sceneSize.y);
         }
 
         private void FillLandDropDown()

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Quality Preset", fileName = "QualityPresetControlController")]
     public class QualityPresetControlController : SpinBoxSettingsControlController

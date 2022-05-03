@@ -1,9 +1,9 @@
-using DCL.SettingsPanelHUD;
+using BLD.SettingsPanelHUD;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine;
 
 public class TaskbarHUDShould : IntegrationTestSuite_Legacy

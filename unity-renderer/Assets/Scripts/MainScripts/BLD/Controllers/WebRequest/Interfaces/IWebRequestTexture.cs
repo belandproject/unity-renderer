@@ -1,4 +1,4 @@
-﻿namespace DCL
+﻿namespace BLD
 {
     public interface IWebRequestTexture : IWebRequest
     {

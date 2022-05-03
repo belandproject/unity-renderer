@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_AB : AssetPromise_WithUrl<Asset_AB>
     {
@@ -212,7 +212,7 @@ namespace DCL
 
         protected override void OnLoad(Action OnSuccess, Action<Exception> OnFail)
         {
-            loadCoroutine = CoroutineStarter.Start(DCLCoroutineRunner.Run(
+            loadCoroutine = CoroutineStarter.Start(BLDCoroutineRunner.Run(
                 LoadAssetBundleWithDeps(contentUrl, hash, OnSuccess, OnFail),
                 exception => OnFail?.Invoke(exception)));
         }

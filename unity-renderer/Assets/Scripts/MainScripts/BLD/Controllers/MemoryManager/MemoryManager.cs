@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace DCL
+namespace BLD
 {
     public class MemoryManager : IMemoryManager
     {

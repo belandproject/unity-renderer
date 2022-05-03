@@ -1,11 +1,11 @@
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     [System.Serializable]
     public struct UIValue
@@ -92,7 +92,7 @@ namespace DCL.Components
 
         public override void RaiseOnAppliedChanges()
         {
-            RefreshDCLLayout();
+            RefreshBLDLayout();
 
 #if UNITY_EDITOR
             SetComponentDebugName();
@@ -258,9 +258,9 @@ namespace DCL.Components
         {
             // We are not using the _Internal here because the method is overridden
             // by some UI shapes.
-            RefreshDCLLayoutRecursively(refreshSize: true, refreshAlignmentAndPosition: false);
+            RefreshBLDLayoutRecursively(refreshSize: true, refreshAlignmentAndPosition: false);
             FixMaxStretchRecursively();
-            RefreshDCLLayoutRecursively_Internal(refreshSize: false, refreshAlignmentAndPosition: true);
+            RefreshBLDLayoutRecursively_Internal(refreshSize: false, refreshAlignmentAndPosition: true);
             isLayoutDirty = false;
             OnLayoutRefresh?.Invoke();
             OnLayoutRefresh = null;
@@ -281,23 +281,23 @@ namespace DCL.Components
                 rootParent.OnLayoutRefresh += OnRefresh;
         }
 
-        public void RefreshDCLLayout(bool refreshSize = true, bool refreshAlignmentAndPosition = true)
+        public void RefreshBLDLayout(bool refreshSize = true, bool refreshAlignmentAndPosition = true)
         {
             RectTransform parentRT = referencesContainer.GetComponentInParent<RectTransform>();
 
             if (refreshSize)
             {
-                RefreshDCLSize(parentRT);
+                RefreshBLDSize(parentRT);
             }
 
             if (refreshAlignmentAndPosition)
             {
                 // Alignment (Alignment uses size so we should always align AFTER resizing)
-                RefreshDCLAlignmentAndPosition(parentRT);
+                RefreshBLDAlignmentAndPosition(parentRT);
             }
         }
 
-        protected virtual void RefreshDCLSize(RectTransform parentTransform = null)
+        protected virtual void RefreshBLDSize(RectTransform parentTransform = null)
         {
             if (parentTransform == null)
                 parentTransform = referencesContainer.GetComponentInParent<RectTransform>();
@@ -310,7 +310,7 @@ namespace DCL.Components
                 model.height.GetScaledValue(parentTransform.rect.height));
         }
 
-        public void RefreshDCLAlignmentAndPosition(RectTransform parentTransform = null)
+        public void RefreshBLDAlignmentAndPosition(RectTransform parentTransform = null)
         {
             if (parentTransform == null)
                 parentTransform = referencesContainer.GetComponentInParent<RectTransform>();
@@ -331,13 +331,13 @@ namespace DCL.Components
             referencesContainer.layoutElementRT.localPosition += position;
         }
 
-        public virtual void RefreshDCLLayoutRecursively(bool refreshSize = true,
+        public virtual void RefreshBLDLayoutRecursively(bool refreshSize = true,
             bool refreshAlignmentAndPosition = true)
         {
-            RefreshDCLLayoutRecursively_Internal(refreshSize, refreshAlignmentAndPosition);
+            RefreshBLDLayoutRecursively_Internal(refreshSize, refreshAlignmentAndPosition);
         }
 
-        public void RefreshDCLLayoutRecursively_Internal(bool refreshSize = true,
+        public void RefreshBLDLayoutRecursively_Internal(bool refreshSize = true,
             bool refreshAlignmentAndPosition = true)
         {
             UIShape rootParent = GetRootParent();
@@ -351,7 +351,7 @@ namespace DCL.Components
                 (x) =>
                 {
                     if (x.owner != null)
-                        x.owner.RefreshDCLLayout(refreshSize, refreshAlignmentAndPosition);
+                        x.owner.RefreshBLDLayout(refreshSize, refreshAlignmentAndPosition);
                 },
                 rootParent.referencesContainer.transform);
         }

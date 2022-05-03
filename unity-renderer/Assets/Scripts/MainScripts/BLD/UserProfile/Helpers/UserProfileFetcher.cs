@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 
 public class UserProfileFetcher : IDisposable
 {

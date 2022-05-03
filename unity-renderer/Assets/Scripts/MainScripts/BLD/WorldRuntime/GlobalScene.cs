@@ -1,8 +1,8 @@
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public class GlobalScene : ParcelScene
     {
@@ -27,7 +27,7 @@ namespace DCL.Controllers
             contentProvider.contents = data.contents;
             contentProvider.BakeHashes();
             
-            if (DCLCharacterController.i != null)
+            if (BLDCharacterController.i != null)
                 gameObject.transform.position = PositionUtils.WorldToUnityPosition(Utils.GridToWorldPosition(data.basePosition.x, data.basePosition.y));
 
             DataStore.i.sceneWorldObjects.AddScene(sceneData.id);

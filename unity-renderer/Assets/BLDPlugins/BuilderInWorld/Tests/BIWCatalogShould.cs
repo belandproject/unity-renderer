@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ public class BIWCatalogShould : IntegrationTestSuite_Legacy
 
     protected override ServiceLocator InitializeServiceLocator()
     {
-        return DCL.ServiceLocatorTestFactory.CreateMocked();
+        return BLD.ServiceLocatorTestFactory.CreateMocked();
     }
 
 

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityGLTF;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using WaitUntil = UnityEngine.WaitUntil;
 
 namespace Tests
@@ -40,7 +40,7 @@ namespace Tests
         public IEnumerator BeDestroyedCorrectlyWhenReceivingComponentDestroyMessage()
         {
             var shape = TestUtils.CreateEntityWithBoxShape(scene, Vector3.zero, true);
-            IDCLEntity entity = shape.attachedEntities.First();
+            IBLDEntity entity = shape.attachedEntities.First();
 
             yield return shape.routine;
 
@@ -116,7 +116,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            var componentId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            var componentId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             // 3. Change a shape component property while it loads
             shapeModel.visible = false;
@@ -152,7 +152,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            var componentId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            var componentId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             // 3. Change a shape component property while it loads
             shapeModel.visible = false;
@@ -188,7 +188,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape<LoadWrapper_GLTF, LoadableShape.Model>.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            var componentId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            var componentId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
             yield return new WaitUntil(() => gltfShape.alreadyLoaded);
@@ -224,7 +224,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape<LoadWrapper_GLTF, LoadableShape.Model>.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            var componentId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            var componentId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
             yield return new WaitUntil(() => gltfShape.alreadyLoaded);
@@ -260,7 +260,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape<LoadWrapper_GLTF, LoadableShape.Model>.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            var shapeComponentId = TestUtils.CreateAndSetShape(scene, entity1Id, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            var shapeComponentId = TestUtils.CreateAndSetShape(scene, entity1Id, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             LoadWrapper gltfShapeLoader1 = GLTFShape.GetLoaderForEntity(scene.entities[entity1Id]);
 
@@ -304,7 +304,7 @@ namespace Tests
             // 2. Attach a shape
             var shapeModel = new LoadableShape<LoadWrapper_GLTF, LoadableShape.Model>.Model();
             shapeModel.src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb";
-            TestUtils.CreateAndSetShape(scene, entity1Id, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
+            TestUtils.CreateAndSetShape(scene, entity1Id, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(shapeModel));
 
             LoadWrapper gltfShapeLoader1 = GLTFShape.GetLoaderForEntity(entity1);
 
@@ -347,7 +347,7 @@ namespace Tests
 
             // 2. Attach a shape
             var planeShapeModel = new PlaneShape.Model { };
-            var shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.PLANE_SHAPE,
+            var shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.PLANE_SHAPE,
                 JsonConvert.SerializeObject(planeShapeModel)
             );
 
@@ -412,7 +412,7 @@ namespace Tests
 
             // 2. Attach a shape
             var planeShapeModel = new PlaneShape.Model { };
-            var shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.PLANE_SHAPE,
+            var shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.PLANE_SHAPE,
                 JsonConvert.SerializeObject(planeShapeModel)
             );
 

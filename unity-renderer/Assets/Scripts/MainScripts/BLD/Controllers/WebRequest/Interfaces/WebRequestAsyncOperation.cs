@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public interface IWebRequestAsyncOperation
     {

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using Random = UnityEngine.Random;
 using Collection = WearableCollectionsAPIData.Collection;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class WearablesFetchingHelper
     {

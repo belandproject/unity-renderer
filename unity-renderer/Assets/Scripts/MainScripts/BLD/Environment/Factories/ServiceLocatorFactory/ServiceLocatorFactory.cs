@@ -1,8 +1,8 @@
-﻿using DCL.Controllers;
-using DCL.Rendering;
+﻿using BLD.Controllers;
+using BLD.Rendering;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public static class ServiceLocatorFactory
     {

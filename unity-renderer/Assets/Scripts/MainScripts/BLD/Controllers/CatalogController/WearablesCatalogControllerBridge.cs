@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 
 public class WearablesCatalogControllerBridge : IWearableCatalogBridge
 {

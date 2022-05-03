@@ -1,13 +1,13 @@
-using DCL.SettingsPanelHUD.Common;
+using BLD.SettingsPanelHUD.Common;
 using System.Collections.Generic;
-using DCL.SettingsCommon;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using QualitySettings = DCL.SettingsCommon.QualitySettings;
+using QualitySettings = BLD.SettingsCommon.QualitySettings;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     /// <summary>
     /// Base interface to implement a view for a CONTROL.

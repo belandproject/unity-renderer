@@ -1,9 +1,9 @@
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
-using DCL;
-using DCL.Camera;
-using DCL.Helpers;
+using BLD;
+using BLD.Camera;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -41,7 +41,7 @@ namespace CameraController_Test
         public float[] ReactToSetRotation(float lookAtX, float lookAtY, float lookAtZ)
         {
             CommonScriptableObjects.cameraMode.Set(CameraMode.ModeId.FirstPerson);
-            var payload = new DCL.Camera.CameraController.SetRotationPayload()
+            var payload = new BLD.Camera.CameraController.SetRotationPayload()
             {
                 x = 0,
                 y = 0,

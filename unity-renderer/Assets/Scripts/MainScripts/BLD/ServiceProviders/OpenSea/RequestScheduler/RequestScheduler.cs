@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Helpers.NFT.Markets.OpenSea_Internal
+namespace BLD.Helpers.NFT.Markets.OpenSea_Internal
 {
     internal class RequestScheduler
     {

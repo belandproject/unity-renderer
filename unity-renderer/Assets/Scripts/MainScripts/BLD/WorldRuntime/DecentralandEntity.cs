@@ -1,22 +1,22 @@
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.Models
+namespace BLD.Models
 {
     [Serializable]
-    public class DecentralandEntity : IDCLEntity
+    public class DecentralandEntity : IBLDEntity
     {
         public IParcelScene scene { get; set; }
         public bool markedForCleanup { get; set; } = false;
         public bool isInsideBoundaries { get; set; } = false;
 
-        public Dictionary<string, IDCLEntity> children { get; private set; } = new Dictionary<string, IDCLEntity>();
-        public IDCLEntity parent { get; private set; }
+        public Dictionary<string, IBLDEntity> children { get; private set; } = new Dictionary<string, IBLDEntity>();
+        public IBLDEntity parent { get; private set; }
 
         public Dictionary<CLASS_ID_COMPONENT, IEntityComponent> components { get; private set; } = new Dictionary<CLASS_ID_COMPONENT, IEntityComponent>();
         public Dictionary<System.Type, ISharedComponent> sharedComponents { get; private set; } = new Dictionary<System.Type, ISharedComponent>();
@@ -27,13 +27,13 @@ namespace DCL.Models
         public GameObject meshRootGameObject => meshesInfo.meshRootGameObject;
         public Renderer[] renderers => meshesInfo.renderers;
 
-        public System.Action<IDCLEntity> OnShapeUpdated { get; set; }
-        public System.Action<IDCLEntity> OnShapeLoaded { get; set; }
+        public System.Action<IBLDEntity> OnShapeUpdated { get; set; }
+        public System.Action<IBLDEntity> OnShapeLoaded { get; set; }
         public System.Action<object> OnNameChange { get; set; }
         public System.Action<object> OnTransformChange { get; set; }
-        public System.Action<IDCLEntity> OnRemoved { get; set; }
-        public System.Action<IDCLEntity> OnMeshesInfoUpdated { get; set; }
-        public System.Action<IDCLEntity> OnMeshesInfoCleaned { get; set; }
+        public System.Action<IBLDEntity> OnRemoved { get; set; }
+        public System.Action<IBLDEntity> OnMeshesInfoUpdated { get; set; }
+        public System.Action<IBLDEntity> OnMeshesInfoCleaned { get; set; }
 
         public System.Action<ICleanableEventDispatcher> OnCleanupEvent { get; set; }
 
@@ -51,7 +51,7 @@ namespace DCL.Models
 
         public Dictionary<System.Type, ISharedComponent> GetSharedComponents() { return sharedComponents; }
 
-        public void AddChild(IDCLEntity entity)
+        public void AddChild(IBLDEntity entity)
         {
             if (!children.ContainsKey(entity.entityId))
             {
@@ -59,7 +59,7 @@ namespace DCL.Models
             }
         }
 
-        public void RemoveChild(IDCLEntity entity)
+        public void RemoveChild(IBLDEntity entity)
         {
             if (children.ContainsKey(entity.entityId))
             {
@@ -67,7 +67,7 @@ namespace DCL.Models
             }
         }
 
-        public void SetParent(IDCLEntity entity)
+        public void SetParent(IBLDEntity entity)
         {
             if (parent != null)
             {

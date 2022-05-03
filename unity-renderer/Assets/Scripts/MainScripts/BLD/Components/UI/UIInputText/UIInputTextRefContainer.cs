@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIInputTextRefContainer : UIReferencesContainer
     {

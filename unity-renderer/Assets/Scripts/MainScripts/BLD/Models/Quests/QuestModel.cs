@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using DCL.Helpers;
+using BLD.Helpers;
 
 public static class QuestsLiterals
 {

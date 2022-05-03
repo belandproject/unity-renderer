@@ -1,8 +1,8 @@
 ﻿using System;
-using DCL.Components;
-using DCL.QuestsController;
+using BLD.Components;
+using BLD.QuestsController;
 using System.Collections;
-using DCL.Models;
+using BLD.Models;
 using UnityEngine;
 
 public class QuestTrackingInfo : BaseComponent

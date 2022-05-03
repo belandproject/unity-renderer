@@ -6,11 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InputAction_Trigger", menuName = "InputActions/Trigger")]
 public class InputAction_Trigger : ScriptableObject
 {
-    public delegate void Triggered(DCLAction_Trigger action);
+    public delegate void Triggered(BLDAction_Trigger action);
     public event Triggered OnTriggered;
 
-    [SerializeField] internal DCLAction_Trigger dclAction;
-    public DCLAction_Trigger GetDCLAction() => dclAction;
+    [SerializeField] internal BLDAction_Trigger bldAction;
+    public BLDAction_Trigger GetBLDAction() => bldAction;
 
     [SerializeField] internal BooleanVariable blockTrigger;
     public BooleanVariable isTriggerBlocked { get => blockTrigger; set => blockTrigger = value; }
@@ -22,7 +22,7 @@ public class InputAction_Trigger : ScriptableObject
     public void RaiseOnTriggered()
     {
         triggeredInFrame = Time.frameCount;
-        OnTriggered?.Invoke(dclAction);
+        OnTriggered?.Invoke(bldAction);
     }
 
     #region Editor

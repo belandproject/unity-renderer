@@ -4,7 +4,7 @@ using Variables.RealmsInfo;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DCL
+namespace BLD
 {
     public class RealmsInfoHandler
     {

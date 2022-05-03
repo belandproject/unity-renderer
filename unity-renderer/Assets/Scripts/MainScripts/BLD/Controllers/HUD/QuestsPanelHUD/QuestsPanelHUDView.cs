@@ -1,10 +1,10 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public interface IQuestsPanelHUDView
     {

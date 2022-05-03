@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     [Serializable]
     public class ProjectData

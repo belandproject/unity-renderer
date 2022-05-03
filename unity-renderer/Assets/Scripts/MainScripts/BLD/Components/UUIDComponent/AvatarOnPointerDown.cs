@@ -1,19 +1,19 @@
 using System.Linq;
-using DCL.Controllers;
-using DCL.Interface;
+using BLD.Controllers;
+using BLD.Interface;
 using UnityEngine;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using Ray = UnityEngine.Ray;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class AvatarOnPointerDown : MonoBehaviour, IPointerInputEvent, IPoolLifecycleHandler, IAvatarOnPointerDownCollider
     {
         public new Collider collider;
         private OnPointerEvent.Model model;
         private OnPointerEventHandler eventHandler;
-        public IDCLEntity entity { get; private set; }
+        public IBLDEntity entity { get; private set; }
         public event System.Action OnPointerDownReport;
         public event System.Action OnPointerEnterReport;
         public event System.Action OnPointerExitReport;
@@ -55,7 +55,7 @@ namespace DCL.Components
             CollidersManager.i.RemoveEntityCollider(entity, collider);
         }
 
-        public void Initialize(OnPointerEvent.Model model, IDCLEntity entity, Player player)
+        public void Initialize(OnPointerEvent.Model model, IBLDEntity entity, Player player)
         {
             this.model = model;
             this.entity = entity;

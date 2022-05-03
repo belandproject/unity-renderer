@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.Builder.Manifest
+namespace BLD.Builder.Manifest
 {
     [Serializable]
     public class Manifest

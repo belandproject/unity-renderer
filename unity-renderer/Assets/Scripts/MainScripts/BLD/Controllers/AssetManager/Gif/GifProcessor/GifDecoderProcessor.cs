@@ -5,13 +5,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL.Helpers;
+using BLD.Helpers;
 using ThreeDISevenZeroR.UnityGifDecoder;
 using ThreeDISevenZeroR.UnityGifDecoder.Model;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace DCL
+namespace BLD
 {
     public class GifWebRequestException : Exception
     {

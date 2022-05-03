@@ -1,8 +1,8 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     /// <summary>
     /// MonoBehaviour that represents the view of a TOGGLE type CONTROL.

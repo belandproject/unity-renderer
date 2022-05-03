@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace DCL.Components.Video.Plugin
+namespace BLD.Components.Video.Plugin
 {
     public static class WebGLVideoPlugin
     {

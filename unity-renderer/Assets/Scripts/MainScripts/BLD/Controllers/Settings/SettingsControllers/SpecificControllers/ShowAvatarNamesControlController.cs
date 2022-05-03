@@ -1,7 +1,7 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Show Avatar Names", fileName = "ShowAvatarNamesControlController")]
     public class ShowAvatarNamesControlController : ToggleSettingsControlController

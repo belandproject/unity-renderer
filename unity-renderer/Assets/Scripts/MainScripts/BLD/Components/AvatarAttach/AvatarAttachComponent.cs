@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class AvatarAttachComponent : IEntityComponent
     {
@@ -22,13 +22,13 @@ namespace DCL.Components
         }
 
         IParcelScene IComponent.scene => handler.scene;
-        IDCLEntity IEntityComponent.entity => handler.entity;
+        IBLDEntity IEntityComponent.entity => handler.entity;
 
         string IComponent.componentName => "AvatarAttach";
 
         private readonly AvatarAttachHandler handler = new AvatarAttachHandler();
 
-        void IEntityComponent.Initialize(IParcelScene scene, IDCLEntity entity)
+        void IEntityComponent.Initialize(IParcelScene scene, IBLDEntity entity)
         {
             handler.Initialize(scene, entity, Environment.i.platform.updateEventHandler);
         }

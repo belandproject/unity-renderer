@@ -1,9 +1,9 @@
-﻿using DCL.Controllers;
-using DCL.Helpers.NFT.Markets;
-using DCL.Rendering;
+﻿using BLD.Controllers;
+using BLD.Helpers.NFT.Markets;
+using BLD.Rendering;
 using NSubstitute;
 
-namespace DCL
+namespace BLD
 {
     public static class ServiceLocatorTestFactory
     {

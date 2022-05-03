@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -27,7 +27,7 @@ public class BasicMaterialVisualTests : VisualTestsBase
         {
             alphaTest = 1f,
             castShadows = false
-        }, camTarget, out IDCLEntity entity);
+        }, camTarget, out IBLDEntity entity);
         yield return basicMaterialComponent.routine;
 
         yield return new WaitForAllMessagesProcessed();
@@ -54,7 +54,7 @@ public class BasicMaterialVisualTests : VisualTestsBase
         {
             alphaTest = 1f,
             castShadows = true
-        }, camTarget, out IDCLEntity entity);
+        }, camTarget, out IBLDEntity entity);
         yield return basicMaterialComponent.routine;
 
         yield return new WaitForAllMessagesProcessed();

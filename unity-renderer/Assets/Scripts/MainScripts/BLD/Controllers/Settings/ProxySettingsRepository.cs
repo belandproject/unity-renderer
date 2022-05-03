@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     public class ProxySettingsRepository<T> : ISettingsRepository<T> where T : struct
     {

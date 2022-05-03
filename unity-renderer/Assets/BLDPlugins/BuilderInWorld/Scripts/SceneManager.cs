@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Camera;
-using DCL.Configuration;
-using DCL.Controllers;
+using BLD.Camera;
+using BLD.Configuration;
+using BLD.Controllers;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class SceneManager : ISceneManager
     {
@@ -90,7 +90,7 @@ namespace DCL.Builder
             Environment.i.world.sceneController.OnNewSceneAdded -= NewSceneAdded;
             Environment.i.world.sceneController.OnReadyScene -= NewSceneReady;
             BIWTeleportAndEdit.OnTeleportEnd -= OnPlayerTeleportedToEditScene;
-            DCLCharacterController.OnPositionSet -= ExitAfterCharacterTeleport;
+            BLDCharacterController.OnPositionSet -= ExitAfterCharacterTeleport;
 
             if (sceneToEdit != null)
                 sceneToEdit.OnLoadingStateUpdated -= UpdateSceneLoadingProgress;
@@ -238,7 +238,7 @@ namespace DCL.Builder
                 .Then(lands =>
                 {
                     DataStore.i.builderInWorld.landsWithAccess.Set(lands.ToArray(), true);
-                    if (isWaitingForPermission && Vector3.Distance(askPermissionLastPosition, DCLCharacterController.i.characterPosition.unityPosition) <= MAX_DISTANCE_STOP_TRYING_TO_ENTER)
+                    if (isWaitingForPermission && Vector3.Distance(askPermissionLastPosition, BLDCharacterController.i.characterPosition.unityPosition) <= MAX_DISTANCE_STOP_TRYING_TO_ENTER)
                     {
                         CheckSceneToEditByShorcut();
                     }
@@ -298,7 +298,7 @@ namespace DCL.Builder
             });
         }
 
-        public void ChangeEditModeStatusByShortcut(DCLAction_Trigger action)
+        public void ChangeEditModeStatusByShortcut(BLDAction_Trigger action)
         {
             if (currentState != State.EDITING && currentState != State.IDLE)
                 return;
@@ -312,9 +312,9 @@ namespace DCL.Builder
             if (DataStore.i.builderInWorld.landsWithAccess.Get().Length == 0 && !alreadyAskedForLandPermissions)
             {
                 ActivateLandAccessBackgroundChecker();
-                BIWUtils.ShowGenericNotification(BIWSettings.LAND_EDITION_WAITING_FOR_PERMISSIONS_MESSAGE, DCL.NotificationModel.Type.GENERIC_WITHOUT_BUTTON, BIWSettings.LAND_CHECK_MESSAGE_TIMER);
+                BIWUtils.ShowGenericNotification(BIWSettings.LAND_EDITION_WAITING_FOR_PERMISSIONS_MESSAGE, BLD.NotificationModel.Type.GENERIC_WITHOUT_BUTTON, BIWSettings.LAND_CHECK_MESSAGE_TIMER);
                 isWaitingForPermission = true;
-                askPermissionLastPosition = DCLCharacterController.i.characterPosition.unityPosition;
+                askPermissionLastPosition = BLDCharacterController.i.characterPosition.unityPosition;
             }
             else
             {
@@ -399,7 +399,7 @@ namespace DCL.Builder
                 OpenNewProjectDetails();
             });
 
-            DCLCharacterController.OnPositionSet += ExitAfterCharacterTeleport;
+            BLDCharacterController.OnPositionSet += ExitAfterCharacterTeleport;
 
             context.editor.EnterEditMode(sceneToEdit);
             BIWAnalytics.EnterEditor( Time.realtimeSinceStartup - beginStartFlowTimeStamp);
@@ -414,7 +414,7 @@ namespace DCL.Builder
             context.cameraController.DeactivateCamera();
             context.editor.ExitEditMode();
 
-            DCLCharacterController.OnPositionSet -= ExitAfterCharacterTeleport;
+            BLDCharacterController.OnPositionSet -= ExitAfterCharacterTeleport;
         }
 
         internal void OpenNewProjectDetails()
@@ -478,7 +478,7 @@ namespace DCL.Builder
 
         private void UpdateCatalogLoadingProgress(float catalogLoadingProgress) { initialLoadingController.SetPercentage(catalogLoadingProgress / 2); }
 
-        internal void ExitAfterCharacterTeleport(DCLCharacterPosition position) { ExitEditMode(); }
+        internal void ExitAfterCharacterTeleport(BLDCharacterPosition position) { ExitEditMode(); }
 
         private IEnumerator CheckLandsAccess()
         {

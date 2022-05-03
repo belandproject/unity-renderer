@@ -1,8 +1,8 @@
 ﻿using System;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal interface ISceneData
     {

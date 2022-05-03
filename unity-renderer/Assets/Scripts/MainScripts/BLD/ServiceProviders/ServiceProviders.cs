@@ -1,6 +1,6 @@
 using System;
-using DCL;
-using DCL.Helpers.NFT.Markets;
+using BLD;
+using BLD.Helpers.NFT.Markets;
 
 public class ServiceProviders : IServiceProviders
 {

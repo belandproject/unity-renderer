@@ -1,12 +1,12 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIContainerRect : UIShape<UIContainerRectReferencesContainer, UIContainerRect.Model>
     {
@@ -25,13 +25,13 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.UI_CONTAINER_RECT; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             Debug.LogError(
                 "Aborted UIContainerRectShape attachment to an entity. UIShapes shouldn't be attached to entities.");
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         public override IEnumerator ApplyChanges(BaseModel newModel)
         {

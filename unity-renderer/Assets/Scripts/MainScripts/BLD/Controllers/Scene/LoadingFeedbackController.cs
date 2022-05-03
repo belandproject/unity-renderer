@@ -1,12 +1,12 @@
-using DCL;
-using DCL.Controllers;
-using DCL.Interface;
+using BLD;
+using BLD.Controllers;
+using BLD.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// This class recopiles all the needed information to be sent to the kernel and be able to show the feedback along the world loading.
@@ -102,7 +102,7 @@ namespace DCL
 
             string loadingText = string.Empty;
             string secondLoadingText = string.Empty;
-            DCL.Interface.WebInterface.LoadingFeedbackMessage messageToSend = new WebInterface.LoadingFeedbackMessage();
+            BLD.Interface.WebInterface.LoadingFeedbackMessage messageToSend = new WebInterface.LoadingFeedbackMessage();
             messageToSend.loadPercentage = 0;
 
             currentComponentsLoading = loadedScenes.Sum(x => x.componentsLoading);

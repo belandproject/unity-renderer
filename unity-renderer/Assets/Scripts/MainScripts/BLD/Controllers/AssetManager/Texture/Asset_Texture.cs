@@ -4,7 +4,7 @@ using UnityEngine.Experimental.Rendering;
 using UnityGLTF.Cache;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public class Asset_Texture : Asset, ITexture
     {

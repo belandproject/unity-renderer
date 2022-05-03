@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     internal class GetAnchorPointsHandler : IDisposable
     {

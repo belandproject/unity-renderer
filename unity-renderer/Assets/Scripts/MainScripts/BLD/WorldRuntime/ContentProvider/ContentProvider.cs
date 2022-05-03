@@ -1,11 +1,11 @@
 using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using MappingPair = DCL.ContentServerUtils.MappingPair;
+using MappingPair = BLD.ContentServerUtils.MappingPair;
 
-namespace DCL
+namespace BLD
 {
     public class ContentProvider
     {

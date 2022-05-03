@@ -1,15 +1,15 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Models;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class CollidersManager : Singleton<CollidersManager>
     {
         private Dictionary<Collider, ColliderInfo> colliderInfo = new Dictionary<Collider, ColliderInfo>();
-        private Dictionary<IDCLEntity, List<Collider>> collidersByEntity = new Dictionary<IDCLEntity, List<Collider>>();
+        private Dictionary<IBLDEntity, List<Collider>> collidersByEntity = new Dictionary<IBLDEntity, List<Collider>>();
         private static CollidersManager instance = null;
 
         public static void Release()
@@ -43,7 +43,7 @@ namespace DCL
                 colliderInfo.Remove(collider);
         }
 
-        public void RemoveEntityCollider(IDCLEntity entity, Collider collider)
+        public void RemoveEntityCollider(IBLDEntity entity, Collider collider)
         {
             if (entity == null || collider == null || !collidersByEntity.ContainsKey(entity))
                 return;
@@ -52,7 +52,7 @@ namespace DCL
             RemoveColliderInfo(collider);
         }
 
-        public void AddOrUpdateEntityCollider(IDCLEntity entity, Collider collider)
+        public void AddOrUpdateEntityCollider(IBLDEntity entity, Collider collider)
         {
             if (!collidersByEntity.ContainsKey(entity))
                 collidersByEntity.Add(entity, new List<Collider>());
@@ -73,7 +73,7 @@ namespace DCL
             entity.OnCleanupEvent += OnEntityCleanUpEvent;
         }
 
-        void RemoveAllEntityColliders(IDCLEntity entity)
+        void RemoveAllEntityColliders(IBLDEntity entity)
         {
             if (collidersByEntity.ContainsKey(entity))
             {
@@ -91,7 +91,7 @@ namespace DCL
         {
             dispatcher.OnCleanupEvent -= OnEntityCleanUpEvent;
 
-            RemoveAllEntityColliders((IDCLEntity) dispatcher);
+            RemoveAllEntityColliders((IBLDEntity) dispatcher);
         }
 
         public bool GetColliderInfo(Collider collider, out ColliderInfo info)
@@ -109,9 +109,9 @@ namespace DCL
             return false;
         }
 
-        public void ConfigureColliders(IDCLEntity entity, bool hasCollision = true, bool filterByColliderName = true) { ConfigureColliders(entity.meshRootGameObject, hasCollision, filterByColliderName, entity); }
+        public void ConfigureColliders(IBLDEntity entity, bool hasCollision = true, bool filterByColliderName = true) { ConfigureColliders(entity.meshRootGameObject, hasCollision, filterByColliderName, entity); }
 
-        public void ConfigureColliders(GameObject meshGameObject, bool hasCollision, bool filterByColliderName = false, IDCLEntity entity = null, int colliderLayer = -1)
+        public void ConfigureColliders(GameObject meshGameObject, bool hasCollision, bool filterByColliderName = false, IBLDEntity entity = null, int colliderLayer = -1)
         {
             if (meshGameObject == null)
                 return;
@@ -120,7 +120,7 @@ namespace DCL
                 entity.meshesInfo.colliders.Clear();
 
             if (colliderLayer == -1)
-                colliderLayer = DCL.Configuration.PhysicsLayers.defaultLayer;
+                colliderLayer = BLD.Configuration.PhysicsLayers.defaultLayer;
 
             Collider collider;
             int onClickLayer = PhysicsLayers.onPointerEventLayer; // meshes can have a child collider for the OnClick that should be ignored

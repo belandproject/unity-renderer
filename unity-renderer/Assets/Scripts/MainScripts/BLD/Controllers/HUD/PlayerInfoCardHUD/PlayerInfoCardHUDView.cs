@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -115,7 +115,7 @@ public class PlayerInfoCardHUDView : MonoBehaviour
 
         if (SceneReferences.i != null)
         {
-            var mouseCatcher = DCL.SceneReferences.i.mouseCatcher;
+            var mouseCatcher = BLD.SceneReferences.i.mouseCatcher;
 
             if (mouseCatcher != null)
             {

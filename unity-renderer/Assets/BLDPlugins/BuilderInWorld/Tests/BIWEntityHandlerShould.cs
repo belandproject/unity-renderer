@@ -1,16 +1,16 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Linq;
-using DCL;
-using DCL.Builder;
-using DCL.Camera;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Camera;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NSubstitute;
 using NSubstitute.Extensions;
@@ -18,7 +18,7 @@ using UnityEngine.TestTools;
 
 /// <summary>
 /// TODO: This is using IntegrationTestSuite_Legacy instead of the normal because there is a bug in the NSustitute library
-/// where the IDCLEntity are not mocked correctly. After it is fixed, we should go to IntegrationTestSuite 
+/// where the IBLDEntity are not mocked correctly. After it is fixed, we should go to IntegrationTestSuite 
 /// </summary>
 public class BIWEntityHandlerShould : IntegrationTestSuite_Legacy
 {
@@ -101,7 +101,7 @@ public class BIWEntityHandlerShould : IntegrationTestSuite_Legacy
     [Test]
     public void EntityDuplicate()
     {
-        IDCLEntity duplicateEntity = entityHandler.DuplicateEntity(entity).rootEntity;
+        IBLDEntity duplicateEntity = entityHandler.DuplicateEntity(entity).rootEntity;
         BIWEntity convertedEntity = entityHandler.GetConvertedEntity(duplicateEntity);
 
         Assert.IsNotNull(convertedEntity);
@@ -111,7 +111,7 @@ public class BIWEntityHandlerShould : IntegrationTestSuite_Legacy
     public void ReportTransform()
     {
         //Act
-        var currentTime = DCLTime.realtimeSinceStartup;
+        var currentTime = BLDTime.realtimeSinceStartup;
         entityHandler.ReportTransform();
 
         //Assert
@@ -255,14 +255,14 @@ public class BIWEntityHandlerShould : IntegrationTestSuite_Legacy
         newEntity.isNew = true;
         newEntity.rootEntity.gameObject.transform.position = Vector3.one * 444;
 
-        TestUtils.CreateAndSetShape(scene, newEntity.rootEntity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+        TestUtils.CreateAndSetShape(scene, newEntity.rootEntity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
             new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb"
             }));
 
         LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[newEntity.rootEntity.entityId]);
-        yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded);
 
         //Act
         entityHandler.DeleteEntitiesOutsideSceneBoundaries();
@@ -331,7 +331,7 @@ public class BIWEntityHandlerShould : IntegrationTestSuite_Legacy
         entityHandler.ReportTransform();
 
         //Assert
-        Assert.IsTrue(Mathf.Abs(entityHandler.GetLastTimeReport() - DCLTime.realtimeSinceStartup) <= 0.01f);
+        Assert.IsTrue(Mathf.Abs(entityHandler.GetLastTimeReport() - BLDTime.realtimeSinceStartup) <= 0.01f);
     }
 
     [Test]

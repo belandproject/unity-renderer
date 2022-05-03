@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Builder;
-using DCL.Camera;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Camera;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NSubstitute;
 using NSubstitute.Extensions;
@@ -121,7 +121,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
     {
         //Arrange
         var entity = new BIWEntity();
-        entity.Initialize(Substitute.For<IDCLEntity>(), null);
+        entity.Initialize(Substitute.For<IBLDEntity>(), null);
 
         //Act
         godMode.SelectedEntity(entity);
@@ -150,7 +150,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         var result = godMode.actionList.Count;
         List<BIWEntity> entities = new List<BIWEntity>();
         var entity = new BIWEntity();
-        var rootEntity = Substitute.For<IDCLEntity>();
+        var rootEntity = Substitute.For<IBLDEntity>();
         rootEntity.Configure().gameObject.Returns(mockedGameObject);
         entity.Initialize(rootEntity, null);
         entities.Add(entity);
@@ -170,7 +170,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         var result = godMode.actionList;
         List<BIWEntity> entities = new List<BIWEntity>();
         var entity = new BIWEntity();
-        var rootEntity = Substitute.For<IDCLEntity>();
+        var rootEntity = Substitute.For<IBLDEntity>();
         rootEntity.Configure().gameObject.Returns(mockedGameObject);
         entity.Initialize(rootEntity, null);
         entities.Add(entity);
@@ -346,7 +346,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         godMode.TranslateMode();
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -366,7 +366,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         godMode.RotateMode();
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -386,7 +386,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         godMode.ScaleMode();
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -476,7 +476,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         godMode.TranslateMode();
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -495,7 +495,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         godMode.TranslateMode();
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -528,7 +528,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
     {
         //Arrange
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);
@@ -545,7 +545,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
     public void LookAtEntity()
     {
         //Arrange
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         var position = Vector3.zero;
 
@@ -562,9 +562,9 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
         //Arrange
         var entity = TestUtils.CreateSceneEntity(scene);
 
-        TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(18, 1, 18) });
+        TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(18, 1, 18) });
 
-        TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+        TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
             new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/PalmTree_01.glb"
@@ -585,7 +585,7 @@ public class BIWGodModeShould : IntegrationTestSuite_Legacy
     {
         //Arrange
         var biwEntity = new BIWEntity();
-        var newEntity = Substitute.For<IDCLEntity>();
+        var newEntity = Substitute.For<IBLDEntity>();
         newEntity.Configure().gameObject.Returns(entityGameObject);
         biwEntity.Initialize(newEntity, null);
         selectedEntities.Add(biwEntity);

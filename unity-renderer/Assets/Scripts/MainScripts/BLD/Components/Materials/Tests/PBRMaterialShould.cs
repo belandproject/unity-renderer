@@ -1,10 +1,10 @@
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Linq;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
@@ -24,8 +24,8 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator NotDestroySharedTextureWhenDisposed()
     {
-        DCLTexture texture =
-            TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+        BLDTexture texture =
+            TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
 
         yield return texture.routine;
 
@@ -36,7 +36,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
                 metallic = 0,
                 roughness = 1,
             },
-            out IDCLEntity entity1);
+            out IBLDEntity entity1);
 
         yield return mat.routine;
 
@@ -47,7 +47,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
                 metallic = 0,
                 roughness = 1,
             },
-            out IDCLEntity entity2);
+            out IBLDEntity entity2);
 
         yield return mat2.routine;
 
@@ -58,8 +58,8 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator BeCreatedProperly()
     {
-        DCLTexture texture =
-            TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+        BLDTexture texture =
+            TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
 
         yield return texture.routine;
 
@@ -70,7 +70,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
                 metallic = 0,
                 roughness = 1,
             },
-            out IDCLEntity entity);
+            out IBLDEntity entity);
 
         yield return matPBR.routine;
 
@@ -99,11 +99,11 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         TestUtils.InstantiateEntityWithMaterial(scene, entityId, Vector3.zero,
             new PBRMaterial.Model(), materialID);
 
-        var materialComponent = scene.disposableComponents[materialID] as DCL.Components.PBRMaterial;
+        var materialComponent = scene.disposableComponents[materialID] as BLD.Components.PBRMaterial;
 
         yield return materialComponent.routine;
 
-        Assert.IsTrue(materialComponent is DCL.Components.PBRMaterial, "material is PBRMaterial");
+        Assert.IsTrue(materialComponent is BLD.Components.PBRMaterial, "material is PBRMaterial");
 
         // Check if material initialized correctly
         {
@@ -141,8 +141,8 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         }
 
         // Update material
-        DCLTexture texture =
-            TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+        BLDTexture texture =
+            TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
 
         yield return texture.routine;
 
@@ -152,7 +152,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         ColorUtility.TryParseHtmlString("#42f4aa", out color2);
         ColorUtility.TryParseHtmlString("#601121", out color3);
 
-        scene.SharedComponentUpdate(materialID, JsonUtility.ToJson(new DCL.Components.PBRMaterial.Model
+        scene.SharedComponentUpdate(materialID, JsonUtility.ToJson(new BLD.Components.PBRMaterial.Model
         {
             albedoTexture = texture.id,
             albedoColor = color1,
@@ -202,7 +202,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         string firstMaterialID = "a-material";
 
         TestUtils.InstantiateEntityWithMaterial(scene, firstEntityID, Vector3.zero,
-            new DCL.Components.PBRMaterial.Model
+            new BLD.Components.PBRMaterial.Model
             {
                 metallic = 0.3f,
             }, firstMaterialID);
@@ -215,7 +215,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         string secondMaterialID = "b-material";
 
         TestUtils.InstantiateEntityWithMaterial(scene, secondEntityID, Vector3.zero,
-            new DCL.Components.PBRMaterial.Model
+            new BLD.Components.PBRMaterial.Model
             {
                 metallic = 0.66f,
             }, secondMaterialID);
@@ -226,7 +226,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
         // Create third entity and assign 1st material
         string thirdEntityID = "3";
 
-        TestUtils.InstantiateEntityWithShape(scene, thirdEntityID, DCL.Models.CLASS_ID.BOX_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, thirdEntityID, BLD.Models.CLASS_ID.BOX_SHAPE, Vector3.zero);
         scene.SharedComponentAttach(
             thirdEntityID,
             firstMaterialID
@@ -255,7 +255,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
             new PBRMaterial.Model
             {
                 metallic = 0.3f,
-            }, out IDCLEntity entity1);
+            }, out IBLDEntity entity1);
 
         Assert.IsTrue(entity1.meshRootGameObject != null,
             "Every entity with a shape should have the mandatory 'Mesh' object as a child");
@@ -265,7 +265,7 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
             new PBRMaterial.Model
             {
                 metallic = 0.66f,
-            }, out IDCLEntity entity2);
+            }, out IBLDEntity entity2);
 
         Assert.IsTrue(entity2.meshRootGameObject != null,
             "Every entity with a shape should have the mandatory 'Mesh' object as a child");
@@ -315,21 +315,21 @@ public class PBRMaterialShould : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator WorkCorrectlyWhenAttachedBeforeShape()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
 
-        DCLTexture dclTexture = TestUtils.CreateDCLTexture(
+        BLDTexture bldTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/atlas.png",
-            DCLTexture.BabylonWrapMode.CLAMP,
+            BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode.Bilinear);
 
-        yield return dclTexture.routine;
+        yield return bldTexture.routine;
 
         PBRMaterial mat = TestUtils.SharedComponentCreate<PBRMaterial, PBRMaterial.Model>(scene,
             CLASS_ID.PBR_MATERIAL,
             new PBRMaterial.Model
             {
-                albedoTexture = dclTexture.id,
+                albedoTexture = bldTexture.id,
                 metallic = 0,
                 roughness = 1,
             }

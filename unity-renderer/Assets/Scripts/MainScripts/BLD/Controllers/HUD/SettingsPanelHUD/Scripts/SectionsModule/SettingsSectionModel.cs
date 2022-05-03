@@ -1,8 +1,8 @@
-using DCL.SettingsPanelHUD.Widgets;
+using BLD.SettingsPanelHUD.Widgets;
 using ReorderableList;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Sections
+namespace BLD.SettingsPanelHUD.Sections
 {
     [System.Serializable]
     public class SettingsWidgetList : ReorderableArray<SettingsWidgetModel> { }

@@ -1,8 +1,8 @@
 using Unity.PerformanceTesting;
 using NUnit.Framework;
-using DCL;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Interface;
+using BLD.Models;
 
 namespace MessaginPerformanceTests
 {
@@ -40,7 +40,7 @@ namespace MessaginPerformanceTests
         {
             string[] messages = GetMessagesFromFile(MessageDecoder.TRANSFORM_FILENAME);
             int count = messages.Length;
-            DCL.Components.DCLTransform.Model transformModel = new DCL.Components.DCLTransform.Model();
+            BLD.Components.BLDTransform.Model transformModel = new BLD.Components.BLDTransform.Model();
 
             Measure.Method(() =>
                    {

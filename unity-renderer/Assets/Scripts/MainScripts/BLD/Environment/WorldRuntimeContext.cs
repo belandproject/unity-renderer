@@ -1,7 +1,7 @@
-﻿using DCL.Controllers;
+﻿using BLD.Controllers;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Context related to all the systems involved in the execution of Beland scenes.

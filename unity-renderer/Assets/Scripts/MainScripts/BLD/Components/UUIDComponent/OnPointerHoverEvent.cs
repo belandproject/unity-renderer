@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnPointerHoverEvent : UUIDComponent, IPointerEvent
     {
@@ -21,7 +21,7 @@ namespace DCL.Components
 
         internal OnPointerEventColliders pointerEventColliders;
 
-        public override void Initialize(IParcelScene scene, IDCLEntity entity)
+        public override void Initialize(IParcelScene scene, IBLDEntity entity)
         {
             base.Initialize(scene, entity);
 
@@ -37,7 +37,7 @@ namespace DCL.Components
 
         public virtual void SetHoverState(bool hoverState) { }
 
-        void SetEventColliders(IDCLEntity entity)
+        void SetEventColliders(IBLDEntity entity)
         {
             pointerEventColliders.Initialize(entity);
         }

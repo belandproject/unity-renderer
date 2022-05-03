@@ -1,9 +1,9 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -142,7 +142,7 @@ namespace Tests
         [TestCase(1, ExpectedResult = null)]
         public IEnumerator OpacityIsProcessedCorrectly(float opacity)
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
             TextShape textShapeComponent = TestUtils.EntityComponentCreate<TextShape, TextShape.Model>(scene, entity, new TextShape.Model { value = "Hello test", opacity = opacity });
 
             yield return textShapeComponent.routine;
@@ -157,7 +157,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator VisibleTrueIsProcessedCorrectly()
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
             TextShape textShapeComponent = TestUtils.EntityComponentCreate<TextShape, TextShape.Model>(scene, entity, new TextShape.Model { value = "Hello test", opacity = 0.3f, visible = true });
 
             yield return textShapeComponent.routine;
@@ -173,7 +173,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator VisibleFalseIsProcessedCorrectly()
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
             TextShape textShapeComponent = TestUtils.EntityComponentCreate<TextShape, TextShape.Model>(scene, entity, new TextShape.Model { value = "Hello test", opacity = 0.3f, visible = false });
 
             yield return textShapeComponent.routine;

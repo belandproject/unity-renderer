@@ -1,20 +1,20 @@
 using System;
-using DCL.Components;
-using DCL.Interface;
+using BLD.Components;
+using BLD.Interface;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using AvatarSystem;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using GPUSkinning;
 using UnityEngine;
 using Avatar = AvatarSystem.Avatar;
 using LOD = AvatarSystem.LOD;
 
-namespace DCL
+namespace BLD
 {
     public class AvatarShape : BaseComponent
     {
@@ -22,7 +22,7 @@ namespace DCL
         private const float MINIMUM_PLAYERNAME_HEIGHT = 2.7f;
         private const float AVATAR_PASSPORT_TOGGLE_ALPHA_THRESHOLD = 0.9f;
 
-        public static event Action<IDCLEntity, AvatarShape> OnAvatarShapeUpdated;
+        public static event Action<IBLDEntity, AvatarShape> OnAvatarShapeUpdated;
 
         public GameObject avatarContainer;
         public Collider avatarCollider;
@@ -115,7 +115,7 @@ namespace DCL
             yield return null; //NOTE(Brian): just in case we have a Object.Destroy waiting to be resolved.
 
             // To deal with the cases in which the entity transform was configured before the AvatarShape
-            if (!initializedPosition && entity.components.ContainsKey(DCL.Models.CLASS_ID_COMPONENT.TRANSFORM))
+            if (!initializedPosition && entity.components.ContainsKey(BLD.Models.CLASS_ID_COMPONENT.TRANSFORM))
             {
                 initializedPosition = true;
                 OnEntityTransformChanged(entity.gameObject.transform.localPosition,
@@ -280,7 +280,7 @@ namespace DCL
 
         private void OnEntityTransformChanged(object newModel)
         {
-            DCLTransform.Model newTransformModel = (DCLTransform.Model)newModel;
+            BLDTransform.Model newTransformModel = (BLDTransform.Model)newModel;
             OnEntityTransformChanged(newTransformModel.position, newTransformModel.rotation, !initializedPosition);
         }
         

@@ -1,13 +1,13 @@
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Builder;
-using DCL.Controllers;
+using BLD.Builder;
+using BLD.Controllers;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class BIWCreatorController : BIWController, IBIWCreatorController
     {
@@ -173,7 +173,7 @@ namespace DCL.Builder
 
         public void CreateCatalogItem(CatalogItem catalogItem, bool autoSelect = true, bool isFloor = false) { CreateCatalogItem(catalogItem, modeController.GetModeCreationEntryPoint(), autoSelect, isFloor); }
 
-        public BIWEntity CreateCatalogItem(CatalogItem catalogItem, Vector3 startPosition, bool autoSelect = true, bool isFloor = false, Action<IDCLEntity> onFloorLoadedAction = null)
+        public BIWEntity CreateCatalogItem(CatalogItem catalogItem, Vector3 startPosition, bool autoSelect = true, bool isFloor = false, Action<IBLDEntity> onFloorLoadedAction = null)
         {
             if (catalogItem.IsNFT() && BIWNFTController.i.IsNFTInUse(catalogItem.id))
                 return null;
@@ -181,7 +181,7 @@ namespace DCL.Builder
             IsInsideTheLimits(catalogItem);
 
             BIWUtils.AddSceneMappings(catalogItem.contents, BIWUrlUtils.GetUrlSceneObjectContent(), sceneToEdit.sceneData);
-            DCL.Environment.i.world.sceneController.UpdateParcelScenesExecute(sceneToEdit.sceneData);
+            BLD.Environment.i.world.sceneController.UpdateParcelScenesExecute(sceneToEdit.sceneData);
 
             Vector3 editionPosition = modeController.GetCurrentEditionPosition();
 
@@ -289,7 +289,7 @@ namespace DCL.Builder
 
         private void AddLockedComponent(BIWEntity entity)
         {
-            DCLLockedOnEdit.Model model = new DCLLockedOnEdit.Model();
+            BLDLockedOnEdit.Model model = new BLDLockedOnEdit.Model();
             model.isLocked = entity.isFloor;
 
             EntityComponentsUtils.AddLockedOnEditComponent(sceneToEdit, entity.rootEntity, model, Guid.NewGuid().ToString());
@@ -345,7 +345,7 @@ namespace DCL.Builder
                     data.contents.Add(mappingPair);
             }
 
-            DCL.Environment.i.world.sceneController.UpdateParcelScenesExecute(data);
+            BLD.Environment.i.world.sceneController.UpdateParcelScenesExecute(data);
         }
 
         public void CreateLastCatalogItem()

@@ -1,11 +1,11 @@
 using System;
-using DCL.Models;
+using BLD.Models;
 
-namespace DCLPlugins.DebugPlugins.Commons
+namespace BLDPlugins.DebugPlugins.Commons
 {
     public interface IShapeListener : IDisposable
     {
-        void OnShapeUpdated(IDCLEntity entity);
-        void OnShapeCleaned(IDCLEntity entity);
+        void OnShapeUpdated(IBLDEntity entity);
+        void OnShapeCleaned(IBLDEntity entity);
     }
 }

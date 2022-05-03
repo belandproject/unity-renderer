@@ -2,9 +2,9 @@ using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using DCL.Interface;
+using BLD.Interface;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIReferencesContainer : MonoBehaviour, IPointerDownHandler
     {

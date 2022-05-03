@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AvatarSystem;
-using DCL;
+using BLD;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;
@@ -13,7 +13,7 @@ namespace Tests.AvatarLODController
 {
     public class AvatarLODControllerShould
     {
-        private DCL.AvatarLODController controller;
+        private BLD.AvatarLODController controller;
         private Player player;
         private IAvatar renderer;
         private IAvatarOnPointerDownCollider onPointerDownCollider;
@@ -25,7 +25,7 @@ namespace Tests.AvatarLODController
             renderer = Substitute.For<IAvatar>();
             onPointerDownCollider = Substitute.For<IAvatarOnPointerDownCollider>();
             player = new Player { id = "player", avatar = renderer, onPointerDownCollider = onPointerDownCollider };
-            controller = new DCL.AvatarLODController(player);
+            controller = new BLD.AvatarLODController(player);
         }
 
         [Test]

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using DCL.Components;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -9,13 +9,13 @@ public class WithManyComponents_SceneMetricsCounterShould : IntegrationTestSuite
     [UnityTest]
     public IEnumerator CountWhenStressed()
     {
-        var coneShape = TestUtils.SharedComponentCreate<ConeShape, ConeShape.Model>(scene, DCL.Models.CLASS_ID.CONE_SHAPE, new ConeShape.Model()
+        var coneShape = TestUtils.SharedComponentCreate<ConeShape, ConeShape.Model>(scene, BLD.Models.CLASS_ID.CONE_SHAPE, new ConeShape.Model()
         {
             radiusTop = 1,
             radiusBottom = 0
         });
 
-        var planeShape = TestUtils.SharedComponentCreate<PlaneShape, PlaneShape.Model>(scene, DCL.Models.CLASS_ID.PLANE_SHAPE, new PlaneShape.Model()
+        var planeShape = TestUtils.SharedComponentCreate<PlaneShape, PlaneShape.Model>(scene, BLD.Models.CLASS_ID.PLANE_SHAPE, new PlaneShape.Model()
         {
             height = 1.5f,
             width = 1
@@ -64,8 +64,8 @@ public class WithManyComponents_SceneMetricsCounterShould : IntegrationTestSuite
 
         yield return TestUtils.WaitForGLTFLoad(shapeEntity2);
 
-        TestUtils.InstantiateEntityWithShape(scene, "1", DCL.Models.CLASS_ID.BOX_SHAPE, new Vector3(8, 1, 8));
-        TestUtils.InstantiateEntityWithShape(scene, "2", DCL.Models.CLASS_ID.SPHERE_SHAPE, new Vector3(8, 1, 8));
+        TestUtils.InstantiateEntityWithShape(scene, "1", BLD.Models.CLASS_ID.BOX_SHAPE, new Vector3(8, 1, 8));
+        TestUtils.InstantiateEntityWithShape(scene, "2", BLD.Models.CLASS_ID.SPHERE_SHAPE, new Vector3(8, 1, 8));
 
         yield return null;
 

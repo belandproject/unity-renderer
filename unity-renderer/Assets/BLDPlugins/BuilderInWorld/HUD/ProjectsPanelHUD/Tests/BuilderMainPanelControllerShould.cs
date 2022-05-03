@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using DCL;
-using DCL.Builder;
-using DCL.Helpers;
+using BLD;
+using BLD.Builder;
+using BLD.Helpers;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 namespace Tests
 {

@@ -1,6 +1,6 @@
-using DCL;
+using BLD;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
 public class ControlsHUDController : IHUD
 {
@@ -24,7 +24,7 @@ public class ControlsHUDController : IHUD
 
         view.onCloseActionTriggered += Hide;
 
-        if (!DCL.Configuration.EnvironmentSettings.RUNNING_TESTS)
+        if (!BLD.Configuration.EnvironmentSettings.RUNNING_TESTS)
         {
             KernelConfig.i.EnsureConfigInitialized().Then(config => OnKernelConfigChanged(config, null));
             KernelConfig.i.OnChange += OnKernelConfigChanged;
@@ -71,7 +71,7 @@ public class ControlsHUDController : IHUD
             Object.Destroy(view.gameObject);
         }
 
-        if (!DCL.Configuration.EnvironmentSettings.RUNNING_TESTS)
+        if (!BLD.Configuration.EnvironmentSettings.RUNNING_TESTS)
         {
             KernelConfig.i.OnChange -= OnKernelConfigChanged;
         }

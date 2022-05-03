@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using DCL.Builder.Manifest;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Builder.Manifest;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Models;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public static class ManifestTranslator
     {
@@ -75,7 +75,7 @@ namespace DCL.Builder
             List<string> namesList = new List<string>();
 
             //We iterate all the entities to create its counterpart in the builder manifest
-            foreach (IDCLEntity entity in scene.entities.Values)
+            foreach (IBLDEntity entity in scene.entities.Values)
             {
                 BuilderEntity builderEntity = new BuilderEntity();
                 builderEntity.id = entity.entityId;
@@ -158,15 +158,15 @@ namespace DCL.Builder
                         representantion.url = JsonConvert.DeserializeObject<NFTShape.Model>(builderComponent.data.ToString()).src;
                         builderComponent.data = JsonConvert.SerializeObject(representantion);
 
-                        //This is the name format that is used by builder, we will have a different name in unity due to DCLName component
+                        //This is the name format that is used by builder, we will have a different name in unity due to BLDName component
                         entityName = "nft";
                     }
-                    else if (sharedEntityComponent.Key == typeof(DCLName))
+                    else if (sharedEntityComponent.Key == typeof(BLDName))
                     {
                         componentType = "Name";
-                        entityName = ((DCLName.Model) sharedEntityComponent.Value.GetModel()).value;
+                        entityName = ((BLDName.Model) sharedEntityComponent.Value.GetModel()).value;
                     }
-                    else if (sharedEntityComponent.Key == typeof(DCLLockedOnEdit))
+                    else if (sharedEntityComponent.Key == typeof(BLDLockedOnEdit))
                     {
                         componentType = "LockedOnEdit";
                     }
@@ -292,7 +292,7 @@ namespace DCL.Builder
                     switch (component.type)
                     {
                         case "Transform":
-                            DCLTransform.Model model = JsonConvert.DeserializeObject<DCLTransform.Model>(component.data.ToString());
+                            BLDTransform.Model model = JsonConvert.DeserializeObject<BLDTransform.Model>(component.data.ToString());
                             EntityComponentsUtils.AddTransformComponent(scene, entity, model);
                             break;
 
@@ -319,13 +319,13 @@ namespace DCL.Builder
 
                         case "Name":
                             nameComponentFound = true;
-                            DCLName.Model nameModel = JsonConvert.DeserializeObject<DCLName.Model>(component.data.ToString());
+                            BLDName.Model nameModel = JsonConvert.DeserializeObject<BLDName.Model>(component.data.ToString());
                             nameModel.builderValue = builderEntity.name;
                             EntityComponentsUtils.AddNameComponent(scene , entity, nameModel, Guid.NewGuid().ToString());
                             break;
 
                         case "LockedOnEdit":
-                            DCLLockedOnEdit.Model lockedModel = JsonConvert.DeserializeObject<DCLLockedOnEdit.Model>(component.data.ToString());
+                            BLDLockedOnEdit.Model lockedModel = JsonConvert.DeserializeObject<BLDLockedOnEdit.Model>(component.data.ToString());
                             EntityComponentsUtils.AddLockedOnEditComponent(scene , entity, lockedModel, Guid.NewGuid().ToString());
                             break;
                     }
@@ -334,7 +334,7 @@ namespace DCL.Builder
                 // We need to mantain the builder name of the entity, so we create the equivalent part in biw. We do this so we can maintain the smart-item references
                 if (!nameComponentFound)
                 {
-                    DCLName.Model nameModel = new DCLName.Model();
+                    BLDName.Model nameModel = new BLDName.Model();
                     nameModel.value = builderEntity.name;
                     nameModel.builderValue = builderEntity.name;
                     EntityComponentsUtils.AddNameComponent(scene , entity, nameModel, Guid.NewGuid().ToString());

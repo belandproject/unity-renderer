@@ -1,7 +1,7 @@
 using System;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Models;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -46,11 +46,11 @@ namespace Tests
         public void AddAndRemoveListenerFromUpdateEventHandler()
         {
             CameraModeArea component = CreateArea(Vector3.zero, new Vector3(10, 10, 10), CameraMode.ModeId.BuildingToolGodMode);
-            component.updateEventHandler.Received(1).AddListener(Arg.Any<DCL.IUpdateEventHandler.EventType>(), Arg.Any<Action>());
+            component.updateEventHandler.Received(1).AddListener(Arg.Any<BLD.IUpdateEventHandler.EventType>(), Arg.Any<Action>());
 
             Object.Destroy(component.areaEntity.gameObject);
             component.Dispose();
-            component.updateEventHandler.Received(1).RemoveListener(Arg.Any<DCL.IUpdateEventHandler.EventType>(), Arg.Any<Action>());
+            component.updateEventHandler.Received(1).RemoveListener(Arg.Any<BLD.IUpdateEventHandler.EventType>(), Arg.Any<Action>());
         }
 
         [Test]
@@ -282,11 +282,11 @@ namespace Tests
             GameObject entityGO = new GameObject("Entity");
             entityGO.transform.position = position;
 
-            IDCLEntity entity = Substitute.For<IDCLEntity>();
+            IBLDEntity entity = Substitute.For<IBLDEntity>();
             entity.gameObject.Returns(entityGO);
 
             CameraModeArea component = new CameraModeArea();
-            component.Initialize(scene, entity, Substitute.For<DCL.IUpdateEventHandler>(), playerCollider);
+            component.Initialize(scene, entity, Substitute.For<BLD.IUpdateEventHandler>(), playerCollider);
             component.validCameraModes = validModeMask;
             component.OnModelUpdated(new CameraModeArea.Model()
             {

@@ -1,11 +1,11 @@
 using System;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     internal class AvatarAttachHandler : IDisposable
     {
@@ -13,7 +13,7 @@ namespace DCL.Components
 
         public AvatarAttachComponent.Model model { internal set; get; } = new AvatarAttachComponent.Model();
         public IParcelScene scene { private set; get; }
-        public IDCLEntity entity { private set; get; }
+        public IBLDEntity entity { private set; get; }
 
         private AvatarAttachComponent.Model prevModel = null;
 
@@ -30,7 +30,7 @@ namespace DCL.Components
         private bool isInsideScene = true;
         private float lastBoundariesCheckTime = 0;
 
-        public void Initialize(IParcelScene scene, IDCLEntity entity, IUpdateEventHandler updateEventHandler)
+        public void Initialize(IParcelScene scene, IBLDEntity entity, IUpdateEventHandler updateEventHandler)
         {
             this.scene = scene;
             this.entity = entity;
@@ -138,7 +138,7 @@ namespace DCL.Components
             return result;
         }
 
-        private void CheckSceneBoundaries(IDCLEntity entity)
+        private void CheckSceneBoundaries(IBLDEntity entity)
         {
             sceneBoundsChecker?.AddEntityToBeChecked(entity);
             lastBoundariesCheckTime = Time.unscaledTime;

@@ -1,13 +1,13 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class BasicMaterial : BaseDisposable
     {
@@ -27,7 +27,7 @@ namespace DCL.Components
 
         public Material material;
 
-        private DCLTexture dclTexture = null;
+        private BLDTexture bldTexture = null;
 
         private static readonly int _BaseMap = Shader.PropertyToID("_BaseMap");
         private static readonly int _AlphaClip = Shader.PropertyToID("_AlphaClip");
@@ -47,7 +47,7 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.BASIC_MATERIAL; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (attachedEntities.Contains(entity))
                 return;
@@ -56,7 +56,7 @@ namespace DCL.Components
             base.AttachTo(entity, overridenAttachedType);
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             base.DetachFrom(entity, overridenAttachedType);
         }
@@ -76,19 +76,19 @@ namespace DCL.Components
 
             if (!string.IsNullOrEmpty(model.texture))
             {
-                if (dclTexture == null || dclTexture.id != model.texture)
+                if (bldTexture == null || bldTexture.id != model.texture)
                 {
-                    yield return DCLTexture.FetchTextureComponent(scene, model.texture,
+                    yield return BLDTexture.FetchTextureComponent(scene, model.texture,
                         (downloadedTexture) =>
                         {
-                            if ( dclTexture != null )
+                            if ( bldTexture != null )
                             {
-                                dclTexture.DetachFrom(this);
+                                bldTexture.DetachFrom(this);
                             }
 
                             material.SetTexture(_BaseMap, downloadedTexture.texture);
-                            dclTexture = downloadedTexture;
-                            dclTexture.AttachTo(this);
+                            bldTexture = downloadedTexture;
+                            bldTexture.AttachTo(this);
                         }
                     );
                 }
@@ -97,10 +97,10 @@ namespace DCL.Components
             {
                 material.mainTexture = null;
 
-                if ( dclTexture != null )
+                if ( bldTexture != null )
                 {
-                    dclTexture.DetachFrom(this);
-                    dclTexture = null;
+                    bldTexture.DetachFrom(this);
+                    bldTexture = null;
                 }
             }
 
@@ -110,13 +110,13 @@ namespace DCL.Components
             material.SetFloat(_Cutoff, model.alphaTest);
             material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.AlphaTest;
 
-            foreach (IDCLEntity entity in attachedEntities)
+            foreach (IBLDEntity entity in attachedEntities)
             {
                 InitMaterial(entity);
             }
         }
 
-        void OnMaterialAttached(IDCLEntity entity)
+        void OnMaterialAttached(IBLDEntity entity)
         {
             entity.OnShapeUpdated -= OnShapeUpdated;
             entity.OnShapeUpdated += OnShapeUpdated;
@@ -130,7 +130,7 @@ namespace DCL.Components
             }
         }
 
-        void InitMaterial(IDCLEntity entity)
+        void InitMaterial(IBLDEntity entity)
         {
             var meshGameObject = entity.meshRootGameObject;
 
@@ -167,13 +167,13 @@ namespace DCL.Components
             DataStore.i.sceneWorldObjects.AddMaterial(scene.sceneData.id, entity.entityId, material);
         }
 
-        private void OnShapeUpdated(IDCLEntity entity)
+        private void OnShapeUpdated(IBLDEntity entity)
         {
             if (entity != null)
                 InitMaterial(entity);
         }
 
-        void OnMaterialDetached(IDCLEntity entity)
+        void OnMaterialDetached(IBLDEntity entity)
         {
             if (entity.meshRootGameObject == null)
                 return;
@@ -190,7 +190,7 @@ namespace DCL.Components
 
         public override void Dispose()
         {
-            dclTexture?.DetachFrom(this);
+            bldTexture?.DetachFrom(this);
 
             while ( attachedEntities.Count > 0 )
             {

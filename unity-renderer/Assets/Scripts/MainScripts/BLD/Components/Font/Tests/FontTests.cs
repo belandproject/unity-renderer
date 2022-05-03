@@ -1,10 +1,10 @@
-﻿using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+﻿using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 using TMPro;
@@ -34,8 +34,8 @@ namespace Tests
         [UnityTest]
         public IEnumerator BuiltInFontCreateAndLoadTest()
         {
-            DCLFont font =
-                TestUtils.SharedComponentCreate<DCLFont, DCLFont.Model>(scene, CLASS_ID.FONT, new DCLFont.Model() { src = TEST_BUILTIN_FONT_NAME });
+            BLDFont font =
+                TestUtils.SharedComponentCreate<BLDFont, BLDFont.Model>(scene, CLASS_ID.FONT, new BLDFont.Model() { src = TEST_BUILTIN_FONT_NAME });
             yield return font.routine;
 
             var entity = TestUtils.CreateSceneEntity(scene);
@@ -62,8 +62,8 @@ namespace Tests
 
             TMP_FontAsset defaultFont = textShape.GetComponentInChildren<TextMeshPro>().font;
 
-            DCLFont font =
-                TestUtils.SharedComponentCreate<DCLFont, DCLFont.Model>(scene, CLASS_ID.FONT, new DCLFont.Model() { src = "no-valid-font" });
+            BLDFont font =
+                TestUtils.SharedComponentCreate<BLDFont, BLDFont.Model>(scene, CLASS_ID.FONT, new BLDFont.Model() { src = "no-valid-font" });
             yield return font.routine;
 
             scene.EntityComponentUpdate(entity, CLASS_ID_COMPONENT.TEXT_SHAPE,
@@ -83,8 +83,8 @@ namespace Tests
                 TestUtils.EntityComponentCreate<TextShape, TextShape.Model>(scene, entity, new TextShape.Model());
             yield return textShape.routine;
 
-            DCLFont font =
-                TestUtils.SharedComponentCreate<DCLFont, DCLFont.Model>(scene, CLASS_ID.FONT, new DCLFont.Model() { src = TEST_BUILTIN_FONT_NAME });
+            BLDFont font =
+                TestUtils.SharedComponentCreate<BLDFont, BLDFont.Model>(scene, CLASS_ID.FONT, new BLDFont.Model() { src = TEST_BUILTIN_FONT_NAME });
             yield return font.routine;
 
             scene.EntityComponentUpdate(entity, CLASS_ID_COMPONENT.TEXT_SHAPE,

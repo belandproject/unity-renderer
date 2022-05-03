@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.SettingsPanelHUD.Common
+namespace BLD.SettingsPanelHUD.Common
 {
     public static class CommonSettingsPanelEvents
     {

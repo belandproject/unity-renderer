@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Models;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -20,7 +20,7 @@ namespace Tests
         private ISceneController sceneController;
 
         private Dictionary<string, IParcelScene> loadedScenes = new Dictionary<string, IParcelScene>();
-        private Dictionary<string, Dictionary<string, IDCLEntity>> entities = new Dictionary<string, Dictionary<string, IDCLEntity>>();
+        private Dictionary<string, Dictionary<string, IBLDEntity>> entities = new Dictionary<string, Dictionary<string, IBLDEntity>>();
 
         private BaseDictionary<string, bool> isBoundingBoxEnabledVariable = new BaseDictionary<string, bool>();
 
@@ -279,7 +279,7 @@ namespace Tests
             scene.sceneData.Returns(new LoadParcelScenesMessage.UnityParcelScene() { id = id });
 
             loadedScenes.Add(id, scene);
-            entities[id] = new Dictionary<string, IDCLEntity>();
+            entities[id] = new Dictionary<string, IBLDEntity>();
 
             scene.entities.Returns(entities[id]);
 
@@ -297,9 +297,9 @@ namespace Tests
             }
         }
 
-        private IDCLEntity CreateEntityWithoutShape(string id)
+        private IBLDEntity CreateEntityWithoutShape(string id)
         {
-            IDCLEntity entity = Substitute.For<IDCLEntity>();
+            IBLDEntity entity = Substitute.For<IBLDEntity>();
             entity.entityId.Returns(id);
 
             var gameObject = new GameObject(id);
@@ -310,16 +310,16 @@ namespace Tests
             return entity;
         }
 
-        private IDCLEntity CreateEntityWithShape(string id)
+        private IBLDEntity CreateEntityWithShape(string id)
         {
-            IDCLEntity entity = CreateEntityWithoutShape(id);
+            IBLDEntity entity = CreateEntityWithoutShape(id);
 
             AddShapeToEntity(entity, GameObject.CreatePrimitive(PrimitiveType.Cube));
 
             return entity;
         }
 
-        private void CreateMeshesInfoForEntity(IDCLEntity entity)
+        private void CreateMeshesInfoForEntity(IBLDEntity entity)
         {
             var meshesInfo = new MeshesInfo();
             meshesInfo.OnUpdated += () => entity.OnMeshesInfoUpdated.Invoke(entity);
@@ -327,25 +327,25 @@ namespace Tests
             entity.meshesInfo.Returns(meshesInfo);
         }
 
-        private void AddShapeToEntity(IDCLEntity entity, GameObject shape)
+        private void AddShapeToEntity(IBLDEntity entity, GameObject shape)
         {
             entity.meshesInfo.currentShape = Substitute.For<IShape>();
             entity.meshesInfo.meshRootGameObject = shape;
         }
 
-        private void AddEntity(IParcelScene scene, IDCLEntity entity)
+        private void AddEntity(IParcelScene scene, IBLDEntity entity)
         {
             entities[scene.sceneData.id].Add(entity.entityId, entity);
             entity.scene.Returns(scene);
-            scene.OnEntityAdded += Raise.Event<Action<IDCLEntity>>(entity);
+            scene.OnEntityAdded += Raise.Event<Action<IBLDEntity>>(entity);
         }
 
-        private void RemoveEntity(IDCLEntity entity)
+        private void RemoveEntity(IBLDEntity entity)
         {
             if (entities[entity.scene.sceneData.id].Remove(entity.entityId))
             {
                 Object.Destroy(entity.gameObject);
-                entity.scene.OnEntityRemoved += Raise.Event<Action<IDCLEntity>>(entity);
+                entity.scene.OnEntityRemoved += Raise.Event<Action<IBLDEntity>>(entity);
             }
         }
 

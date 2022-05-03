@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Builder;
-using DCL.Camera;
+using BLD;
+using BLD.Builder;
+using BLD.Camera;
 using UnityEngine;
-using CameraController = DCL.Camera.CameraController;
+using CameraController = BLD.Camera.CameraController;
 
 public class BIWGizmosController : BIWController, IBIWGizmosController
 {
@@ -65,7 +65,7 @@ public class BIWGizmosController : BIWController, IBIWGizmosController
         if (IsGizmoActive())
             return activeGizmo.GetGizmoType();
 
-        return DCL.Components.DCLGizmos.Gizmo.NONE;
+        return BLD.Components.BLDGizmos.Gizmo.NONE;
     }
 
     public void SetSnapFactor(float position, float rotation, float scale)
@@ -138,7 +138,7 @@ public class BIWGizmosController : BIWController, IBIWGizmosController
             activeGizmo.currentGameObject.SetActive(false);
 
         if (setInactiveGizmos)
-            SetGizmoType(DCL.Components.DCLGizmos.Gizmo.NONE);
+            SetGizmoType(BLD.Components.BLDGizmos.Gizmo.NONE);
 
         gizmosGO.gameObject.SetActive(false);
     }
@@ -165,7 +165,7 @@ public class BIWGizmosController : BIWController, IBIWGizmosController
     {
         HideGizmo();
 
-        if (gizmoType != DCL.Components.DCLGizmos.Gizmo.NONE)
+        if (gizmoType != BLD.Components.BLDGizmos.Gizmo.NONE)
         {
             bool wasGizmoActive = IsGizmoActive();
 

@@ -1,6 +1,6 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers.NFT;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers.NFT;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

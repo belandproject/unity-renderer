@@ -1,4 +1,4 @@
-using DCL;
+using BLD;
 using ExploreV2Analytics;
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 public class ProfileHUDView : MonoBehaviour
 {

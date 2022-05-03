@@ -1,4 +1,4 @@
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
 
 public static class TestHelpers_Chat

@@ -1,6 +1,6 @@
-using DCL;
-using DCL.Components;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,16 +8,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using DCL.Configuration;
+using BLD.Configuration;
 using static ProtocolV2;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using DCL.Builder;
-using DCL.Builder.Manifest;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Builder;
+using BLD.Builder.Manifest;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEditor;
 using UnityEngine.Networking;
 using UnityEngine.Events;
@@ -66,14 +66,14 @@ public static partial class BIWUtils
         DataStore.i.builderInWorld.currentSceneCatalogItemDict.Clear();
     }
 
-    public static void ShowGenericNotification(string message, DCL.NotificationModel.Type type = DCL.NotificationModel.Type.GENERIC, float timer = BIWSettings.LAND_NOTIFICATIONS_TIMER )
+    public static void ShowGenericNotification(string message, BLD.NotificationModel.Type type = BLD.NotificationModel.Type.GENERIC, float timer = BIWSettings.LAND_NOTIFICATIONS_TIMER )
     {
         if (NotificationsController.i == null)
             return;
-        NotificationsController.i.ShowNotification(new DCL.NotificationModel.Model
+        NotificationsController.i.ShowNotification(new BLD.NotificationModel.Model
         {
             message = message,
-            type = DCL.NotificationModel.Type.GENERIC,
+            type = BLD.NotificationModel.Type.GENERIC,
             timer = timer,
             destroyOnFinish = true
         });
@@ -392,7 +392,7 @@ public static partial class BIWUtils
 
     public static bool IsPointerOverUIElement() { return IsPointerOverUIElement(Input.mousePosition); }
 
-    public static string ConvertEntityToJSON(IDCLEntity entity)
+    public static string ConvertEntityToJSON(IBLDEntity entity)
     {
         EntityData builderInWorldEntityData = new EntityData();
         builderInWorldEntityData.entityId = entity.entityId;

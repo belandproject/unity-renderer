@@ -1,16 +1,16 @@
 using Builder;
 using Cinemachine;
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -92,25 +92,25 @@ public class BIWCommonShould : IntegrationTestSuite_Legacy
 
         Assert.IsTrue(biwEntity.HasSmartItemComponent());
 
-        DCLName name = (DCLName) scene.SharedComponentCreate(Guid.NewGuid().ToString(), Convert.ToInt32(CLASS_ID.NAME));
+        BLDName name = (BLDName) scene.SharedComponentCreate(Guid.NewGuid().ToString(), Convert.ToInt32(CLASS_ID.NAME));
         scene.SharedComponentAttach(biwEntity.rootEntity.entityId, name.id);
 
-        DCLName dclName = biwEntity.rootEntity.TryGetComponent<DCLName>();
-        Assert.IsNotNull(dclName);
+        BLDName bldName = biwEntity.rootEntity.TryGetComponent<BLDName>();
+        Assert.IsNotNull(bldName);
 
         string newName = "TestingName";
-        dclName.SetNewName(newName);
+        bldName.SetNewName(newName);
         Assert.AreEqual(newName, biwEntity.GetDescriptiveName());
 
 
-        DCLLockedOnEdit entityLocked = (DCLLockedOnEdit) scene.SharedComponentCreate(Guid.NewGuid().ToString(), Convert.ToInt32(CLASS_ID.LOCKED_ON_EDIT));
+        BLDLockedOnEdit entityLocked = (BLDLockedOnEdit) scene.SharedComponentCreate(Guid.NewGuid().ToString(), Convert.ToInt32(CLASS_ID.LOCKED_ON_EDIT));
         scene.SharedComponentAttach(biwEntity.rootEntity.entityId, entityLocked.id);
 
-        DCLLockedOnEdit dclLockedOnEdit = biwEntity.rootEntity.TryGetComponent<DCLLockedOnEdit>();
-        Assert.IsNotNull(dclLockedOnEdit);
+        BLDLockedOnEdit bldLockedOnEdit = biwEntity.rootEntity.TryGetComponent<BLDLockedOnEdit>();
+        Assert.IsNotNull(bldLockedOnEdit);
 
         bool isLocked = true;
-        dclLockedOnEdit.SetIsLocked(isLocked);
+        bldLockedOnEdit.SetIsLocked(isLocked);
         Assert.AreEqual(biwEntity.isLocked, isLocked);
     }
 

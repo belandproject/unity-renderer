@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Interface;
+using BLD;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -65,7 +65,7 @@ public class PlayerInfoCardHUDController : IHUD
         currentPlayerId.Set(null);
     }
 
-    private void OnCloseButtonPressed(DCLAction_Trigger action = DCLAction_Trigger.CloseWindow)
+    private void OnCloseButtonPressed(BLDAction_Trigger action = BLDAction_Trigger.CloseWindow)
     {
         CloseCard();
     }

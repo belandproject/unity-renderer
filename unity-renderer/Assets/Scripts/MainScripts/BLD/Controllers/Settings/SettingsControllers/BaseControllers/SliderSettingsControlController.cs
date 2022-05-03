@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.SettingsCommon.SettingsControllers.BaseControllers
+namespace BLD.SettingsCommon.SettingsControllers.BaseControllers
 {
     /// <summary>
     /// This controller is in charge of manage all the base logic related to a SLIDER CONTROL.

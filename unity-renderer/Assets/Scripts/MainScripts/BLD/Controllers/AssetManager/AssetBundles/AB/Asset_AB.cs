@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class Asset_AB : Asset
     {

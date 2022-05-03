@@ -49,19 +49,19 @@ public class GraphicCardWarningHUDController : IHUD
     {
         if (GraphicCardNotification.CanShowGraphicCardPopup() && IsIntegratedGraphicCard())
         {
-            NotificationsController.i.ShowNotification(new DCL.NotificationModel.Model
+            NotificationsController.i.ShowNotification(new BLD.NotificationModel.Model
             {
                 buttonMessage = "Dismiss",
                 destroyOnFinish = true,
                 groupID = "GraphicCard",
                 message = GRAPHIC_CARD_MESSAGE,
                 timer = 0,
-                type = DCL.NotificationModel.Type.GRAPHIC_CARD_WARNING
+                type = BLD.NotificationModel.Type.GRAPHIC_CARD_WARNING
             });
         }
     }
 
-    private bool IsIntegratedGraphicCard() => DCL.Interface.WebInterface.GetGraphicCard().ToLower().Contains("intel");
+    private bool IsIntegratedGraphicCard() => BLD.Interface.WebInterface.GetGraphicCard().ToLower().Contains("intel");
 
     public void Dispose() { }
 }

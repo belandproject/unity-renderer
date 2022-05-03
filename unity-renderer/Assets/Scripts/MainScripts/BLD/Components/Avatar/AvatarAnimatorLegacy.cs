@@ -1,8 +1,8 @@
 using System;
 using AvatarSystem;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
 using UnityEngine;
 
 public class AvatarAnimatorLegacy : MonoBehaviour, IPoolLifecycleHandler, IAnimator
@@ -71,16 +71,16 @@ public class AvatarAnimatorLegacy : MonoBehaviour, IPoolLifecycleHandler, IAnima
 
     public void OnPoolGet()
     {
-        if (DCLCharacterController.i != null)
+        if (BLDCharacterController.i != null)
         {
-            isOwnPlayer = DCLCharacterController.i.transform == transform.parent;
+            isOwnPlayer = BLDCharacterController.i.transform == transform.parent;
 
-            // NOTE: disable MonoBehaviour's update to use DCLCharacterController event instead
+            // NOTE: disable MonoBehaviour's update to use BLDCharacterController event instead
             this.enabled = !isOwnPlayer;
 
             if (isOwnPlayer)
             {
-                DCLCharacterController.i.OnUpdateFinish += Update;
+                BLDCharacterController.i.OnUpdateFinish += Update;
             }
         }
 
@@ -89,9 +89,9 @@ public class AvatarAnimatorLegacy : MonoBehaviour, IPoolLifecycleHandler, IAnima
 
     public void OnPoolRelease()
     {
-        if (isOwnPlayer && DCLCharacterController.i)
+        if (isOwnPlayer && BLDCharacterController.i)
         {
-            DCLCharacterController.i.OnUpdateFinish -= Update;
+            BLDCharacterController.i.OnUpdateFinish -= Update;
         }
     }
 
@@ -119,7 +119,7 @@ public class AvatarAnimatorLegacy : MonoBehaviour, IPoolLifecycleHandler, IAnima
         flattenedVelocity.y = 0;
 
         if (isOwnPlayer)
-            blackboard.movementSpeed = flattenedVelocity.magnitude - DCLCharacterController.i.movingPlatformSpeed;
+            blackboard.movementSpeed = flattenedVelocity.magnitude - BLDCharacterController.i.movingPlatformSpeed;
         else
             blackboard.movementSpeed = flattenedVelocity.magnitude;
 
@@ -128,7 +128,7 @@ public class AvatarAnimatorLegacy : MonoBehaviour, IPoolLifecycleHandler, IAnima
         blackboard.isGrounded = Physics.Raycast(target.transform.position + rayOffset,
             Vector3.down,
             RAY_OFFSET_LENGTH - ELEVATION_OFFSET,
-            DCLCharacterController.i.groundLayers);
+            BLDCharacterController.i.groundLayers);
 
 #if UNITY_EDITOR
         Debug.DrawRay(target.transform.position + rayOffset, Vector3.down * (RAY_OFFSET_LENGTH - ELEVATION_OFFSET), blackboard.isGrounded ? Color.green : Color.red);

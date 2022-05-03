@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     [CreateAssetMenu(menuName = "Variables/QuestPanelTaskFactory", fileName = "QuestPanelTaskFactory", order = 0)]
     public class QuestsPanelTaskFactory : ScriptableObject

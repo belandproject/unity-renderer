@@ -1,7 +1,7 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsControls
+namespace BLD.SettingsControls
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Players Name Opacity", fileName = "PlayersNameOpacity")]
     public class PlayersNameOpacityControlController : SliderSettingsControlController

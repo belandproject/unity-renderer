@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using DCL;
-using DCL.Components;
+using BLD;
+using BLD.Components;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

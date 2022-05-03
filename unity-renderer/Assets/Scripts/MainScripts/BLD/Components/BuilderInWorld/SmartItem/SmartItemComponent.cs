@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class SmartItemComponent : BaseComponent
     {
@@ -18,7 +18,7 @@ namespace DCL.Components
             public override BaseModel GetDataFromJSON(string json) { return JsonConvert.DeserializeObject<Model>(json); }
         }
 
-        public override void Initialize(IParcelScene scene, IDCLEntity entity)
+        public override void Initialize(IParcelScene scene, IBLDEntity entity)
         {
             base.Initialize(scene, entity);
 

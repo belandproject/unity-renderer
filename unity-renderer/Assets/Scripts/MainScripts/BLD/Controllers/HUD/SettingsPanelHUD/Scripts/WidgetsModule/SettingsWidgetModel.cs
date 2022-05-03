@@ -1,8 +1,8 @@
-using DCL.SettingsPanelHUD.Controls;
+using BLD.SettingsPanelHUD.Controls;
 using ReorderableList;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Widgets
+namespace BLD.SettingsPanelHUD.Widgets
 {
     /// <summary>
     /// Model that represents a WIDGET. It contains a list of CONTROLS.

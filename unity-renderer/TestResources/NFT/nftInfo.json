@@ -21,6 +21,6 @@
   "currentPriceToken": null,
   "assetContract": {
     "address": "0xfeb52cbf71b9adac957c6f948a6cf9980ac8c907",
-    "name": "dcl://halloween_2020"
+    "name": "bld://halloween_2020"
   }
 }

@@ -1,7 +1,7 @@
 using System.Linq;
-using DCL;
-using DCL.Configuration;
-using DCL.Helpers;
+using BLD;
+using BLD.Configuration;
+using BLD.Helpers;
 using UnityEngine;
 
 public class AvatarReporterController : IAvatarReporterController

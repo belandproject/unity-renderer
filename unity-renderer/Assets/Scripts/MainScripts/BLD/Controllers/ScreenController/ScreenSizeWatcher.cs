@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class ScreenSizeWatcher : MonoBehaviour
     {

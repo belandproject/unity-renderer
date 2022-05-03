@@ -1,9 +1,9 @@
 using System;
 using Cinemachine;
-using DCL.Camera;
+using BLD.Camera;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class CameraStateBase : MonoBehaviour
     {

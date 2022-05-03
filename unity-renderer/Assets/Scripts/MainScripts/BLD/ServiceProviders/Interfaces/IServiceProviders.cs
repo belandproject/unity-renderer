@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Helpers.NFT.Markets;
+using BLD.Helpers.NFT.Markets;
 
-namespace DCL
+namespace BLD
 {
     public interface IServiceProviders : IService
     {

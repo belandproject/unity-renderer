@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using DCL;
-using DCL.QuestsController;
+using BLD;
+using BLD.QuestsController;
 using NUnit.Framework;
 
 namespace Tests.QuestsTrackerHUD

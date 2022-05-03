@@ -1,6 +1,6 @@
 using AssetPromiseKeeper_Tests;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using System.Collections;
 using UnityEngine.TestTools;
 using UnityGLTF;

@@ -1,9 +1,9 @@
 using Cinemachine;
-using DCL.Camera;
+using BLD.Camera;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL
+namespace BLD
 {
     public interface ISceneReferences
     {

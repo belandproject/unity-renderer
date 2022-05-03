@@ -1,5 +1,5 @@
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 using UnityEngine;
 
 public class RenderingController : MonoBehaviour
@@ -36,7 +36,7 @@ public class RenderingController : MonoBehaviour
 
     void DeactivateRendering_Internal()
     {
-        DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+        BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
         CommonScriptableObjects.rendererState.Set(false);
         WebInterface.ReportControlEvent(new WebInterface.DeactivateRenderingACK());
     }
@@ -77,7 +77,7 @@ public class RenderingController : MonoBehaviour
             activatedRenderingBefore = true;
         }
 
-        DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = true;
+        BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = true;
         CommonScriptableObjects.rendererState.Set(true);
 
         WebInterface.ReportControlEvent(new WebInterface.ActivateRenderingACK());

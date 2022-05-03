@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 using NFTShape_Internal;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public interface INFTAssetLoadHelper : IDisposable
     {

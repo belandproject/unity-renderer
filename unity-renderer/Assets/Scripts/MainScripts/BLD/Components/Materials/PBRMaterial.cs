@@ -1,12 +1,12 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class PBRMaterial : BaseDisposable
     {
@@ -53,10 +53,10 @@ namespace DCL.Components
         const string MATERIAL_RESOURCES_PATH = "Materials/";
         const string PBR_MATERIAL_NAME = "ShapeMaterial";
 
-        DCLTexture albedoDCLTexture = null;
-        DCLTexture alphaDCLTexture = null;
-        DCLTexture emissiveDCLTexture = null;
-        DCLTexture bumpDCLTexture = null;
+        BLDTexture albedoBLDTexture = null;
+        BLDTexture alphaBLDTexture = null;
+        BLDTexture emissiveBLDTexture = null;
+        BLDTexture bumpBLDTexture = null;
 
         private List<Coroutine> textureFetchCoroutines = new List<Coroutine>();
 
@@ -74,7 +74,7 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.PBR_MATERIAL; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (attachedEntities.Contains(entity))
             {
@@ -109,14 +109,14 @@ namespace DCL.Components
 
 
             // FETCH AND LOAD EMISSIVE TEXTURE
-            var fetchEmission = FetchTexture(ShaderUtils.EmissionMap, model.emissiveTexture, emissiveDCLTexture);
+            var fetchEmission = FetchTexture(ShaderUtils.EmissionMap, model.emissiveTexture, emissiveBLDTexture);
 
             SetupTransparencyMode();
 
             // FETCH AND LOAD TEXTURES
-            var fetchBaseMap = FetchTexture(ShaderUtils.BaseMap, model.albedoTexture, albedoDCLTexture);
-            var fetchAlpha = FetchTexture(ShaderUtils.AlphaTexture, model.alphaTexture, alphaDCLTexture);
-            var fetchBump = FetchTexture(ShaderUtils.BumpMap, model.bumpTexture, bumpDCLTexture);
+            var fetchBaseMap = FetchTexture(ShaderUtils.BaseMap, model.albedoTexture, albedoBLDTexture);
+            var fetchAlpha = FetchTexture(ShaderUtils.AlphaTexture, model.alphaTexture, alphaBLDTexture);
+            var fetchBump = FetchTexture(ShaderUtils.BumpMap, model.bumpTexture, bumpBLDTexture);
 
             textureFetchCoroutines.Add(CoroutineStarter.Start(fetchEmission));
             textureFetchCoroutines.Add(CoroutineStarter.Start(fetchBaseMap));
@@ -128,7 +128,7 @@ namespace DCL.Components
             yield return fetchBump;
             yield return fetchEmission;
 
-            foreach (IDCLEntity entity in attachedEntities)
+            foreach (IBLDEntity entity in attachedEntities)
                 InitMaterial(entity);
         }
 
@@ -210,7 +210,7 @@ namespace DCL.Components
             }
         }
 
-        void OnMaterialAttached(IDCLEntity entity)
+        void OnMaterialAttached(IBLDEntity entity)
         {
             entity.OnShapeUpdated -= OnShapeUpdated;
             entity.OnShapeUpdated += OnShapeUpdated;
@@ -224,7 +224,7 @@ namespace DCL.Components
             }
         }
 
-        void InitMaterial(IDCLEntity entity)
+        void InitMaterial(IBLDEntity entity)
         {
             var meshGameObject = entity.meshRootGameObject;
 
@@ -260,13 +260,13 @@ namespace DCL.Components
             DataStore.i.sceneWorldObjects.AddMaterial(scene.sceneData.id, entity.entityId, material);
         }
 
-        private void OnShapeUpdated(IDCLEntity entity)
+        private void OnShapeUpdated(IBLDEntity entity)
         {
             if (entity != null)
                 InitMaterial(entity);
         }
 
-        private void OnMaterialDetached(IDCLEntity entity)
+        private void OnMaterialDetached(IBLDEntity entity)
         {
             if (entity.meshRootGameObject == null)
                 return;
@@ -281,38 +281,38 @@ namespace DCL.Components
             DataStore.i.sceneWorldObjects.RemoveMaterial(scene.sceneData.id, entity.entityId, material);
         }
 
-        IEnumerator FetchTexture(int materialPropertyId, string textureComponentId, DCLTexture cachedDCLTexture)
+        IEnumerator FetchTexture(int materialPropertyId, string textureComponentId, BLDTexture cachedBLDTexture)
         {
             if (!string.IsNullOrEmpty(textureComponentId))
             {
-                if (!AreSameTextureComponent(cachedDCLTexture, textureComponentId))
+                if (!AreSameTextureComponent(cachedBLDTexture, textureComponentId))
                 {
-                    yield return DCLTexture.FetchTextureComponent(scene, textureComponentId,
-                        (fetchedDCLTexture) =>
+                    yield return BLDTexture.FetchTextureComponent(scene, textureComponentId,
+                        (fetchedBLDTexture) =>
                         {
                             if (material == null)
                                 return;
 
-                            material.SetTexture(materialPropertyId, fetchedDCLTexture.texture);
-                            SwitchTextureComponent(cachedDCLTexture, fetchedDCLTexture);
+                            material.SetTexture(materialPropertyId, fetchedBLDTexture.texture);
+                            SwitchTextureComponent(cachedBLDTexture, fetchedBLDTexture);
                         });
                 }
             }
             else
             {
                 material.SetTexture(materialPropertyId, null);
-                cachedDCLTexture?.DetachFrom(this);
+                cachedBLDTexture?.DetachFrom(this);
             }
         }
 
-        bool AreSameTextureComponent(DCLTexture dclTexture, string textureId)
+        bool AreSameTextureComponent(BLDTexture bldTexture, string textureId)
         {
-            if (dclTexture == null)
+            if (bldTexture == null)
                 return false;
-            return dclTexture.id == textureId;
+            return bldTexture.id == textureId;
         }
 
-        void SwitchTextureComponent(DCLTexture cachedTexture, DCLTexture newTexture)
+        void SwitchTextureComponent(BLDTexture cachedTexture, BLDTexture newTexture)
         {
             cachedTexture?.DetachFrom(this);
             cachedTexture = newTexture;
@@ -321,10 +321,10 @@ namespace DCL.Components
 
         public override void Dispose()
         {
-            albedoDCLTexture?.DetachFrom(this);
-            alphaDCLTexture?.DetachFrom(this);
-            emissiveDCLTexture?.DetachFrom(this);
-            bumpDCLTexture?.DetachFrom(this);
+            albedoBLDTexture?.DetachFrom(this);
+            alphaBLDTexture?.DetachFrom(this);
+            emissiveBLDTexture?.DetachFrom(this);
+            bumpBLDTexture?.DetachFrom(this);
 
             if (material != null)
             {

@@ -1,7 +1,7 @@
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public class HitInfo
     {

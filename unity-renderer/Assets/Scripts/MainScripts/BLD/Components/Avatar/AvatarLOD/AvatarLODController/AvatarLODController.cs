@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     //TODO Rename to IAvatar (not now to avoid conflicts)
     public interface IAvatarLODController : IDisposable

@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Interface;
+using BLD;
+using BLD.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -265,7 +265,7 @@ public class RealmSelectorComponentView : BaseComponentView, IRealmSelectorCompo
 
     internal void CloseModal() { Hide(); }
 
-    internal void OnCloseActionTriggered(DCLAction_Trigger action) { CloseModal(); }
+    internal void OnCloseActionTriggered(BLDAction_Trigger action) { CloseModal(); }
 
     internal void ConfigureRealmsPool()
     {

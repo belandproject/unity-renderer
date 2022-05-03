@@ -1,6 +1,6 @@
 using System;
-using DCL;
-using DCL.Interface;
+using BLD;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
@@ -47,7 +47,7 @@ public class ChatHUDController : IDisposable
 
     private void ContextMenu_OnShowMenu() { view.OnMessageCancelHover(); }
 
-    private void OnCloseButtonPressed(DCLAction_Trigger action)
+    private void OnCloseButtonPressed(BLDAction_Trigger action)
     {
         if (view.contextMenu != null)
         {

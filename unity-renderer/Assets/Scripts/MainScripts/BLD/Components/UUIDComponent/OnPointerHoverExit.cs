@@ -1,7 +1,7 @@
-using DCL.Interface;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Models;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnPointerHoverExit : OnPointerHoverEvent
     {

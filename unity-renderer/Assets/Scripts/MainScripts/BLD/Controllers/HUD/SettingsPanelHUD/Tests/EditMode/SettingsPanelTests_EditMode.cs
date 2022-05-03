@@ -1,7 +1,7 @@
-using DCL.HelpAndSupportHUD;
-using DCL.SettingsPanelHUD;
-using DCL.SettingsPanelHUD.Sections;
-using DCL.SettingsPanelHUD.Widgets;
+using BLD.HelpAndSupportHUD;
+using BLD.SettingsPanelHUD;
+using BLD.SettingsPanelHUD.Sections;
+using BLD.SettingsPanelHUD.Widgets;
 using NSubstitute;
 using NUnit.Framework;
 using System.Collections.Generic;

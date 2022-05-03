@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 
-namespace MainScripts.DCL.WebPlugin
+namespace MainScripts.BLD.WebPlugin
 {
     public static class WebGLPlugin
     {

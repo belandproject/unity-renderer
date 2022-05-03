@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class Scene
     {

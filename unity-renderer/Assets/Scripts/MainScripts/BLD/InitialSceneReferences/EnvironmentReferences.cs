@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL
+namespace BLD
 {
     public class EnvironmentReferences : MonoBehaviour
     {

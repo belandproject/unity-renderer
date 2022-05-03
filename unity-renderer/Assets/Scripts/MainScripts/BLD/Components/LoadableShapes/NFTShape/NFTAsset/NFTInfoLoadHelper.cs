@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using DCL.Helpers.NFT;
+using BLD.Helpers.NFT;
 using UnityEngine;
 
 public interface INFTInfoLoadHelper : IDisposable

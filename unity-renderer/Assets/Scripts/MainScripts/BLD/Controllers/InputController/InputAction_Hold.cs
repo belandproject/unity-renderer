@@ -7,26 +7,26 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InputAction_Hold", menuName = "InputActions/Hold")]
 public class InputAction_Hold : ScriptableObject
 {
-    public delegate void Started(DCLAction_Hold action);
-    public delegate void Finished(DCLAction_Hold action);
+    public delegate void Started(BLDAction_Hold action);
+    public delegate void Finished(BLDAction_Hold action);
     public event Started OnStarted;
     public event Finished OnFinished;
 
-    [SerializeField] internal DCLAction_Hold dclAction;
-    public DCLAction_Hold GetDCLAction() => dclAction;
+    [SerializeField] internal BLDAction_Hold bldAction;
+    public BLDAction_Hold GetBLDAction() => bldAction;
 
     public bool isOn { get; private set; }
 
     public void RaiseOnStarted()
     {
         isOn = true;
-        OnStarted?.Invoke(dclAction);
+        OnStarted?.Invoke(bldAction);
     }
 
     public void RaiseOnFinished()
     {
         isOn = false;
-        OnFinished?.Invoke(dclAction);
+        OnFinished?.Invoke(bldAction);
     }
 
     #region Editor

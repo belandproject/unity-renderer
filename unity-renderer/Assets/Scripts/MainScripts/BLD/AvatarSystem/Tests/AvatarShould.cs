@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using AvatarSystem;
 using Cysharp.Threading.Tasks;
-using DCL.Helpers;
+using BLD.Helpers;
 using GPUSkinning;
 using NSubstitute;
 using NSubstitute.Extensions;

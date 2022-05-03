@@ -1,12 +1,12 @@
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public class QuestsPanelEntry : MonoBehaviour
     {

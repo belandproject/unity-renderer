@@ -1,8 +1,8 @@
-﻿using DCL.Models;
+﻿using BLD.Models;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public class SceneBoundsFeedbackStyle_Simple : ISceneBoundsFeedbackStyle
     {

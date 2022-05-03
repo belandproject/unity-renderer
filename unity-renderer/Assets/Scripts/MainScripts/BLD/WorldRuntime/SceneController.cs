@@ -1,17 +1,17 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
-using DCL.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
+using BLD.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Components;
+using BLD.Components;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class SceneController : ISceneController
     {
@@ -39,7 +39,7 @@ namespace DCL
             if (deferredMessagesDecoding) // We should be able to delete this code
                 deferredDecodingCoroutine = CoroutineStarter.Start(DeferredDecoding());
 
-            DCLCharacterController.OnCharacterMoved += SetPositionDirty;
+            BLDCharacterController.OnCharacterMoved += SetPositionDirty;
 
             CommonScriptableObjects.sceneID.OnChange += OnCurrentSceneIdChange;
 
@@ -60,8 +60,8 @@ namespace DCL
                 }
             }
 
-            DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
-            DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
+            BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
+            BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
         }
 
         private void OnDebugModeSet(bool current, bool previous)
@@ -83,13 +83,13 @@ namespace DCL
         {
             loadingFeedbackController.Dispose();
 
-            DCL.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
-            DCL.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
+            BLD.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
+            BLD.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
 
             PoolManager.i.OnGet -= Environment.i.platform.physicsSyncController.MarkDirty;
             PoolManager.i.OnGet -= Environment.i.platform.cullingController.objectsTracker.MarkDirty;
 
-            DCLCharacterController.OnCharacterMoved -= SetPositionDirty;
+            BLDCharacterController.OnCharacterMoved -= SetPositionDirty;
             DataStore.i.debugConfig.isDebugMode.OnChange -= OnDebugModeSet;
 
             CommonScriptableObjects.sceneID.OnChange -= OnCurrentSceneIdChange;
@@ -451,7 +451,7 @@ namespace DCL
 
         public void DeactivateBuilderInWorldEditScene() { Environment.i.world.sceneBoundsChecker.SetFeedbackStyle(new SceneBoundsFeedbackStyle_Simple()); }
 
-        private void SetPositionDirty(DCLCharacterPosition character)
+        private void SetPositionDirty(BLDCharacterPosition character)
         {
             var currentX = (int) Math.Floor(character.worldPosition.x / ParcelSettings.PARCEL_SIZE);
             var currentY = (int) Math.Floor(character.worldPosition.z / ParcelSettings.PARCEL_SIZE);
@@ -476,7 +476,7 @@ namespace DCL
 
         public void SortScenesByDistance()
         {
-            if (DCLCharacterController.i == null)
+            if (BLDCharacterController.i == null)
                 return;
 
             IWorldState worldState = Environment.i.world.state;

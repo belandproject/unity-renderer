@@ -1,8 +1,8 @@
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIImageReferencesContainer : UIReferencesContainer
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL
+namespace BLD
 {
     public class UpdateEventHandler : IUpdateEventHandler
     {

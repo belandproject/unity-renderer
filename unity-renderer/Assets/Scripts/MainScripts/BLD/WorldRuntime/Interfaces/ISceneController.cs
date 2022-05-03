@@ -1,8 +1,8 @@
 ﻿using System;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL
+namespace BLD
 {
     public interface ISceneController : IMessageProcessHandler, IMessageQueueHandler, IService
     {

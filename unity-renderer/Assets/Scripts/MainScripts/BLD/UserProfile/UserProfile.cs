@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD;
+using BLD.Helpers;
+using BLD.Interface;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UserProfile", menuName = "UserProfile")]

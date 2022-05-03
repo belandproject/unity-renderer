@@ -1,15 +1,15 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Interface;
+using BLD.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static ProtocolV2;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 /// <summary>
 /// This class will handle all the messages that will be sent to kernel.
@@ -116,7 +116,7 @@ public class BuilderInWorldBridge : MonoBehaviour
         {
             if (keyValuePairBaseDisposable.Value.GetClassId() == (int) CLASS_ID.LOCKED_ON_EDIT)
             {
-                entitySingleComponentPayload.data = ((DCLLockedOnEdit) keyValuePairBaseDisposable.Value).GetModel();
+                entitySingleComponentPayload.data = ((BLDLockedOnEdit) keyValuePairBaseDisposable.Value).GetModel();
             }
         }
 
@@ -132,7 +132,7 @@ public class BuilderInWorldBridge : MonoBehaviour
         {
             if (keyValuePairBaseDisposable.Value.GetClassId() == (int) CLASS_ID.NAME)
             {
-                entitySingleComponentPayload.data = ((DCLName) keyValuePairBaseDisposable.Value).GetModel();
+                entitySingleComponentPayload.data = ((BLDName) keyValuePairBaseDisposable.Value).GetModel();
             }
         }
 
@@ -158,7 +158,7 @@ public class BuilderInWorldBridge : MonoBehaviour
         OnKernelUpdated?.Invoke();
     }
 
-    public void AddEntityOnKernel(IDCLEntity entity, ParcelScene scene)
+    public void AddEntityOnKernel(IBLDEntity entity, ParcelScene scene)
     {
         if (scene == null)
             return;
@@ -217,7 +217,7 @@ public class BuilderInWorldBridge : MonoBehaviour
         SendNewEntityToKernel(scene.sceneData.id, entity.entityId, list.ToArray());
     }
 
-    public void EntityTransformReport(IDCLEntity entity, ParcelScene scene)
+    public void EntityTransformReport(IBLDEntity entity, ParcelScene scene)
     {
         entitySingleComponentPayload.entityId = entity.entityId;
         entitySingleComponentPayload.componentId = (int) CLASS_ID_COMPONENT.TRANSFORM;

@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.TransactionHUDModel
+namespace BLD.TransactionHUDModel
 {
     public enum Type
     {

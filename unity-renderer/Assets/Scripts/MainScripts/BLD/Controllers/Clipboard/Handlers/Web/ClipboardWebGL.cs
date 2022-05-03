@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using AOT;
-using DCL;
+using BLD;
 using UnityEngine;
 
 internal class ClipboardWebGL : Singleton<ClipboardWebGL>, IClipboardHandler, IDisposable

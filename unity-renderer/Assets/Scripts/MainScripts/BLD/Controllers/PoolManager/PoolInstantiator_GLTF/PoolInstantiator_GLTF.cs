@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     public class PoolInstantiator_GLTF : IPooledObjectInstantiator
     {

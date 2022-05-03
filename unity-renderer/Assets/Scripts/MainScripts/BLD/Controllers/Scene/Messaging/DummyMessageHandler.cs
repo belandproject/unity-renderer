@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class DummyMessageHandler : IMessageProcessHandler
     {

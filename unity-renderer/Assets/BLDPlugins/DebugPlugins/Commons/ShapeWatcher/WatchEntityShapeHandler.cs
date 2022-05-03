@@ -1,13 +1,13 @@
-using DCL.Models;
+using BLD.Models;
 
-namespace DCLPlugins.DebugPlugins.Commons
+namespace BLDPlugins.DebugPlugins.Commons
 {
     public class WatchEntityShapeHandler
     {
-        private readonly IDCLEntity entity;
+        private readonly IBLDEntity entity;
         private readonly IShapeListener listener;
 
-        public WatchEntityShapeHandler(IDCLEntity entity, IShapeListener listener)
+        public WatchEntityShapeHandler(IBLDEntity entity, IShapeListener listener)
         {
             this.entity = entity;
             this.listener = listener;
@@ -29,7 +29,7 @@ namespace DCLPlugins.DebugPlugins.Commons
             listener.Dispose();
         }
 
-        private void OnShapeUpdated(IDCLEntity entity)
+        private void OnShapeUpdated(IBLDEntity entity)
         {
             if (entity.meshesInfo.currentShape != null
                 && entity.meshesInfo.meshRootGameObject != null)
@@ -38,7 +38,7 @@ namespace DCLPlugins.DebugPlugins.Commons
             }
         }
 
-        private void OnShapeCleaned(IDCLEntity entity)
+        private void OnShapeCleaned(IBLDEntity entity)
         {
             listener.OnShapeCleaned(entity);
         }

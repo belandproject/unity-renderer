@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_Gif : AssetPromise<Asset_Gif>
     {

@@ -2,7 +2,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public class QuestsPanelSection : MonoBehaviour
     {

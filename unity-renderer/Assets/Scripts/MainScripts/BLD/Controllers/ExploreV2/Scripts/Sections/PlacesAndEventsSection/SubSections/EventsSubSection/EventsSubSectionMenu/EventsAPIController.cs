@@ -1,4 +1,4 @@
-using DCL;
+using BLD;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -37,7 +37,7 @@ public class EventsAPIController : IEventsAPIController
 
     public WebRequestAsyncOperation GetAllEvents(Action<List<EventFromAPIModel>> OnSuccess, Action<string> OnFail)
     {
-        return (WebRequestAsyncOperation) DCL.Environment.i.platform.webRequest.Get(
+        return (WebRequestAsyncOperation) BLD.Environment.i.platform.webRequest.Get(
             URL_GET_ALL_EVENTS,
             OnSuccess: (webRequestResult) =>
             {

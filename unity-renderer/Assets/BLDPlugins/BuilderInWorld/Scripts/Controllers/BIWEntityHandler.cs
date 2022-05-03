@@ -1,18 +1,18 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 public class BIWEntityHandler : BIWController, IBIWEntityHandler
 {
@@ -76,7 +76,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         BIWInputWrapper.OnMouseDown += OnInputMouseDown;
         BIWInputWrapper.OnMouseUp += OnInputMouseUp;
 
-        DCL.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged += ChangeEntityBoundsCheckerStatus;
+        BLD.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged += ChangeEntityBoundsCheckerStatus;
 
         if ( context.sceneReferences.biwBridgeGameObject != null )
             bridge = context.sceneReferences.biwBridgeGameObject.GetComponent<BuilderInWorldBridge>();
@@ -125,7 +125,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         hideSelectedEntitiesAction.OnTriggered -= hideSelectedEntitiesDelegate;
         showAllEntitiesAction.OnTriggered -= showAllEntitiesDelegate;
 
-        DCL.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged -= ChangeEntityBoundsCheckerStatus;
+        BLD.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged -= ChangeEntityBoundsCheckerStatus;
 
         BIWInputWrapper.OnMouseDown -= OnInputMouseDown;
         BIWInputWrapper.OnMouseUp -= OnInputMouseUp;
@@ -150,7 +150,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
 
         if (selectedEntities.Count == 0)
             return;
-        if ((DCLTime.realtimeSinceStartup - lastTransformReportTime) <= BIWSettings.ENTITY_POSITION_REPORTING_DELAY)
+        if ((BLDTime.realtimeSinceStartup - lastTransformReportTime) <= BIWSettings.ENTITY_POSITION_REPORTING_DELAY)
             return;
 
         ReportTransform();
@@ -173,7 +173,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
             entity.RotationReported();
         }
 
-        lastTransformReportTime = DCLTime.realtimeSinceStartup;
+        lastTransformReportTime = BLDTime.realtimeSinceStartup;
     }
 
     public float GetLastTimeReport() { return lastTransformReportTime; }
@@ -392,7 +392,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         }
     }
 
-    public void Select(IDCLEntity entity)
+    public void Select(IBLDEntity entity)
     {
         BIWEntity entityEditable = GetConvertedEntity(entity);
         if (entityEditable == null)
@@ -461,7 +461,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         return null;
     }
 
-    public BIWEntity GetConvertedEntity(IDCLEntity entity)
+    public BIWEntity GetConvertedEntity(IBLDEntity entity)
     {
         if (convertedEntities.ContainsKey(GetConvertedUniqueKeyForEntity(entity)))
             return convertedEntities[GetConvertedUniqueKeyForEntity(entity)];
@@ -497,10 +497,10 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
 
     public BIWEntity DuplicateEntity(BIWEntity entityToDuplicate)
     {
-        IDCLEntity entity = SceneUtils.DuplicateEntity(sceneToEdit, entityToDuplicate.rootEntity);
-        //Note: If the entity contains the name component or DCLLockedOnEdit, we don't want to copy them 
-        entity.RemoveSharedComponent(typeof(DCLName), false);
-        entity.RemoveSharedComponent(typeof(DCLLockedOnEdit), false);
+        IBLDEntity entity = SceneUtils.DuplicateEntity(sceneToEdit, entityToDuplicate.rootEntity);
+        //Note: If the entity contains the name component or BLDLockedOnEdit, we don't want to copy them 
+        entity.RemoveSharedComponent(typeof(BLDName), false);
+        entity.RemoveSharedComponent(typeof(BLDLockedOnEdit), false);
 
         BIWUtils.CopyGameObjectStatus(entityToDuplicate.rootEntity.gameObject, entity.gameObject, false, false);
         BIWEntity convertedEntity = SetupEntityToEdit(entity);
@@ -510,16 +510,16 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         return convertedEntity;
     }
 
-    public IDCLEntity CreateEntityFromJSON(string entityJson)
+    public IBLDEntity CreateEntityFromJSON(string entityJson)
     {
         EntityData data = BIWUtils.ConvertJSONToEntityData(entityJson);
 
-        IDCLEntity newEntity = sceneToEdit.CreateEntity(data.entityId);
+        IBLDEntity newEntity = sceneToEdit.CreateEntity(data.entityId);
 
 
         if (data.transformComponent != null)
         {
-            DCLTransform.Model model = new DCLTransform.Model();
+            BLDTransform.Model model = new BLDTransform.Model();
             model.position = data.transformComponent.position;
             model.rotation = Quaternion.Euler(data.transformComponent.rotation);
             model.scale = data.transformComponent.scale;
@@ -564,8 +564,8 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
 
     public BIWEntity CreateEmptyEntity(IParcelScene parcelScene, Vector3 entryPoint, Vector3 editionGOPosition, bool notifyEntityList = true)
     {
-        IDCLEntity newEntity = parcelScene.CreateEntity(Guid.NewGuid().ToString());
-        DCLTransform.Model transformModel = new DCLTransform.Model();
+        IBLDEntity newEntity = parcelScene.CreateEntity(Guid.NewGuid().ToString());
+        BLDTransform.Model transformModel = new BLDTransform.Model();
         transformModel.position = WorldStateUtils.ConvertUnityToScenePosition(entryPoint, parcelScene);
 
         Camera camera = context.sceneReferences.mainCamera;
@@ -588,7 +588,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
 
     private void SetupAllEntities()
     {
-        foreach (IDCLEntity entity in sceneToEdit.entities.Values)
+        foreach (IBLDEntity entity in sceneToEdit.entities.Values)
         {
             SetupEntityToEdit(entity);
         }
@@ -637,7 +637,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         return currentEntitiesInScene;
     }
 
-    BIWEntity SetupEntityToEdit(IDCLEntity entity, bool hasBeenCreated = false)
+    BIWEntity SetupEntityToEdit(IBLDEntity entity, bool hasBeenCreated = false)
     {
         string biwEntityId = GetConvertedUniqueKeyForEntity(entity);
 
@@ -666,7 +666,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         return entityToEdit;
     }
 
-    internal void ChangeEntityBoundsCheckerStatus(IDCLEntity entity, bool isInsideBoundaries)
+    internal void ChangeEntityBoundsCheckerStatus(IBLDEntity entity, bool isInsideBoundaries)
     {
         var convertedEntity = GetConvertedEntity(entity);
         if (convertedEntity == null)
@@ -783,7 +783,7 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         {
             if (entity.rootEntity.scene == sceneToEdit)
             {
-                if (!DCL.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(entity.rootEntity))
+                if (!BLD.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(entity.rootEntity))
                 {
                     entitiesToRemove.Add(entity);
                 }
@@ -804,9 +804,9 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
         }
     }
 
-    private void RemoveConvertedEntity(IDCLEntity entity) { convertedEntities.Remove(GetConvertedUniqueKeyForEntity(entity)); }
+    private void RemoveConvertedEntity(IBLDEntity entity) { convertedEntities.Remove(GetConvertedUniqueKeyForEntity(entity)); }
 
-    public void NotifyEntityIsCreated(IDCLEntity entity)
+    public void NotifyEntityIsCreated(IBLDEntity entity)
     {
         if (bridge != null)
             bridge.AddEntityOnKernel(entity, sceneToEdit);
@@ -860,14 +860,14 @@ public class BIWEntityHandler : BIWController, IBIWEntityHandler
 
     private string GetConvertedUniqueKeyForEntity(string entityID) { return sceneToEdit.sceneData.id + entityID; }
 
-    private string GetConvertedUniqueKeyForEntity(IDCLEntity entity) { return entity.scene.sceneData.id + entity.entityId; }
+    private string GetConvertedUniqueKeyForEntity(IBLDEntity entity) { return entity.scene.sceneData.id + entity.entityId; }
 
     public bool AreAllEntitiesInsideBoundaries()
     {
         bool areAllIn = true;
         foreach (BIWEntity entity in convertedEntities.Values)
         {
-            if (!DCL.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(entity.rootEntity))
+            if (!BLD.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(entity.rootEntity))
             {
                 areAllIn = false;
                 break;

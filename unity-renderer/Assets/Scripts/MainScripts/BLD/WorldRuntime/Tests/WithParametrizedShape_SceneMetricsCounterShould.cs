@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -12,7 +12,7 @@ public class WithParametrizedShape_SceneMetricsCounterShould : IntegrationTestSu
     [UnityTest]
     public IEnumerator CountWhenChanged()
     {
-        IDCLEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
         ConeShape coneShape = CreateCone();
 
         TestUtils.SharedComponentAttach(coneShape, entity);
@@ -54,13 +54,13 @@ public class WithParametrizedShape_SceneMetricsCounterShould : IntegrationTestSu
     {
         ConeShape coneShape = CreateCone();
         PlaneShape planeShape = CreatePlane();
-        DCLTexture dclTexture = CreateTexture(texturePaths[0]);
-        BasicMaterial basicMaterial = CreateBasicMaterial(dclTexture.id);
+        BLDTexture bldTexture = CreateTexture(texturePaths[0]);
+        BasicMaterial basicMaterial = CreateBasicMaterial(bldTexture.id);
 
-        IDCLEntity entity = CreateEntityWithTransform();
-        IDCLEntity entity2 = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity2 = CreateEntityWithTransform();
 
-        TestUtils.SharedComponentAttach(dclTexture, entity);
+        TestUtils.SharedComponentAttach(bldTexture, entity);
         TestUtils.SharedComponentAttach(basicMaterial, entity);
         TestUtils.SharedComponentAttach(basicMaterial, entity2);
         TestUtils.SharedComponentAttach(coneShape, entity);
@@ -70,7 +70,7 @@ public class WithParametrizedShape_SceneMetricsCounterShould : IntegrationTestSu
 
         TestUtils.RemoveSceneEntity(scene, entity);
         TestUtils.RemoveSceneEntity(scene, entity2);
-        dclTexture.Dispose();
+        bldTexture.Dispose();
 
         AssertMetricsModel(scene,
             triangles: 0,
@@ -86,11 +86,11 @@ public class WithParametrizedShape_SceneMetricsCounterShould : IntegrationTestSu
     {
         ConeShape coneShape = CreateCone();
         PlaneShape planeShape = CreatePlane();
-        DCLTexture dclTexture = CreateTexture(texturePaths[0]);
-        BasicMaterial basicMaterial = CreateBasicMaterial(dclTexture.id);
+        BLDTexture bldTexture = CreateTexture(texturePaths[0]);
+        BasicMaterial basicMaterial = CreateBasicMaterial(bldTexture.id);
 
-        IDCLEntity entity = CreateEntityWithTransform();
-        IDCLEntity entity2 = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity2 = CreateEntityWithTransform();
 
         TestUtils.SharedComponentAttach(basicMaterial, entity);
         TestUtils.SharedComponentAttach(basicMaterial, entity2);
@@ -111,8 +111,8 @@ public class WithParametrizedShape_SceneMetricsCounterShould : IntegrationTestSu
     [UnityTest]
     public IEnumerator NotCountWhenAttachedToIgnoredEntities()
     {
-        IDCLEntity entity = CreateEntityWithTransform();
-        IDCLEntity entity2 = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity2 = CreateEntityWithTransform();
 
         DataStore.i.sceneWorldObjects.AddExcludedOwner(scene.sceneData.id, entity.entityId);
 

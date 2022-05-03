@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal class LeftMenuHandler : IDisposable
     {

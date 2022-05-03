@@ -1,7 +1,7 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Scene SFX Volume", fileName = "SceneSFXVolumeControlController")]
     public class SceneSFXVolumeControlController : SliderSettingsControlController

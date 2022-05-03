@@ -1,8 +1,8 @@
 using Cinemachine;
-using DCL.Camera;
+using BLD.Camera;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class PlayerReferences : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
+using BLD;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -10,7 +10,7 @@ namespace Tests
     public class NavmapTests : IntegrationTestSuite_Legacy
     {
         private MinimapHUDController controller;
-        DCL.NavmapView navmapView;
+        BLD.NavmapView navmapView;
 
         protected override List<GameObject> SetUp_LegacySystems()
         {
@@ -45,7 +45,7 @@ namespace Tests
             for (int i = 0; i < inputController.triggerTimeActions.Length; i++)
             {
                 // Find the open nav map action used by the input controller
-                if (inputController.triggerTimeActions[i].GetDCLAction() == DCLAction_Trigger.ToggleNavMap)
+                if (inputController.triggerTimeActions[i].GetBLDAction() == BLDAction_Trigger.ToggleNavMap)
                 {
                     action = inputController.triggerTimeActions[i];
                     break;

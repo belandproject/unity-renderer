@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class BuilderTest : MonoBehaviour
     {

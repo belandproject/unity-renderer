@@ -1,7 +1,7 @@
-using DCL.Models;
+using BLD.Models;
 using System;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public abstract class LoadWrapper
     {
@@ -9,7 +9,7 @@ namespace DCL.Components
         public bool initialVisibility = true;
         public bool alreadyLoaded = false;
 
-        public IDCLEntity entity;
+        public IBLDEntity entity;
 
         public abstract void Load(string url, Action<LoadWrapper> OnSuccess, Action<LoadWrapper, Exception> OnFail);
         public abstract void Unload();

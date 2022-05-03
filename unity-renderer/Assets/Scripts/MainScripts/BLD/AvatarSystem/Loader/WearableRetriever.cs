@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
 using UnityEngine;
 
 namespace AvatarSystem

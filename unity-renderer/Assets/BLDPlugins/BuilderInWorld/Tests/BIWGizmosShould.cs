@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Builder.Gizmos;
-using DCL;
-using DCL.Builder;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Builder;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;
@@ -82,7 +82,7 @@ public class BIWGizmosShould : IntegrationTestSuite_Legacy
         gizmosController.HideGizmo(true);
 
         //Assert
-        Assert.AreEqual(gizmosController.GetSelectedGizmo(), DCL.Components.DCLGizmos.Gizmo.NONE);
+        Assert.AreEqual(gizmosController.GetSelectedGizmo(), BLD.Components.BLDGizmos.Gizmo.NONE);
     }
 
     [Test]

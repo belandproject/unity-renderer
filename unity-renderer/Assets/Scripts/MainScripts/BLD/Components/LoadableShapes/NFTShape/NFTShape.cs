@@ -1,9 +1,9 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class NFTShape : LoadableShape<LoadWrapper_NFT, NFTShape.Model>
     {
@@ -22,7 +22,7 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.NFT_SHAPE; }
 
-        protected override void AttachShape(IDCLEntity entity)
+        protected override void AttachShape(IBLDEntity entity)
         {
             if (string.IsNullOrEmpty(model.src))
             {
@@ -52,7 +52,7 @@ namespace DCL.Components
             loadableShape.Load(model.src, OnLoadCompleted, OnLoadFailed);
         }
 
-        protected override void DetachShape(IDCLEntity entity)
+        protected override void DetachShape(IBLDEntity entity)
         {
             if (entity == null || entity.meshRootGameObject == null)
                 return;
@@ -62,9 +62,9 @@ namespace DCL.Components
             base.DetachShape(entity);
         }
 
-        protected override void ConfigureColliders(IDCLEntity entity) { CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, model.withCollisions, false, entity); }
+        protected override void ConfigureColliders(IBLDEntity entity) { CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, model.withCollisions, false, entity); }
 
-        void UpdateBackgroundColor(IDCLEntity entity)
+        void UpdateBackgroundColor(IBLDEntity entity)
         {
             if (previousModel is NFTShape.Model && model.color == previousModel.color)
                 return;

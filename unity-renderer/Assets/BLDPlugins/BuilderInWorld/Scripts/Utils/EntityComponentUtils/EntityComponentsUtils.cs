@@ -1,22 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Models;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public static class EntityComponentsUtils
     {
-        public static void AddTransformComponent(IParcelScene scene, IDCLEntity entity, DCLTransform.Model model)
+        public static void AddTransformComponent(IParcelScene scene, IBLDEntity entity, BLDTransform.Model model)
         {
             scene.EntityComponentCreateOrUpdateWithModel(entity.entityId, CLASS_ID_COMPONENT.TRANSFORM, model);
         }
 
-        public static NFTShape AddNFTShapeComponent(IParcelScene scene, IDCLEntity entity, NFTShape.Model model, string id = "")
+        public static NFTShape AddNFTShapeComponent(IParcelScene scene, IBLDEntity entity, NFTShape.Model model, string id = "")
         {
             id = EnsureId(id);
             
@@ -26,7 +26,7 @@ namespace DCL.Builder
             return nftShape;
         }
         
-        public static GLTFShape AddGLTFComponent(IParcelScene scene, IDCLEntity entity, GLTFShape.Model model, string id = "")
+        public static GLTFShape AddGLTFComponent(IParcelScene scene, IBLDEntity entity, GLTFShape.Model model, string id = "")
         {
             id = EnsureId(id);
             
@@ -36,21 +36,21 @@ namespace DCL.Builder
             return gltfComponent;
         }
 
-        public static DCLName AddNameComponent(IParcelScene scene, IDCLEntity entity, DCLName.Model model, string id = "")
+        public static BLDName AddNameComponent(IParcelScene scene, IBLDEntity entity, BLDName.Model model, string id = "")
         {
             id = EnsureId(id);
             
-            DCLName name = (DCLName) scene.SharedComponentCreate(id, Convert.ToInt32(CLASS_ID.NAME));
+            BLDName name = (BLDName) scene.SharedComponentCreate(id, Convert.ToInt32(CLASS_ID.NAME));
             name.UpdateFromModel(model);
             scene.SharedComponentAttach(entity.entityId, name.id);
             return name;
         }
         
-        public static DCLLockedOnEdit AddLockedOnEditComponent(IParcelScene scene, IDCLEntity entity, DCLLockedOnEdit.Model model, string id = "")
+        public static BLDLockedOnEdit AddLockedOnEditComponent(IParcelScene scene, IBLDEntity entity, BLDLockedOnEdit.Model model, string id = "")
         {
             id = EnsureId(id);
             
-            DCLLockedOnEdit lockedOnEditComponent = (DCLLockedOnEdit) scene.SharedComponentCreate(id, Convert.ToInt32(CLASS_ID.LOCKED_ON_EDIT));
+            BLDLockedOnEdit lockedOnEditComponent = (BLDLockedOnEdit) scene.SharedComponentCreate(id, Convert.ToInt32(CLASS_ID.LOCKED_ON_EDIT));
             lockedOnEditComponent.UpdateFromModel(model);
             scene.SharedComponentAttach(entity.entityId, lockedOnEditComponent.id);
             return lockedOnEditComponent;

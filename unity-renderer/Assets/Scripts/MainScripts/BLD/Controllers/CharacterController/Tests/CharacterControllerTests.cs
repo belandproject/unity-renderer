@@ -1,13 +1,13 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
-using DCL.Interface;
+using BLD;
+using BLD.Controllers;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -39,13 +39,13 @@ namespace Tests
         public IEnumerator InitCharacterPosition(Vector3 position, bool pauseGravity = true)
         {
             if (pauseGravity)
-                DCLCharacterController.i.PauseGravity();
+                BLDCharacterController.i.PauseGravity();
             else
-                DCLCharacterController.i.ResumeGravity();
+                BLDCharacterController.i.ResumeGravity();
 
-            DCLCharacterController.i.Teleport(JsonUtility.ToJson(position));
+            BLDCharacterController.i.Teleport(JsonUtility.ToJson(position));
 
-            UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, Vector3.Distance(DCLCharacterController.i.characterPosition.worldPosition, position), 2.0f);
+            UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, Vector3.Distance(BLDCharacterController.i.characterPosition.worldPosition, position), 2.0f);
 
             yield return null;
         }
@@ -53,7 +53,7 @@ namespace Tests
         public IEnumerator WaitUntilGrounded()
         {
             // Let the character *fall* onto the ground shape
-            yield return new WaitUntil(() => DCLCharacterController.i.isGrounded);
+            yield return new WaitUntil(() => BLDCharacterController.i.isGrounded);
             yield return null;
         }
 
@@ -81,7 +81,7 @@ namespace Tests
             };
 
             yield return InitCharacterPosition(pos2, true);
-            UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, Vector3.Distance(new Vector3(50f, 2f, 50f), DCLCharacterController.i.transform.position), 0.5f);
+            UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, Vector3.Distance(new Vector3(50f, 2f, 50f), BLDCharacterController.i.transform.position), 0.5f);
 
             var pos3 = new Vector3
             {
@@ -91,7 +91,7 @@ namespace Tests
             };
 
             yield return InitCharacterPosition(pos3, true);
-            Assert.AreEqual(new Vector3(-50f, 2f, -50f), DCLCharacterController.i.transform.position);
+            Assert.AreEqual(new Vector3(-50f, 2f, -50f), BLDCharacterController.i.transform.position);
         }
 
         [UnityTest]
@@ -100,12 +100,12 @@ namespace Tests
         public IEnumerator CharacterIsNotParentedOnWorldReposition()
         {
             // We use a shape that represents a static ground and has collisions
-            TestUtils.InstantiateEntityWithShape(scene, "groundShape", DCL.Models.CLASS_ID.PLANE_SHAPE, Vector3.zero);
+            TestUtils.InstantiateEntityWithShape(scene, "groundShape", BLD.Models.CLASS_ID.PLANE_SHAPE, Vector3.zero);
             var shapeEntity = scene.entities["groundShape"];
 
             // Reposition ground shape to be on the world-reposition-limit
             TestUtils.SetEntityTransform(scene, shapeEntity,
-                new DCLTransform.Model
+                new BLDTransform.Model
                 {
                     position = new Vector3(PlayerSettings.WORLD_REPOSITION_MINIMUM_DISTANCE, 1f, PlayerSettings.WORLD_REPOSITION_MINIMUM_DISTANCE),
                     rotation = Quaternion.Euler(90f, 0f, 0f),
@@ -113,7 +113,7 @@ namespace Tests
                 });
 
             // Place character on the ground shape and check if it's detected as ground
-            DCLCharacterController.i.Teleport(JsonConvert.SerializeObject(new
+            BLDCharacterController.i.Teleport(JsonConvert.SerializeObject(new
             {
                 x = PlayerSettings.WORLD_REPOSITION_MINIMUM_DISTANCE - 2f,
                 y = 3f,
@@ -122,24 +122,24 @@ namespace Tests
 
             yield return WaitUntilGrounded();
 
-            Assert.IsTrue(DCLCharacterController.i.groundTransform == shapeEntity.meshRootGameObject.transform);
+            Assert.IsTrue(BLDCharacterController.i.groundTransform == shapeEntity.meshRootGameObject.transform);
 
             // Place the character barely passing the limits to trigger the world repositioning
-            DCLCharacterController.i.Teleport(JsonConvert.SerializeObject(new
+            BLDCharacterController.i.Teleport(JsonConvert.SerializeObject(new
             {
                 x = PlayerSettings.WORLD_REPOSITION_MINIMUM_DISTANCE + 1f,
-                y = DCLCharacterController.i.transform.position.y,
+                y = BLDCharacterController.i.transform.position.y,
                 z = PlayerSettings.WORLD_REPOSITION_MINIMUM_DISTANCE + 1f
             }));
 
             yield return null;
 
             // check if the character got repositioned correctly
-            Assert.AreEqual(new Vector3(1f, DCLCharacterController.i.transform.position.y, 1f), DCLCharacterController.i.transform.position);
+            Assert.AreEqual(new Vector3(1f, BLDCharacterController.i.transform.position.y, 1f), BLDCharacterController.i.transform.position);
 
             // check it's not parented but still has the same ground
-            Assert.IsTrue(DCLCharacterController.i.groundTransform == shapeEntity.meshRootGameObject.transform);
-            Assert.IsTrue(DCLCharacterController.i.transform.parent == null);
+            Assert.IsTrue(BLDCharacterController.i.groundTransform == shapeEntity.meshRootGameObject.transform);
+            Assert.IsTrue(BLDCharacterController.i.transform.parent == null);
         }
 
         [UnityTest]
@@ -154,15 +154,15 @@ namespace Tests
         [Category("Explicit")]
         public IEnumerator Character_UpdateSORotation()
         {
-            DCLCharacterController.i.PauseGravity();
+            BLDCharacterController.i.PauseGravity();
 
             var newEulerAngle = 10f;
             CommonScriptableObjects.characterForward.Set(Quaternion.Euler(new Vector3(0, newEulerAngle, 0)) * Vector3.forward);
             Cursor.lockState = CursorLockMode.Locked;
             yield return new WaitForSeconds(0.1f);
 
-            Assert.AreEqual(DCLCharacterController.i.transform.eulerAngles, CommonScriptableObjects.playerUnityEulerAngles);
-            DCLCharacterController.i.ResumeGravity();
+            Assert.AreEqual(BLDCharacterController.i.transform.eulerAngles, CommonScriptableObjects.playerUnityEulerAngles);
+            BLDCharacterController.i.ResumeGravity();
         }
 
         [UnityTest]
@@ -180,7 +180,7 @@ namespace Tests
             yield return InitCharacterPosition(originalCharacterPosition);
 
             string platformEntityId = "movingPlatform";
-            TestUtils.InstantiateEntityWithShape(scene, platformEntityId, DCL.Models.CLASS_ID.BOX_SHAPE, new Vector3(2f, 1f, 8f));
+            TestUtils.InstantiateEntityWithShape(scene, platformEntityId, BLD.Models.CLASS_ID.BOX_SHAPE, new Vector3(2f, 1f, 8f));
 
             Transform platformTransform = scene.entities[platformEntityId].gameObject.transform;
             platformTransform.localScale = new Vector3(2f, 0.5f, 2f);
@@ -189,11 +189,11 @@ namespace Tests
             Assert.IsTrue(Vector3.Distance(platformTransform.position, new Vector3(2f, 1f, 8f)) < 0.1f);
 
             // enable character gravity
-            DCLCharacterController.i.ResumeGravity();
+            BLDCharacterController.i.ResumeGravity();
 
             yield return WaitUntilGrounded();
 
-            Assert.IsFalse(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true only if the platform moves/rotates");
+            Assert.IsFalse(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true only if the platform moves/rotates");
 
             // Lerp the platform's position
             float lerpTime = 0f;
@@ -213,11 +213,11 @@ namespace Tests
 
                 platformTransform.position = Vector3.Lerp(originalPosition, targetPosition, lerpTime);
 
-                DCLCharacterController.i.LateUpdate();
+                BLDCharacterController.i.LateUpdate();
 
                 if (!checkedParent && lerpTime >= 0.25f)
                 {
-                    Assert.IsTrue(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true when the platform moves/rotates");
+                    Assert.IsTrue(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true when the platform moves/rotates");
                     checkedParent = true;
                 }
             }
@@ -225,7 +225,7 @@ namespace Tests
             // check positions
             Assert.IsTrue(Vector3.Distance(platformTransform.position, targetPosition) < 0.1f);
 
-            float dist1 = Vector3.Distance(originalCharacterPosition, DCLCharacterController.i.transform.position);
+            float dist1 = Vector3.Distance(originalCharacterPosition, BLDCharacterController.i.transform.position);
             float dist2 = Vector3.Distance(originalPosition, targetPosition);
 
             UnityEngine.Assertions.Assert.AreApproximatelyEqual(dist1, dist2, 1f);
@@ -246,7 +246,7 @@ namespace Tests
             yield return InitCharacterPosition(originalCharacterPosition);
 
             string platformEntityId = "rotatingPlatform";
-            TestUtils.InstantiateEntityWithShape(scene, platformEntityId, DCL.Models.CLASS_ID.BOX_SHAPE, new Vector3(8f, 1f, 8f));
+            TestUtils.InstantiateEntityWithShape(scene, platformEntityId, BLD.Models.CLASS_ID.BOX_SHAPE, new Vector3(8f, 1f, 8f));
 
             Transform platformTransform = scene.entities[platformEntityId].gameObject.transform;
             platformTransform.localScale = new Vector3(8f, 0.5f, 8f);
@@ -255,11 +255,11 @@ namespace Tests
             Assert.IsTrue(Vector3.Distance(platformTransform.position, new Vector3(8f, 1f, 8f)) < 0.1f);
 
             // enable character gravity
-            DCLCharacterController.i.ResumeGravity();
+            BLDCharacterController.i.ResumeGravity();
 
             yield return WaitUntilGrounded();
 
-            Assert.IsFalse(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true only if the platform moves/rotates");
+            Assert.IsFalse(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true only if the platform moves/rotates");
 
             var initialDirection = CommonScriptableObjects.characterForward.Get().Value;
             // Lerp the platform's rotation
@@ -281,7 +281,7 @@ namespace Tests
 
                 if (!checkedParent && lerpTime >= 0.5f)
                 {
-                    Assert.IsTrue(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true when the platform moves/rotates");
+                    Assert.IsTrue(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be true when the platform moves/rotates");
 
                     checkedParent = true;
                 }
@@ -290,8 +290,8 @@ namespace Tests
             // check positions
             Assert.IsTrue(Vector3.Distance(platformTransform.rotation.eulerAngles, targetRotation.eulerAngles) < 0.1f);
 
-            UnityEngine.Assertions.Assert.AreApproximatelyEqual(DCLCharacterController.i.transform.position.x, 11f, 1f);
-            UnityEngine.Assertions.Assert.AreApproximatelyEqual(DCLCharacterController.i.transform.position.z, 11f, 1f);
+            UnityEngine.Assertions.Assert.AreApproximatelyEqual(BLDCharacterController.i.transform.position.x, 11f, 1f);
+            UnityEngine.Assertions.Assert.AreApproximatelyEqual(BLDCharacterController.i.transform.position.z, 11f, 1f);
 
             //test for rotation
             var currentDirection = CommonScriptableObjects.characterForward.Get().Value;
@@ -303,7 +303,7 @@ namespace Tests
             TestUtils.RemoveSceneEntity(scene, platformEntityId);
             yield return null;
 
-            Assert.IsFalse(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be false as there's no platform anymore");
+            Assert.IsFalse(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be false as there's no platform anymore");
         }
 
         [UnityTest]
@@ -320,7 +320,7 @@ namespace Tests
             yield return null;
             yield return null;
 
-            Assert.IsNull(DCLCharacterController.i.transform.parent, "The character shouldn't be parented as there's no platform anymore");
+            Assert.IsNull(BLDCharacterController.i.transform.parent, "The character shouldn't be parented as there's no platform anymore");
         }
 
         [UnityTest]
@@ -341,7 +341,7 @@ namespace Tests
             yield return null;
             yield return null;
 
-            Assert.IsNull(DCLCharacterController.i.transform.parent, "The character shouldn't be parented as the shape colliders were disabled");
+            Assert.IsNull(BLDCharacterController.i.transform.parent, "The character shouldn't be parented as the shape colliders were disabled");
         }
 
         [UnityTest]
@@ -359,7 +359,7 @@ namespace Tests
             yield return null;
             yield return null;
 
-            Assert.IsFalse(DCLCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be false when the shape colliders are disabled");
+            Assert.IsFalse(BLDCharacterController.i.isOnMovingPlatform, "isOnMovingPlatform should be false when the shape colliders are disabled");
         }
 
         [UnityTest]
@@ -369,7 +369,7 @@ namespace Tests
             CommonScriptableObjects.characterForward.Set(Vector3.back);
             CommonScriptableObjects.cameraForward.Set(Vector3.right);
             Quaternion cameraRotation = Quaternion.LookRotation(CommonScriptableObjects.cameraForward.Get());
-            DCLCharacterController.i.SetPosition(new Vector3(51, 2, 0));
+            BLDCharacterController.i.SetPosition(new Vector3(51, 2, 0));
 
             bool rotationMatch = false;
             void OnMessageFromEngine(string type, string payload)

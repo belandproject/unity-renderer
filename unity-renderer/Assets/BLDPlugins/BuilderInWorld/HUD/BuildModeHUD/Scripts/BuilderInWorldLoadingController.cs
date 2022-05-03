@@ -1,6 +1,6 @@
 using System;
-using DCL;
-using DCL.Builder;
+using BLD;
+using BLD.Builder;
 using UnityEngine;
 
 public interface IBuilderInWorldLoadingController

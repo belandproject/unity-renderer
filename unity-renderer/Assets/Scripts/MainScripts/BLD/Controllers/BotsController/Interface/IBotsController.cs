@@ -1,7 +1,7 @@
 using System.Collections;
-using DCL.Configuration;
+using BLD.Configuration;
 
-namespace DCL.Bots
+namespace BLD.Bots
 {
     public interface IBotsController
     {

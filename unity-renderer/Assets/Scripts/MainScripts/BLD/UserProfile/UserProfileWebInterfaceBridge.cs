@@ -1,4 +1,4 @@
-﻿using DCL.Interface;
+﻿using BLD.Interface;
 
 public class UserProfileWebInterfaceBridge : IUserProfileBridge
 {

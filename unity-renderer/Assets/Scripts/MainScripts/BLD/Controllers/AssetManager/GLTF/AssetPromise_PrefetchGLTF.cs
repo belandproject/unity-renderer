@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_PrefetchGLTF : AssetPromise_GLTF
     {

@@ -1,4 +1,4 @@
-using DCL;
+using BLD;
 using System.Collections;
 using NSubstitute;
 using UnityEngine;
@@ -17,8 +17,8 @@ namespace AssetPromiseKeeper_Tests
         [UnitySetUp]
         protected virtual IEnumerator SetUp()
         {
-            DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
-            var serviceLocator = DCL.ServiceLocatorFactory.CreateDefault();
+            BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+            var serviceLocator = BLD.ServiceLocatorFactory.CreateDefault();
             serviceLocator.Register<IMemoryManager>(() => Substitute.For<IMemoryManager>());
             Environment.Setup(serviceLocator);
             keeper = new APKType();

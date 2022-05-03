@@ -1127,9 +1127,9 @@ MonoBehaviour:
         - urn:beland:off-chain:base-avatars:BaseMale
         mainFile: Techtribal_Beast_Mask.glb
         contents:
-        - key: DCL-TechTribal-Alphas.png
+        - key: BLD-TechTribal-Alphas.png
           hash: 
-        - key: DCL-TechTribal-Masks.png
+        - key: BLD-TechTribal-Masks.png
           hash: 
         - key: Techtribal_Beast_Mask.glb
           hash: 
@@ -1139,9 +1139,9 @@ MonoBehaviour:
         - urn:beland:off-chain:base-avatars:BaseFemale
         mainFile: Techtribal_Beast_Mask.glb
         contents:
-        - key: DCL-TechTribal-Alphas.png
+        - key: BLD-TechTribal-Alphas.png
           hash: 
-        - key: DCL-TechTribal-Masks.png
+        - key: BLD-TechTribal-Masks.png
           hash: 
         - key: Techtribal_Beast_Mask.glb
           hash: 

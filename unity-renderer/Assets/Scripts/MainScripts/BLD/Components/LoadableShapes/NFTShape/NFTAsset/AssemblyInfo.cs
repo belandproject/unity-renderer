@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("DCL.Components.NFT.Tests")]
+[assembly: InternalsVisibleTo("BLD.Components.NFT.Tests")]

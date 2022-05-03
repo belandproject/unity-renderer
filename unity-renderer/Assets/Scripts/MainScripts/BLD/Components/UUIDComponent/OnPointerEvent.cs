@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using UnityEngine;
 using Ray = UnityEngine.Ray;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public enum PointerInputEventType
     {
@@ -19,7 +19,7 @@ namespace DCL.Components
 
     public interface IPointerEvent : IMonoBehaviour
     {
-        IDCLEntity entity { get; }
+        IBLDEntity entity { get; }
         void SetHoverState(bool state);
         bool IsAtHoverDistance(float distance);
         bool IsVisible();
@@ -38,11 +38,11 @@ namespace DCL.Components
         public static bool enableInteractionHoverFeedback = true;
         public OnPointerEventColliders eventColliders { get; private set; }
 
-        private IDCLEntity entity;
+        private IBLDEntity entity;
 
         public OnPointerEventHandler() { eventColliders = new OnPointerEventColliders(); }
 
-        public void SetColliders(IDCLEntity entity)
+        public void SetColliders(IBLDEntity entity)
         {
             this.entity = entity;
             eventColliders.Initialize(entity);
@@ -109,7 +109,7 @@ namespace DCL.Components
 
         public OnPointerEventHandler pointerEventHandler;
 
-        public override void Initialize(IParcelScene scene, IDCLEntity entity)
+        public override void Initialize(IParcelScene scene, IBLDEntity entity)
         {
             base.Initialize(scene, entity);
 
@@ -131,7 +131,7 @@ namespace DCL.Components
             pointerEventHandler.SetFeedbackState(model.showFeedback, hoverState, model.button, model.hoverText);
         }
 
-        void SetEventColliders(IDCLEntity entity) { pointerEventHandler.SetColliders(entity); }
+        void SetEventColliders(IBLDEntity entity) { pointerEventHandler.SetColliders(entity); }
 
         public bool IsVisible()
         {

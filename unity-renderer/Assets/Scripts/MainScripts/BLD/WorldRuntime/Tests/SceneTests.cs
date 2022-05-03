@@ -1,9 +1,9 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
@@ -15,7 +15,7 @@ using UnityEngine.TestTools;
 public class SceneTests : IntegrationTestSuite_Legacy
 {
     private ParcelScene scene;
-    private ISceneController sceneController => DCL.Environment.i.world.sceneController;
+    private ISceneController sceneController => BLD.Environment.i.world.sceneController;
 
     protected override IEnumerator SetUp()
     {
@@ -155,7 +155,7 @@ public class SceneTests : IntegrationTestSuite_Legacy
 
         yield return new WaitForAllMessagesProcessed();
 
-        var referenceCheck = new List<DCL.Controllers.ParcelScene>();
+        var referenceCheck = new List<BLD.Controllers.ParcelScene>();
 
         foreach (var kvp in Environment.i.world.state.loadedScenes)
         {
@@ -199,11 +199,11 @@ public class SceneTests : IntegrationTestSuite_Legacy
         Assert.AreEqual(3, theScene.GetSceneTransform().childCount);
 
         Assert.IsTrue(theScene.GetSceneTransform().GetChild(0).localPosition == new Vector3(-ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
         Assert.IsTrue(theScene.GetSceneTransform().GetChild(1).localPosition == new Vector3(ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
         Assert.IsTrue(theScene.GetSceneTransform().GetChild(2).localPosition == new Vector3(-ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT,
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT,
             ParcelSettings.PARCEL_SIZE + ParcelSettings.PARCEL_SIZE / 2));
     }
 
@@ -226,11 +226,11 @@ public class SceneTests : IntegrationTestSuite_Legacy
         Assert.AreEqual(3, theScene.transform.childCount);
 
         Assert.IsTrue(theScene.transform.GetChild(0).localPosition == new Vector3(-ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
         Assert.IsTrue(theScene.transform.GetChild(1).localPosition == new Vector3(ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT, ParcelSettings.PARCEL_SIZE / 2));
         Assert.IsTrue(theScene.transform.GetChild(2).localPosition == new Vector3(-ParcelSettings.PARCEL_SIZE / 2,
-            DCL.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT,
+            BLD.Configuration.ParcelSettings.DEBUG_FLOOR_HEIGHT,
             ParcelSettings.PARCEL_SIZE + ParcelSettings.PARCEL_SIZE / 2));
     }
 
@@ -290,12 +290,12 @@ public class SceneTests : IntegrationTestSuite_Legacy
 
         // Set player reference as parent
         TestUtils.SetEntityParent(scene, entityId, "FirstPersonCameraEntityReference");
-        Assert.AreEqual(entity.parent, DCLCharacterController.i.firstPersonCameraReference);
+        Assert.AreEqual(entity.parent, BLDCharacterController.i.firstPersonCameraReference);
         Assert.IsTrue(Environment.i.world.sceneBoundsChecker.WasAddedAsPersistent(entity));
 
         // Set avatar position reference as parent
         TestUtils.SetEntityParent(scene, entityId, "AvatarEntityReference");
-        Assert.AreEqual(entity.parent, DCLCharacterController.i.avatarReference);
+        Assert.AreEqual(entity.parent, BLDCharacterController.i.avatarReference);
         Assert.IsTrue(Environment.i.world.sceneBoundsChecker.WasAddedAsPersistent(entity));
 
         // Remove all parents

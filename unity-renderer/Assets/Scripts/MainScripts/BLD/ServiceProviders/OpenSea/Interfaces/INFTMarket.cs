@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace DCL.Helpers.NFT.Markets
+namespace BLD.Helpers.NFT.Markets
 {
     public interface INFTMarket : IDisposable
     {

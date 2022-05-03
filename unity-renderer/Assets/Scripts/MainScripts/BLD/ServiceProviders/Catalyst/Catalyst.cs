@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine;
 using Variables.RealmsInfo;
 
@@ -171,7 +171,7 @@ public class Catalyst : ICatalyst
     {
         Promise<string> promise = new Promise<string>();
 
-        DCL.Environment.i.platform.webRequest.Get(url, null, request =>
+        BLD.Environment.i.platform.webRequest.Get(url, null, request =>
         {
             promise.Resolve(request.webRequest.downloadHandler.text);
         }, request =>

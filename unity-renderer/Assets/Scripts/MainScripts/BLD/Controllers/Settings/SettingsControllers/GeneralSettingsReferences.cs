@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers
+namespace BLD.SettingsCommon.SettingsControllers
 {
     /// <summary>
     /// This MonoBehaviour will only contain the external references needed for the general settings.

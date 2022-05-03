@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class NewProjectSecondStepView : BaseComponentView
     {
@@ -101,7 +101,7 @@ namespace DCL.Builder
 
             parcelText.color = normalTextColor;
 
-            parcelText.text = $"{(rows * colums)} parcels = {(rows * DCL.Configuration.ParcelSettings.PARCEL_SIZE)}x{colums * DCL.Configuration.ParcelSettings.PARCEL_SIZE}m";
+            parcelText.text = $"{(rows * colums)} parcels = {(rows * BLD.Configuration.ParcelSettings.PARCEL_SIZE)}x{colums * BLD.Configuration.ParcelSettings.PARCEL_SIZE}m";
         }
 
         internal void NextPressed()

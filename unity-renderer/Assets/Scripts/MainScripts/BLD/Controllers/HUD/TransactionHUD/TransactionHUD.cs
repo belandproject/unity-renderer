@@ -1,13 +1,13 @@
 using System;
 using TMPro;
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
-using DCL.TransactionHUDModel;
+using BLD.TransactionHUDModel;
 using UnityEngine.SocialPlatforms.Impl;
-using Type = DCL.TransactionHUDModel.Type;
+using Type = BLD.TransactionHUDModel.Type;
 
 public class TransactionHUD : MonoBehaviour, ITransactionHUD
 {
@@ -32,9 +32,9 @@ public class TransactionHUD : MonoBehaviour, ITransactionHUD
     
     public IParcelScene FindScene(string sceneId)
     {
-        if (DCL.Environment.i.world?.state?.scenesSortedByDistance != null)
+        if (BLD.Environment.i.world?.state?.scenesSortedByDistance != null)
         {
-            foreach (IParcelScene scene in DCL.Environment.i.world.state.scenesSortedByDistance)
+            foreach (IParcelScene scene in BLD.Environment.i.world.state.scenesSortedByDistance)
             {
                 if (scene.sceneData.id == sceneId)
                     return scene;

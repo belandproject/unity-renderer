@@ -2351,9 +2351,9 @@ MonoBehaviour:
   name: {fileID: 8378608324760447911}
   thumbnail: {fileID: 5677125051283552887}
   icons:
-  - iconId: dcl://base-avatars/BaseMale
+  - iconId: bld://base-avatars/BaseMale
     gameObject: {fileID: 8716637167010536753}
-  - iconId: dcl://base-avatars/BaseFemale
+  - iconId: bld://base-avatars/BaseFemale
     gameObject: {fileID: 1591446565707431306}
   - iconId: lower_body
     gameObject: {fileID: 2013292093172692995}

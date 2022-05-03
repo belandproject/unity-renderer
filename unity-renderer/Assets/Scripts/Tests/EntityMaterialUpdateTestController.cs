@@ -17,13 +17,13 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
 
         var scene = Environment.i.world.state.loadedScenes["0,0"] as ParcelScene;
 
-        BLDTexture dclAtlasTexture = TestUtils.CreateBLDTexture(
+        BLDTexture bldAtlasTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/atlas.png",
             BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode.Bilinear);
 
-        BLDTexture dclAvatarTexture = TestUtils.CreateBLDTexture(
+        BLDTexture bldAvatarTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/avatar.png",
             BLDTexture.BabylonWrapMode.CLAMP,
@@ -36,14 +36,14 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
             scene,
             new BasicMaterial.Model
             {
-                texture = dclAtlasTexture.id,
+                texture = bldAtlasTexture.id,
             },
             out entity);
 
         TestUtils.CreateEntityWithPBRMaterial(scene,
             new PBRMaterial.Model
             {
-                albedoTexture = dclAvatarTexture.id,
+                albedoTexture = bldAvatarTexture.id,
                 metallic = 0,
                 roughness = 1,
             },
@@ -52,10 +52,10 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
         PBRMaterial mat = TestUtils.CreateEntityWithPBRMaterial(scene,
             new PBRMaterial.Model
             {
-                albedoTexture = dclAvatarTexture.id,
+                albedoTexture = bldAvatarTexture.id,
                 metallic = 1,
                 roughness = 1,
-                alphaTexture = dclAvatarTexture.id,
+                alphaTexture = bldAvatarTexture.id,
             },
             out entity);
 
@@ -70,10 +70,10 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
         // Update material attached to 2 entities, adding albedoColor
         scene.SharedComponentUpdate(m.id, JsonUtility.ToJson(new BLD.Components.PBRMaterial.Model
         {
-            albedoTexture = dclAvatarTexture.id,
+            albedoTexture = bldAvatarTexture.id,
             metallic = 1,
             roughness = 1,
-            alphaTexture = dclAvatarTexture.id,
+            alphaTexture = bldAvatarTexture.id,
             albedoColor = color1
         }));
     }

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 
 internal class UsersSearchFriendsHandler : IDisposable
 {

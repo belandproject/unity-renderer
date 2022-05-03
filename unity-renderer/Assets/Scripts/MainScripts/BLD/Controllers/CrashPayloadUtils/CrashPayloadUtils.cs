@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Controllers;
-using DCL.Interface;
-using DCL.Models;
-using DCL.SettingsCommon;
+using BLD.Controllers;
+using BLD.Interface;
+using BLD.Models;
+using BLD.SettingsCommon;
 using UnityGLTF.Cache;
 using UnityEngine;
-using QualitySettings = DCL.SettingsCommon.QualitySettings;
+using QualitySettings = BLD.SettingsCommon.QualitySettings;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class CrashPayloadUtils
     {

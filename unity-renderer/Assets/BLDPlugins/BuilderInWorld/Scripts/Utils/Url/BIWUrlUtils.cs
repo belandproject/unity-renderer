@@ -1,4 +1,4 @@
-using DCL.Configuration;
+using BLD.Configuration;
 
 public static class BIWUrlUtils
 {

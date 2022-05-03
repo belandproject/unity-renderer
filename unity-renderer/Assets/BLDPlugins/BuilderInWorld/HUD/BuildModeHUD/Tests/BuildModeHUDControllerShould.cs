@@ -1,9 +1,9 @@
-using DCL.Controllers;
+using BLD.Controllers;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;
 using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
 namespace Tests.BuildModeHUDControllers

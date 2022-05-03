@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using UnityEditor;
@@ -117,8 +117,8 @@ public class AvatarMeshCombinerUtilsCan
 
         SkinnedMeshRenderer CreateRendererWithWeights()
         {
-            Material mat = DCL.Helpers.Material.Create();
-            SkinnedMeshRenderer renderer = DCL.Helpers.SkinnedMeshRenderer.Create(mat);
+            Material mat = BLD.Helpers.Material.Create();
+            SkinnedMeshRenderer renderer = BLD.Helpers.SkinnedMeshRenderer.Create(mat);
 
             int vertexCount = renderer.sharedMesh.vertexCount;
             var boneWeights = new BoneWeight[vertexCount];
@@ -168,7 +168,7 @@ public class AvatarMeshCombinerUtilsCan
         Assert.That(assertCounter, Is.EqualTo(counter));
 
         layers.SelectMany( (x) => x.renderers ).ToList().ForEach(
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload
         );
     }
 
@@ -177,7 +177,7 @@ public class AvatarMeshCombinerUtilsCan
     {
         // Arrange
         // TODO(Brian): Construct layers manually
-        Material material = DCL.Helpers.Material.CreateOpaque();
+        Material material = BLD.Helpers.Material.CreateOpaque();
         var layers = GetMockedLayers(isOpaque: true);
 
         // Act
@@ -218,7 +218,7 @@ public class AvatarMeshCombinerUtilsCan
     {
         // Arrange
         // TODO(Brian): Construct layers manually
-        Material material = DCL.Helpers.Material.CreateTransparent();
+        Material material = BLD.Helpers.Material.CreateTransparent();
         var layers = GetMockedLayers(isOpaque: false);
 
         // Act
@@ -262,13 +262,13 @@ public class AvatarMeshCombinerUtilsCan
         layers.Add( new CombineLayer() );
         layers.Add( new CombineLayer() );
 
-        Material tmpMat = DCL.Helpers.Material.Create();
+        Material tmpMat = BLD.Helpers.Material.Create();
 
-        layers[0].renderers.Add(DCL.Helpers.SkinnedMeshRenderer.Create(tmpMat));
-        layers[0].renderers.Add(DCL.Helpers.SkinnedMeshRenderer.Create(tmpMat));
+        layers[0].renderers.Add(BLD.Helpers.SkinnedMeshRenderer.Create(tmpMat));
+        layers[0].renderers.Add(BLD.Helpers.SkinnedMeshRenderer.Create(tmpMat));
 
-        layers[1].renderers.Add(DCL.Helpers.SkinnedMeshRenderer.Create(tmpMat));
-        layers[1].renderers.Add(DCL.Helpers.SkinnedMeshRenderer.Create(tmpMat));
+        layers[1].renderers.Add(BLD.Helpers.SkinnedMeshRenderer.Create(tmpMat));
+        layers[1].renderers.Add(BLD.Helpers.SkinnedMeshRenderer.Create(tmpMat));
 
         // Act
         var result = AvatarMeshCombinerUtils.ComputeSubMeshes(layers);
@@ -311,9 +311,9 @@ public class AvatarMeshCombinerUtilsCan
         var emission1 = Texture2D.redTexture;
 
         if ( isOpaque )
-            material1 = DCL.Helpers.Material.CreateOpaque(CullMode.Back, albedo1, emission1);
+            material1 = BLD.Helpers.Material.CreateOpaque(CullMode.Back, albedo1, emission1);
         else
-            material1 = DCL.Helpers.Material.CreateTransparent(CullMode.Back, albedo1, emission1);
+            material1 = BLD.Helpers.Material.CreateTransparent(CullMode.Back, albedo1, emission1);
 
         material1.SetColor( ShaderUtils.BaseColor, Color.blue);
         material1.SetColor( ShaderUtils.EmissionColor, Color.yellow);
@@ -325,16 +325,16 @@ public class AvatarMeshCombinerUtilsCan
         var emission2 = Texture2D.redTexture;
 
         if ( isOpaque )
-            material2 = DCL.Helpers.Material.CreateOpaque(CullMode.Back, albedo2, emission2);
+            material2 = BLD.Helpers.Material.CreateOpaque(CullMode.Back, albedo2, emission2);
         else
-            material2 = DCL.Helpers.Material.CreateTransparent(CullMode.Back, albedo2, emission2);
+            material2 = BLD.Helpers.Material.CreateTransparent(CullMode.Back, albedo2, emission2);
 
         material2.SetColor( ShaderUtils.BaseColor, Color.red);
         material2.SetColor( ShaderUtils.EmissionColor, Color.white);
 
         // Layer setup
         //
-        layers[0].renderers = new List<SkinnedMeshRenderer>() { DCL.Helpers.SkinnedMeshRenderer.Create(material1) };
+        layers[0].renderers = new List<SkinnedMeshRenderer>() { BLD.Helpers.SkinnedMeshRenderer.Create(material1) };
         layers[0].textureToId = new Dictionary<Texture2D, int>()
         {
             { albedo1, 6 },
@@ -343,7 +343,7 @@ public class AvatarMeshCombinerUtilsCan
         layers[0].cullMode = CullMode.Back;
         layers[0].isOpaque = isOpaque;
 
-        layers[1].renderers = new List<SkinnedMeshRenderer>() { DCL.Helpers.SkinnedMeshRenderer.Create(material2) };
+        layers[1].renderers = new List<SkinnedMeshRenderer>() { BLD.Helpers.SkinnedMeshRenderer.Create(material2) };
         layers[1].textureToId = new Dictionary<Texture2D, int>()
         {
             { albedo2, 4 },

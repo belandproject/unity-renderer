@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Camera;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Camera;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Tests;
@@ -40,14 +40,14 @@ public class BIWGodCameraShould : IntegrationTestSuite_Legacy
         newEntity.Initialize(TestUtils.CreateSceneEntity(scene, entityId), null);
         newEntity.rootEntity.gameObject.transform.position = Vector3.one * 444;
 
-        TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+        TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
             new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb"
             }));
 
         LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-        yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded);
 
 
         //Act

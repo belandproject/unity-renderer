@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine.Assertions;
 
-namespace DCL
+namespace BLD
 {
     public interface IPooledObjectInstantiator
     {

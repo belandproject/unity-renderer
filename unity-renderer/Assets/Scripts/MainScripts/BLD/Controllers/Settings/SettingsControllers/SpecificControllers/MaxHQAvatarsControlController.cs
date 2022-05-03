@@ -1,8 +1,8 @@
-﻿using DCL;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+﻿using BLD;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Max HQ Avatars", fileName = "MaxHQAvatarsControlController")]
     public class MaxHQAvatarsControlController : SliderSettingsControlController

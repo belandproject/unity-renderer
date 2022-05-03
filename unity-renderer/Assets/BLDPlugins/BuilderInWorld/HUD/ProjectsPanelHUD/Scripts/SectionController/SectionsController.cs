@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal enum SectionId
     {

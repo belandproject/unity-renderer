@@ -1,6 +1,6 @@
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Our custom implementation of the UnityWebRequestTexture.

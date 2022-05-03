@@ -1,15 +1,15 @@
-﻿using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+﻿using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using DCL.Camera;
-using DCL.Controllers;
+using BLD.Camera;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -32,7 +32,7 @@ namespace Tests
 
         protected override ServiceLocator InitializeServiceLocator()
         {
-            ServiceLocator result = DCL.ServiceLocatorTestFactory.CreateMocked();
+            ServiceLocator result = BLD.ServiceLocatorTestFactory.CreateMocked();
             result.Register<IPointerEventsController>( () => new PointerEventsController());
             result.Register<IRuntimeComponentFactory>( () => new RuntimeComponentFactory());
             result.Register<IWorldState>( () => new WorldState());
@@ -56,7 +56,7 @@ namespace Tests
             mainCamera.transform.position = Vector3.zero;
             mainCamera.transform.forward = Vector3.forward;
 
-            DCL.Environment.i.world.state.currentSceneId = scene.sceneData.id;
+            BLD.Environment.i.world.state.currentSceneId = scene.sceneData.id;
         }
 
         protected override IEnumerator TearDown()
@@ -66,11 +66,11 @@ namespace Tests
             yield return base.TearDown();
         }
 
-        void InstantiateEntityWithShape(out IDCLEntity entity, out BoxShape shape)
+        void InstantiateEntityWithShape(out IBLDEntity entity, out BoxShape shape)
         {
             shape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out entity,
                 new BoxShape.Model() { });
@@ -79,7 +79,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnClickComponentInitializesWithBasicShape()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
 
@@ -108,7 +108,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerDownInitializesWithBasicShape()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
 
@@ -136,7 +136,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerUpComponentInitializesWithBasicShape()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
 
@@ -163,7 +163,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverEnterComponentInitializesWithBasicShape()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
 
@@ -190,7 +190,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverExitComponentInitializesWithBasicShape()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
 
@@ -225,14 +225,14 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -272,14 +272,14 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -317,14 +317,14 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -362,14 +362,14 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -406,14 +406,14 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -449,7 +449,7 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
@@ -466,7 +466,7 @@ namespace Tests
                 OnClickComponentModel, CLASS_ID_COMPONENT.UUID_CALLBACK);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -493,7 +493,7 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
@@ -509,7 +509,7 @@ namespace Tests
                 OnPointerDownModel, CLASS_ID_COMPONENT.UUID_CALLBACK);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -536,7 +536,7 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
@@ -553,7 +553,7 @@ namespace Tests
                 OnPointerUpModel, CLASS_ID_COMPONENT.UUID_CALLBACK);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -580,7 +580,7 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
@@ -596,7 +596,7 @@ namespace Tests
                 model, CLASS_ID_COMPONENT.UUID_CALLBACK);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -623,7 +623,7 @@ namespace Tests
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
@@ -639,7 +639,7 @@ namespace Tests
                 model, CLASS_ID_COMPONENT.UUID_CALLBACK);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
             Assert.IsTrue(
                 scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() != null,
@@ -682,7 +682,7 @@ namespace Tests
             Assert.IsTrue(component.gameObject.transform.Find(OnPointerEventColliders.COLLIDER_NAME) == null,
                 "the OnPointerEventCollider object shouldn't exist until a shape is added");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
                 JsonConvert.SerializeObject(new BoxShape.Model { })
             );
 
@@ -717,7 +717,7 @@ namespace Tests
             Assert.IsTrue(scene.entities[entityId].gameObject.transform.Find(OnPointerEventColliders.COLLIDER_NAME) == null,
                 "the OnPointerEventCollider object shouldn't exist until a shape is added");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
                 JsonConvert.SerializeObject(new BoxShape.Model { })
             );
 
@@ -754,7 +754,7 @@ namespace Tests
             Assert.IsTrue(scene.entities[entityId].gameObject.transform.Find(OnPointerEventColliders.COLLIDER_NAME) == null,
                 "the OnPointerEventCollider object shouldn't exist until a shape is added");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
                 JsonConvert.SerializeObject(new BoxShape.Model { })
             );
 
@@ -791,7 +791,7 @@ namespace Tests
             Assert.IsTrue(scene.entities[entityId].gameObject.transform.Find(OnPointerEventColliders.COLLIDER_NAME) == null,
                 "the OnPointerEventCollider object shouldn't exist until a shape is added");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
                 JsonConvert.SerializeObject(new BoxShape.Model { })
             );
 
@@ -828,7 +828,7 @@ namespace Tests
             Assert.IsTrue(scene.entities[entityId].gameObject.transform.Find(OnPointerEventColliders.COLLIDER_NAME) == null,
                 "the OnPointerEventCollider object shouldn't exist until a shape is added");
 
-            TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE,
                 JsonConvert.SerializeObject(new BoxShape.Model { })
             );
 
@@ -846,7 +846,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnClickEventIsTriggered()
         {
-            InstantiateEntityWithShape(out IDCLEntity entity, out BoxShape shape);
+            InstantiateEntityWithShape(out IBLDEntity entity, out BoxShape shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
 
             mainCamera.transform.position = new Vector3(3, 2, 12);
@@ -889,7 +889,7 @@ namespace Tests
                 () =>
                 {
                     InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (eventObj) =>
                 {
@@ -912,7 +912,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerDownEventIsTriggered()
         {
-            InstantiateEntityWithShape(out IDCLEntity entity, out BoxShape shape);
+            InstantiateEntityWithShape(out IBLDEntity entity, out BoxShape shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
 
             mainCamera.transform.position = new Vector3(3, 2, 12);
@@ -949,8 +949,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -976,7 +976,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerUpEventIsTriggered()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
@@ -1012,14 +1012,14 @@ namespace Tests
             sceneEvent.eventType = "uuidEvent";
             bool eventTriggered = false;
 
-            DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+            BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
 
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_UP, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_UP, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1043,7 +1043,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverEventIsTriggered()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
@@ -1150,7 +1150,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerUpEventNotTriggeredOnInvisibles()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
@@ -1186,14 +1186,14 @@ namespace Tests
             sceneEvent.eventType = "uuidEvent";
 
             bool eventTriggered1 = false;
-            DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+            BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
 
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_UP, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_UP, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1215,8 +1215,8 @@ namespace Tests
 
             // turn shape invisible
             TestUtils.UpdateShape(scene, shape.id, JsonConvert.SerializeObject(new { visible = false }));
-            DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+            BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
 
             var pointerUpReceived = false;
 
@@ -1246,7 +1246,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverEnterEventNotTriggeredOnInvisibles()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(9f, 1.5f, 11.0f), Quaternion.identity, new Vector3(5, 5, 5));
@@ -1334,14 +1334,14 @@ namespace Tests
         public IEnumerator OnPointerDownEventWhenEntityIsBehindOther()
         {
             // Create blocking entity
-            IDCLEntity blockingEntity;
+            IBLDEntity blockingEntity;
             BoxShape blockingShape;
             InstantiateEntityWithShape(out blockingEntity, out blockingShape);
             TestUtils.SetEntityTransform(scene, blockingEntity, new Vector3(3, 3, 3), Quaternion.identity, new Vector3(1, 1, 1));
             yield return blockingShape.routine;
 
             // Create target entity for click
-            IDCLEntity clickTargetEntity;
+            IBLDEntity clickTargetEntity;
             BoxShape clickTargetShape;
             InstantiateEntityWithShape(out clickTargetEntity, out clickTargetShape);
             TestUtils.SetEntityTransform(scene, clickTargetEntity, new Vector3(3, 3, 5), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1381,8 +1381,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1410,8 +1410,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1433,14 +1433,14 @@ namespace Tests
         public IEnumerator OnPointerHoverEnterEventWhenEntityIsBehindOther()
         {
             // Create blocking entity
-            IDCLEntity blockingEntity;
+            IBLDEntity blockingEntity;
             BoxShape blockingShape;
             InstantiateEntityWithShape(out blockingEntity, out blockingShape);
             TestUtils.SetEntityTransform(scene, blockingEntity, new Vector3(3, 3, 3), Quaternion.identity, new Vector3(1, 1, 1));
             yield return blockingShape.routine;
 
             // Create target entity for hover
-            IDCLEntity hoverTargetEntity;
+            IBLDEntity hoverTargetEntity;
             BoxShape hoverTargetShape;
             InstantiateEntityWithShape(out hoverTargetEntity, out hoverTargetShape);
             TestUtils.SetEntityTransform(scene, hoverTargetEntity, new Vector3(3, 3, 5), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1526,7 +1526,7 @@ namespace Tests
         public IEnumerator OnPointerDownEventAndPointerBlockerShape()
         {
             // Create blocking entity
-            IDCLEntity blockingEntity;
+            IBLDEntity blockingEntity;
             BoxShape blockingShape;
             InstantiateEntityWithShape(out blockingEntity, out blockingShape);
             TestUtils.SetEntityTransform(scene, blockingEntity, new Vector3(3, 3, 3), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1534,7 +1534,7 @@ namespace Tests
             yield return blockingShape.routine;
 
             // Create target entity for click
-            IDCLEntity clickTargetEntity;
+            IBLDEntity clickTargetEntity;
             BoxShape clickTargetShape;
             InstantiateEntityWithShape(out clickTargetEntity, out clickTargetShape);
             TestUtils.SetEntityTransform(scene, clickTargetEntity, new Vector3(3, 3, 5), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1582,8 +1582,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1610,8 +1610,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1636,7 +1636,7 @@ namespace Tests
         public IEnumerator OnPointerHoverEnterEventAndPointerBlockerShape()
         {
             // Create blocking entity
-            IDCLEntity blockingEntity;
+            IBLDEntity blockingEntity;
             BoxShape blockingShape;
             InstantiateEntityWithShape(out blockingEntity, out blockingShape);
             TestUtils.SetEntityTransform(scene, blockingEntity, new Vector3(3, 3, 3), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1644,7 +1644,7 @@ namespace Tests
             yield return blockingShape.routine;
 
             // Create target entity for hover
-            InstantiateEntityWithShape(out IDCLEntity hoverTargetEntity, out BoxShape hoverTargetShape);
+            InstantiateEntityWithShape(out IBLDEntity hoverTargetEntity, out BoxShape hoverTargetShape);
             TestUtils.SetEntityTransform(scene, hoverTargetEntity, new Vector3(3, 3, 5), Quaternion.identity, new Vector3(1, 1, 1));
 
             yield return hoverTargetShape.routine;
@@ -1733,12 +1733,12 @@ namespace Tests
         public IEnumerator PointerEventNotTriggeredByParent()
         {
             // Create parent entity
-            InstantiateEntityWithShape(out IDCLEntity blockingEntity, out BoxShape blockingShape);
+            InstantiateEntityWithShape(out IBLDEntity blockingEntity, out BoxShape blockingShape);
             TestUtils.SetEntityTransform(scene, blockingEntity, new Vector3(3, 3, 3), Quaternion.identity, new Vector3(1, 1, 1));
             yield return blockingShape.routine;
 
             // Create target entity for click
-            IDCLEntity clickTargetEntity;
+            IBLDEntity clickTargetEntity;
             BoxShape clickTargetShape;
             InstantiateEntityWithShape(out clickTargetEntity, out clickTargetShape);
             TestUtils.SetEntityTransform(scene, clickTargetEntity, new Vector3(0, 0, 5), Quaternion.identity, new Vector3(1, 1, 1));
@@ -1783,8 +1783,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1811,8 +1811,8 @@ namespace Tests
             yield return TestUtils.ExpectMessageToKernel(targetEventType, sceneEvent,
                 () =>
                 {
-                    DCL.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
-                        DCL.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
+                    BLD.InputController_Legacy.i.RaiseEvent(WebInterface.ACTION_BUTTON.POINTER,
+                        BLD.InputController_Legacy.EVENT.BUTTON_DOWN, true, true);
                 },
                 (pointerEvent) =>
                 {
@@ -1833,7 +1833,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverFeedbackPropertiesAreAppliedCorrectly()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(8, 2, 10), Quaternion.identity, new Vector3(3, 3, 3));
@@ -1881,7 +1881,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverDistanceIsAppliedCorrectly()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
             InstantiateEntityWithShape(out entity, out shape);
             TestUtils.SetEntityTransform(scene, entity, new Vector3(8, 2, 10), Quaternion.identity, new Vector3(3, 3, 3));

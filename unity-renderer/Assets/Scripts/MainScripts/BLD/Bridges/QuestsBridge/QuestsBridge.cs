@@ -1,7 +1,7 @@
-﻿using DCL.QuestsController;
+﻿using BLD.QuestsController;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
 public class QuestsBridge : MonoBehaviour
 {

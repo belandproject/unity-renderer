@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Components;
+using BLD.Components;
 
-namespace DCL
+namespace BLD
 {
     public interface IRuntimeComponentFactory : IService
     {

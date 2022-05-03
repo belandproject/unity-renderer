@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class StickersController : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace DCL
                 return;
 
             // TODO(Brian): Mock this system properly through our service locators or plugin system
-            if (DCL.Configuration.EnvironmentSettings.RUNNING_TESTS)
+            if (BLD.Configuration.EnvironmentSettings.RUNNING_TESTS)
                 return;
 
             GameObject emoteGameObject = Instantiate(prefab);

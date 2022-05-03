@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 using Ray = UnityEngine.Ray;
 
@@ -9,7 +9,7 @@ using Ray = UnityEngine.Ray;
 using System.Runtime.InteropServices;
 #endif
 
-namespace DCL.Interface
+namespace BLD.Interface
 {
     /**
      * This class contains the outgoing interface of Decentraland.

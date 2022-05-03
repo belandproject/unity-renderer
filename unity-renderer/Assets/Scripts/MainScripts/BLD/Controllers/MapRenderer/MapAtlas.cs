@@ -1,8 +1,8 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class MapAtlas : MonoBehaviour
     {

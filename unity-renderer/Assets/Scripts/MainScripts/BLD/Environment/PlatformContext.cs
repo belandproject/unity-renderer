@@ -1,7 +1,7 @@
-using DCL.Bots;
-using DCL.Rendering;
+using BLD.Bots;
+using BLD.Rendering;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Context related to specific platform handling.

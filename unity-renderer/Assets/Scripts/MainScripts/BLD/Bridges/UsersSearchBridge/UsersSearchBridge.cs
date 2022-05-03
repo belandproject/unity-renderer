@@ -1,5 +1,5 @@
 ﻿using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
 public delegate void OnSearchResultDelegate (string searchInput, UserProfileModel[] profiles);

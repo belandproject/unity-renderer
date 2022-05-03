@@ -100,7 +100,7 @@ public class RealmSelectorComponentViewTests
         realmSelectorComponent.Show();
 
         // Act
-        realmSelectorComponent.OnCloseActionTriggered(new DCLAction_Trigger());
+        realmSelectorComponent.OnCloseActionTriggered(new BLDAction_Trigger());
 
         // Assert
         Assert.IsFalse(realmSelectorComponent.isVisible);

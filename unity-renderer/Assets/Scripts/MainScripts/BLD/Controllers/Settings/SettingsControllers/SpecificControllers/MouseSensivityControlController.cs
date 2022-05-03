@@ -1,8 +1,8 @@
 using Cinemachine;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Mouse Sensitivity", fileName = "MouseSensitivityControlController")]
     public class MouseSensivityControlController : SliderSettingsControlController

@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.Models
+namespace BLD.Models
 {
     public static class MeshesInfoUtils
     {

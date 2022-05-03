@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Models;
+using BLD.Models;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL
+namespace BLD
 {
     public static class DataStore_WorldObjects_Extensions
     {

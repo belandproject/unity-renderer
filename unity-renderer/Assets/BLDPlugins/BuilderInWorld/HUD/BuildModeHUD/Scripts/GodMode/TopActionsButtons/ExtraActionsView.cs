@@ -11,12 +11,12 @@ public interface IExtraActionsView
                  OnResetClicked,
                  OnResetCameraClicked;
 
-    void OnControlsClick(DCLAction_Trigger action);
-    void OnHideUIClick(DCLAction_Trigger action);
+    void OnControlsClick(BLDAction_Trigger action);
+    void OnHideUIClick(BLDAction_Trigger action);
     void OnTutorialClick();
     void SetActive(bool isActive);
-    void OnResetClick(DCLAction_Trigger action);
-    void OnResetCameraClick(DCLAction_Trigger action);
+    void OnResetClick(BLDAction_Trigger action);
+    void OnResetCameraClick(BLDAction_Trigger action);
     void SetResetButtonInteractable(bool isInteractable);
 }
 
@@ -45,7 +45,7 @@ public class ExtraActionsView : MonoBehaviour, IExtraActionsView
     [Header("Other Configurations")]
     [SerializeField] internal Color disabledButtonTextColor;
 
-    private DCLAction_Trigger dummyActionTrigger = new DCLAction_Trigger();
+    private BLDAction_Trigger dummyActionTrigger = new BLDAction_Trigger();
     private Color originalResetBtnColor;
 
     private const string VIEW_PATH = "GodMode/TopActionsButtons/ExtraActionsView";
@@ -95,15 +95,15 @@ public class ExtraActionsView : MonoBehaviour, IExtraActionsView
             gameObject.SetActive(isActive);
     }
 
-    public void OnControlsClick(DCLAction_Trigger action) { OnControlsClicked?.Invoke(); }
+    public void OnControlsClick(BLDAction_Trigger action) { OnControlsClicked?.Invoke(); }
 
-    public void OnHideUIClick(DCLAction_Trigger action) { OnHideUIClicked?.Invoke(); }
+    public void OnHideUIClick(BLDAction_Trigger action) { OnHideUIClicked?.Invoke(); }
 
     public void OnTutorialClick() { OnTutorialClicked?.Invoke(); }
 
-    public void OnResetClick(DCLAction_Trigger action) { OnResetClicked?.Invoke(); }
+    public void OnResetClick(BLDAction_Trigger action) { OnResetClicked?.Invoke(); }
 
-    public void OnResetCameraClick(DCLAction_Trigger action) { OnResetCameraClicked?.Invoke(); }
+    public void OnResetCameraClick(BLDAction_Trigger action) { OnResetCameraClicked?.Invoke(); }
 
     public void SetResetButtonInteractable(bool isInteractable)
     {

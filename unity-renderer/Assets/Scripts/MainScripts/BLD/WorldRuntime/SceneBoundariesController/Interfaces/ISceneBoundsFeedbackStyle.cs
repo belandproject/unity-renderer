@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using DCL.Models;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public interface ISceneBoundsFeedbackStyle
     {
         void CleanFeedback();
-        void ApplyFeedback(DCL.Models.MeshesInfo meshesInfo, bool isInsideBoundaries);
-        List<Material> GetOriginalMaterials(DCL.Models.MeshesInfo meshesInfo);
+        void ApplyFeedback(BLD.Models.MeshesInfo meshesInfo, bool isInsideBoundaries);
+        List<Material> GetOriginalMaterials(BLD.Models.MeshesInfo meshesInfo);
     }
 }

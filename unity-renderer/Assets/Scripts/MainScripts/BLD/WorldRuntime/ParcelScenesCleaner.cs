@@ -1,11 +1,11 @@
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public class ParcelScenesCleaner : IParcelScenesCleaner
     {
@@ -14,9 +14,9 @@ namespace DCL
         private struct MarkedEntityInfo
         {
             public ParcelScene scene;
-            public IDCLEntity entity;
+            public IBLDEntity entity;
 
-            public MarkedEntityInfo(ParcelScene scene, IDCLEntity entity)
+            public MarkedEntityInfo(ParcelScene scene, IBLDEntity entity)
             {
                 this.scene = scene;
                 this.entity = entity;
@@ -35,7 +35,7 @@ namespace DCL
             }
         }
 
-        Queue<IDCLEntity> entitiesMarkedForCleanup = new Queue<IDCLEntity>();
+        Queue<IBLDEntity> entitiesMarkedForCleanup = new Queue<IBLDEntity>();
         Queue<MarkedEntityInfo> rootEntitiesMarkedForCleanup = new Queue<MarkedEntityInfo>();
         Queue<MarkedSharedComponentInfo> disposableComponentsMarkedForCleanup = new Queue<MarkedSharedComponentInfo>();
 
@@ -56,7 +56,7 @@ namespace DCL
             }
         }
 
-        public void MarkForCleanup(IDCLEntity entity)
+        public void MarkForCleanup(IBLDEntity entity)
         {
             if (entity.markedForCleanup)
                 return;
@@ -76,7 +76,7 @@ namespace DCL
 
         // When removing all entities from a scene, we need to separate the root entities, as stated in ParcelScene,
         // to avoid traversing a lot of child entities in the same frame and other problems
-        public void MarkRootEntityForCleanup(IParcelScene scene, IDCLEntity entity) { rootEntitiesMarkedForCleanup.Enqueue(new MarkedEntityInfo((ParcelScene)scene, entity)); }
+        public void MarkRootEntityForCleanup(IParcelScene scene, IBLDEntity entity) { rootEntitiesMarkedForCleanup.Enqueue(new MarkedEntityInfo((ParcelScene)scene, entity)); }
 
         public void MarkDisposableComponentForCleanup(IParcelScene scene, string componentId) { disposableComponentsMarkedForCleanup.Enqueue(new MarkedSharedComponentInfo((ParcelScene)scene, componentId)); }
 
@@ -94,7 +94,7 @@ namespace DCL
                 MarkedSharedComponentInfo markedSharedComponentInfo = disposableComponentsMarkedForCleanup.Dequeue();
                 markedSharedComponentInfo.scene.SharedComponentDispose(markedSharedComponentInfo.componentId);
 
-                if (DCLTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET && !immediate)
+                if (BLDTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET && !immediate)
                 {
                     yield return null;
                     lastTime = Time.unscaledTime;
@@ -113,7 +113,7 @@ namespace DCL
                 if (!scenesToRemove.Contains(markedEntityInfo.scene))
                     scenesToRemove.Add(markedEntityInfo.scene);
 
-                if (!immediate && DCLTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
+                if (!immediate && BLDTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
                 {
                     yield return null;
                     lastTime = Time.unscaledTime;
@@ -122,11 +122,11 @@ namespace DCL
 
             while (entitiesMarkedForCleanup.Count > 0)
             {
-                IDCLEntity entity = entitiesMarkedForCleanup.Dequeue();
+                IBLDEntity entity = entitiesMarkedForCleanup.Dequeue();
                 entity.SetParent(null);
                 entity.Cleanup();
 
-                if (!immediate && DCLTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
+                if (!immediate && BLDTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
                 {
                     yield return null;
                     lastTime = Time.unscaledTime;
@@ -138,7 +138,7 @@ namespace DCL
                 if (scene != null && !Environment.i.world.state.loadedScenes.ContainsKey(scene.sceneData.id))
                     Object.Destroy(scene.gameObject);
 
-                if (!immediate && DCLTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
+                if (!immediate && BLDTime.realtimeSinceStartup - lastTime >= MAX_TIME_BUDGET)
                 {
                     yield return null;
                     lastTime = Time.unscaledTime;

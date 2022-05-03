@@ -1,10 +1,10 @@
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.TestTools;
-using DCL.NotificationModel;
+using BLD.NotificationModel;
 
 namespace Tests
 {
@@ -116,7 +116,7 @@ namespace Tests
             Assert.AreEqual(notifications.Length, 1);
             Assert.AreEqual(controller.model.notifications.Count, 1);
 
-            yield return new DCL.WaitUntil(() => notifications.Length == 0, 0.75f);
+            yield return new BLD.WaitUntil(() => notifications.Length == 0, 0.75f);
 
             notifications = Object.FindObjectsOfType<Notification>();
             Assert.AreEqual(notifications.Length, 0);

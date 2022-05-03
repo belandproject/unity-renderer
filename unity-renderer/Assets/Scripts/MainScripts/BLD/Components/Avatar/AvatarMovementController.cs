@@ -1,9 +1,9 @@
 ﻿using AvatarSystem;
-using DCL.Components;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     [RequireComponent(typeof(AvatarShape))]
     public class AvatarMovementController : MonoBehaviour, IPoolLifecycleHandler, IAvatarMovementController
@@ -66,13 +66,13 @@ namespace DCL
 
         public void OnTransformChanged(object model)
         {
-            DCLTransform.Model transformModel = (DCLTransform.Model)model;
+            BLDTransform.Model transformModel = (BLDTransform.Model)model;
             OnTransformChanged(transformModel.position, transformModel.rotation, false);
         }
         
         public void OnTransformChanged(in Vector3 position, in Quaternion rotation, bool inmediate)
         {
-            var offsetPosition = new Vector3(0, DCLCharacterController.i.characterController.height * 0.5f, 0);
+            var offsetPosition = new Vector3(0, BLDCharacterController.i.characterController.height * 0.5f, 0);
             MoveTo(
                 position - offsetPosition, // To fix the "always flying" avatars issue, We report the chara's centered position but the body hast its pivot at its feet
                 rotation,

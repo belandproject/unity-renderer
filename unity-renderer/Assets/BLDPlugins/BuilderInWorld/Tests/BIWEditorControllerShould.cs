@@ -1,8 +1,8 @@
 using System.Collections;
-using DCL;
-using DCL.Builder;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Builder;
+using BLD.Controllers;
+using BLD.Helpers;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -155,7 +155,7 @@ public class BIWEditorControllerShould : IntegrationTestSuite_Legacy
 
     protected override IEnumerator TearDown()
     {
-        yield return new DCL.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
+        yield return new BLD.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
 
         DataStore.i.builderInWorld.catalogItemDict.Clear();
 

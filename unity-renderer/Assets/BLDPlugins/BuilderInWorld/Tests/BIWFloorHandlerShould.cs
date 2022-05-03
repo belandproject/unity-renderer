@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Builder;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityGLTF;
@@ -114,7 +114,7 @@ public class BIWFloorHandlerShould : IntegrationTestSuite_Legacy
 
     protected override IEnumerator TearDown()
     {
-        yield return new DCL.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
+        yield return new BLD.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
 
         Object.Destroy(assetCatalogBridge);
         BIWCatalogManager.ClearCatalog();
