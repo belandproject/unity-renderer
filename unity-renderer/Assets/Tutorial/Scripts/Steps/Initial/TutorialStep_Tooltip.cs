@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents one of the tooltip steps included in the onboarding tutorial.

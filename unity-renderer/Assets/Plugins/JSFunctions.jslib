@@ -4,17 +4,17 @@
 
 mergeInto(LibraryManager.library, {
   StartDecentraland: function() {
-    window.DCL.JSEvents = JSEvents
-    window.DCL.EngineStarted();
+    window.BLD.JSEvents = JSEvents
+    window.BLD.EngineStarted();
 
     // We expose the GL object to be able to generate WebGL textures in kernel and use them in Unity
-    window.DCL.GL = GL;
+    window.BLD.GL = GL;
     
     // Cache query string to be consulted later
-    window.DCL.queryString = new URLSearchParams(window.location.search);
+    window.BLD.queryString = new URLSearchParams(window.location.search);
   },
   MessageFromEngine: function(type, message) {
-    window.DCL.MessageFromEngine(Pointer_stringify(type), Pointer_stringify(message));
+    window.BLD.MessageFromEngine(Pointer_stringify(type), Pointer_stringify(message));
   },
   GetGraphicCard: function() {
     const glcontext = GL.currentContext.GLctx;
@@ -31,7 +31,7 @@ mergeInto(LibraryManager.library, {
     window.capFPS = useFPSCap;
   },
   CheckURLParam: function(targetParam) {    
-    return window.DCL.queryString.has(Pointer_stringify(targetParam))
+    return window.BLD.queryString.has(Pointer_stringify(targetParam))
   }
 });
 

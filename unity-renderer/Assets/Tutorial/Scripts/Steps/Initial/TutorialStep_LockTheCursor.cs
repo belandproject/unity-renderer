@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to how to lock/unlock the cursor.

@@ -1,9 +1,9 @@
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using Newtonsoft.Json;
 using System.Collections;
 using UnityEngine;
@@ -22,14 +22,14 @@ public class InteractiveObjectsHoverTestSceneController : MonoBehaviour
 
         var entity = TestUtils.CreateSceneEntity(scene, entityId);
 
-        string shapeId = TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+        string shapeId = TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
             JsonConvert.SerializeObject(new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb"
             }));
 
         LoadWrapper_GLTF gltfShape = GLTFShape.GetLoaderForEntity(entity) as LoadWrapper_GLTF;
-        yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
+        yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded, 7f);
 
         TestUtils.SetEntityTransform(scene, entity, new Vector3(8, -1, 8), Quaternion.identity, new Vector3(0.5f, 0.5f, 0.5f));
 
@@ -48,7 +48,7 @@ public class InteractiveObjectsHoverTestSceneController : MonoBehaviour
 
     protected virtual IEnumerator InitScene()
     {
-        DCL.Configuration.EnvironmentSettings.DEBUG = true;
+        BLD.Configuration.EnvironmentSettings.DEBUG = true;
         DataStore.i.debugConfig.isDebugMode.Set(true);
 
         yield return new WaitForSeconds(0.01f);

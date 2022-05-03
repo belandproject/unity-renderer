@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public interface IBenchmarkController
     {
@@ -254,7 +254,7 @@ namespace DCL
                 s = msgBeingProcessed;
             }
 
-            decodeTimeTracker[stringToRow[s]] = DCLTime.realtimeSinceStartup;
+            decodeTimeTracker[stringToRow[s]] = BLDTime.realtimeSinceStartup;
         }
 
         private void OnMessageDecodeEnds(string s)
@@ -269,7 +269,7 @@ namespace DCL
                 s = msgBeingProcessed;
             }
 
-            float dt = DCLTime.realtimeSinceStartup - decodeTimeTracker[stringToRow[s]];
+            float dt = BLDTime.realtimeSinceStartup - decodeTimeTracker[stringToRow[s]];
 
             AvgTrackedValue(Columns.DECODE_MS, stringToRow[s], dt * 1000);
         }
@@ -299,7 +299,7 @@ namespace DCL
 
             statsPanel.SetCellText((int) Columns.TOTAL_TIME, (int) stringToRow[s], totalSecs.ToString("N2", CultureInfo.InvariantCulture) + "secs");
 
-            float dt = DCLTime.realtimeSinceStartup - processTimeTracker[stringToRow[s]];
+            float dt = BLDTime.realtimeSinceStartup - processTimeTracker[stringToRow[s]];
 
             //NOTE(Brian): Hack because I expect decode events to be called inside process events,
             //             with the exception of scene load one.
@@ -334,7 +334,7 @@ namespace DCL
             }
 
             msgBeingProcessed = s;
-            processTimeTracker[stringToRow[s]] = DCLTime.realtimeSinceStartup;
+            processTimeTracker[stringToRow[s]] = BLDTime.realtimeSinceStartup;
         }
 
         void SumTrackedValue(Columns x, Rows y, int delta)

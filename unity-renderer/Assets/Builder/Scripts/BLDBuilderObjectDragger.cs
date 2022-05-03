@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Builder
 {
-    public class DCLBuilderObjectDragger : MonoBehaviour
+    public class BLDBuilderObjectDragger : MonoBehaviour
     {
-        public DCLBuilderRaycast builderRaycast;
+        public BLDBuilderRaycast builderRaycast;
 
         public static event Action OnDraggingObjectStart;
         public static event Action OnDraggingObject;
@@ -26,11 +26,11 @@ namespace Builder
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderObjectSelector.OnSelectedObjectListChanged += OnSelectedObjectListChanged;
-                DCLBuilderObjectSelector.OnEntityPressed += OnEntityPressed;
-                DCLBuilderInput.OnMouseDrag += OnMouseDrag;
-                DCLBuilderInput.OnMouseUp += OnMouseUp;
-                DCLBuilderBridge.OnSetGridResolution += OnSetGridResolution;
+                BLDBuilderObjectSelector.OnSelectedObjectListChanged += OnSelectedObjectListChanged;
+                BLDBuilderObjectSelector.OnEntityPressed += OnEntityPressed;
+                BLDBuilderInput.OnMouseDrag += OnMouseDrag;
+                BLDBuilderInput.OnMouseUp += OnMouseUp;
+                BLDBuilderBridge.OnSetGridResolution += OnSetGridResolution;
             }
             isGameObjectActive = true;
         }
@@ -38,11 +38,11 @@ namespace Builder
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderObjectSelector.OnSelectedObjectListChanged -= OnSelectedObjectListChanged;
-            DCLBuilderObjectSelector.OnEntityPressed -= OnEntityPressed;
-            DCLBuilderInput.OnMouseDrag -= OnMouseDrag;
-            DCLBuilderInput.OnMouseUp -= OnMouseUp;
-            DCLBuilderBridge.OnSetGridResolution -= OnSetGridResolution;
+            BLDBuilderObjectSelector.OnSelectedObjectListChanged -= OnSelectedObjectListChanged;
+            BLDBuilderObjectSelector.OnEntityPressed -= OnEntityPressed;
+            BLDBuilderInput.OnMouseDrag -= OnMouseDrag;
+            BLDBuilderInput.OnMouseUp -= OnMouseUp;
+            BLDBuilderBridge.OnSetGridResolution -= OnSetGridResolution;
         }
 
         private void OnSelectedObjectListChanged(Transform selectionParent, List<EditableEntity> selectedEntities)
@@ -55,7 +55,7 @@ namespace Builder
             }
         }
 
-        private void OnEntityPressed(DCLBuilderEntity entity, Vector3 hitPoint)
+        private void OnEntityPressed(BLDBuilderEntity entity, Vector3 hitPoint)
         {
             if (selectedEntities == null || !selectedEntities.Contains(entity))
             {

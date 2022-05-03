@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     public class SkyboxEditorWindow : EditorWindow
     {

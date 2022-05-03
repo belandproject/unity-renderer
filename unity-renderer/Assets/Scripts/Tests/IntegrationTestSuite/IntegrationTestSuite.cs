@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using DCL;
+using BLD;
 using NSubstitute;
 using NSubstitute.ClearExtensions;
 using UnityEngine.TestTools;
@@ -16,12 +16,12 @@ namespace Tests
         protected virtual IEnumerator SetUp()
         {
             CommonScriptableObjects.rendererState.Set(true);
-            DCL.Configuration.EnvironmentSettings.RUNNING_TESTS = true;
-            DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+            BLD.Configuration.EnvironmentSettings.RUNNING_TESTS = true;
+            BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
             AssetPromiseKeeper_GLTF.i.throttlingCounter.enabled = false;
             PoolManager.enablePrewarm = false;
 
-            ServiceLocator serviceLocator = DCL.ServiceLocatorTestFactory.CreateMocked();
+            ServiceLocator serviceLocator = BLD.ServiceLocatorTestFactory.CreateMocked();
             InitializeServices(serviceLocator);
             Environment.Setup(serviceLocator);
             yield break;

@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
 namespace Builder
 {
-    public class DCLBuilderSelectionCollider : MonoBehaviour
+    public class BLDBuilderSelectionCollider : MonoBehaviour
     {
         public const string LAYER_BUILDER_POINTER_CLICK = "OnBuilderPointerClick";
 
-        public DCLBuilderEntity ownerEntity { get; private set; }
+        public BLDBuilderEntity ownerEntity { get; private set; }
 
         private Mesh meshColliderForSkinnedMesh = null;
 
-        public void Initialize(DCLBuilderEntity builderEntity, Renderer renderer)
+        public void Initialize(BLDBuilderEntity builderEntity, Renderer renderer)
         {
             if (renderer == null)
                 return;

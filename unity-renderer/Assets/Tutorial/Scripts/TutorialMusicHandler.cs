@@ -49,7 +49,7 @@ public class TutorialMusicHandler : MonoBehaviour
 
     void TryPlayingMusic()
     {
-        if (DCL.Tutorial.TutorialController.i.userAlreadyDidTheTutorial)
+        if (BLD.Tutorial.TutorialController.i.userAlreadyDidTheTutorial)
             return;
 
         if (rendererIsReady && tutorialHasBeenEnabled && !tutorialMusic.source.isPlaying)

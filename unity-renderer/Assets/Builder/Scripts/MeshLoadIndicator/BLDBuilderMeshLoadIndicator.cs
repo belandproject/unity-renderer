@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Builder.MeshLoadIndicator
 {
-    public class DCLBuilderMeshLoadIndicator : MonoBehaviour
+    public class BLDBuilderMeshLoadIndicator : MonoBehaviour
     {
         [SerializeField] private Camera builderCamera = null;
 

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Builder.MeshLoadIndicator
 {
-    public class DCLBuilderMeshLoadIndicatorController : MonoBehaviour
+    public class BLDBuilderMeshLoadIndicatorController : MonoBehaviour
     {
-        public DCLBuilderMeshLoadIndicator indicator => baseIndicator;
+        public BLDBuilderMeshLoadIndicator indicator => baseIndicator;
 
-        [SerializeField] private DCLBuilderMeshLoadIndicator baseIndicator = null;
+        [SerializeField] private BLDBuilderMeshLoadIndicator baseIndicator = null;
 
-        private Queue<DCLBuilderMeshLoadIndicator> indicatorsAvailable;
-        private List<DCLBuilderMeshLoadIndicator> indicatorsInUse;
+        private Queue<BLDBuilderMeshLoadIndicator> indicatorsAvailable;
+        private List<BLDBuilderMeshLoadIndicator> indicatorsInUse;
 
         private bool isGameObjectActive = false;
         private bool isPreviewMode = false;
@@ -21,10 +21,10 @@ namespace Builder.MeshLoadIndicator
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderEntity.OnEntityAddedWithTransform += OnEntityAdded;
-                DCLBuilderEntity.OnEntityShapeUpdated += OnShapeUpdated;
-                DCLBuilderBridge.OnResetBuilderScene += OnResetBuilderScene;
-                DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+                BLDBuilderEntity.OnEntityAddedWithTransform += OnEntityAdded;
+                BLDBuilderEntity.OnEntityShapeUpdated += OnShapeUpdated;
+                BLDBuilderBridge.OnResetBuilderScene += OnResetBuilderScene;
+                BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
             }
             isGameObjectActive = true;
         }
@@ -32,16 +32,16 @@ namespace Builder.MeshLoadIndicator
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderEntity.OnEntityAddedWithTransform -= OnEntityAdded;
-            DCLBuilderEntity.OnEntityShapeUpdated -= OnShapeUpdated;
-            DCLBuilderBridge.OnResetBuilderScene -= OnResetBuilderScene;
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderEntity.OnEntityAddedWithTransform -= OnEntityAdded;
+            BLDBuilderEntity.OnEntityShapeUpdated -= OnShapeUpdated;
+            BLDBuilderBridge.OnResetBuilderScene -= OnResetBuilderScene;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
         }
 
         public void Init()
         {
-            indicatorsAvailable = new Queue<DCLBuilderMeshLoadIndicator>();
-            indicatorsInUse = new List<DCLBuilderMeshLoadIndicator>();
+            indicatorsAvailable = new Queue<BLDBuilderMeshLoadIndicator>();
+            indicatorsInUse = new List<BLDBuilderMeshLoadIndicator>();
         }
 
         public void Dispose()
@@ -49,18 +49,18 @@ namespace Builder.MeshLoadIndicator
             if (indicatorsAvailable == null || indicatorsInUse == null)
                 return;
 
-            foreach (DCLBuilderMeshLoadIndicator indicator in indicatorsAvailable)
+            foreach (BLDBuilderMeshLoadIndicator indicator in indicatorsAvailable)
             {
                 Destroy(indicator.gameObject);
             }
 
-            foreach (DCLBuilderMeshLoadIndicator indicator in indicatorsInUse)
+            foreach (BLDBuilderMeshLoadIndicator indicator in indicatorsInUse)
             {
                 Destroy(indicator.gameObject);
             }
         }
 
-        private void OnEntityAdded(DCLBuilderEntity entity)
+        private void OnEntityAdded(BLDBuilderEntity entity)
         {
             if (!entity.HasShape() && !isPreviewMode)
             {
@@ -68,7 +68,7 @@ namespace Builder.MeshLoadIndicator
             }
         }
 
-        private void OnShapeUpdated(DCLBuilderEntity entity)
+        private void OnShapeUpdated(BLDBuilderEntity entity)
         {
             if (!isPreviewMode)
             {
@@ -87,9 +87,9 @@ namespace Builder.MeshLoadIndicator
             }
         }
 
-        public DCLBuilderMeshLoadIndicator ShowIndicator(Vector3 position, string entityId)
+        public BLDBuilderMeshLoadIndicator ShowIndicator(Vector3 position, string entityId)
         {
-            DCLBuilderMeshLoadIndicator ret;
+            BLDBuilderMeshLoadIndicator ret;
 
             if (indicatorsAvailable == null)
                 return null;

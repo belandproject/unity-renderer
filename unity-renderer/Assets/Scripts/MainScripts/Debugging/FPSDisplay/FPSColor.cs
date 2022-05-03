@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DCL.FPSDisplay
+namespace BLD.FPSDisplay
 {
     [System.Serializable]
     public struct FPSColor

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents one of the steps included in the onboarding tutorial.
@@ -130,7 +130,7 @@ namespace DCL.Tutorial
             }
         }
 
-        private void YesSkipInputAction_OnFinished(DCLAction_Hold action)
+        private void YesSkipInputAction_OnFinished(BLDAction_Hold action)
         {
             if (skipTutorialSection.activeSelf)
             {
@@ -138,7 +138,7 @@ namespace DCL.Tutorial
             }
         }
 
-        internal void NoSkipInputAction_OnFinished(DCLAction_Hold action)
+        internal void NoSkipInputAction_OnFinished(BLDAction_Hold action)
         {
             if (blockSkipActions)
                 return;

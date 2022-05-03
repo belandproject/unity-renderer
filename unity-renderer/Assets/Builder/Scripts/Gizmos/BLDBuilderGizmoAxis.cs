@@ -3,7 +3,7 @@ using System;
 
 namespace Builder.Gizmos
 {
-    public class DCLBuilderGizmoAxis : MonoBehaviour
+    public class BLDBuilderGizmoAxis : MonoBehaviour
     {
         public Color defaultColor;
         public Color highLightColor;
@@ -14,11 +14,11 @@ namespace Builder.Gizmos
         static int colorPropertyID;
         static bool isColorPropertyIdSet = false;
 
-        private DCLBuilderGizmo gizmo = null;
+        private BLDBuilderGizmo gizmo = null;
 
-        public void SetGizmo(DCLBuilderGizmo parentGizmo) { gizmo = parentGizmo; }
+        public void SetGizmo(BLDBuilderGizmo parentGizmo) { gizmo = parentGizmo; }
 
-        public DCLBuilderGizmo GetGizmo() { return gizmo; }
+        public BLDBuilderGizmo GetGizmo() { return gizmo; }
 
         public void SetColorHighlight()
         {

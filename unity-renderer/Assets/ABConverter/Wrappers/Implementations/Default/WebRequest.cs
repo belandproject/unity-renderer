@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Net.Http;
-using DCL.Helpers;
+using BLD.Helpers;
 using Unity.EditorCoroutines.Editor;
 using UnityEngine.Networking;
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     public static partial class UnityEditorWrappers
     {

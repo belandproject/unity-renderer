@@ -1,10 +1,10 @@
 using System.Collections;
-using DCL.Helpers;
+using BLD.Helpers;
 using TMPro;
 using UnityEngine;
 using Variables.RealmsInfo;
 
-namespace DCL.FPSDisplay
+namespace BLD.FPSDisplay
 {
     public class FPSDisplay : MonoBehaviour
     {

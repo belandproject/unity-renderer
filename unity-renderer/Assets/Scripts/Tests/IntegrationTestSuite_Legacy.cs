@@ -1,12 +1,12 @@
-using DCL;
+using BLD;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DCL.Camera;
-using DCL.Controllers;
-using DCL.Helpers.NFT.Markets;
-using DCL.Rendering;
-using DCL.SettingsCommon;
+using BLD.Camera;
+using BLD.Controllers;
+using BLD.Helpers.NFT.Markets;
+using BLD.Rendering;
+using BLD.SettingsCommon;
 using NSubstitute;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -25,8 +25,8 @@ public class IntegrationTestSuite_Legacy
     [UnitySetUp]
     protected virtual IEnumerator SetUp()
     {
-        DCL.Configuration.EnvironmentSettings.RUNNING_TESTS = true;
-        DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+        BLD.Configuration.EnvironmentSettings.RUNNING_TESTS = true;
+        BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
         AssetPromiseKeeper_GLTF.i.throttlingCounter.enabled = false;
         PoolManager.enablePrewarm = false;
 

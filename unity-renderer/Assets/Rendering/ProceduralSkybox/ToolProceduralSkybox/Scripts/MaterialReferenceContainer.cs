@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     [CreateAssetMenu(fileName = "SkyboxMaterialData", menuName = "ScriptableObjects/SkyboxMaterialData", order = 1)]
     public class MaterialReferenceContainer : ScriptableObject

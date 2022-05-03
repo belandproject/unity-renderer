@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine.Rendering.Universal;
 using Object = UnityEngine.Object;
 
@@ -16,7 +16,7 @@ public class VisualTestsBase : IntegrationTestSuite_Legacy
 
     protected override ServiceLocator InitializeServiceLocator()
     {
-        ServiceLocator result = DCL.ServiceLocatorTestFactory.CreateMocked();
+        ServiceLocator result = BLD.ServiceLocatorTestFactory.CreateMocked();
         result.Register<IWebRequestController>(WebRequestController.Create);
         result.Register<IServiceProviders>( () => new ServiceProviders());
         result.Register<IRuntimeComponentFactory>( () => new RuntimeComponentFactory());
@@ -40,7 +40,7 @@ public class VisualTestsBase : IntegrationTestSuite_Legacy
         VisualTestUtils.SetSSAOActive(false);
         scene = TestUtils.CreateTestScene();
 
-        DCL.Environment.i.world.state.currentSceneId = scene.sceneData.id;
+        BLD.Environment.i.world.state.currentSceneId = scene.sceneData.id;
 
         VisualTestUtils.snapshotIndex = 0;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// This class coordinates the step animations with the animations of any action object that can exist as child.

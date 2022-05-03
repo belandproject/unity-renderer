@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 namespace UnityGLTF.Loader
 {

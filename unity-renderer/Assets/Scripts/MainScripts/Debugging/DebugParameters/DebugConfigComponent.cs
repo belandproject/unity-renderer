@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using DCL.Components;
+using BLD.Components;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class DebugConfigComponent : MonoBehaviour
     {

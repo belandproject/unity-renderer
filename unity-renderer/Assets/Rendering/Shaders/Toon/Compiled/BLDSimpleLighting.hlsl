@@ -1,9 +1,9 @@
-#ifndef DCL_SIMPLE_FRAGMENT_INCLUDED
-#define DCL_SIMPLE_FRAGMENT_INCLUDED
+#ifndef BLD_SIMPLE_FRAGMENT_INCLUDED
+#define BLD_SIMPLE_FRAGMENT_INCLUDED
 
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 
-half4 DCL_SimpleFragmentPBR(InputData inputData, SurfaceData surfaceData)
+half4 BLD_SimpleFragmentPBR(InputData inputData, SurfaceData surfaceData)
 {
     #ifdef _SPECULARHIGHLIGHTS_OFF
     bool specularHighlightsOff = true;
@@ -35,9 +35,9 @@ half4 DCL_SimpleFragmentPBR(InputData inputData, SurfaceData surfaceData)
 
     #if defined(_SCREEN_SPACE_OCCLUSION)
     #if !defined(_SSAO_OFF)
-        const float DCL_CUSTOM_AO_TOON_FACTOR = 1.1;
+        const float BLD_CUSTOM_AO_TOON_FACTOR = 1.1;
         AmbientOcclusionFactor aoFactor = GetScreenSpaceAmbientOcclusion(inputData.normalizedScreenSpaceUV);
-        surfaceData.occlusion = min(surfaceData.occlusion, aoFactor.indirectAmbientOcclusion * DCL_CUSTOM_AO_TOON_FACTOR);
+        surfaceData.occlusion = min(surfaceData.occlusion, aoFactor.indirectAmbientOcclusion * BLD_CUSTOM_AO_TOON_FACTOR);
         surfaceData.occlusion = max(surfaceData.occlusion, aoFactor.directAmbientOcclusion);
         color *= surfaceData.occlusion;
     #endif
@@ -52,7 +52,7 @@ half4 DCL_SimpleFragmentPBR(InputData inputData, SurfaceData surfaceData)
     return half4(color, surfaceData.alpha);
 }
 
-half4 DCL_SimpleFragmentPBR(InputData inputData, half3 albedo, half metallic, half3 specular,
+half4 BLD_SimpleFragmentPBR(InputData inputData, half3 albedo, half metallic, half3 specular,
                             half smoothness, half occlusion, half3 emission, half alpha)
 {
     SurfaceData s;
@@ -65,7 +65,7 @@ half4 DCL_SimpleFragmentPBR(InputData inputData, half3 albedo, half metallic, ha
     s.alpha = alpha;
     s.clearCoatMask = 0.0;
     s.clearCoatSmoothness = 1.0;
-    return DCL_SimpleFragmentPBR(inputData, s);
+    return BLD_SimpleFragmentPBR(inputData, s);
 }
 
 

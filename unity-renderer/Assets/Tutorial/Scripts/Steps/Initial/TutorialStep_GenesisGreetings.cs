@@ -1,10 +1,10 @@
-using DCL.Interface;
+using BLD.Interface;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to the greetings showed in Genesis Plaza.

@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public class ClientSettings
         {

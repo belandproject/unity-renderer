@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to how to open the controls panel.

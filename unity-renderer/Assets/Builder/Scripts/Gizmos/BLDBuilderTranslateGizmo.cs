@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Builder.Gizmos
 {
-    public class DCLBuilderTranslateGizmo : DCLBuilderGizmo
+    public class BLDBuilderTranslateGizmo : BLDBuilderGizmo
     {
-        public override void SetSnapFactor(DCLBuilderGizmoManager.SnapInfo snapInfo) { snapFactor = snapInfo.position; }
+        public override void SetSnapFactor(BLDBuilderGizmoManager.SnapInfo snapInfo) { snapFactor = snapInfo.position; }
 
-        public override float TransformEntity(Transform entityTransform, DCLBuilderGizmoAxis axis, float axisValue)
+        public override float TransformEntity(Transform entityTransform, BLDBuilderGizmoAxis axis, float axisValue)
         {
             Vector3 initialEntityPosition = entityTransform.position;
             if (snapFactor > 0)

@@ -1,5 +1,5 @@
-#ifndef DCL_FADE_DITHERING_INCLUDED
-#define DCL_FADE_DITHERING_INCLUDED
+#ifndef BLD_FADE_DITHERING_INCLUDED
+#define BLD_FADE_DITHERING_INCLUDED
 
 float4 fadeDithering(float4 color, float3 positionWS, float4 positionSS)
 {

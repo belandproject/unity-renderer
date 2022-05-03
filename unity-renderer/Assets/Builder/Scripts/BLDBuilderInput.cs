@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Builder
 {
-    public class DCLBuilderInput : MonoBehaviour
+    public class BLDBuilderInput : MonoBehaviour
     {
         const string MouseXAxis = "Mouse X";
         const string MouseYAxis = "Mouse Y";
@@ -128,17 +128,17 @@ namespace Builder
 
             if (Input.GetKeyDown(KeyCode.W))
             {
-                SendMessageToBridge("SelectGizmo", DCL.Components.DCLGizmos.Gizmo.MOVE);
+                SendMessageToBridge("SelectGizmo", BLD.Components.BLDGizmos.Gizmo.MOVE);
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SendMessageToBridge("SelectGizmo", DCL.Components.DCLGizmos.Gizmo.ROTATE);
+                SendMessageToBridge("SelectGizmo", BLD.Components.BLDGizmos.Gizmo.ROTATE);
             }
 
             if (Input.GetKeyDown(KeyCode.S))
             {
-                SendMessageToBridge("SelectGizmo", DCL.Components.DCLGizmos.Gizmo.SCALE);
+                SendMessageToBridge("SelectGizmo", BLD.Components.BLDGizmos.Gizmo.SCALE);
             }
         }
 

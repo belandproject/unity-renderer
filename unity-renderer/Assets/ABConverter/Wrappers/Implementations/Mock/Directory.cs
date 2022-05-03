@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DCL
+namespace BLD
 {
     public sealed partial class Mocked
     {

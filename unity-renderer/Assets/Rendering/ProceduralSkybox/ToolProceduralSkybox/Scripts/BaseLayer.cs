@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     [System.Serializable]
     public class TextureLayer

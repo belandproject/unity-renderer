@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07de330ca0d3cff449394d7aa9d7cc34, type: 3}
   m_Name: PerformanceMetricsData
-  m_EditorClassIdentifier: PerformanceController:DCL:PerformanceMetricsDataVariable
+  m_EditorClassIdentifier: PerformanceController:BLD:PerformanceMetricsDataVariable
   value:
     fpsCount: 0
     hiccupCount: 0

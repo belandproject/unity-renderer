@@ -1,9 +1,9 @@
 using System;
-using DCL;
-using DCL.HelpAndSupportHUD;
-using DCL.Huds.QuestsPanel;
-using DCL.Huds.QuestsTracker;
-using DCL.SettingsPanelHUD;
+using BLD;
+using BLD.HelpAndSupportHUD;
+using BLD.Huds.QuestsPanel;
+using BLD.Huds.QuestsTracker;
+using BLD.SettingsPanelHUD;
 using LoadingHUD;
 using SignupHUD;
 using UnityEngine;

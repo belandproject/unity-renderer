@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     [CreateAssetMenu(menuName = "Create CullingControllerSettingsData", fileName = "CullingControllerSettingsData", order = 0)]
     public class CullingControllerSettingsData : ScriptableObject

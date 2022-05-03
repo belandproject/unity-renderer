@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL.Helpers;
+using BLD.Helpers;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -17,7 +17,7 @@ using GLTF;
 using GLTF.Schema;
 using UnityGLTF.Loader;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public class Core
     {

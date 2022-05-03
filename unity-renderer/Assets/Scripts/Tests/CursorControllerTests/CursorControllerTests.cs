@@ -1,13 +1,13 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
-using DCL;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
+using BLD;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Camera;
-using DCL.Controllers;
+using BLD.Camera;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
@@ -32,7 +32,7 @@ namespace Tests
 
         protected override ServiceLocator InitializeServiceLocator()
         {
-            ServiceLocator result = DCL.ServiceLocatorTestFactory.CreateMocked();
+            ServiceLocator result = BLD.ServiceLocatorTestFactory.CreateMocked();
             result.Register<IPointerEventsController>( () => new PointerEventsController());
             result.Register<IRuntimeComponentFactory>( () => new RuntimeComponentFactory());
             result.Register<IWorldState>( () => new WorldState());
@@ -67,7 +67,7 @@ namespace Tests
             mainCamera.transform.position = Vector3.zero;
             mainCamera.transform.forward = Vector3.forward;
 
-            DCL.Environment.i.world.state.currentSceneId = scene.sceneData.id;
+            BLD.Environment.i.world.state.currentSceneId = scene.sceneData.id;
         }
 
         protected override IEnumerator TearDown()
@@ -83,12 +83,12 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverFeedbackIsDisplayedCorrectly()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
 
             shape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out entity,
                 new BoxShape.Model() { });
@@ -135,12 +135,12 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverFeedbackNotDisplayedOnInvisibles()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
 
             shape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out entity,
                 new BoxShape.Model() { });
@@ -191,10 +191,10 @@ namespace Tests
         public IEnumerator FeedbackIsNotDisplayedOnParent()
         {
             // Create parent entity
-            IDCLEntity blockingEntity;
+            IBLDEntity blockingEntity;
             BoxShape blockingShape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out blockingEntity,
                 new BoxShape.Model() { });
@@ -202,10 +202,10 @@ namespace Tests
             yield return blockingShape.routine;
 
             // Create target entity for click
-            IDCLEntity clickTargetEntity;
+            IBLDEntity clickTargetEntity;
             BoxShape clickTargetShape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out clickTargetEntity,
                 new BoxShape.Model() { });
@@ -252,12 +252,12 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverFeedbackIsBlockedByUI()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
 
             shape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out entity,
                 new BoxShape.Model() { });
@@ -305,12 +305,12 @@ namespace Tests
         [UnityTest]
         public IEnumerator OnPointerHoverFeedbackIsNotBlockedByFullyAlphaUIContainer()
         {
-            IDCLEntity entity;
+            IBLDEntity entity;
             BoxShape shape;
 
             shape = TestUtils.InstantiateEntityWithShape<BoxShape, BoxShape.Model>(
                 scene,
-                DCL.Models.CLASS_ID.BOX_SHAPE,
+                BLD.Models.CLASS_ID.BOX_SHAPE,
                 Vector3.zero,
                 out entity,
                 new BoxShape.Model() { });

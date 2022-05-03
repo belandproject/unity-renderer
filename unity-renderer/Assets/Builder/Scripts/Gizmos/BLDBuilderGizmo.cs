@@ -1,14 +1,14 @@
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 
 namespace Builder.Gizmos
 {
-    public abstract class DCLBuilderGizmo : MonoBehaviour
+    public abstract class BLDBuilderGizmo : MonoBehaviour
     {
         [SerializeField] private string gizmoType = string.Empty;
-        [SerializeField] protected DCLBuilderGizmoAxis axisX;
-        [SerializeField] protected DCLBuilderGizmoAxis axisY;
-        [SerializeField] protected DCLBuilderGizmoAxis axisZ;
+        [SerializeField] protected BLDBuilderGizmoAxis axisX;
+        [SerializeField] protected BLDBuilderGizmoAxis axisY;
+        [SerializeField] protected BLDBuilderGizmoAxis axisZ;
 
         public bool initialized { get; private set; }
         protected float snapFactor = 0;
@@ -23,10 +23,10 @@ namespace Builder.Gizmos
         protected bool startDragging = false;
         protected float prevAxisValue;
 
-        public DCLBuilderGizmoAxis activeAxis { protected set; get; }
+        public BLDBuilderGizmoAxis activeAxis { protected set; get; }
 
-        public abstract void SetSnapFactor(DCLBuilderGizmoManager.SnapInfo snapInfo);
-        public abstract float TransformEntity(Transform targetTransform, DCLBuilderGizmoAxis axis, float axisValue);
+        public abstract void SetSnapFactor(BLDBuilderGizmoManager.SnapInfo snapInfo);
+        public abstract float TransformEntity(Transform targetTransform, BLDBuilderGizmoAxis axis, float axisValue);
 
         public virtual void Initialize(Camera camera, Transform cameraHolderTransform)
         {
@@ -61,7 +61,7 @@ namespace Builder.Gizmos
             SetPositionToTarget();
         }
 
-        public virtual void OnBeginDrag(DCLBuilderGizmoAxis axis, Transform entityTransform)
+        public virtual void OnBeginDrag(BLDBuilderGizmoAxis axis, Transform entityTransform)
         {
             startDragging = true;
             targetTransform = entityTransform;
@@ -104,7 +104,7 @@ namespace Builder.Gizmos
             return true;
         }
 
-        protected virtual float GetHitPointToAxisValue(DCLBuilderGizmoAxis axis, Vector3 hitPoint, Vector2 mousePosition)
+        protected virtual float GetHitPointToAxisValue(BLDBuilderGizmoAxis axis, Vector3 hitPoint, Vector2 mousePosition)
         {
             Vector3 dir = (hitPoint - axis.transform.position).normalized;
             float sign = Vector3.Angle(dir, axis.transform.forward) == 180 ? -1 : 1;

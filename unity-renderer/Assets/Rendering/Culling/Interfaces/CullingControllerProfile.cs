@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     /// <summary>
     /// Group of arguments for configuring the rules of a group of renderers of skinned renderers.

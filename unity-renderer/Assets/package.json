@@ -1,7 +1,7 @@
 {
   "name": "com.decentraland.unity-renderer",
   "version": "1.0.0",
-  "displayName": "DCL Unity Renderer",
+  "displayName": "BLD Unity Renderer",
   "description": "Decentraland Unity Renderer Package",
   "unity": "2020.3",
   "unityRelease": "0f1",

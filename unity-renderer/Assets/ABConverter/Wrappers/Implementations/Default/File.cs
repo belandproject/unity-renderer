@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public static partial class SystemWrappers
     {

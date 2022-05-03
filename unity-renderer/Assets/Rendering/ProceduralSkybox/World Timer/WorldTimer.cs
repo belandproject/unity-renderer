@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Networking;
 
-namespace DCL.ServerTime
+namespace BLD.ServerTime
 {
     public class WorldTimer
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     public static class SkyboxShaderUtils
     {

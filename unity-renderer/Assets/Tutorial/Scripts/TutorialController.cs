@@ -1,12 +1,12 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Controller that handles all the flow related to the onboarding tutorial.

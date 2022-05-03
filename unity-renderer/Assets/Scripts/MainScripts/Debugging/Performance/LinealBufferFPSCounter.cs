@@ -1,4 +1,4 @@
-﻿namespace DCL.FPSDisplay
+﻿namespace BLD.FPSDisplay
 {
     public class LinealBufferFPSCounter
     {

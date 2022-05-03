@@ -1,7 +1,7 @@
-using DCL.Tutorial;
+using BLD.Tutorial;
 using System.Collections;
 
-namespace DCL.Tutorial_Tests
+namespace BLD.Tutorial_Tests
 {
     public class TutorialStep_Mock : TutorialStep
     {

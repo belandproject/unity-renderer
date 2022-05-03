@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     //NOTE(Brian): This is taken from http://wiki.unity3d.com/index.php/CreateScriptableObjectAsset
     public static class ScriptableObjectUtility
@@ -35,7 +35,7 @@ namespace DCL.Helpers
             Selection.activeObject = asset;
         }
 
-        [MenuItem("Assets/Create/Decentraland/DCLComponentFactory")]
+        [MenuItem("Assets/Create/Decentraland/BLDComponentFactory")]
         public static void CreateAsset() { ScriptableObjectUtility.CreateAsset<PoolableComponentFactory>(); }
     }
 }

@@ -1,19 +1,19 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using System;
 using System.Collections;
-using DCL;
+using BLD;
 using UnityEngine;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 namespace Builder
 {
-    public class DCLBuilderEntity : EditableEntity
+    public class BLDBuilderEntity : EditableEntity
     {
-        public static Action<DCLBuilderEntity> OnEntityShapeUpdated;
-        public static Action<DCLBuilderEntity> OnEntityTransformUpdated;
-        public static Action<DCLBuilderEntity> OnEntityAddedWithTransform;
+        public static Action<BLDBuilderEntity> OnEntityShapeUpdated;
+        public static Action<BLDBuilderEntity> OnEntityTransformUpdated;
+        public static Action<BLDBuilderEntity> OnEntityAddedWithTransform;
 
         public bool hasGizmoComponent
         {
@@ -45,7 +45,7 @@ namespace Builder
             }
         }
 
-        private DCLBuilderSelectionCollider[] meshColliders;
+        private BLDBuilderSelectionCollider[] meshColliders;
         private Animation[] meshAnimations;
         private Action OnShapeLoaded;
 
@@ -55,7 +55,7 @@ namespace Builder
         private Vector3 scaleTarget;
         private bool isScalingAnimation = false;
 
-        public void SetEntity(IDCLEntity entity)
+        public void SetEntity(IBLDEntity entity)
         {
             rootEntity = entity;
 
@@ -71,8 +71,8 @@ namespace Builder
             AvatarShape.OnAvatarShapeUpdated -= OnAvatarShapeUpdated;
             AvatarShape.OnAvatarShapeUpdated += OnAvatarShapeUpdated;
 
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
-            DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
 
             //builder evaluate boundaries by itself
             if (Environment.i.world.sceneBoundsChecker.enabled)
@@ -110,7 +110,7 @@ namespace Builder
                 return;
             }
 
-            int selectionLayer = LayerMask.NameToLayer(DCLBuilderRaycast.LAYER_SELECTION);
+            int selectionLayer = LayerMask.NameToLayer(BLDBuilderRaycast.LAYER_SELECTION);
             Renderer renderer;
             for (int i = 0; i < rootEntity.meshesInfo.renderers.Length; i++)
             {
@@ -154,17 +154,17 @@ namespace Builder
             }
         }
 
-        private void OnEntityRemoved(IDCLEntity entity)
+        private void OnEntityRemoved(IBLDEntity entity)
         {
             rootEntity.OnRemoved -= OnEntityRemoved;
             rootEntity.OnShapeUpdated -= OnShapeUpdated;
             rootEntity.OnTransformChange -= OnTransformUpdated;
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
             AvatarShape.OnAvatarShapeUpdated -= OnAvatarShapeUpdated;
             DestroyColliders();
         }
 
-        private void OnShapeUpdated(IDCLEntity entity)
+        private void OnShapeUpdated(IBLDEntity entity)
         {
             isShapeComponentSet = true;
             OnEntityShapeUpdated?.Invoke(this);
@@ -200,7 +200,7 @@ namespace Builder
 
         private void OnTransformUpdated(object model)
         {
-            DCLTransform.Model transformModel = (DCLTransform.Model)model;
+            BLDTransform.Model transformModel = (BLDTransform.Model)model;
             //NOTE: there is no parenting entities in editor mode so we can set properties in world space
             gameObject.transform.position = transformModel.position;
             gameObject.transform.rotation = transformModel.rotation;
@@ -227,7 +227,7 @@ namespace Builder
             }
         }
 
-        private void OnAvatarShapeUpdated(IDCLEntity entity, AvatarShape avatarShape)
+        private void OnAvatarShapeUpdated(IBLDEntity entity, AvatarShape avatarShape)
         {
             if (rootEntity != entity)
             {
@@ -254,7 +254,7 @@ namespace Builder
             SetCollidersActive(!isPreview);
         }
 
-        private void ProcessEntityShape(IDCLEntity entity)
+        private void ProcessEntityShape(IBLDEntity entity)
         {
             if (entity.meshRootGameObject && entity.meshesInfo.renderers.Length > 0)
             {
@@ -265,12 +265,12 @@ namespace Builder
 
         private void CreateColliders(MeshesInfo meshInfo)
         {
-            meshColliders = new DCLBuilderSelectionCollider[meshInfo.renderers.Length];
+            meshColliders = new BLDBuilderSelectionCollider[meshInfo.renderers.Length];
             for (int i = 0; i < meshInfo.renderers.Length; i++)
             {
                 if (meshInfo.renderers[i] == null)
                     continue;
-                meshColliders[i] = new GameObject("BuilderSelectionCollider").AddComponent<DCLBuilderSelectionCollider>();
+                meshColliders[i] = new GameObject("BuilderSelectionCollider").AddComponent<BLDBuilderSelectionCollider>();
                 meshColliders[i].Initialize(this, meshInfo.renderers[i]);
                 meshColliders[i].gameObject.SetActive(false);
             }

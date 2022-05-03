@@ -1,9 +1,9 @@
-using DCL.Interface;
-using DCL.FPSDisplay;
-using DCL.SettingsCommon;
+using BLD.Interface;
+using BLD.FPSDisplay;
+using BLD.SettingsCommon;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class PerformanceMetricsController
     {

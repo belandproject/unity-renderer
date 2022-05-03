@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DCL.Helpers;
+using BLD.Helpers;
 
 namespace Builder
 {
     [RequireComponent(typeof(Camera))]
-    public class DCLBuilderOutline : MonoBehaviour
+    public class BLDBuilderOutline : MonoBehaviour
     {
         [SerializeField] Material OutlineMaterial = null;
 
@@ -26,7 +26,7 @@ namespace Builder
             outlineCamera.CopyFrom(builderCamera);
             outlineCamera.clearFlags = CameraClearFlags.SolidColor;
             outlineCamera.backgroundColor = Color.clear;
-            outlineCamera.cullingMask = LayerMask.GetMask(DCLBuilderRaycast.LAYER_SELECTION);
+            outlineCamera.cullingMask = LayerMask.GetMask(BLDBuilderRaycast.LAYER_SELECTION);
             outlineCamera.depth = builderCamera.depth - 1;
             outlineCamera.transform.SetParent(builderCamera.transform);
 
@@ -43,7 +43,7 @@ namespace Builder
             outlineRawImage.raycastTarget = false;
             outlineRawImage.material = OutlineMaterial;
 
-            DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
         }
 
         private void OnDestroy() { Dispose(); }
@@ -56,7 +56,7 @@ namespace Builder
                 Destroy(outlineRawImage.gameObject);
             if (outlineCamera != null)
                 Destroy(outlineCamera.gameObject);
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
         }
 
         public void Activate()

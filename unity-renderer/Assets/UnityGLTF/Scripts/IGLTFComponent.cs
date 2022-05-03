@@ -1,6 +1,6 @@
 using System;
-using DCL;
-using DCL.Components;
+using BLD;
+using BLD.Components;
 using UnityEngine;
 
 namespace UnityGLTF.Scripts

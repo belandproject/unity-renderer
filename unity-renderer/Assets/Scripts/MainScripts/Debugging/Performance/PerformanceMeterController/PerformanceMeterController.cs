@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.FPSDisplay;
-using DCL.SettingsCommon;
+using BLD.FPSDisplay;
+using BLD.SettingsCommon;
 using Newtonsoft.Json;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Performance Meter Tool

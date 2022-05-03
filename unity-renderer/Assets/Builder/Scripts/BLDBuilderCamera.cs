@@ -1,11 +1,11 @@
 using UnityEngine;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 using Builder.Gizmos;
 
 namespace Builder
 {
-    public class DCLBuilderCamera : MonoBehaviour
+    public class BLDBuilderCamera : MonoBehaviour
     {
         public static System.Action<Camera, float> OnCameraZoomChanged;
 
@@ -48,9 +48,9 @@ namespace Builder
         private float zoomCurrent = 0;
         private float zoomTarget = 0;
 
-        private float zoomDefault = DCLBuilderConfig.config.camera.zoomDefault;
-        private float zoomMin = DCLBuilderConfig.config.camera.zoomMin;
-        private float zoomMax = DCLBuilderConfig.config.camera.zoomMax;
+        private float zoomDefault = BLDBuilderConfig.config.camera.zoomDefault;
+        private float zoomMin = BLDBuilderConfig.config.camera.zoomMin;
+        private float zoomMax = BLDBuilderConfig.config.camera.zoomMax;
 
         private bool isObjectBeingDrag = false;
 
@@ -65,10 +65,10 @@ namespace Builder
             pitchCurrent = pitchTarget = pitchPivot.localEulerAngles.x;
             yawCurrent = yawTarget = yawPivot.localEulerAngles.y;
 
-            DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
         }
 
-        private void OnDestroy() { DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged; }
+        private void OnDestroy() { BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged; }
 
         private void Update()
         {
@@ -110,18 +110,18 @@ namespace Builder
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderInput.OnMouseDrag += OnMouseDrag;
-                DCLBuilderInput.OnMouseWheel += OnMouseWheel;
-                DCLBuilderBridge.OnSetKeyDown += OnKeyboardButtonHold;
-                DCLBuilderBridge.OnZoomFromUI += OnZoomFormUI;
-                DCLBuilderBridge.OnSetCameraPosition += OnSetCameraPosition;
-                DCLBuilderBridge.OnSetCameraRotation += OnSetCameraRotation;
-                DCLBuilderBridge.OnResetCameraZoom += OnResetCameraZoom;
-                DCLBuilderObjectDragger.OnDraggingObjectStart += OnDragObjectStart;
-                DCLBuilderObjectDragger.OnDraggingObjectEnd += OnDragObjectEnd;
-                DCLBuilderGizmoManager.OnGizmoTransformObjectStart += OnGizmoTransformObjectStart;
-                DCLBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformObjectEnd;
-                DCLBuilderConfig.OnConfigChanged += OnConfigChanged;
+                BLDBuilderInput.OnMouseDrag += OnMouseDrag;
+                BLDBuilderInput.OnMouseWheel += OnMouseWheel;
+                BLDBuilderBridge.OnSetKeyDown += OnKeyboardButtonHold;
+                BLDBuilderBridge.OnZoomFromUI += OnZoomFormUI;
+                BLDBuilderBridge.OnSetCameraPosition += OnSetCameraPosition;
+                BLDBuilderBridge.OnSetCameraRotation += OnSetCameraRotation;
+                BLDBuilderBridge.OnResetCameraZoom += OnResetCameraZoom;
+                BLDBuilderObjectDragger.OnDraggingObjectStart += OnDragObjectStart;
+                BLDBuilderObjectDragger.OnDraggingObjectEnd += OnDragObjectEnd;
+                BLDBuilderGizmoManager.OnGizmoTransformObjectStart += OnGizmoTransformObjectStart;
+                BLDBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformObjectEnd;
+                BLDBuilderConfig.OnConfigChanged += OnConfigChanged;
             }
 
             isGameObjectActive = true;
@@ -130,18 +130,18 @@ namespace Builder
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderInput.OnMouseDrag -= OnMouseDrag;
-            DCLBuilderInput.OnMouseWheel -= OnMouseWheel;
-            DCLBuilderBridge.OnSetKeyDown -= OnKeyboardButtonHold;
-            DCLBuilderBridge.OnZoomFromUI -= OnZoomFormUI;
-            DCLBuilderBridge.OnSetCameraPosition -= OnSetCameraPosition;
-            DCLBuilderBridge.OnSetCameraRotation -= OnSetCameraRotation;
-            DCLBuilderBridge.OnResetCameraZoom -= OnResetCameraZoom;
-            DCLBuilderObjectDragger.OnDraggingObjectStart -= OnDragObjectStart;
-            DCLBuilderObjectDragger.OnDraggingObjectEnd -= OnDragObjectEnd;
-            DCLBuilderGizmoManager.OnGizmoTransformObjectStart -= OnGizmoTransformObjectStart;
-            DCLBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformObjectEnd;
-            DCLBuilderConfig.OnConfigChanged -= OnConfigChanged;
+            BLDBuilderInput.OnMouseDrag -= OnMouseDrag;
+            BLDBuilderInput.OnMouseWheel -= OnMouseWheel;
+            BLDBuilderBridge.OnSetKeyDown -= OnKeyboardButtonHold;
+            BLDBuilderBridge.OnZoomFromUI -= OnZoomFormUI;
+            BLDBuilderBridge.OnSetCameraPosition -= OnSetCameraPosition;
+            BLDBuilderBridge.OnSetCameraRotation -= OnSetCameraRotation;
+            BLDBuilderBridge.OnResetCameraZoom -= OnResetCameraZoom;
+            BLDBuilderObjectDragger.OnDraggingObjectStart -= OnDragObjectStart;
+            BLDBuilderObjectDragger.OnDraggingObjectEnd -= OnDragObjectEnd;
+            BLDBuilderGizmoManager.OnGizmoTransformObjectStart -= OnGizmoTransformObjectStart;
+            BLDBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformObjectEnd;
+            BLDBuilderConfig.OnConfigChanged -= OnConfigChanged;
         }
 
         private void OnMouseDrag(int buttonId, Vector3 mousePosition, float axisX, float axisY)

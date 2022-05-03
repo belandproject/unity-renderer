@@ -1,8 +1,8 @@
-using DCL.Components;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Helpers;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -18,7 +18,7 @@ public class BuilderMeshLoadingIndicator : IntegrationTestSuite_Legacy
 
         scene = TestUtils.CreateTestScene();
 
-        var builderBridge = Object.FindObjectOfType<Builder.DCLBuilderBridge>();
+        var builderBridge = Object.FindObjectOfType<Builder.BLDBuilderBridge>();
         builderBridge.ResetBuilderScene();
 
         var objectEntity = TestUtils.CreateSceneEntity(scene);
@@ -38,7 +38,7 @@ public class BuilderMeshLoadingIndicator : IntegrationTestSuite_Legacy
 
     void CheckActiveIndicatorsAmount(int expectedAmount)
     {
-        var indicators = Object.FindObjectsOfType<Builder.MeshLoadIndicator.DCLBuilderMeshLoadIndicator>();
+        var indicators = Object.FindObjectsOfType<Builder.MeshLoadIndicator.BLDBuilderMeshLoadIndicator>();
 
         int activeIndicators = 0;
 

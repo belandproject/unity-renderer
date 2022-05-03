@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     [Serializable]
     public class PerformanceMetricsData

@@ -1,11 +1,11 @@
-﻿using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+﻿using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -17,8 +17,8 @@ public class IntegrationTestController : MonoBehaviour
     public IEnumerator Initialize()
     {
         var sceneController = Environment.i.world.sceneController;
-        DCLCharacterController.i.gravity = 0;
-        DCLCharacterController.i.Teleport(JsonConvert.SerializeObject(new
+        BLDCharacterController.i.gravity = 0;
+        BLDCharacterController.i.Teleport(JsonConvert.SerializeObject(new
         {
             x = 0f,
             y = 0f,
@@ -122,7 +122,7 @@ public class IntegrationTestController : MonoBehaviour
 
         var mesh = cube.meshRootGameObject.GetComponentInChildren<MeshFilter>().mesh;
 
-        Assert.AreEqual(mesh.name, "DCL Box Instance");
+        Assert.AreEqual(mesh.name, "BLD Box Instance");
 
         {
             // 3nd message, the box should remain the same, including references
@@ -130,7 +130,7 @@ public class IntegrationTestController : MonoBehaviour
 
             var newMesh = cube.meshRootGameObject.GetComponentInChildren<MeshFilter>().mesh;
 
-            Assert.AreEqual(newMesh.name, "DCL Box Instance");
+            Assert.AreEqual(newMesh.name, "BLD Box Instance");
             Assert.AreEqual(mesh.name, newMesh.name, "A new instance of the box was created");
         }
 
@@ -140,7 +140,7 @@ public class IntegrationTestController : MonoBehaviour
 
             var newMesh = cube.meshRootGameObject.GetComponentInChildren<MeshFilter>().mesh;
 
-            Assert.AreEqual(newMesh.name, "DCL Box Instance");
+            Assert.AreEqual(newMesh.name, "BLD Box Instance");
             Assert.AreEqual(mesh.name, newMesh.name, "A new instance of the box was created");
         }
 
@@ -151,7 +151,7 @@ public class IntegrationTestController : MonoBehaviour
 
             var newMesh = cube.meshRootGameObject.GetComponentInChildren<MeshFilter>().mesh;
 
-            Assert.AreEqual(newMesh.name, "DCL Sphere Instance");
+            Assert.AreEqual(newMesh.name, "BLD Sphere Instance");
             Assert.AreNotEqual(mesh.name, newMesh.name,
                 "The mesh instance remains the same, a new instance should have been created.");
         }

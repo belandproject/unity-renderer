@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using DCL;
+using BLD;
 
 namespace Builder
 {
-    public class DCLBuilderEnvironment : MonoBehaviour
+    public class BLDBuilderEnvironment : MonoBehaviour
     {
         public Material builderSkybox;
         public Material previewSkybox;
@@ -25,7 +25,7 @@ namespace Builder
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+                BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
             }
             isGameObjectActive = true;
         }
@@ -33,7 +33,7 @@ namespace Builder
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
         }
 
         private void OnPreviewModeChanged(bool isPreview)

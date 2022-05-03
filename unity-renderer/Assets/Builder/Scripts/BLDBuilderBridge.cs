@@ -1,26 +1,26 @@
 using Builder.Gizmos;
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Camera;
-using DCL.SettingsCommon;
+using BLD.Camera;
+using BLD.SettingsCommon;
 using UnityEngine;
 using UnityEngine.Rendering;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using Object = UnityEngine.Object;
-using QualitySettings = DCL.SettingsCommon.QualitySettings;
+using QualitySettings = BLD.SettingsCommon.QualitySettings;
 
 namespace Builder
 {
-    public class DCLBuilderBridge : MonoBehaviour
+    public class BLDBuilderBridge : MonoBehaviour
     {
-        public DCLBuilderRaycast builderRaycast;
+        public BLDBuilderRaycast builderRaycast;
 
         static bool LOG_MESSAGES = false;
 
@@ -29,8 +29,8 @@ namespace Builder
         public static System.Action<float> OnZoomFromUI;
         public static System.Action<string> OnSelectGizmo;
         public static System.Action OnResetObject;
-        public static System.Action<DCLBuilderEntity> OnEntityAdded;
-        public static System.Action<DCLBuilderEntity> OnEntityRemoved;
+        public static System.Action<BLDBuilderEntity> OnEntityAdded;
+        public static System.Action<BLDBuilderEntity> OnEntityRemoved;
         public static System.Action<bool> OnPreviewModeChanged;
         public static System.Action OnResetBuilderScene;
         public static System.Action<Vector3> OnSetCameraPosition;
@@ -57,7 +57,7 @@ namespace Builder
 
         private Coroutine screenshotCoroutine = null;
 
-        private DCLBuilderWebInterface builderWebInterface = new DCLBuilderWebInterface();
+        private BLDBuilderWebInterface builderWebInterface = new BLDBuilderWebInterface();
 
         [System.Serializable]
         private class MousePayload
@@ -176,7 +176,7 @@ namespace Builder
             if (LOG_MESSAGES)
                 Debug.Log($"RECEIVE: ResetBuilderScene");
             OnResetBuilderScene?.Invoke();
-            DCLCharacterController.i?.gameObject.SetActive(false);
+            BLDCharacterController.i?.gameObject.SetActive(false);
             outOfBoundariesEntitiesId.Clear();
 
             if (currentScene)
@@ -205,7 +205,7 @@ namespace Builder
 
                     if (isPreviewMode)
                     {
-                        DCLCharacterController.i?.SetPosition(new Vector3(x, y, z));
+                        BLDCharacterController.i?.SetPosition(new Vector3(x, y, z));
                     }
                     else
                     {
@@ -230,9 +230,9 @@ namespace Builder
 
                     if (isPreviewMode)
                     {
-                        if (DCLCharacterController.i != null)
+                        if (BLDCharacterController.i != null)
                         {
-                            DCLCharacterController.i.transform.rotation = Quaternion.Euler(0f, yaw * Mathf.Rad2Deg, 0f);
+                            BLDCharacterController.i.transform.rotation = Quaternion.Euler(0f, yaw * Mathf.Rad2Deg, 0f);
                         }
 
                         if (cameraController)
@@ -317,12 +317,12 @@ namespace Builder
         {
             if (LOG_MESSAGES)
                 Debug.Log($"RECEIVE: SetBuilderConfiguration {payloadJson}");
-            DCLBuilderConfig.SetConfig(payloadJson);
+            BLDBuilderConfig.SetConfig(payloadJson);
 
             if (!currentScene)
                 return;
 
-            if (DCLBuilderConfig.config.environment.disableFloor)
+            if (BLDBuilderConfig.config.environment.disableFloor)
             {
                 currentScene.RemoveDebugPlane();
             }
@@ -367,12 +367,12 @@ namespace Builder
                 mouseCatcher.enabled = false;
             }
 
-            if (DCLCharacterController.i)
+            if (BLDCharacterController.i)
             {
-                defaultCharacterPosition = DCLCharacterController.i.transform.position;
-                DCLCharacterController.i.initialPositionAlreadySet = true;
-                DCLCharacterController.i.characterAlwaysEnabled = false;
-                DCLCharacterController.i.gameObject.SetActive(false);
+                defaultCharacterPosition = BLDCharacterController.i.transform.position;
+                BLDCharacterController.i.initialPositionAlreadySet = true;
+                BLDCharacterController.i.characterAlwaysEnabled = false;
+                BLDCharacterController.i.gameObject.SetActive(false);
             }
 
             if (cameraController)
@@ -410,7 +410,7 @@ namespace Builder
             }
         }
 
-        private void OnEntityIsAdded(IDCLEntity entity)
+        private void OnEntityIsAdded(IBLDEntity entity)
         {
             if (isPreviewMode)
                 return;
@@ -423,9 +423,9 @@ namespace Builder
             builderWebInterface.SendEntityStartLoad(entity);
         }
 
-        private void OnEntityIsRemoved(IDCLEntity entity)
+        private void OnEntityIsRemoved(IBLDEntity entity)
         {
-            var builderEntity = entity.gameObject.GetComponent<DCLBuilderEntity>();
+            var builderEntity = entity.gameObject.GetComponent<BLDBuilderEntity>();
 
             if (builderEntity != null)
             {
@@ -433,7 +433,7 @@ namespace Builder
             }
         }
 
-        private void OnEntityShapeUpdated(IDCLEntity entity)
+        private void OnEntityShapeUpdated(IBLDEntity entity)
         {
             entity.OnShapeUpdated -= OnEntityShapeUpdated;
 
@@ -444,15 +444,15 @@ namespace Builder
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderObjectDragger.OnDraggingObjectEnd += OnObjectDragEnd;
-                DCLBuilderObjectDragger.OnDraggingObject += OnObjectDrag;
-                DCLBuilderObjectSelector.OnMarkObjectSelected += OnObjectSelected;
-                DCLBuilderObjectSelector.OnNoObjectSelected += OnNoObjectSelected;
-                DCLBuilderObjectSelector.OnSelectedObjectListChanged += OnSelectionChanged;
-                DCLBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformObjectEnded;
-                DCLBuilderGizmoManager.OnGizmoTransformObject += OnGizmoTransformObject;
-                DCLBuilderEntity.OnEntityShapeUpdated += ProcessEntityBoundaries;
-                DCLBuilderEntity.OnEntityTransformUpdated += ProcessEntityBoundaries;
+                BLDBuilderObjectDragger.OnDraggingObjectEnd += OnObjectDragEnd;
+                BLDBuilderObjectDragger.OnDraggingObject += OnObjectDrag;
+                BLDBuilderObjectSelector.OnMarkObjectSelected += OnObjectSelected;
+                BLDBuilderObjectSelector.OnNoObjectSelected += OnNoObjectSelected;
+                BLDBuilderObjectSelector.OnSelectedObjectListChanged += OnSelectionChanged;
+                BLDBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformObjectEnded;
+                BLDBuilderGizmoManager.OnGizmoTransformObject += OnGizmoTransformObject;
+                BLDBuilderEntity.OnEntityShapeUpdated += ProcessEntityBoundaries;
+                BLDBuilderEntity.OnEntityTransformUpdated += ProcessEntityBoundaries;
                 CommonScriptableObjects.rendererState.OnChange += OnRenderingStateChanged;
             }
 
@@ -462,15 +462,15 @@ namespace Builder
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderObjectDragger.OnDraggingObjectEnd -= OnObjectDragEnd;
-            DCLBuilderObjectDragger.OnDraggingObject -= OnObjectDrag;
-            DCLBuilderObjectSelector.OnMarkObjectSelected -= OnObjectSelected;
-            DCLBuilderObjectSelector.OnNoObjectSelected -= OnNoObjectSelected;
-            DCLBuilderObjectSelector.OnSelectedObjectListChanged -= OnSelectionChanged;
-            DCLBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformObjectEnded;
-            DCLBuilderGizmoManager.OnGizmoTransformObject -= OnGizmoTransformObject;
-            DCLBuilderEntity.OnEntityShapeUpdated -= ProcessEntityBoundaries;
-            DCLBuilderEntity.OnEntityTransformUpdated -= ProcessEntityBoundaries;
+            BLDBuilderObjectDragger.OnDraggingObjectEnd -= OnObjectDragEnd;
+            BLDBuilderObjectDragger.OnDraggingObject -= OnObjectDrag;
+            BLDBuilderObjectSelector.OnMarkObjectSelected -= OnObjectSelected;
+            BLDBuilderObjectSelector.OnNoObjectSelected -= OnNoObjectSelected;
+            BLDBuilderObjectSelector.OnSelectedObjectListChanged -= OnSelectionChanged;
+            BLDBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformObjectEnded;
+            BLDBuilderGizmoManager.OnGizmoTransformObject -= OnGizmoTransformObject;
+            BLDBuilderEntity.OnEntityShapeUpdated -= ProcessEntityBoundaries;
+            BLDBuilderEntity.OnEntityTransformUpdated -= ProcessEntityBoundaries;
             CommonScriptableObjects.rendererState.OnChange -= OnRenderingStateChanged;
         }
 
@@ -478,7 +478,7 @@ namespace Builder
         {
             if (selectedEntities != null && entitiesMoved)
             {
-                NotifyGizmosTransformEvent(selectedEntities, DCLGizmos.Gizmo.NONE);
+                NotifyGizmosTransformEvent(selectedEntities, BLDGizmos.Gizmo.NONE);
             }
 
             entitiesMoved = false;
@@ -508,7 +508,7 @@ namespace Builder
 
         private void OnObjectSelected(EditableEntity entity, string gizmoType) { NotifyGizmosSelectedEvent(entity, gizmoType); }
 
-        private void OnNoObjectSelected() { NotifyGizmosSelectedEvent(null, DCLGizmos.Gizmo.NONE); }
+        private void OnNoObjectSelected() { NotifyGizmosSelectedEvent(null, BLDGizmos.Gizmo.NONE); }
 
         private void OnSelectionChanged(Transform selectionParent, List<EditableEntity> selectedEntitiesList) { selectedEntities = selectedEntitiesList; }
 
@@ -532,11 +532,11 @@ namespace Builder
             isPreviewMode = isPreview;
             OnPreviewModeChanged?.Invoke(isPreview);
 
-            if (DCLCharacterController.i)
+            if (BLDCharacterController.i)
             {
-                DCLCharacterController.i.SetPosition(defaultCharacterPosition);
-                DCLCharacterController.i.gameObject.SetActive(isPreview);
-                DCLCharacterController.i.ResetGround();
+                BLDCharacterController.i.SetPosition(defaultCharacterPosition);
+                BLDCharacterController.i.gameObject.SetActive(isPreview);
+                BLDCharacterController.i.ResetGround();
             }
 
             if (mouseCatcher != null)
@@ -581,7 +581,7 @@ namespace Builder
                 currentScene.OnEntityAdded += OnEntityIsAdded;
                 currentScene.OnEntityRemoved += OnEntityIsRemoved;
 
-                if (DCLBuilderConfig.config.environment.disableFloor)
+                if (BLDBuilderConfig.config.environment.disableFloor)
                 {
                     currentScene.RemoveDebugPlane();
                 }
@@ -616,14 +616,14 @@ namespace Builder
             }
         }
 
-        private DCLBuilderEntity AddBuilderEntityComponent(IDCLEntity entity)
+        private BLDBuilderEntity AddBuilderEntityComponent(IBLDEntity entity)
         {
-            DCLBuilderEntity builderComponent = Utils.GetOrCreateComponent<DCLBuilderEntity>(entity.gameObject);
+            BLDBuilderEntity builderComponent = Utils.GetOrCreateComponent<BLDBuilderEntity>(entity.gameObject);
             builderComponent.SetEntity(entity);
             return builderComponent;
         }
 
-        private void ProcessEntityBoundaries(DCLBuilderEntity entity)
+        private void ProcessEntityBoundaries(BLDBuilderEntity entity)
         {
             string entityId = entity.rootEntity.entityId;
             int entityIndexInList = outOfBoundariesEntitiesId.IndexOf(entityId);

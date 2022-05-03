@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using DCL.Configuration;
-using DCL.Interface;
+using BLD.Configuration;
+using BLD.Interface;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class InputController_Legacy
     {

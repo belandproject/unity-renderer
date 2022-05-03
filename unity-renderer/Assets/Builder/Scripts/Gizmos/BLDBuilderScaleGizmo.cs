@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Builder.Gizmos
 {
-    public class DCLBuilderScaleGizmo : DCLBuilderGizmo
+    public class BLDBuilderScaleGizmo : BLDBuilderGizmo
     {
         const float MINIMUN_SCALE_ALLOWED = 0.01f;
 
-        [SerializeField] DCLBuilderGizmoAxis axisProportionalScale = null;
+        [SerializeField] BLDBuilderGizmoAxis axisProportionalScale = null;
 
         private Vector2 lastMousePosition;
         private Vector2 initialMousePosition;
@@ -21,9 +21,9 @@ namespace Builder.Gizmos
             axisProportionalScale.SetGizmo(this);
         }
 
-        public override void SetSnapFactor(DCLBuilderGizmoManager.SnapInfo snapInfo) { snapFactor = snapInfo.scale; }
+        public override void SetSnapFactor(BLDBuilderGizmoManager.SnapInfo snapInfo) { snapFactor = snapInfo.scale; }
 
-        public override float TransformEntity(Transform entityTransform, DCLBuilderGizmoAxis axis, float axisValue)
+        public override float TransformEntity(Transform entityTransform, BLDBuilderGizmoAxis axis, float axisValue)
         {
             Vector3 scaleDirection = GetScaleDirection(entityTransform, axis);
 
@@ -66,7 +66,7 @@ namespace Builder.Gizmos
             return axisValue;
         }
 
-        private Vector3 GetScaleDirection(Transform entityTransform, DCLBuilderGizmoAxis axis)
+        private Vector3 GetScaleDirection(Transform entityTransform, BLDBuilderGizmoAxis axis)
         {
             Vector3 scaleDirection = activeAxis.transform.forward;
             if (axis == axisProportionalScale)
@@ -132,7 +132,7 @@ namespace Builder.Gizmos
             }
         }
 
-        protected override float GetHitPointToAxisValue(DCLBuilderGizmoAxis axis, Vector3 hitPoint, Vector2 mousePosition)
+        protected override float GetHitPointToAxisValue(BLDBuilderGizmoAxis axis, Vector3 hitPoint, Vector2 mousePosition)
         {
             if (axis == axisProportionalScale)
             {

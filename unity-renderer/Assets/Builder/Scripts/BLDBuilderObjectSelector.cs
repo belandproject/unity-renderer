@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
-using DCL.Controllers;
+using BLD.Controllers;
 using Builder.Gizmos;
 using System.Collections.Generic;
 
 namespace Builder
 {
-    public class DCLBuilderObjectSelector : MonoBehaviour
+    public class BLDBuilderObjectSelector : MonoBehaviour
     {
         const float DRAGGING_THRESHOLD_TIME = 0.25f;
 
-        public DCLBuilderRaycast builderRaycast;
-        public DCLBuilderGizmoManager gizmosManager;
+        public BLDBuilderRaycast builderRaycast;
+        public BLDBuilderGizmoManager gizmosManager;
 
         public delegate void EntitySelectedDelegate(EditableEntity entity, string gizmoType);
 
@@ -23,12 +23,12 @@ namespace Builder
         public static event EntityDeselectedDelegate OnDeselectedObject;
         public static event System.Action OnNoObjectSelected;
         public static event EntitySelectedListChangedDelegate OnSelectedObjectListChanged;
-        public static event System.Action<DCLBuilderEntity, Vector3> OnEntityPressed;
-        public static event System.Action<DCLBuilderGizmoAxis> OnGizmosAxisPressed;
+        public static event System.Action<BLDBuilderEntity, Vector3> OnEntityPressed;
+        public static event System.Action<BLDBuilderGizmoAxis> OnGizmosAxisPressed;
 
         public Transform selectedEntitiesParent { private set; get; }
 
-        private Dictionary<string, DCLBuilderEntity> entities = new Dictionary<string, DCLBuilderEntity>();
+        private Dictionary<string, BLDBuilderEntity> entities = new Dictionary<string, BLDBuilderEntity>();
         private List<EditableEntity> selectedEntities = new List<EditableEntity>();
         private EntityPressedInfo lastPressedEntityInfo = new EntityPressedInfo();
         private bool isDirty = false;
@@ -42,7 +42,7 @@ namespace Builder
 
         private void Awake()
         {
-            DCLBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged += OnPreviewModeChanged;
             SelectionParentCreate();
         }
 
@@ -51,24 +51,24 @@ namespace Builder
             if (selectedEntitiesParent != null)
                 Destroy(selectedEntitiesParent.gameObject);
 
-            DCLBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
+            BLDBuilderBridge.OnPreviewModeChanged -= OnPreviewModeChanged;
         }
 
         private void OnEnable()
         {
             if (!isGameObjectActive)
             {
-                DCLBuilderInput.OnMouseDown += OnMouseDown;
-                DCLBuilderInput.OnMouseUp += OnMouseUp;
-                DCLBuilderBridge.OnResetObject += OnResetObject;
-                DCLBuilderBridge.OnEntityAdded += OnEntityAdded;
-                DCLBuilderBridge.OnEntityRemoved += OnEntityRemoved;
-                DCLBuilderBridge.OnSceneChanged += OnSceneChanged;
-                DCLBuilderBridge.OnBuilderSelectEntity += OnBuilderSelectEntity;
-                DCLBuilderGizmoManager.OnGizmoTransformObject += OnGizmoTransform;
-                DCLBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformEnded;
-                DCLBuilderObjectDragger.OnDraggingObject += OnObjectsDrag;
-                DCLBuilderObjectDragger.OnDraggingObjectEnd += OnObjectsDragEnd;
+                BLDBuilderInput.OnMouseDown += OnMouseDown;
+                BLDBuilderInput.OnMouseUp += OnMouseUp;
+                BLDBuilderBridge.OnResetObject += OnResetObject;
+                BLDBuilderBridge.OnEntityAdded += OnEntityAdded;
+                BLDBuilderBridge.OnEntityRemoved += OnEntityRemoved;
+                BLDBuilderBridge.OnSceneChanged += OnSceneChanged;
+                BLDBuilderBridge.OnBuilderSelectEntity += OnBuilderSelectEntity;
+                BLDBuilderGizmoManager.OnGizmoTransformObject += OnGizmoTransform;
+                BLDBuilderGizmoManager.OnGizmoTransformObjectEnd += OnGizmoTransformEnded;
+                BLDBuilderObjectDragger.OnDraggingObject += OnObjectsDrag;
+                BLDBuilderObjectDragger.OnDraggingObjectEnd += OnObjectsDragEnd;
             }
 
             isGameObjectActive = true;
@@ -77,17 +77,17 @@ namespace Builder
         private void OnDisable()
         {
             isGameObjectActive = false;
-            DCLBuilderInput.OnMouseDown -= OnMouseDown;
-            DCLBuilderInput.OnMouseUp -= OnMouseUp;
-            DCLBuilderBridge.OnResetObject -= OnResetObject;
-            DCLBuilderBridge.OnEntityAdded -= OnEntityAdded;
-            DCLBuilderBridge.OnEntityRemoved -= OnEntityRemoved;
-            DCLBuilderBridge.OnSceneChanged -= OnSceneChanged;
-            DCLBuilderBridge.OnBuilderSelectEntity -= OnBuilderSelectEntity;
-            DCLBuilderGizmoManager.OnGizmoTransformObject -= OnGizmoTransform;
-            DCLBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformEnded;
-            DCLBuilderObjectDragger.OnDraggingObject -= OnObjectsDrag;
-            DCLBuilderObjectDragger.OnDraggingObjectEnd -= OnObjectsDragEnd;
+            BLDBuilderInput.OnMouseDown -= OnMouseDown;
+            BLDBuilderInput.OnMouseUp -= OnMouseUp;
+            BLDBuilderBridge.OnResetObject -= OnResetObject;
+            BLDBuilderBridge.OnEntityAdded -= OnEntityAdded;
+            BLDBuilderBridge.OnEntityRemoved -= OnEntityRemoved;
+            BLDBuilderBridge.OnSceneChanged -= OnSceneChanged;
+            BLDBuilderBridge.OnBuilderSelectEntity -= OnBuilderSelectEntity;
+            BLDBuilderGizmoManager.OnGizmoTransformObject -= OnGizmoTransform;
+            BLDBuilderGizmoManager.OnGizmoTransformObjectEnd -= OnGizmoTransformEnded;
+            BLDBuilderObjectDragger.OnDraggingObject -= OnObjectsDrag;
+            BLDBuilderObjectDragger.OnDraggingObjectEnd -= OnObjectsDragEnd;
         }
 
         private void Update()
@@ -118,7 +118,7 @@ namespace Builder
             RaycastHit hit;
             if (builderRaycast.Raycast(mousePosition, builderRaycast.defaultMask | builderRaycast.gizmoMask, out hit, CompareSelectionHit))
             {
-                DCLBuilderGizmoAxis gizmosAxis = hit.collider.gameObject.GetComponent<DCLBuilderGizmoAxis>();
+                BLDBuilderGizmoAxis gizmosAxis = hit.collider.gameObject.GetComponent<BLDBuilderGizmoAxis>();
                 if (gizmosAxis != null)
                 {
                     OnGizmosAxisPressed?.Invoke(gizmosAxis);
@@ -126,8 +126,8 @@ namespace Builder
                 }
                 else
                 {
-                    var builderSelectionCollider = hit.collider.gameObject.GetComponent<DCLBuilderSelectionCollider>();
-                    DCLBuilderEntity pressedEntity = null;
+                    var builderSelectionCollider = hit.collider.gameObject.GetComponent<BLDBuilderSelectionCollider>();
+                    BLDBuilderEntity pressedEntity = null;
 
                     if (builderSelectionCollider != null)
                     {
@@ -191,7 +191,7 @@ namespace Builder
             }
         }
 
-        private void OnEntityAdded(DCLBuilderEntity entity)
+        private void OnEntityAdded(BLDBuilderEntity entity)
         {
             if (!entities.ContainsKey(entity.rootEntity.entityId))
             {
@@ -199,7 +199,7 @@ namespace Builder
             }
         }
 
-        private void OnEntityRemoved(DCLBuilderEntity entity)
+        private void OnEntityRemoved(BLDBuilderEntity entity)
         {
             if (selectedEntities.Contains(entity))
             {
@@ -222,7 +222,7 @@ namespace Builder
             {
                 if (entities.ContainsKey(entitiesId[i]))
                 {
-                    DCLBuilderEntity entity = entities[entitiesId[i]];
+                    BLDBuilderEntity entity = entities[entitiesId[i]];
                     if (!SelectionParentHasChild(entity.transform))
                     {
                         Select(entity);
@@ -264,9 +264,9 @@ namespace Builder
             isSelectionTransformed = false;
         }
 
-        private bool CanSelect(DCLBuilderEntity entity) { return entity.hasGizmoComponent; }
+        private bool CanSelect(BLDBuilderEntity entity) { return entity.hasGizmoComponent; }
 
-        private void MarkSelected(DCLBuilderEntity entity)
+        private void MarkSelected(BLDBuilderEntity entity)
         {
             if (entity == null)
             {
@@ -276,7 +276,7 @@ namespace Builder
             OnMarkObjectSelected?.Invoke(entity, gizmosManager.GetSelectedGizmo());
         }
 
-        private void Select(DCLBuilderEntity entity)
+        private void Select(BLDBuilderEntity entity)
         {
             if (entity == null)
             {
@@ -328,14 +328,14 @@ namespace Builder
             gameObject.SetActive(!isPreview);
         }
 
-        private void SetLastPressedEntity(DCLBuilderEntity pressedEntity, Vector3 hitPoint)
+        private void SetLastPressedEntity(BLDBuilderEntity pressedEntity, Vector3 hitPoint)
         {
             lastPressedEntityInfo.pressedEntity = pressedEntity;
             lastPressedEntityInfo.pressedTime = Time.unscaledTime;
             lastPressedEntityInfo.hitPoint = hitPoint;
         }
 
-        private void ProcessEntityPressed(DCLBuilderEntity pressedEntity, Vector3 hitPoint)
+        private void ProcessEntityPressed(BLDBuilderEntity pressedEntity, Vector3 hitPoint)
         {
             if (CanSelect(pressedEntity))
             {
@@ -391,7 +391,7 @@ namespace Builder
             }
         }
 
-        private void SelectionParentAddEntity(DCLBuilderEntity entity) { SelectionParentAddEntity(entity.transform); }
+        private void SelectionParentAddEntity(BLDBuilderEntity entity) { SelectionParentAddEntity(entity.transform); }
 
         private void SelectionParentAddEntity(Transform entityTransform) { entityTransform.SetParent(selectedEntitiesParent, true); }
 
@@ -443,11 +443,11 @@ namespace Builder
             return closestHit;
         }
 
-        private bool IsGizmoHit(RaycastHit hit) { return hit.collider.gameObject.GetComponent<DCLBuilderGizmoAxis>() != null; }
+        private bool IsGizmoHit(RaycastHit hit) { return hit.collider.gameObject.GetComponent<BLDBuilderGizmoAxis>() != null; }
 
         private bool IsEntityHitAndSelected(RaycastHit hit)
         {
-            var collider = hit.collider.gameObject.GetComponent<DCLBuilderSelectionCollider>();
+            var collider = hit.collider.gameObject.GetComponent<BLDBuilderSelectionCollider>();
             if (collider != null)
             {
                 return SelectionParentHasChild(collider.ownerEntity.transform);
@@ -458,7 +458,7 @@ namespace Builder
 
         private class EntityPressedInfo
         {
-            public DCLBuilderEntity pressedEntity;
+            public BLDBuilderEntity pressedEntity;
             public float pressedTime;
             public Vector3 hitPoint;
         }

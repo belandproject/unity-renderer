@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using DCL.ServerTime;
+using BLD.ServerTime;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     /// <summary>
     /// This class will handle runtime execution of skybox cycle. 
@@ -87,7 +87,7 @@ namespace DCL.Skybox
 
             KernelConfig.i.OnChange += KernelConfig_OnChange;
 
-            DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
+            BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
 
             // Register UI related events
             DataStore.i.skyboxConfig.useDynamicSkybox.OnChange += UseDynamicSkybox_OnChange;
@@ -468,7 +468,7 @@ namespace DCL.Skybox
             DataStore.i.worldTimer.OnTimeChanged -= GetTimeFromTheServer;
             configuration.OnTimelineEvent -= Configuration_OnTimelineEvent;
             KernelConfig.i.OnChange -= KernelConfig_OnChange;
-            DCL.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
+            BLD.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
             DataStore.i.skyboxConfig.useDynamicSkybox.OnChange -= UseDynamicSkybox_OnChange;
             DataStore.i.skyboxConfig.fixedTime.OnChange -= FixedTime_OnChange;
             DataStore.i.skyboxConfig.reflectionResolution.OnChange -= ReflectionResolution_OnChange;

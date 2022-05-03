@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using DCL;
+using BLD;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public sealed partial class Mocked
     {

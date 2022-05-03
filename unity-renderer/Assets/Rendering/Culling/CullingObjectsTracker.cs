@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     /// <summary>
     /// This class is used for tracking all the renderers, skinnedMeshRenderers and Animations of the world.

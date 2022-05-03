@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public sealed partial class Mocked
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public interface IWebRequest
     {

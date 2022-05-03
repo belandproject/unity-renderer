@@ -1,10 +1,10 @@
 using System;
-using DCL;
-using DCL.HelpAndSupportHUD;
-using DCL.Huds.QuestsPanel;
-using DCL.Huds.QuestsTracker;
-using DCL.QuestsController;
-using DCL.SettingsPanelHUD;
+using BLD;
+using BLD.HelpAndSupportHUD;
+using BLD.Huds.QuestsPanel;
+using BLD.Huds.QuestsTracker;
+using BLD.QuestsController;
+using BLD.SettingsPanelHUD;
 using System.Collections.Generic;
 using LoadingHUD;
 using SignupHUD;
@@ -23,10 +23,10 @@ public class HUDController : IHUDController
 
     private InputAction_Trigger toggleUIVisibilityTrigger;
 
-    private readonly DCL.NotificationModel.Model hiddenUINotification = new DCL.NotificationModel.Model()
+    private readonly BLD.NotificationModel.Model hiddenUINotification = new BLD.NotificationModel.Model()
     {
         timer = 3,
-        type = DCL.NotificationModel.Type.UI_HIDDEN,
+        type = BLD.NotificationModel.Type.UI_HIDDEN,
         groupID = "UIHiddenNotification"
     };
 
@@ -40,7 +40,7 @@ public class HUDController : IHUDController
         i = this;
 
         if ( this.hudFactory == null )
-            this.hudFactory = DCL.Environment.i.hud.factory;
+            this.hudFactory = BLD.Environment.i.hud.factory;
 
         toggleUIVisibilityTrigger = Resources.Load<InputAction_Trigger>(TOGGLE_UI_VISIBILITY_ASSET_NAME);
         toggleUIVisibilityTrigger.OnTriggered += ToggleUIVisibility_OnTriggered;
@@ -111,7 +111,7 @@ public class HUDController : IHUDController
 
     private void ShowControls() { controlsHud?.SetVisibility(true); }
 
-    private void ToggleUIVisibility_OnTriggered(DCLAction_Trigger action)
+    private void ToggleUIVisibility_OnTriggered(BLDAction_Trigger action)
     {
         bool anyInputFieldIsSelected = EventSystem.current != null &&
                                        EventSystem.current.currentSelectedGameObject != null &&
@@ -264,8 +264,8 @@ public class HUDController : IHUDController
                             SceneReferences.i.mouseCatcher,
                             ChatController.i,
                             FriendsController.i,
-                            DCL.Environment.i.world.sceneController,
-                            DCL.Environment.i.world.state);
+                            BLD.Environment.i.world.sceneController,
+                            BLD.Environment.i.world.state);
                         taskbarHud.OnAnyTaskbarButtonClicked -= TaskbarHud_onAnyTaskbarButtonClicked;
                         taskbarHud.OnAnyTaskbarButtonClicked += TaskbarHud_onAnyTaskbarButtonClicked;
 

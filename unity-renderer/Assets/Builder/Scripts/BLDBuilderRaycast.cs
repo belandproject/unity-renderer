@@ -1,11 +1,11 @@
-﻿using DCL;
+﻿using BLD;
 using UnityEngine;
-using DCL.Controllers;
-using DCL.Components;
+using BLD.Controllers;
+using BLD.Components;
 
 namespace Builder
 {
-    public class DCLBuilderRaycast : MonoBehaviour
+    public class BLDBuilderRaycast : MonoBehaviour
     {
         public const string LAYER_GIZMOS = "Gizmo";
         public const string LAYER_SELECTION = "Selection";
@@ -22,7 +22,7 @@ namespace Builder
 
         private void Awake()
         {
-            defaultMask = LayerMask.GetMask(DCLBuilderSelectionCollider.LAYER_BUILDER_POINTER_CLICK);
+            defaultMask = LayerMask.GetMask(BLDBuilderSelectionCollider.LAYER_BUILDER_POINTER_CLICK);
             gizmoMask = LayerMask.GetMask(LAYER_GIZMOS);
 
             groundPlane = new Plane(Vector3.up, Vector3.zero);

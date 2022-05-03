@@ -1,11 +1,11 @@
-using DCL;
+using BLD;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +13,7 @@ using UnityEngine.TestTools;
 using UnityEngine.UI;
 using UnityGLTF.Cache;
 
-namespace DCL.ABConverter.Tests
+namespace BLD.ABConverter.Tests
 {
     public class ABConverterShould
     {

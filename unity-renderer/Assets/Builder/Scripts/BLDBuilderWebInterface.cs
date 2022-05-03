@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.Interface;
-using DCL.Components;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Components;
+using BLD.Models;
 
 namespace Builder
 {
-    public class DCLBuilderWebInterface
+    public class BLDBuilderWebInterface
     {
         static bool LOG_MESSAGES = false;
 
@@ -18,7 +18,7 @@ namespace Builder
         };
 
         [System.Serializable]
-        private class OnEntityLoadingEvent : DCL.Interface.WebInterface.UUIDEvent<EntityLoadingPayload> { };
+        private class OnEntityLoadingEvent : BLD.Interface.WebInterface.UUIDEvent<EntityLoadingPayload> { };
 
         [System.Serializable]
         private class EntitiesOutOfBoundariesEventPayload
@@ -54,7 +54,7 @@ namespace Builder
 
             public string[] entities = null;
             public TransformPayload[] transforms = null;
-            public string gizmoType = DCLGizmos.Gizmo.NONE;
+            public string gizmoType = BLDGizmos.Gizmo.NONE;
             public string type = string.Empty;
         };
 
@@ -63,7 +63,7 @@ namespace Builder
         private static ReportCameraTargetPosition onReportCameraTarget = new ReportCameraTargetPosition();
         private static GizmosEventPayload onGizmoEventPayload = new GizmosEventPayload();
 
-        public void SendEntityStartLoad(IDCLEntity entity)
+        public void SendEntityStartLoad(IBLDEntity entity)
         {
             onGetLoadingEntity.uuid = entity.entityId;
             onGetLoadingEntity.payload.entityId = entity.entityId;
@@ -73,7 +73,7 @@ namespace Builder
             WebInterface.SendSceneEvent(entity.scene.sceneData.id, "uuidEvent", onGetLoadingEntity);
         }
 
-        public void SendEntityFinishLoad(IDCLEntity entity)
+        public void SendEntityFinishLoad(IBLDEntity entity)
         {
             onGetLoadingEntity.uuid = entity.entityId;
             onGetLoadingEntity.payload.entityId = entity.entityId;
@@ -111,7 +111,7 @@ namespace Builder
         {
             onGizmoEventPayload.type = "gizmoSelected";
             onGizmoEventPayload.entities = entity ? new string[] { entity.rootEntity.entityId } : null;
-            onGizmoEventPayload.gizmoType = gizmoType != null ? gizmoType : DCLGizmos.Gizmo.NONE;
+            onGizmoEventPayload.gizmoType = gizmoType != null ? gizmoType : BLDGizmos.Gizmo.NONE;
             onGizmoEventPayload.transforms = null;
 
             if (LOG_MESSAGES)
@@ -123,7 +123,7 @@ namespace Builder
         {
             onGizmoEventPayload.type = "gizmoDragEnded";
             onGizmoEventPayload.entities = null;
-            onGizmoEventPayload.gizmoType = gizmoType != null ? gizmoType : DCLGizmos.Gizmo.NONE;
+            onGizmoEventPayload.gizmoType = gizmoType != null ? gizmoType : BLDGizmos.Gizmo.NONE;
             onGizmoEventPayload.transforms = new GizmosEventPayload.TransformPayload[entities.Count];
 
             for (int i = 0; i < entities.Count; i++)

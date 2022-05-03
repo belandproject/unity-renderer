@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Builder
 {
-    public static class DCLBuilderConfig
+    public static class BLDBuilderConfig
     {
         public static event Action<BuilderConfig> OnConfigChanged;
         public static BuilderConfig config { get; private set; } = BuilderConfig.DefaultBuilderConfig;
