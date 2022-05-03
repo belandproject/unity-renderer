@@ -354,7 +354,7 @@ SpriteAtlas:
   - RadialGradient
   - CellBright
   - Spinner
-  - DclLogoBg
+  - BldLogoBg
   - RectRadius8
   - EllipseOutline2
   - Shadow10
@@ -408,7 +408,7 @@ SpriteAtlas:
   - AcceptButton
   - CopyIconOutline
   - QuestOn
-  - DclLogoMountain
+  - BldLogoMountain
   - SelectedParcel
   - OkIcon
   - ContainerRadius20
@@ -421,9 +421,9 @@ SpriteAtlas:
   - ConnectionStatus
   - Container12Shadow20
   - Container12Shadow4
-  - DclLogoCircle
+  - BldLogoCircle
   - LockIcon
-  - DclLogoLine3
+  - BldLogoLine3
   - Camera
   - NFTEmpty
   - CheckmarkGreen
@@ -512,7 +512,7 @@ SpriteAtlas:
   - ContainerRadius100
   - Star
   - ExploreOn
-  - DclLogoLine2
+  - BldLogoLine2
   - TaskbarCheckmark
   - OngoingEventIcon
   - Handle
@@ -570,7 +570,7 @@ SpriteAtlas:
   - MarketplaceOff
   - Shadow4
   - CursorInteractive
-  - DclLogoLine1
+  - BldLogoLine1
   - InputRed
   - CrowdIcon
   - OutlineGradient
