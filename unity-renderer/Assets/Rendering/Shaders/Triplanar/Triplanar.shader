@@ -1,4 +1,4 @@
-Shader "DCL/FX/Triplanar"
+Shader "BLD/FX/Triplanar"
 {
     Properties
     {

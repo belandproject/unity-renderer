@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Networking;
 
-namespace DCL.ServerTime
+namespace BLD.ServerTime
 {
     public class WorldTimer
     {
@@ -12,7 +12,7 @@ namespace DCL.ServerTime
         public event OnTimeUpdated OnTimeChanged;
 
         public float serverHitFrequency;
-        public string serverURL = "https://peer.decentraland.org/lambdas/health";
+        public string serverURL = "https://hub.beland.io/health";
 
         private bool initialized = false;
         private DateTime lastTimeFromServer = DateTime.Now.ToUniversalTime();

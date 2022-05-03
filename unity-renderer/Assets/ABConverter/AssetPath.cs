@@ -1,11 +1,11 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections;
 using System.IO;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine.Networking;
-using MappingPair = DCL.ContentServerUtils.MappingPair;
+using MappingPair = BLD.ContentServerUtils.MappingPair;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public class AssetPath
     {

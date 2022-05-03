@@ -1,8 +1,8 @@
-﻿using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+﻿using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
 public class EntityMaterialUpdateTestController : MonoBehaviour
@@ -17,20 +17,20 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
 
         var scene = Environment.i.world.state.loadedScenes["0,0"] as ParcelScene;
 
-        DCLTexture dclAtlasTexture = TestUtils.CreateDCLTexture(
+        BLDTexture dclAtlasTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/atlas.png",
-            DCLTexture.BabylonWrapMode.CLAMP,
+            BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode.Bilinear);
 
-        DCLTexture dclAvatarTexture = TestUtils.CreateDCLTexture(
+        BLDTexture dclAvatarTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/avatar.png",
-            DCLTexture.BabylonWrapMode.CLAMP,
+            BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode.Bilinear);
 
 
-        IDCLEntity entity;
+        IBLDEntity entity;
 
         TestUtils.CreateEntityWithBasicMaterial(
             scene,
@@ -68,7 +68,7 @@ public class EntityMaterialUpdateTestController : MonoBehaviour
         ColorUtility.TryParseHtmlString("#FF9292", out color1);
 
         // Update material attached to 2 entities, adding albedoColor
-        scene.SharedComponentUpdate(m.id, JsonUtility.ToJson(new DCL.Components.PBRMaterial.Model
+        scene.SharedComponentUpdate(m.id, JsonUtility.ToJson(new BLD.Components.PBRMaterial.Model
         {
             albedoTexture = dclAvatarTexture.id,
             metallic = 1,

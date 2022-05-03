@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114754758112584508, guid: b387035aa46399445bdc7951a41d5213,
         type: 3}
-      propertyPath: startDecentralandAutomatically
+      propertyPath: startBelandAutomatically
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93abd0c33724e794e9bf1831fae0a601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataTrackingURL: https://tracking.decentraland.org/track
+  dataTrackingURL: https://tracking.beland.io/track
 --- !u!4 &973363736
 Transform:
   m_ObjectHideFlags: 0

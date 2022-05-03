@@ -19,7 +19,7 @@
     </style>
     <script src="%UNITY_WEBGL_LOADER_URL%"></script>
     <script>
-      window.startDecentraland = function() {
+      window.startBeland = function() {
         var gamejs = document.createElement("script");
         gamejs.type = "text/javascript";
         gamejs.src = "game.js";
@@ -34,9 +34,9 @@
         "%UNITY_WEBGL_BUILD_URL%"
       );
 
-      window.DCL = {
-        StartDecentraland() {
-          console.log("StartDecentraland called");
+      window.BLD = {
+        StartBeland() {
+          console.log("StartBeland called");
         },
         MessageFromEngine(type, message) {
           console.log("MessageFromEngine(" + type + ")", message);
@@ -125,7 +125,7 @@
 
           gameInstance.SendMessage(
             "SceneController",
-            "LoadDecentralandScenes",
+            "LoadBelandScenes",
             JSON.stringify(sceneJSON)
           );
         }

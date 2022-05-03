@@ -559,7 +559,7 @@
             "m_Guid": ""
         }
     },
-    "m_Path": "DCL/Shader Graphs",
+    "m_Path": "BLD/Shader Graphs",
     "m_ConcretePrecision": 0,
     "m_PreviewMode": 2,
     "m_OutputNode": {

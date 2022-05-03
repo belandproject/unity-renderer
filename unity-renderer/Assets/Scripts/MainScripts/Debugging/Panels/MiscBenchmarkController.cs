@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     [RequireComponent(typeof(StatsPanel))]
     public class MiscBenchmarkController : MonoBehaviour, IBenchmarkController

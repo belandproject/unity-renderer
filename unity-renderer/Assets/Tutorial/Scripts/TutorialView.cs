@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     public class TutorialView : MonoBehaviour
     {

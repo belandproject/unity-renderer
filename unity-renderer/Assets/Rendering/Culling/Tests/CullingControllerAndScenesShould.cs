@@ -1,15 +1,15 @@
 using System;
 using System.Collections;
 using System.Linq;
-using DCL;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Rendering;
+using BLD;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Rendering;
 using NSubstitute;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 namespace CullingControllerTests
 {
@@ -56,14 +56,14 @@ namespace CullingControllerTests
             yield return boxShape.routine;
 
             yield return
-                new DCL.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsTrue(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't hidden!");
 
             TestUtils.SetEntityTransform(scene, entity, Vector3.zero, Quaternion.identity, Vector3.one);
 
             yield return
-                new DCL.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsFalse(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't brought back!");
         }
@@ -80,7 +80,7 @@ namespace CullingControllerTests
             yield return boxShape.routine;
 
             yield return
-                new DCL.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsTrue(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't hidden!");
 
@@ -91,7 +91,7 @@ namespace CullingControllerTests
             Environment.i.platform.cullingController.SetSettings(settings);
 
             yield return
-                new DCL.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsFalse(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't brought back!");
         }
@@ -108,7 +108,7 @@ namespace CullingControllerTests
             yield return boxShape.routine;
 
             yield return
-                new DCL.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsTrue(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't hidden!");
 
@@ -119,7 +119,7 @@ namespace CullingControllerTests
             TestUtils.SetEntityTransform(scene, entity, Vector3.zero, Quaternion.identity, Vector3.one);
 
             yield return
-                new DCL.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
+                new BLD.WaitUntil(() => !entity.meshesInfo.renderers[0].forceRenderingOff, 0.3f);
 
             Assert.IsFalse(entity.meshesInfo.renderers[0].forceRenderingOff, "renderer wasn't brought back!");
         }

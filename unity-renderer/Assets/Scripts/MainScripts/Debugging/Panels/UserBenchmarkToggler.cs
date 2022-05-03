@@ -1,8 +1,8 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL
+namespace BLD
 {
     public class UserBenchmarkToggler : MonoBehaviour
     {

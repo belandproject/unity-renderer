@@ -1,8 +1,8 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Interface;
-using DCL.Models;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Interface;
+using BLD.Models;
 using Google.Protobuf;
 using Newtonsoft.Json;
 using System;
@@ -22,7 +22,7 @@ using UnityEngine.SceneManagement;
 using Color = UnityEngine.Color;
 using Object = System.Object;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public class WaitForAllMessagesProcessed : CustomYieldInstruction
     {
@@ -38,7 +38,7 @@ namespace DCL.Helpers
     public static class TestUtils
     {
         public static int testSceneIteration;
-        public const string testingSceneName = "DCL_Testing_";
+        public const string testingSceneName = "BLD_Testing_";
 
         public static string CreateSceneMessage(string sceneId, string tag, string method, string payload) { return $"{sceneId}\t{method}\t{payload}\t{tag}\n"; }
 
@@ -118,12 +118,12 @@ namespace DCL.Helpers
 
         public static PB_Transform GetPBTransformFromModelJson(string json)
         {
-            DCLTransform.Model transfModel = JsonUtility.FromJson<DCLTransform.Model>(json);
+            BLDTransform.Model transfModel = JsonUtility.FromJson<BLDTransform.Model>(json);
             PB_Transform pbTranf = GetPBTransform(transfModel.position, transfModel.rotation, transfModel.scale);
             return pbTranf;
         }
 
-        public static IDCLEntity CreateSceneEntity(ParcelScene scene)
+        public static IBLDEntity CreateSceneEntity(ParcelScene scene)
         {
             Assert.IsNotNull(scene, "Can't create entity for null scene!");
 
@@ -132,13 +132,13 @@ namespace DCL.Helpers
             return scene.CreateEntity(id);
         }
 
-        public static IDCLEntity CreateSceneEntity(ParcelScene scene, string id) { return scene.CreateEntity(id); }
+        public static IBLDEntity CreateSceneEntity(ParcelScene scene, string id) { return scene.CreateEntity(id); }
 
         public static void RemoveSceneEntity(ParcelScene scene, string id) { scene.RemoveEntity(id); }
 
-        public static void RemoveSceneEntity(ParcelScene scene, IDCLEntity entity) { scene.RemoveEntity(entity.entityId); }
+        public static void RemoveSceneEntity(ParcelScene scene, IBLDEntity entity) { scene.RemoveEntity(entity.entityId); }
 
-        public static T EntityComponentCreate<T, K>(ParcelScene scene, IDCLEntity entity, K model,
+        public static T EntityComponentCreate<T, K>(ParcelScene scene, IBLDEntity entity, K model,
             CLASS_ID_COMPONENT classId = CLASS_ID_COMPONENT.NONE)
             where T : BaseComponent
             where K : new()
@@ -190,20 +190,20 @@ namespace DCL.Helpers
             return component.routine;
         }
 
-        public static void SetEntityParent(ParcelScene scene, IDCLEntity child, IDCLEntity parent) { scene.SetEntityParent(child.entityId, parent.entityId); }
+        public static void SetEntityParent(ParcelScene scene, IBLDEntity child, IBLDEntity parent) { scene.SetEntityParent(child.entityId, parent.entityId); }
 
         public static void SetEntityParent(ParcelScene scene, string childEntityId, string parentEntityId) { scene.SetEntityParent(childEntityId, parentEntityId); }
 
-        public static DCLTexture CreateDCLTexture(ParcelScene scene,
+        public static BLDTexture CreateBLDTexture(ParcelScene scene,
             string url,
-            DCLTexture.BabylonWrapMode wrapMode = DCLTexture.BabylonWrapMode.CLAMP,
+            BLDTexture.BabylonWrapMode wrapMode = BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode filterMode = FilterMode.Bilinear)
         {
-            return SharedComponentCreate<DCLTexture, DCLTexture.Model>
+            return SharedComponentCreate<BLDTexture, BLDTexture.Model>
             (
                 scene,
-                DCL.Models.CLASS_ID.TEXTURE,
-                new DCLTexture.Model
+                BLD.Models.CLASS_ID.TEXTURE,
+                new BLDTexture.Model
                 {
                     src = url,
                     wrap = wrapMode,
@@ -267,7 +267,7 @@ namespace DCL.Helpers
             scene.SharedComponentDispose(component.id);
         }
 
-        public static void SharedComponentAttach(BaseDisposable component, IDCLEntity entity)
+        public static void SharedComponentAttach(BaseDisposable component, IBLDEntity entity)
         {
             ParcelScene scene = entity.scene as ParcelScene;
             scene.SharedComponentAttach(
@@ -276,11 +276,11 @@ namespace DCL.Helpers
             );
         }
 
-        public static void SetEntityTransform(ParcelScene scene, IDCLEntity entity, DCLTransform.Model model) { SetEntityTransform(scene, entity, model.position, model.rotation, model.scale); }
+        public static void SetEntityTransform(ParcelScene scene, IBLDEntity entity, BLDTransform.Model model) { SetEntityTransform(scene, entity, model.position, model.rotation, model.scale); }
 
-        public static void SetEntityTransform(ParcelScene scene, IDCLEntity entity) { SetEntityTransform(scene, entity, Vector3.zero, Quaternion.identity, Vector3.one); }
+        public static void SetEntityTransform(ParcelScene scene, IBLDEntity entity) { SetEntityTransform(scene, entity, Vector3.zero, Quaternion.identity, Vector3.one); }
 
-        public static void SetEntityTransform(ParcelScene scene, IDCLEntity entity, Vector3 position, Quaternion rotation, Vector3 scale)
+        public static void SetEntityTransform(ParcelScene scene, IBLDEntity entity, Vector3 position, Quaternion rotation, Vector3 scale)
         {
             PB_Transform pB_Transform = GetPBTransform(position, rotation, scale);
             scene.EntityComponentCreateOrUpdate(
@@ -292,7 +292,7 @@ namespace DCL.Helpers
 
         public static TextShape InstantiateEntityWithTextShape(ParcelScene scene, Vector3 position, TextShape.Model model)
         {
-            IDCLEntity entity = CreateSceneEntity(scene);
+            IBLDEntity entity = CreateSceneEntity(scene);
             string componentId =
                 GetComponentUniqueId(scene, "textShape", (int) CLASS_ID_COMPONENT.TEXT_SHAPE, entity.entityId);
 
@@ -303,7 +303,7 @@ namespace DCL.Helpers
             return textShape;
         }
 
-        public static GLTFShape AttachGLTFShape(IDCLEntity entity, ParcelScene scene, Vector3 position, GLTFShape.Model model)
+        public static GLTFShape AttachGLTFShape(IBLDEntity entity, ParcelScene scene, Vector3 position, GLTFShape.Model model)
         {
             string componentId = GetComponentUniqueId(scene, "gltfShape", (int) CLASS_ID.GLTF_SHAPE, entity.entityId);
             GLTFShape gltfShape = SharedComponentCreate<GLTFShape, GLTFShape.Model>(scene, CLASS_ID.GLTF_SHAPE, model);
@@ -315,40 +315,40 @@ namespace DCL.Helpers
 
         public static GLTFShape CreateEntityWithGLTFShape(ParcelScene scene, Vector3 position, string url)
         {
-            IDCLEntity entity = null;
+            IBLDEntity entity = null;
             return CreateEntityWithGLTFShape(scene, position, new GLTFShape.Model() { src = url }, out entity);
         }
 
         public static GLTFShape CreateEntityWithGLTFShape(ParcelScene scene, Vector3 position, string url,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
             return CreateEntityWithGLTFShape(scene, position, new GLTFShape.Model() { src = url }, out entity);
         }
 
         public static GLTFShape CreateEntityWithGLTFShape(ParcelScene scene, Vector3 position, GLTFShape.Model model)
         {
-            IDCLEntity entity = null;
+            IBLDEntity entity = null;
             return CreateEntityWithGLTFShape(scene, position, model, out entity);
         }
 
         public static GLTFShape CreateEntityWithGLTFShape(ParcelScene scene, Vector3 position, GLTFShape.Model model,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
             entity = CreateSceneEntity(scene);
             GLTFShape gltfShape = AttachGLTFShape(entity, scene, position, model);
             return gltfShape;
         }
 
-        public static IEnumerator CreateShapeForEntity(ParcelScene scene, IDCLEntity entity)
+        public static IEnumerator CreateShapeForEntity(ParcelScene scene, IBLDEntity entity)
         {
-            CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+            CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
                 new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb"
                 }));
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entity.entityId]);
-            yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded);
+            yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded);
         }
 
         public static BoxShape CreateEntityWithBoxShape(ParcelScene scene, Vector3 position,
@@ -404,7 +404,7 @@ namespace DCL.Helpers
                 model = new K();
             }
 
-            IDCLEntity entity = CreateSceneEntity(scene);
+            IBLDEntity entity = CreateSceneEntity(scene);
             T shape = SharedComponentCreate<T, K>(scene, classId, model);
             SharedComponentAttach(shape, entity);
             SetEntityTransform(scene, entity, position, Quaternion.identity, Vector3.one);
@@ -412,28 +412,28 @@ namespace DCL.Helpers
         }
 
         public static BasicMaterial CreateEntityWithBasicMaterial(ParcelScene scene, BasicMaterial.Model model,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
             return CreateEntityWithBasicMaterial(scene, model, Vector3.zero, out entity);
         }
 
         public static BasicMaterial CreateEntityWithBasicMaterial(ParcelScene scene, BasicMaterial.Model model, Vector3 position,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
-            InstantiateEntityWithShape<BoxShape, BoxShape.Model>(scene, DCL.Models.CLASS_ID.BOX_SHAPE, position,
+            InstantiateEntityWithShape<BoxShape, BoxShape.Model>(scene, BLD.Models.CLASS_ID.BOX_SHAPE, position,
                 out entity);
 
             return AttachBasicMaterialToEntity(scene, entity, model);
         }
 
-        public static BasicMaterial AttachBasicMaterialToEntity(ParcelScene scene, IDCLEntity entity, BasicMaterial.Model model)
+        public static BasicMaterial AttachBasicMaterialToEntity(ParcelScene scene, IBLDEntity entity, BasicMaterial.Model model)
         {
             BasicMaterial material = SharedComponentCreate<BasicMaterial, BasicMaterial.Model>(scene, CLASS_ID.BASIC_MATERIAL, model);
             SharedComponentAttach(material, entity);
             return material;
         }
 
-        public static PBRMaterial AttachPBRMaterialToEntity(ParcelScene scene, IDCLEntity entity, PBRMaterial.Model model)
+        public static PBRMaterial AttachPBRMaterialToEntity(ParcelScene scene, IBLDEntity entity, PBRMaterial.Model model)
         {
             PBRMaterial material = SharedComponentCreate<PBRMaterial, PBRMaterial.Model>(scene, CLASS_ID.PBR_MATERIAL, model);
             SharedComponentAttach(material, entity);
@@ -441,13 +441,13 @@ namespace DCL.Helpers
         }
 
         public static PBRMaterial CreateEntityWithPBRMaterial(ParcelScene scene, PBRMaterial.Model model,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
             return CreateEntityWithPBRMaterial(scene, model, Vector3.zero, out entity);
         }
 
         public static PBRMaterial CreateEntityWithPBRMaterial(ParcelScene scene, PBRMaterial.Model model, Vector3 position,
-            out IDCLEntity entity)
+            out IBLDEntity entity)
         {
             InstantiateEntityWithShape<BoxShape, BoxShape.Model>(scene, CLASS_ID.BOX_SHAPE, position,
                 out entity);
@@ -457,8 +457,8 @@ namespace DCL.Helpers
             return material;
         }
 
-        public static T InstantiateEntityWithShape<T, K>(ParcelScene scene, DCL.Models.CLASS_ID classId,
-            Vector3 position, out IDCLEntity entity, K model = null)
+        public static T InstantiateEntityWithShape<T, K>(ParcelScene scene, BLD.Models.CLASS_ID classId,
+            Vector3 position, out IBLDEntity entity, K model = null)
             where T : BaseShape
             where K : class, new()
         {
@@ -479,7 +479,7 @@ namespace DCL.Helpers
             return shape;
         }
 
-        public static void InstantiateEntityWithShape(ParcelScene scene, string entityId, DCL.Models.CLASS_ID classId,
+        public static void InstantiateEntityWithShape(ParcelScene scene, string entityId, BLD.Models.CLASS_ID classId,
             Vector3 position, string remoteSrc = "")
         {
             CreateSceneEntity(scene, entityId);
@@ -501,7 +501,7 @@ namespace DCL.Helpers
 
         public static void DetachSharedComponent(ParcelScene scene, string fromEntityId, string sharedComponentId)
         {
-            if (!scene.entities.TryGetValue(fromEntityId, out IDCLEntity entity))
+            if (!scene.entities.TryGetValue(fromEntityId, out IBLDEntity entity))
             {
                 return;
             }
@@ -512,11 +512,11 @@ namespace DCL.Helpers
         public static void InstantiateEntityWithMaterial(ParcelScene scene, string entityId, Vector3 position,
             BasicMaterial.Model basicMaterial, string materialComponentID = "a-material")
         {
-            InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE, position);
+            InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE, position);
 
             scene.SharedComponentCreate(
                 materialComponentID,
-                (int) DCL.Models.CLASS_ID.BASIC_MATERIAL
+                (int) BLD.Models.CLASS_ID.BASIC_MATERIAL
             );
 
             scene.SharedComponentUpdate(
@@ -532,7 +532,7 @@ namespace DCL.Helpers
         public static void InstantiateEntityWithMaterial(ParcelScene scene, string entityId, Vector3 position,
             PBRMaterial.Model pbrMaterial, string materialComponentID = "a-material")
         {
-            InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.BOX_SHAPE, position);
+            InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.BOX_SHAPE, position);
 
             scene.SharedComponentCreate(
                 materialComponentID,
@@ -551,7 +551,7 @@ namespace DCL.Helpers
 
         public static IEnumerator CreateAudioSource(ParcelScene scene, string entityId, string audioClipId, bool playing, bool loop = true)
         {
-            var audioSourceModel = new DCLAudioSource.Model()
+            var audioSourceModel = new BLDAudioSource.Model()
             {
                 audioClipId = audioClipId,
                 playing = playing,
@@ -560,8 +560,8 @@ namespace DCL.Helpers
                 pitch = 1.0f
             };
 
-            DCLAudioSource audioSource =
-                TestUtils.EntityComponentCreate<DCLAudioSource, DCLAudioSource.Model>(scene, scene.entities[entityId],
+            BLDAudioSource audioSource =
+                TestUtils.EntityComponentCreate<BLDAudioSource, BLDAudioSource.Model>(scene, scene.entities[entityId],
                     audioSourceModel);
 
             yield return audioSource.routine;
@@ -570,7 +570,7 @@ namespace DCL.Helpers
         public static IEnumerator LoadAudioClip(ParcelScene scene, string audioClipId, string url, bool loop, bool loading,
             float volume, bool waitForLoading = true)
         {
-            DCLAudioClip.Model model = new DCLAudioClip.Model
+            BLDAudioClip.Model model = new BLDAudioClip.Model
             {
                 url = url,
                 loop = loop,
@@ -578,10 +578,10 @@ namespace DCL.Helpers
                 volume = volume
             };
 
-            DCLAudioClip audioClip = scene.SharedComponentCreate(
+            BLDAudioClip audioClip = scene.SharedComponentCreate(
                 audioClipId,
                 (int) CLASS_ID.AUDIO_CLIP
-            ) as DCLAudioClip;
+            ) as BLDAudioClip;
 
             scene.SharedComponentUpdate(audioClipId, JsonUtility.ToJson(model));
 
@@ -594,13 +594,13 @@ namespace DCL.Helpers
                 yield return new WaitUntil(
                     () =>
                     {
-                        return audioClip.loadingState != DCLAudioClip.LoadState.LOADING_IN_PROGRESS &&
-                               audioClip.loadingState != DCLAudioClip.LoadState.IDLE;
+                        return audioClip.loadingState != BLDAudioClip.LoadState.LOADING_IN_PROGRESS &&
+                               audioClip.loadingState != BLDAudioClip.LoadState.IDLE;
                     });
             }
         }
 
-        public static IEnumerator CreateAudioSourceWithClipForEntity(IDCLEntity entity)
+        public static IEnumerator CreateAudioSourceWithClipForEntity(IBLDEntity entity)
         {
             yield return LoadAudioClip(entity.scene as ParcelScene,
                 audioClipId: "audioClipTest",
@@ -748,7 +748,7 @@ namespace DCL.Helpers
                 f.SetValue(generatedModel, valueToSet);
             }
 
-            IDCLEntity e = CreateSceneEntity(scene);
+            IBLDEntity e = CreateSceneEntity(scene);
             TComponent component = EntityComponentCreate<TComponent, TModel>(scene, e, generatedModel);
 
             if (component.routine != null)
@@ -777,7 +777,7 @@ namespace DCL.Helpers
             where TModel : class, new()
         {
             // Create scene entity and 1st component
-            IDCLEntity entity = CreateSceneEntity(scene);
+            IBLDEntity entity = CreateSceneEntity(scene);
 
             var component = SharedComponentCreate<TComponent, TModel>(scene, classId);
 
@@ -846,7 +846,7 @@ namespace DCL.Helpers
             component.Dispose();
         }
 
-        public static IEnumerator TestShapeCollision(BaseShape shapeComponent, BaseShape.Model shapeModel, IDCLEntity entity)
+        public static IEnumerator TestShapeCollision(BaseShape shapeComponent, BaseShape.Model shapeModel, IBLDEntity entity)
         {
             var scene = shapeComponent.scene;
 
@@ -886,7 +886,7 @@ namespace DCL.Helpers
             }
         }
 
-        public static IEnumerator TestShapeVisibility(BaseShape shapeComponent, BaseShape.Model shapeModel, IDCLEntity entity)
+        public static IEnumerator TestShapeVisibility(BaseShape shapeComponent, BaseShape.Model shapeModel, IBLDEntity entity)
         {
             // make sure the shape is visible first
             shapeModel.visible = true;
@@ -929,7 +929,7 @@ namespace DCL.Helpers
             yield return TestShapeOnPointerEventCollider(entity);
         }
 
-        public static IEnumerator TestShapeOnPointerEventCollider(IDCLEntity entity)
+        public static IEnumerator TestShapeOnPointerEventCollider(IBLDEntity entity)
         {
             Renderer[] renderers = entity.meshesInfo.renderers;
 
@@ -1184,7 +1184,7 @@ namespace DCL.Helpers
             // Hook up to web interface engine message reporting
             WebInterface.OnMessageFromEngine += msgFromEngineCallback;
 
-            yield return new DCL.WaitUntil(() =>
+            yield return new BLD.WaitUntil(() =>
             {
                 OnIterationStart?.Invoke();
                 return awaitedConditionMet;
@@ -1246,7 +1246,7 @@ namespace DCL.Helpers
             // Hook up to web interface engine message reporting
             WebInterface.OnMessageFromEngine += MsgFromEngineCallback;
 
-            yield return new DCL.WaitUntil(() =>
+            yield return new BLD.WaitUntil(() =>
             {
                 OnIterationStart?.Invoke();
                 return messageWasReceived;
@@ -1269,9 +1269,9 @@ namespace DCL.Helpers
                 $"Rect transform {rt.name} isn't stretched out!. unexpected sizeDelta value.");
         }
 
-        public static void SetCharacterPosition(Vector3 newPosition) { DCLCharacterController.i.Teleport(JsonConvert.SerializeObject(newPosition)); }
+        public static void SetCharacterPosition(Vector3 newPosition) { BLDCharacterController.i.Teleport(JsonConvert.SerializeObject(newPosition)); }
 
-        public static IEnumerator WaitForGLTFLoad(IDCLEntity entity)
+        public static IEnumerator WaitForGLTFLoad(IBLDEntity entity)
         {
             LoadWrapper_GLTF wrapper = GLTFShape.GetLoaderForEntity(entity) as LoadWrapper_GLTF;
             return new WaitUntil(() => wrapper.alreadyLoaded);

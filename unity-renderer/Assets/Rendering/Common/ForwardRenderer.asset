@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2ff9cd9f2df7e4e85570d14a4bdf9d, type: 3}
-  m_Name: NewDCLScreenSpaceAmbientOcclusion
+  m_Name: NewBLDScreenSpaceAmbientOcclusion
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 424079210a480e041936a7bb25fbd521, type: 3}

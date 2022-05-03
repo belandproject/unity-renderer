@@ -1,4 +1,4 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using GLTF.Schema;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Networking;
-using static DCL.ContentServerUtils;
+using static BLD.ContentServerUtils;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public static class MeshUtils
     {

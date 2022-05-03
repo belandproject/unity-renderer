@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL.Helpers;
+using BLD.Helpers;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -17,7 +17,7 @@ using GLTF;
 using GLTF.Schema;
 using UnityGLTF.Loader;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public class Core
     {
@@ -919,7 +919,7 @@ namespace DCL.ABConverter
             //NOTE(Brian): The shader asset bundle that's going to be generated doesn't need to be really used,
             //             as we are going to use the embedded one, so we are going to just delete it after the
             //             generation ended.
-            var mainShader = Shader.Find("DCL/Universal Render Pipeline/Lit");
+            var mainShader = Shader.Find("BLD/Universal Render Pipeline/Lit");
             ABConverter.Utils.MarkAssetForAssetBundleBuild(env.assetDatabase, mainShader, MAIN_SHADER_AB_NAME);
         }
 

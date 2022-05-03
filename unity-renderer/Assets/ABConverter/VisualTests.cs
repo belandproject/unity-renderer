@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using DCL.Helpers;
+using BLD.Helpers;
 using System;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public static class VisualTests
     {
@@ -291,7 +291,7 @@ namespace DCL.ABConverter
                 {
                     if (asset is Material material)
                     {
-                        material.shader = Shader.Find("DCL/Universal Render Pipeline/Lit");
+                        material.shader = Shader.Find("BLD/Universal Render Pipeline/Lit");
                     }
 
                     if (asset is GameObject assetAsGameObject)

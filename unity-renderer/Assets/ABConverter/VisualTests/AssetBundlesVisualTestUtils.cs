@@ -1,10 +1,10 @@
-using DCL.Configuration;
+using BLD.Configuration;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     /// <summary>
     /// Visual tests helper class used to validate Asset Bundle conversions. Based on 'Scripts/Tests/VisualTests/VisualTestHelpers.cs'.

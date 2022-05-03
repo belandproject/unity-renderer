@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     /// <summary>
     /// This class contains the settings CullingController. Mainly used by the quality settings panel.

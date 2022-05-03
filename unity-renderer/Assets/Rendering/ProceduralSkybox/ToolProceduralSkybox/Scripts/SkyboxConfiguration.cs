@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
-namespace DCL.Skybox
+namespace BLD.Skybox
 {
     //[CreateAssetMenu(fileName = "Skybox Configuration", menuName = "ScriptableObjects/SkyboxConfiguration", order = 1)]
     public class SkyboxConfiguration : ScriptableObject

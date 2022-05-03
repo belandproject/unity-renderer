@@ -1,4 +1,4 @@
-using DCL.Tutorial;
+using BLD.Tutorial;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using Tests;
 using UnityEngine;
 using UnityEngine.TestTools;
-using static DCL.Tutorial.TutorialController;
+using static BLD.Tutorial.TutorialController;
 using Object = UnityEngine.Object;
 
-namespace DCL.Tutorial_Tests
+namespace BLD.Tutorial_Tests
 {
     public class TutorialControllerShould : IntegrationTestSuite
     {
@@ -460,8 +460,8 @@ namespace DCL.Tutorial_Tests
             yield return ExecuteAvatarSpecificTutorialStep(9, () =>
             {
                 TutorialStep_Tooltip_SocialFeatures step = (TutorialStep_Tooltip_SocialFeatures)tutorialController.runningStep;
-                step.VoiceChatAction_OnStarted(DCLAction_Hold.VoiceChatRecording);
-                step.VoiceChatAction_OnFinished(DCLAction_Hold.VoiceChatRecording);
+                step.VoiceChatAction_OnStarted(BLDAction_Hold.VoiceChatRecording);
+                step.VoiceChatAction_OnFinished(BLDAction_Hold.VoiceChatRecording);
             });
         }
 
@@ -511,7 +511,7 @@ namespace DCL.Tutorial_Tests
             testStep.skipTutorialSection.SetActive(!mainSectionActivated);
 
             // Act
-            testStep.NoSkipInputAction_OnFinished(DCLAction_Hold.DefaultConfirmAction);
+            testStep.NoSkipInputAction_OnFinished(BLDAction_Hold.DefaultConfirmAction);
 
             // Assert
             if (mainSectionActivated)

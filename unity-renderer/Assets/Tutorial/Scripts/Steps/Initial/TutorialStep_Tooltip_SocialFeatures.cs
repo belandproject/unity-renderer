@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to show the social features available in the taskbar.
@@ -94,9 +94,9 @@ namespace DCL.Tutorial
 
         internal void FriendsHud_OnFriendsClosed() { SocialFeatureIsOpen(false); }
 
-        internal void VoiceChatAction_OnStarted(DCLAction_Hold action) { SocialFeatureIsOpen(true); }
+        internal void VoiceChatAction_OnStarted(BLDAction_Hold action) { SocialFeatureIsOpen(true); }
 
-        internal void VoiceChatAction_OnFinished(DCLAction_Hold action) { SocialFeatureIsOpen(false); }
+        internal void VoiceChatAction_OnFinished(BLDAction_Hold action) { SocialFeatureIsOpen(false); }
 
         private void SocialFeatureIsOpen(bool isOpen)
         {

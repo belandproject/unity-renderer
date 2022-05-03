@@ -1,7 +1,7 @@
-﻿using DCL.Helpers;
+﻿using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     public static class CullingControllerUtils
     {

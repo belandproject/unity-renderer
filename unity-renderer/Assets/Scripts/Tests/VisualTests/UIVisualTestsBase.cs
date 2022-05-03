@@ -1,8 +1,8 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
-using DCL;
+using BLD;
 using UnityEngine;
 
 public class UIVisualTestsBase : VisualTestsBase

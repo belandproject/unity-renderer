@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     public interface ICullingObjectsTracker : IDisposable
     {

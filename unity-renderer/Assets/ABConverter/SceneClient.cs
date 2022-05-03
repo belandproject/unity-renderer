@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public static class SceneClient
     {

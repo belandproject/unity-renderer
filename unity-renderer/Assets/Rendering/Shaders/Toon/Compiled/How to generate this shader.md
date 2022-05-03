@@ -2,7 +2,7 @@
 
 - Go to `Master_ToonShader`, look at the inspector and click on "View Generated Shader"
 - Overwrite `ToonShaderCompiled.shader` contents with the generated shader.
-- Rename the shader to `DCL/Toon Shader`
+- Rename the shader to `BLD/Toon Shader`
 - Look for the passes with `UniversalPipeline` tag, there should be two of them.
 
 ### For each "UniversalPipeline" pass:

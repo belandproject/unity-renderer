@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to how to open the Backpack window from the taskbar.

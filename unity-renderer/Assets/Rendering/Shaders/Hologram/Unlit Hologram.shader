@@ -1,4 +1,4 @@
-Shader "DCL/FX/Hologram"
+Shader "BLD/FX/Hologram"
 {
     Properties
     {

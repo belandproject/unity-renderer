@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DCL.FPSDisplay
+namespace BLD.FPSDisplay
 {
     public class FPSColoring
     {

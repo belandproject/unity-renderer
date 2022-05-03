@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public static partial class UnityEditorWrappers
     {

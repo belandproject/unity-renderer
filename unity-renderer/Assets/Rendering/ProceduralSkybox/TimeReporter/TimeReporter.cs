@@ -1,6 +1,6 @@
 using System;
-using DCL;
-using DCL.Interface;
+using BLD;
+using BLD.Interface;
 
 public interface ITimeReporter : IDisposable
 {

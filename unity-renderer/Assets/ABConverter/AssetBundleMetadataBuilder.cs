@@ -7,7 +7,7 @@ using UnityEngine;
 
 [assembly: InternalsVisibleTo("AssetBundleBuilderEditorTests")]
 
-namespace DCL.ABConverter
+namespace BLD.ABConverter
 {
     public static class AssetBundleMetadataBuilder
     {

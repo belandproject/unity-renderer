@@ -1,8 +1,8 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using UnityEngine;
 
 namespace Tests
@@ -24,7 +24,7 @@ namespace Tests
             yield return base.SetUp();
             scene = TestUtils.CreateTestScene();
             CommonScriptableObjects.sceneID.Set(scene.sceneData.id);
-            DCLCharacterController.i.PauseGravity();
+            BLDCharacterController.i.PauseGravity();
             TestUtils.SetCharacterPosition(new Vector3(8f, 0f, 8f));
         }
 

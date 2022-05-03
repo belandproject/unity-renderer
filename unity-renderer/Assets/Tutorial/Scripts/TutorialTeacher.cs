@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// This class controls the behaviour of the teacher (a 3D model character) that will be guiding to the player along the tutorial.

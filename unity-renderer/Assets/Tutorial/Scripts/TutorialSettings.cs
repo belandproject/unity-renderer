@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     [CreateAssetMenu(fileName = "TutorialSettings", menuName = "TutorialSettings")]
     public class TutorialSettings : ScriptableObject

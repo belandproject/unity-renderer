@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Controllers;
+using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     [RequireComponent(typeof(StatsPanel))]
     public class UserBenchmarkController : MonoBehaviour, IBenchmarkController
@@ -173,7 +173,7 @@ namespace DCL
                     return scene;
             }
 
-            var currentPos = Utils.WorldToGridPosition(DCLCharacterController.i.characterPosition.worldPosition);
+            var currentPos = Utils.WorldToGridPosition(BLDCharacterController.i.characterPosition.worldPosition);
             return worldState.loadedScenes.Values.FirstOrDefault(
                 x => x.sceneData.parcels != null
                      && x.sceneData.parcels.Any(y => y == currentPos));

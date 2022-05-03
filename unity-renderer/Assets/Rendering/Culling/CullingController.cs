@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UniversalRenderPipelineAsset = UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset;
-using static DCL.Rendering.CullingControllerUtils;
+using static BLD.Rendering.CullingControllerUtils;
 
-namespace DCL.Rendering
+namespace BLD.Rendering
 {
     /// <summary>
     /// CullingController has the following responsibilities:
@@ -179,7 +179,7 @@ namespace DCL.Rendering
                     bool isAvatarRenderer = false;
 
                     if (mat != null && mat.shader != null)
-                        isAvatarRenderer = mat.shader.name == "DCL/Toon Shader";
+                        isAvatarRenderer = mat.shader.name == "BLD/Toon Shader";
 
                     if (isAvatarRenderer)
                     {

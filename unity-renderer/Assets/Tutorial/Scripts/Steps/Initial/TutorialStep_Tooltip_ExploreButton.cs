@@ -1,6 +1,6 @@
-using DCL.Helpers;
+using BLD.Helpers;
 
-namespace DCL.Tutorial
+namespace BLD.Tutorial
 {
     /// <summary>
     /// Class that represents the onboarding tutorial step related to how to open the Explore window from the taskbar.

@@ -1,4 +1,4 @@
-#include "DCLSimpleLighting.hlsl"
+#include "BLDSimpleLighting.hlsl"
 #include "GPUSkinning.hlsl"
 
 void BuildInputData(Varyings input, SurfaceDescription surfaceDescription, out InputData inputData)
@@ -100,7 +100,7 @@ half4 frag(PackedVaryings packedInput) : SV_TARGET
         surface.clearCoatSmoothness = saturate(surfaceDescription.CoatSmoothness);
     #endif
 
-    half4 color = DCL_SimpleFragmentPBR(inputData, surface);
+    half4 color = BLD_SimpleFragmentPBR(inputData, surface);
 
     color.rgb = MixFog(color.rgb, inputData.fogCoord);
     return color;

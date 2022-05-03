@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using DCL.Controllers;
-using DCL.NotificationModel;
+using BLD.Controllers;
+using BLD.NotificationModel;
 using UnityEngine;
-using Type = DCL.NotificationModel.Type;
+using Type = BLD.NotificationModel.Type;
 
-namespace DCL
+namespace BLD
 {
     public class PreviewSceneLimitsWarning : IDisposable
     {

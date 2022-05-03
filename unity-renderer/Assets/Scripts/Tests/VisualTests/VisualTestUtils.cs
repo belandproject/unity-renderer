@@ -1,4 +1,4 @@
-using DCL.Configuration;
+using BLD.Configuration;
 using System.Collections;
 using System.IO;
 using System.Reflection;
@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class VisualTestUtils
     {
@@ -126,7 +126,7 @@ namespace DCL.Helpers
                 File.Delete(finalPath);
 
                 // Just in case, wait until the file is deleted
-                yield return new DCL.WaitUntil(() => { return !File.Exists(finalPath); }, 10f);
+                yield return new BLD.WaitUntil(() => { return !File.Exists(finalPath); }, 10f);
             }
 
             // We should only read the screen buffer after rendering is complete
@@ -162,7 +162,7 @@ namespace DCL.Helpers
             File.WriteAllBytes(finalPath, bytes);
 
             // Just in case, wait until the file is created
-            yield return new DCL.WaitUntil(() => { return File.Exists(finalPath); }, 10f);
+            yield return new BLD.WaitUntil(() => { return File.Exists(finalPath); }, 10f);
 
             RenderTexture.active = null;
             renderTexture.Release();

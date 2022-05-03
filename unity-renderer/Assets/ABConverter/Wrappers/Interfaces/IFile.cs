@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DCL
+namespace BLD
 {
     public interface IFile
     {
