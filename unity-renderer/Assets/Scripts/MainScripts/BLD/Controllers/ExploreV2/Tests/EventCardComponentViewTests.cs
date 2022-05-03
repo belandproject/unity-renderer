@@ -1,4 +1,4 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -354,7 +354,7 @@ public class EventCardComponentViewTests
         eventCardModalComponent.Show();
 
         // Act
-        eventCardModalComponent.OnCloseActionTriggered(new DCLAction_Trigger());
+        eventCardModalComponent.OnCloseActionTriggered(new BLDAction_Trigger());
 
         // Assert
         Assert.IsFalse(eventCardModalComponent.isVisible);

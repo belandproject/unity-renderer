@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using DCL;
+using BLD;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -29,13 +29,13 @@ public class ThrottlingRunnerShould
     public void SetUp()
     {
         // The time is just mocked to avoid flaky tests due to erratic running times on CI.
-        DCLCoroutineRunner.realtimeSinceStartup = TimeMocker;
+        BLDCoroutineRunner.realtimeSinceStartup = TimeMocker;
     }
 
     [TearDown]
     public void TearDown()
     {
-        DCLCoroutineRunner.realtimeSinceStartup = () => Time.realtimeSinceStartup;
+        BLDCoroutineRunner.realtimeSinceStartup = () => Time.realtimeSinceStartup;
     }
 
     [UnityTest]
@@ -62,7 +62,7 @@ public class ThrottlingRunnerShould
         counter.Reset();
 
         int frameCount = Time.frameCount;
-        yield return DCLCoroutineRunner.Run(ThrottlingTest(totalMsDuration), null, counter.EvaluateTimeBudget);
+        yield return BLDCoroutineRunner.Run(ThrottlingTest(totalMsDuration), null, counter.EvaluateTimeBudget);
 
         int elapsedFrames = Time.frameCount - frameCount;
         Assert.That( elapsedFrames, Is.EqualTo(1), $"No frames must be skipped when throttling is disabled!");
@@ -79,7 +79,7 @@ public class ThrottlingRunnerShould
         int frameCount = Time.frameCount;
         int elapsedFrames = 0;
 
-        yield return DCLCoroutineRunner.Run(ThrottlingTest(totalMsDuration), null, counter.EvaluateTimeBudget);
+        yield return BLDCoroutineRunner.Run(ThrottlingTest(totalMsDuration), null, counter.EvaluateTimeBudget);
 
         elapsedFrames = Time.frameCount - frameCount;
 

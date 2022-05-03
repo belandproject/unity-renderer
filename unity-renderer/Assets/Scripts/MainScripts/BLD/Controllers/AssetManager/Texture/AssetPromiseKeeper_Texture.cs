@@ -1,4 +1,4 @@
-namespace DCL
+namespace BLD
 {
     public class AssetPromiseKeeper_Texture : AssetPromiseKeeper<Asset_Texture, AssetLibrary_Texture, AssetPromise_Texture>
     {

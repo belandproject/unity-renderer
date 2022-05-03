@@ -1,11 +1,11 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public class QuestsPanelPopup : MonoBehaviour
     {

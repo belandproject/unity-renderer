@@ -1,11 +1,11 @@
-using DCL;
+using BLD;
 using NUnit.Framework;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.TestTools;
 using WebSocketSharp;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 namespace Tests
 {
@@ -24,7 +24,7 @@ namespace Tests
             yield return null;
 
             WebSocketCommunication wssController = new WebSocketCommunication();
-            DCLCharacterController.i.gravity = 0;
+            BLDCharacterController.i.gravity = 0;
 
             yield return new WaitForSeconds(1.0f);
 
@@ -39,12 +39,12 @@ namespace Tests
                 catch (Exception e)
                 {
                     Debug.LogError("message: " + e.ToString());
-                    Assert.Fail("Failed to connect to decentraland service!");
+                    Assert.Fail("Failed to connect to beland service!");
                 }
 
                 string payloadTest = (Resources.Load("TestJSON/SceneLoadingTest") as TextAsset).text;
 
-                DCLWebSocketService.Message message = new DCLWebSocketService.Message()
+                BLDWebSocketService.Message message = new BLDWebSocketService.Message()
                 {
                     type = "LoadParcelScenes",
                     payload = payloadTest
@@ -91,9 +91,9 @@ namespace Tests
 
                 yield return null;
 
-                Assert.IsTrue(DCL.Environment.i.world.state.loadedScenes.ContainsKey(loadedSceneID),
+                Assert.IsTrue(BLD.Environment.i.world.state.loadedScenes.ContainsKey(loadedSceneID),
                     "Expected loadedScene not found!");
-                Assert.IsTrue(DCL.Environment.i.world.state.loadedScenes[loadedSceneID] != null,
+                Assert.IsTrue(BLD.Environment.i.world.state.loadedScenes[loadedSceneID] != null,
                     "Expected loadedScene found but was null!!!");
             }
 

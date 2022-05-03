@@ -19,7 +19,7 @@ public class ControlsHUDView : MonoBehaviour
 
     private void OnDestroy() { closeAction.OnTriggered -= OnCloseActionTriggered; }
 
-    private void OnCloseActionTriggered(DCLAction_Trigger action) { Close(false); }
+    private void OnCloseActionTriggered(BLDAction_Trigger action) { Close(false); }
 
     private void Close(bool closedByButtonPress) { onCloseActionTriggered?.Invoke(closedByButtonPress); }
 }

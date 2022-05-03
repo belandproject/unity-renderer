@@ -1,8 +1,8 @@
-﻿using DCL;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+﻿using BLD;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace MainScripts.DCL.Controllers.Settings.SettingsControllers.SpecificControllers
+namespace MainScripts.BLD.Controllers.Settings.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Profanity Chat Filtering", fileName = "ProfanityChatFilteringControlController")]
     public class ProfanityChatFilterControlController : ToggleSettingsControlController

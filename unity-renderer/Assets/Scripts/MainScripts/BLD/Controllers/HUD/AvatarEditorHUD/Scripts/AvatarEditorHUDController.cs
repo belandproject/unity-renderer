@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.NotificationModel;
+using BLD;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.NotificationModel;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 using Random = UnityEngine.Random;
-using Type = DCL.NotificationModel.Type;
+using Type = BLD.NotificationModel.Type;
 using Categories = WearableLiterals.Categories;
 
 public class AvatarEditorHUDController : IHUD

@@ -1,11 +1,11 @@
-﻿using DCL.Controllers;
-using DCL.Models;
+﻿using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public interface IEntityComponent : IComponent, ICleanable, IMonoBehaviour
     {
-        IDCLEntity entity { get; }
-        void Initialize(IParcelScene scene, IDCLEntity entity);
+        IBLDEntity entity { get; }
+        void Initialize(IParcelScene scene, IBLDEntity entity);
     }
 }

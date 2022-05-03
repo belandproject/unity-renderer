@@ -1,6 +1,6 @@
 using System.Collections;
-using DCL;
-using DCL.Huds.QuestsTracker;
+using BLD;
+using BLD.Huds.QuestsTracker;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;

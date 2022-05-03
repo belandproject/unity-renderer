@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using DCL.Interface;
+using BLD.Interface;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public class PoolManager : Singleton<PoolManager>
     {

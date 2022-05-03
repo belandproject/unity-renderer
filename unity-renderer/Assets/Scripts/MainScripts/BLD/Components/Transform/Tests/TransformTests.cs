@@ -1,8 +1,8 @@
 using System.Collections;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ namespace Tests
         [Test]
         public void TransformUpdate()
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
 
             Assert.IsTrue(entity != null);
 
@@ -34,7 +34,7 @@ namespace Tests
                 Quaternion rotationQuaternion = Quaternion.Euler(10, 50, -90);
                 Vector3 scale = new Vector3(0.7f, 0.7f, 0.7f);
 
-                var transformModel = new DCLTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
+                var transformModel = new BLDTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
 
                 TestUtils.SetEntityTransform(scene, entity, transformModel);
 
@@ -57,7 +57,7 @@ namespace Tests
                 Quaternion rotationQuaternion = Quaternion.Euler(101, 51, -91);
                 Vector3 scale = new Vector3(1.7f, 3.7f, -0.7f);
 
-                var transformModel = new DCLTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
+                var transformModel = new BLDTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
 
                 TestUtils.SetEntityTransform(scene, entity, transformModel);
 
@@ -80,7 +80,7 @@ namespace Tests
                 Quaternion rotationQuaternion = Quaternion.Euler(0, 0, 0);
                 Vector3 scale = new Vector3(1, 1, 1);
 
-                var transformModel = new DCLTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
+                var transformModel = new BLDTransform.Model { position = position, rotation = rotationQuaternion, scale = scale };
 
                 TestUtils.SetEntityTransform(scene, entity, transformModel);
 
@@ -98,14 +98,14 @@ namespace Tests
         [Test]
         public void TransformationsAreKeptRelativeAfterParenting()
         {
-            IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
 
             Vector3 targetPosition = new Vector3(3f, 7f, 1f);
             Quaternion targetRotation = new Quaternion(4f, 9f, 1f, 7f);
             Vector3 targetScale = new Vector3(5f, 0.7f, 2f);
 
             // 1. Create component with non-default configs
-            DCLTransform.Model componentModel = new DCLTransform.Model
+            BLDTransform.Model componentModel = new BLDTransform.Model
             {
                 position = targetPosition,
                 rotation = targetRotation,
@@ -120,9 +120,9 @@ namespace Tests
             Assert.IsTrue(targetScale == entity.gameObject.transform.localScale);
 
             // 3. Create new parent entity
-            IDCLEntity entity2 = TestUtils.CreateSceneEntity(scene);
+            IBLDEntity entity2 = TestUtils.CreateSceneEntity(scene);
 
-            componentModel = new DCLTransform.Model
+            componentModel = new BLDTransform.Model
             {
                 position = new Vector3(15f, 56f, 0f),
                 rotation = new Quaternion(1f, 3f, 5f, 15f),

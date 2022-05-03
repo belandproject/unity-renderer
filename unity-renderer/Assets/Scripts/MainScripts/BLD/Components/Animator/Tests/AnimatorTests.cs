@@ -1,11 +1,11 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -29,17 +29,17 @@ namespace Tests
             Assert.IsTrue(entity.gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/CesiumMan/CesiumMan.glb"
                 }));
 
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
                 states = new []
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "clip01",
                         clip = "animation:0",
@@ -50,27 +50,27 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator =
-                TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator =
+                TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfShape.alreadyLoaded == true);
 
             Assert.IsTrue(entity.gameObject.GetComponentInChildren<Animation>() != null,
                 "'GLTFScene' child object with 'Animator' component should exist if the GLTF was loaded correctly.");
-            Assert.IsTrue(entity.gameObject.GetComponentInChildren<DCLAnimator>() != null,
-                "'GLTFScene' child object with 'DCLAnimator' component should exist if the GLTF was loaded correctly.");
+            Assert.IsTrue(entity.gameObject.GetComponentInChildren<BLDAnimator>() != null,
+                "'GLTFScene' child object with 'BLDAnimator' component should exist if the GLTF was loaded correctly.");
 
             yield return animator.routine;
 
-            animator = entity.gameObject.GetComponentInChildren<DCLAnimator>();
+            animator = entity.gameObject.GetComponentInChildren<BLDAnimator>();
 
-            Assert.IsTrue(animator.GetStateByString("clip01") != null, "dclAnimator.GetStateByString fail!");
-            Assert.IsTrue(animator.GetModel().states[0].clip != null, "dclAnimator clipReference is null!");
+            Assert.IsTrue(animator.GetStateByString("clip01") != null, "bldAnimator.GetStateByString fail!");
+            Assert.IsTrue(animator.GetModel().states[0].clip != null, "bldAnimator clipReference is null!");
         }
 
         [UnityTest]
-        public IEnumerator DCLAnimatorResetAnimation()
+        public IEnumerator BLDAnimatorResetAnimation()
         {
             GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero,
                 new LoadableShape.Model
@@ -79,11 +79,11 @@ namespace Tests
                 });
             var entity = gltfShape.attachedEntities.First();
 
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
                 states = new[]
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "Bite",
                         clip = "shark_skeleton_bite",
@@ -91,7 +91,7 @@ namespace Tests
                         weight = 1,
                         speed = 1
                     },
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "Swim",
                         clip = "shark_skeleton_swim",
@@ -102,8 +102,8 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator =
-                TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator =
+                TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
             LoadWrapper gltfLoader = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfLoader.alreadyLoaded);
 
@@ -138,7 +138,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator DCLAnimatorResetAllAnimations()
+        public IEnumerator BLDAnimatorResetAllAnimations()
         {
             var gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero,
                 new LoadableShape.Model
@@ -147,11 +147,11 @@ namespace Tests
                 });
             var entity = gltfShape.attachedEntities.First();
 
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
                 states = new[]
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "Bite",
                         clip = "shark_skeleton_bite",
@@ -159,7 +159,7 @@ namespace Tests
                         weight = 1,
                         speed = 1
                     },
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "Swim",
                         clip = "shark_skeleton_swim",
@@ -170,8 +170,8 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator =
-                TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator =
+                TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
             LoadWrapper gltfLoader = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfLoader.alreadyLoaded);
 
@@ -200,7 +200,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator AnimationComponentMissingValuesGetDefaultedOnUpdate() { yield return TestUtils.TestEntityComponentDefaultsOnUpdate<DCLAnimator.Model, DCLAnimator>(scene); }
+        public IEnumerator AnimationComponentMissingValuesGetDefaultedOnUpdate() { yield return TestUtils.TestEntityComponentDefaultsOnUpdate<BLDAnimator.Model, BLDAnimator>(scene); }
 
         [UnityTest]
         public IEnumerator UpdateAnimationComponent()
@@ -210,18 +210,18 @@ namespace Tests
             Assert.IsTrue(entity.gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/CesiumMan/CesiumMan.glb"
                 }));
 
             string clipName = "animation:0";
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
-                states = new DCLAnimator.Model.DCLAnimationState[]
+                states = new BLDAnimator.Model.BLDAnimationState[]
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "clip01",
                         clip = clipName,
@@ -233,7 +233,7 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator = TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator = TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfShape.alreadyLoaded == true);
@@ -256,15 +256,15 @@ namespace Tests
         [UnityTest]
         [Explicit]
         [Category("Explicit")]
-        public IEnumerator AnimationStartsAutomaticallyWithNoDCLAnimator()
+        public IEnumerator AnimationStartsAutomaticallyWithNoBLDAnimator()
         {
-            // GLTFShape without DCLAnimator
+            // GLTFShape without BLDAnimator
             var entity = TestUtils.CreateSceneEntity(scene);
 
             Assert.IsTrue(entity.gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/CesiumMan/CesiumMan.glb"
@@ -278,24 +278,24 @@ namespace Tests
             Assert.IsTrue(animation != null);
             Assert.IsTrue(animation.isPlaying);
 
-            // GLTFShape with DCLAnimator
+            // GLTFShape with BLDAnimator
             var entity2 = TestUtils.CreateSceneEntity(scene);
 
             Assert.IsTrue(entity2.gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entity2.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entity2.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/CesiumMan/CesiumMan.glb"
                 }));
 
             string clipName = "animation:0";
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
-                states = new DCLAnimator.Model.DCLAnimationState[]
+                states = new BLDAnimator.Model.BLDAnimationState[]
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "clip01",
                         clip = clipName,
@@ -307,7 +307,7 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator = TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator = TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
 
             LoadWrapper gltfShape2 = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfShape2.alreadyLoaded == true);
@@ -327,18 +327,18 @@ namespace Tests
             Assert.IsTrue(entity.gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
                 "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-            TestUtils.CreateAndSetShape(scene, entity.entityId, DCL.Models.CLASS_ID.GLTF_SHAPE,
+            TestUtils.CreateAndSetShape(scene, entity.entityId, BLD.Models.CLASS_ID.GLTF_SHAPE,
                 JsonConvert.SerializeObject(new
                 {
                     src = TestAssetsUtils.GetPath() + "/GLB/non-skeletal-3-transformations.glb"
                 }));
 
             string clipName = "All";
-            DCLAnimator.Model animatorModel = new DCLAnimator.Model
+            BLDAnimator.Model animatorModel = new BLDAnimator.Model
             {
-                states = new DCLAnimator.Model.DCLAnimationState[]
+                states = new BLDAnimator.Model.BLDAnimationState[]
                 {
-                    new DCLAnimator.Model.DCLAnimationState
+                    new BLDAnimator.Model.BLDAnimationState
                     {
                         name = "clip01",
                         clip = clipName,
@@ -350,7 +350,7 @@ namespace Tests
                 }
             };
 
-            DCLAnimator animator = TestUtils.EntityComponentCreate<DCLAnimator, DCLAnimator.Model>(scene, entity, animatorModel);
+            BLDAnimator animator = TestUtils.EntityComponentCreate<BLDAnimator, BLDAnimator.Model>(scene, entity, animatorModel);
 
             LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(entity);
             yield return new WaitUntil(() => gltfShape.alreadyLoaded == true);

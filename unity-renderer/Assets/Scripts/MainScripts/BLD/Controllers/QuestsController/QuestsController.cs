@@ -1,11 +1,11 @@
-﻿using DCL.Helpers;
+﻿using BLD.Helpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.QuestsController
+namespace BLD.QuestsController
 {
     public delegate void NewQuest(string questId);
 

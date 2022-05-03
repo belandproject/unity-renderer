@@ -1,4 +1,4 @@
-namespace DCL
+namespace BLD
 {
     public class Singleton<T> where T : class, new()
     {

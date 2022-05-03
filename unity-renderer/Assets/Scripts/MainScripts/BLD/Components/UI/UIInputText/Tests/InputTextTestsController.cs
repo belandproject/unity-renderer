@@ -1,10 +1,10 @@
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class InputTextTestsController : MonoBehaviour
     {
@@ -23,7 +23,7 @@ namespace DCL
 
             if (spawnCharController)
             {
-                if (DCLCharacterController.i == null)
+                if (BLDCharacterController.i == null)
                 {
                     GameObject.Instantiate(Resources.Load("Prefabs/CharacterController"));
                 }
@@ -34,11 +34,11 @@ namespace DCL
         {
             yield return InitScene(spawnCharController: false);
 
-            DCLCharacterController.i.gravity = 0;
+            BLDCharacterController.i.gravity = 0;
 
             UIScreenSpace ssshape = TestUtils.SharedComponentCreate<UIScreenSpace, UIScreenSpace.Model>(
                 scene,
-                DCL.Models.CLASS_ID.UI_SCREEN_SPACE_SHAPE);
+                BLD.Models.CLASS_ID.UI_SCREEN_SPACE_SHAPE);
 
             yield return ssshape.routine;
 

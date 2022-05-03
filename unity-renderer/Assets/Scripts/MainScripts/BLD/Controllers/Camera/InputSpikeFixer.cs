@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class InputSpikeFixer
     {

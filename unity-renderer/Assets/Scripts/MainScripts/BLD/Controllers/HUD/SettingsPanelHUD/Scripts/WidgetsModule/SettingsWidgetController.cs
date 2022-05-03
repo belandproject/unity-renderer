@@ -1,9 +1,9 @@
-using DCL.SettingsPanelHUD.Controls;
+using BLD.SettingsPanelHUD.Controls;
 using System.Collections.Generic;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Widgets
+namespace BLD.SettingsPanelHUD.Widgets
 {
     /// <summary>
     /// Interface to implement a controller for a WIDGET.

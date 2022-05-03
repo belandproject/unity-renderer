@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Helpers.NFT;
+using BLD;
+using BLD.Helpers.NFT;
 using UnityEngine;
 using Object = UnityEngine.Object;
 

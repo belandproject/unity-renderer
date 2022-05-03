@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class CameraController : MonoBehaviour
     {
@@ -138,7 +138,7 @@ namespace DCL.Camera
             }
         }
 
-        private void OnMouseWheelChangeValue(DCLAction_Measurable action, float value)
+        private void OnMouseWheelChangeValue(BLDAction_Measurable action, float value)
         {
             if (value > -mouseWheelThreshold && value < mouseWheelThreshold) return;
             if (Utils.IsPointerOverUIElement()) return;
@@ -150,7 +150,7 @@ namespace DCL.Camera
                 SetCameraMode(CameraMode.ModeId.FirstPerson);
         }
 
-        private void OnCameraChangeAction(DCLAction_Trigger action)
+        private void OnCameraChangeAction(BLDAction_Trigger action)
         {
             if (CommonScriptableObjects.cameraMode == CameraMode.ModeId.FirstPerson)
             {

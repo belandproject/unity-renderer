@@ -1,26 +1,26 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
-using DCL.Controllers.ParcelSceneDebug;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
+using BLD.Controllers.ParcelSceneDebug;
 using System.Collections.Generic;
 using System.Linq;
-using MainScripts.DCL.WorldRuntime;
+using MainScripts.BLD.WorldRuntime;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public class ParcelScene : MonoBehaviour, IParcelScene, ISceneMessageProcessor
     {
-        public Dictionary<string, IDCLEntity> entities { get; private set; } = new Dictionary<string, IDCLEntity>();
+        public Dictionary<string, IBLDEntity> entities { get; private set; } = new Dictionary<string, IBLDEntity>();
         public Dictionary<string, ISharedComponent> disposableComponents { get; private set; } = new Dictionary<string, ISharedComponent>();
         public LoadParcelScenesMessage.UnityParcelScene sceneData { get; protected set; }
 
         public HashSet<Vector2Int> parcels = new HashSet<Vector2Int>();
         public ISceneMetricsCounter metricsCounter { get; set; }
-        public event System.Action<IDCLEntity> OnEntityAdded;
-        public event System.Action<IDCLEntity> OnEntityRemoved;
+        public event System.Action<IBLDEntity> OnEntityAdded;
+        public event System.Action<IBLDEntity> OnEntityRemoved;
         public event System.Action<IComponent> OnComponentAdded;
         public event System.Action<IComponent> OnComponentRemoved;
         public event System.Action OnChanged;
@@ -88,7 +88,7 @@ namespace DCL.Controllers
                 parcels.Add(sceneData.parcels[i]);
             }
 
-            if (DCLCharacterController.i != null)
+            if (BLDCharacterController.i != null)
             {
                 gameObject.transform.position = PositionUtils.WorldToUnityPosition(Utils.GridToWorldPosition(data.basePosition.x, data.basePosition.y));
             }
@@ -251,14 +251,14 @@ namespace DCL.Controllers
 
         public Transform GetSceneTransform() { return transform; }
 
-        public IDCLEntity CreateEntity(string id)
+        public IBLDEntity CreateEntity(string id)
         {
             if (entities.ContainsKey(id))
             {
                 return entities[id];
             }
 
-            var newEntity = new DecentralandEntity();
+            var newEntity = new BelandEntity();
             newEntity.entityId = id;
 
             PoolManagerFactory.EnsureEntityPool(false);
@@ -294,7 +294,7 @@ namespace DCL.Controllers
         {
             if (entities.ContainsKey(id))
             {
-                IDCLEntity entity = entities[id];
+                IBLDEntity entity = entities[id];
 
                 if (!entity.markedForCleanup)
                 {
@@ -319,7 +319,7 @@ namespace DCL.Controllers
 #endif
         }
 
-        void CleanUpEntityRecursively(IDCLEntity entity, bool removeImmediatelyFromEntitiesList)
+        void CleanUpEntityRecursively(IBLDEntity entity, bool removeImmediatelyFromEntitiesList)
         {
             // Iterate through all entity children
             using (var iterator = entity.children.GetEnumerator())
@@ -355,7 +355,7 @@ namespace DCL.Controllers
             //NOTE(Brian): We need to remove only the rootEntities.
             //             If we don't, duplicated entities will get removed when destroying
             //             recursively, making this more complicated than it should.
-            List<IDCLEntity> rootEntities = new List<IDCLEntity>();
+            List<IBLDEntity> rootEntities = new List<IBLDEntity>();
 
             using (var iterator = entities.GetEnumerator())
             {
@@ -376,7 +376,7 @@ namespace DCL.Controllers
                 int rootEntitiesCount = rootEntities.Count;
                 for (int i = 0; i < rootEntitiesCount; i++)
                 {
-                    IDCLEntity entity = rootEntities[i];
+                    IBLDEntity entity = rootEntities[i];
                     RemoveEntity(entity.entityId, instant);
                 }
 
@@ -395,7 +395,7 @@ namespace DCL.Controllers
                 return;
             }
 
-            IDCLEntity me = GetEntityForUpdate(entityId);
+            IBLDEntity me = GetEntityForUpdate(entityId);
 
             if (me == null)
                 return;
@@ -403,13 +403,13 @@ namespace DCL.Controllers
             Environment.i.platform.cullingController.MarkDirty();
             Environment.i.platform.physicsSyncController.MarkDirty();
 
-            if ( DCLCharacterController.i != null )
+            if ( BLDCharacterController.i != null )
             {
                 if (parentId == "FirstPersonCameraEntityReference" || parentId == "PlayerEntityReference") // PlayerEntityReference is for compatibility purposes
                 {
                     // In this case, the entity will attached to the first person camera
                     // On first person mode, the entity will rotate with the camera. On third person mode, the entity will rotate with the avatar
-                    me.SetParent(DCLCharacterController.i.firstPersonCameraReference);
+                    me.SetParent(BLDCharacterController.i.firstPersonCameraReference);
                     Environment.i.world.sceneBoundsChecker.AddPersistent(me);
                     return;
                 }
@@ -418,12 +418,12 @@ namespace DCL.Controllers
                 {
                     // In this case, the entity will be attached to the avatar
                     // It will simply rotate with the avatar, regardless of where the camera is pointing
-                    me.SetParent(DCLCharacterController.i.avatarReference);
+                    me.SetParent(BLDCharacterController.i.avatarReference);
                     Environment.i.world.sceneBoundsChecker.AddPersistent(me);
                     return;
                 }
 
-                if (me.parent == DCLCharacterController.i.firstPersonCameraReference || me.parent == DCLCharacterController.i.avatarReference)
+                if (me.parent == BLDCharacterController.i.firstPersonCameraReference || me.parent == BLDCharacterController.i.avatarReference)
                 {
                     Environment.i.world.sceneBoundsChecker.RemoveEntityToBeChecked(me);
                 }
@@ -437,7 +437,7 @@ namespace DCL.Controllers
             }
             else
             {
-                IDCLEntity myParent = GetEntityForUpdate(parentId);
+                IBLDEntity myParent = GetEntityForUpdate(parentId);
 
                 if (myParent != null)
                 {
@@ -451,7 +451,7 @@ namespace DCL.Controllers
           */
         public void SharedComponentAttach(string entityId, string componentId)
         {
-            IDCLEntity entity = GetEntityForUpdate(entityId);
+            IBLDEntity entity = GetEntityForUpdate(entityId);
 
             if (entity == null)
                 return;
@@ -464,7 +464,7 @@ namespace DCL.Controllers
 
         public IEntityComponent EntityComponentCreateOrUpdateWithModel(string entityId, CLASS_ID_COMPONENT classId, object data)
         {
-            IDCLEntity entity = GetEntityForUpdate(entityId);
+            IBLDEntity entity = GetEntityForUpdate(entityId);
 
             if (entity == null)
             {
@@ -527,7 +527,7 @@ namespace DCL.Controllers
         public IEntityComponent EntityComponentCreateOrUpdate(string entityId, CLASS_ID_COMPONENT classId, string data) { return EntityComponentCreateOrUpdateWithModel(entityId, classId, data); }
 
         // The EntityComponentUpdate() parameters differ from other similar methods because there is no EntityComponentUpdate protocol message yet.
-        public IEntityComponent EntityComponentUpdate(IDCLEntity entity, CLASS_ID_COMPONENT classId,
+        public IEntityComponent EntityComponentUpdate(IBLDEntity entity, CLASS_ID_COMPONENT classId,
             string componentJson)
         {
             if (entity == null)
@@ -585,14 +585,14 @@ namespace DCL.Controllers
 
         public void EntityComponentRemove(string entityId, string name)
         {
-            IDCLEntity decentralandEntity = GetEntityForUpdate(entityId);
+            IBLDEntity belandEntity = GetEntityForUpdate(entityId);
 
-            if (decentralandEntity == null)
+            if (belandEntity == null)
             {
                 return;
             }
 
-            RemoveEntityComponent(decentralandEntity, name);
+            RemoveEntityComponent(belandEntity, name);
         }
 
         public T GetSharedComponent<T>()
@@ -601,7 +601,7 @@ namespace DCL.Controllers
             return disposableComponents.Values.FirstOrDefault(x => x is T) as T;
         }
 
-        private void RemoveComponentType<T>(IDCLEntity entity, CLASS_ID_COMPONENT classId)
+        private void RemoveComponentType<T>(IBLDEntity entity, CLASS_ID_COMPONENT classId)
             where T : MonoBehaviour
         {
             var component = entity.components[classId] as IEntityComponent;
@@ -617,7 +617,7 @@ namespace DCL.Controllers
             }
         }
 
-        private void RemoveEntityComponent(IDCLEntity entity, string componentName)
+        private void RemoveEntityComponent(IBLDEntity entity, string componentName)
         {
             switch (componentName)
             {
@@ -743,7 +743,7 @@ namespace DCL.Controllers
             return result;
         }
 
-        private IDCLEntity GetEntityForUpdate(string entityId)
+        private IBLDEntity GetEntityForUpdate(string entityId)
         {
             if (string.IsNullOrEmpty(entityId))
             {
@@ -751,7 +751,7 @@ namespace DCL.Controllers
                 return null;
             }
 
-            if (!entities.TryGetValue(entityId, out IDCLEntity entity))
+            if (!entities.TryGetValue(entityId, out IBLDEntity entity))
             {
                 return null;
             }

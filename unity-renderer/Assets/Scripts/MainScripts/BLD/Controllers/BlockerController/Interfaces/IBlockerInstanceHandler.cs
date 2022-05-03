@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public interface IBlockerInstanceHandler
     {

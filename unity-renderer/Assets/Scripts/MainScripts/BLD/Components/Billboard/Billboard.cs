@@ -1,10 +1,10 @@
-using DCL.Components;
+using BLD.Components;
 using System.Collections;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
-using DCL.Models;
+using BLD.Models;
 
-namespace DCL
+namespace BLD
 {
     public class Billboard : BaseComponent
     {

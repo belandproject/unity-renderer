@@ -1,5 +1,5 @@
 using System;
-using DCL.NotificationModel;
+using BLD.NotificationModel;
 using UnityEngine;
 
 public class NotificationHUDView : MonoBehaviour

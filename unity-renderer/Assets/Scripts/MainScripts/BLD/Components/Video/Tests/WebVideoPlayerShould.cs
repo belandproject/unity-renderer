@@ -1,5 +1,5 @@
 using System.Collections;
-using DCL.Components.Video.Plugin;
+using BLD.Components.Video.Plugin;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;

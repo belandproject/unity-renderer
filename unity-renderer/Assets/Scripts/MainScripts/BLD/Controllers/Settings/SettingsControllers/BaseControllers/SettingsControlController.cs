@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.BaseControllers
+namespace BLD.SettingsCommon.SettingsControllers.BaseControllers
 {
     /// <summary>
     /// This controller is in charge of manage all the logic related to a SETTING CONTROL.

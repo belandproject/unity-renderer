@@ -1,9 +1,9 @@
 using System;
-using DCL;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD;
+using BLD.Helpers;
+using BLD.Interface;
 using System.Collections.Generic;
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 
 public class CatalogController : MonoBehaviour

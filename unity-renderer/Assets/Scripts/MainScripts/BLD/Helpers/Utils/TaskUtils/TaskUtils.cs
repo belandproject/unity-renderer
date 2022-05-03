@@ -3,7 +3,7 @@ using System.Collections;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class TaskUtils
     {
@@ -65,7 +65,7 @@ namespace DCL.Helpers
 
         public static async UniTask RunThrottledCoroutine(IEnumerator enumerator, Action<Exception> onFail, Func<double, bool> timeBudget = null)
         {
-            IEnumerator routine = DCLCoroutineRunner.Run(enumerator, onFail, timeBudget);
+            IEnumerator routine = BLDCoroutineRunner.Run(enumerator, onFail, timeBudget);
             await routine.ToUniTask(CoroutineStarter.instance);
         }
 

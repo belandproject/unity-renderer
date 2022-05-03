@@ -1,8 +1,8 @@
-﻿using DCL;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
-using DCL.QuestsController;
+﻿using BLD;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
+using BLD.QuestsController;
 using NSubstitute;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,7 +33,7 @@ public class QuestTrackingInfoShould : IntegrationTestSuite
     [UnityTest]
     public IEnumerator InitializeEmpty()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         QuestTrackingInfo questTrackingInfo = TestUtils.EntityComponentCreate<QuestTrackingInfo, QuestModel>(scene, entity, null, CLASS_ID_COMPONENT.QUEST_TRACKING_INFORMATION);
         yield return questTrackingInfo.routine;
         mockQuestController.DidNotReceiveWithAnyArgs().UpdateQuestProgress(new QuestModel());
@@ -43,7 +43,7 @@ public class QuestTrackingInfoShould : IntegrationTestSuite
     [UnityTest]
     public IEnumerator AddQuests()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         QuestTrackingInfo questTrackingInfo = TestUtils.EntityComponentCreate<QuestTrackingInfo, QuestModel>(scene, entity, new QuestModel(), CLASS_ID_COMPONENT.QUEST_TRACKING_INFORMATION);
         yield return questTrackingInfo.routine;
         QuestModel quest = new QuestModel
@@ -57,7 +57,7 @@ public class QuestTrackingInfoShould : IntegrationTestSuite
     [UnityTest]
     public IEnumerator RemovePreviousQuest()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         QuestTrackingInfo questTrackingInfo = TestUtils.EntityComponentCreate<QuestTrackingInfo, QuestModel>(scene, entity, new QuestModel(), CLASS_ID_COMPONENT.QUEST_TRACKING_INFORMATION);
         yield return questTrackingInfo.routine;
         QuestModel quest = new QuestModel
@@ -78,7 +78,7 @@ public class QuestTrackingInfoShould : IntegrationTestSuite
     [UnityTest]
     public IEnumerator RemovePreviousQuestOnDestroy()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         QuestTrackingInfo questTrackingInfo = TestUtils.EntityComponentCreate<QuestTrackingInfo, QuestModel>(scene, entity, new QuestModel(), CLASS_ID_COMPONENT.QUEST_TRACKING_INFORMATION);
         yield return questTrackingInfo.routine;
         QuestModel quest = new QuestModel

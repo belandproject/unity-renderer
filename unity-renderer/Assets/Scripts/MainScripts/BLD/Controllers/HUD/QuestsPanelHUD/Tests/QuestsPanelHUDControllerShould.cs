@@ -1,6 +1,6 @@
-using DCL;
-using DCL.Huds.QuestsPanel;
-using DCL.QuestsController;
+using BLD;
+using BLD.Huds.QuestsPanel;
+using BLD.QuestsController;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;

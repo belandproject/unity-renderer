@@ -1,16 +1,16 @@
 using UnityEngine;
 
-namespace DCL.Configuration
+namespace BLD.Configuration
 {
     public static class BIWSettings
     {
         //Note: Don't use these URL directly, you need to get them in the BuilderInWorldUtils to take into account the ENV
-        public const string BASE_URL_SCENE_OBJECT_CONTENT = "https://builder-api.decentraland.{ENV}/v1/storage/contents/";
-        public const string BASE_URL_CATALOG = "https://builder-api.decentraland.{ENV}/v1/assetPacks?owner=";
-        public const string BASE_URL_BUILDER_API = "https://builder-api.decentraland.{ENV}/v1";
-        public const string BASE_URL_ASSETS_PACK_CONTENT = "https://builder-api.decentraland.{ENV}/v1/storage/assetPacks/";
+        public const string BASE_URL_SCENE_OBJECT_CONTENT = "";
+        public const string BASE_URL_CATALOG = "";
+        public const string BASE_URL_BUILDER_API = "";
+        public const string BASE_URL_ASSETS_PACK_CONTENT = "";
         
-        public const string BASE_URL_BUILDER_PROJECT_THUMBNAIL = "https://builder-api.decentraland.{ENV}/v1/projects/{id}/media/";
+        public const string BASE_URL_BUILDER_PROJECT_THUMBNAIL = "";
 
         public static readonly LayerMask SELECTION_LAYER_INDEX = LayerMask.NameToLayer("Selection");
         public static readonly LayerMask DEFAULT_LAYER_INDEX = LayerMask.NameToLayer("Default");
@@ -104,7 +104,7 @@ namespace DCL.Configuration
         public static readonly Vector3 MORDOR = new Vector3(10000, 10000, 10000);
         public static readonly int MORDOR_SCALAR = 10000;
         public const float UNINITIALIZED_FLOAT = 999999f;
-        public static readonly string AVATAR_GLOBAL_SCENE_ID = "dcl-gs-avatars";
+        public static readonly string AVATAR_GLOBAL_SCENE_ID = "bld-gs-avatars";
     }
 
     public static class InputSettings
@@ -176,7 +176,7 @@ namespace DCL.Configuration
             NORMALIZED_DIMENSIONS =
                 new UnityEngine.Vector2(512f, 512f); // The image dimensions that correspond to Vector3.One scale
 
-        public static string DAR_API_URL = "https://schema.decentraland.org/dar";
+        public static string DAR_API_URL = "";
     }
 
     public static class PhysicsLayers

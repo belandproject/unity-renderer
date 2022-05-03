@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba04a041474be2a7ac981e4fff73ef, type: 3}
   m_Name: Expression_Snowfall
   m_EditorClassIdentifier: 
-  dclAction: 210
+  bldAction: 210
   blockTrigger: {fileID: 11400000, guid: 184d6891e429a8f4e978d2d25e50b36e, type: 2}

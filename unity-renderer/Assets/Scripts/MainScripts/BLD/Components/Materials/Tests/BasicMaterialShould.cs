@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.TestTools;
@@ -31,8 +31,8 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator NotDestroySharedTextureWhenDisposed()
     {
-        DCLTexture texture =
-            TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+        BLDTexture texture =
+            TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
 
         yield return texture.routine;
 
@@ -42,7 +42,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
                 texture = texture.id,
                 alphaTest = 1,
             },
-            out IDCLEntity entity1);
+            out IBLDEntity entity1);
 
         yield return mat.routine;
 
@@ -52,7 +52,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
                 texture = texture.id,
                 alphaTest = 1,
             },
-            out IDCLEntity entity2);
+            out IBLDEntity entity2);
 
         yield return mat2.routine;
 
@@ -63,21 +63,21 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator WorkCorrectlyWhenAttachedBeforeShape()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
 
-        DCLTexture dclTexture = TestUtils.CreateDCLTexture(
+        BLDTexture bldTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/atlas.png",
-            DCLTexture.BabylonWrapMode.CLAMP,
+            BLDTexture.BabylonWrapMode.CLAMP,
             FilterMode.Bilinear);
 
-        yield return dclTexture.routine;
+        yield return bldTexture.routine;
 
         BasicMaterial mat = TestUtils.SharedComponentCreate<BasicMaterial, BasicMaterial.Model>
         (scene, CLASS_ID.BASIC_MATERIAL,
             new BasicMaterial.Model
             {
-                texture = dclTexture.id,
+                texture = bldTexture.id,
                 alphaTest = 0.5f
             });
 
@@ -162,7 +162,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
 
         var firstMeshRenderer = scene.entities[firstEntityId].meshRootGameObject.GetComponent<MeshRenderer>();
         var secondMeshRenderer = scene.entities[secondEntityId].meshRootGameObject.GetComponent<MeshRenderer>();
-        var materialComponent = scene.disposableComponents[materialID] as DCL.Components.BasicMaterial;
+        var materialComponent = scene.disposableComponents[materialID] as BLD.Components.BasicMaterial;
 
         yield return materialComponent.routine;
 
@@ -220,21 +220,21 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
             Assert.AreApproximatelyEqual(1.0f, materialComponent.material.GetFloat("_AlphaClip"));
         }
 
-        DCLTexture dclTexture = TestUtils.CreateDCLTexture(
+        BLDTexture bldTexture = TestUtils.CreateBLDTexture(
             scene,
             TestAssetsUtils.GetPath() + "/Images/atlas.png",
-            DCLTexture.BabylonWrapMode.MIRROR,
+            BLDTexture.BabylonWrapMode.MIRROR,
             FilterMode.Bilinear);
 
         // Update material
         scene.SharedComponentUpdate(materialID, JsonUtility.ToJson(new BasicMaterial.Model
         {
-            texture = dclTexture.id,
+            texture = bldTexture.id,
             alphaTest = 0.5f,
         }));
 
         yield return materialComponent.routine;
-        yield return dclTexture.routine;
+        yield return bldTexture.routine;
 
         // Check updated properties
         {
@@ -246,7 +246,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
             Assert.AreEqual(FilterMode.Bilinear, mainTex.filterMode);
         }
 
-        dclTexture.Dispose();
+        bldTexture.Dispose();
         materialComponent.Dispose();
     }
 
@@ -283,7 +283,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
         {
             alphaTest = 1f,
             castShadows = true
-        }, out IDCLEntity entity);
+        }, out IBLDEntity entity);
         yield return basicMaterialComponent.routine;
 
         Assert.AreEqual(true, basicMaterialComponent.GetModel().castShadows);
@@ -297,7 +297,7 @@ public class BasicMaterialShould : IntegrationTestSuite_Legacy
         {
             alphaTest = 1f,
             castShadows = false
-        }, out IDCLEntity entity);
+        }, out IBLDEntity entity);
         yield return basicMaterialComponent.routine;
 
         Assert.AreEqual(false, basicMaterialComponent.GetModel().castShadows);

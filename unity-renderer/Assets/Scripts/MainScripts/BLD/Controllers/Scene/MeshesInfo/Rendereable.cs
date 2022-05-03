@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Models;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// The Rendereable object represents any loaded object that should be visible in the world.

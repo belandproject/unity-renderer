@@ -1,13 +1,13 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIText : UIShape<UITextReferencesContainer, UIText.Model>
     {
@@ -55,26 +55,26 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.UI_TEXT_SHAPE; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null) { Debug.LogError("Aborted UITextShape attachment to an entity. UIShapes shouldn't be attached to entities."); }
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null) { Debug.LogError("Aborted UITextShape attachment to an entity. UIShapes shouldn't be attached to entities."); }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         public override IEnumerator ApplyChanges(BaseModel newModel)
         {
             model = (Model) newModel;
 
             // We avoid using even yield break; as this instruction skips a frame and we don't want that.
-            if ( !DCLFont.IsFontLoaded(scene, model.font) )
+            if ( !BLDFont.IsFontLoaded(scene, model.font) )
             {
-                yield return DCLFont.WaitUntilFontIsReady(scene, model.font);
+                yield return BLDFont.WaitUntilFontIsReady(scene, model.font);
             }
 
-            DCLFont.SetFontFromComponent(scene, model.font, referencesContainer.text);
+            BLDFont.SetFontFromComponent(scene, model.font, referencesContainer.text);
             ApplyModelChanges(referencesContainer.text, model);
             MarkLayoutDirty();
         }
 
-        protected override void RefreshDCLSize(RectTransform parentTransform = null)
+        protected override void RefreshBLDSize(RectTransform parentTransform = null)
         {
             if (parentTransform == null)
             {

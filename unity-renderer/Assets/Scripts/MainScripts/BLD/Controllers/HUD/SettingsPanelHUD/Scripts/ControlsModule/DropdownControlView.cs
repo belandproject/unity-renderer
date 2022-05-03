@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     public class DropdownControlView : SettingsControlView
     {

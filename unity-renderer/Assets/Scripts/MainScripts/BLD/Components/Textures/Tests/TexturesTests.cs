@@ -1,9 +1,9 @@
-using DCL;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -26,47 +26,47 @@ namespace Tests
         [Category("Explicit")]
         public IEnumerator TextureCreateAndLoadTest()
         {
-            DCLTexture dclTexture = TestUtils.CreateDCLTexture(scene,
+            BLDTexture bldTexture = TestUtils.CreateBLDTexture(scene,
                 TestAssetsUtils.GetPath() + "/Images/avatar.png",
-                DCLTexture.BabylonWrapMode.CLAMP,
+                BLDTexture.BabylonWrapMode.CLAMP,
                 FilterMode.Bilinear);
 
-            yield return dclTexture.routine;
+            yield return bldTexture.routine;
 
-            Assert.IsTrue(dclTexture.texture != null, "Texture didn't load correctly?");
-            Assert.IsTrue(dclTexture.unityWrap == TextureWrapMode.Clamp, "Bad wrap mode!");
-            Assert.IsTrue(dclTexture.unitySamplingMode == FilterMode.Bilinear, "Bad sampling mode!");
+            Assert.IsTrue(bldTexture.texture != null, "Texture didn't load correctly?");
+            Assert.IsTrue(bldTexture.unityWrap == TextureWrapMode.Clamp, "Bad wrap mode!");
+            Assert.IsTrue(bldTexture.unitySamplingMode == FilterMode.Bilinear, "Bad sampling mode!");
 
-            dclTexture.Dispose();
+            bldTexture.Dispose();
 
             yield return null;
-            Assert.IsTrue(dclTexture.texture == null, "Texture didn't dispose correctly?");
+            Assert.IsTrue(bldTexture.texture == null, "Texture didn't dispose correctly?");
         }
 
         [UnityTest]
         public IEnumerator TextureAttachedGetsReplacedOnNewAttachment()
         {
-            yield return TestUtils.TestAttachedSharedComponentOfSameTypeIsReplaced<DCLTexture.Model, DCLTexture>(
+            yield return TestUtils.TestAttachedSharedComponentOfSameTypeIsReplaced<BLDTexture.Model, BLDTexture>(
                 scene, CLASS_ID.TEXTURE);
         }
 
         [Test]
         public void Texture_OnReadyBeforeLoading()
         {
-            DCLTexture dclTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+            BLDTexture bldTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
             bool isOnReady = false;
-            dclTexture.CallWhenReady((x) => { isOnReady = true; });
+            bldTexture.CallWhenReady((x) => { isOnReady = true; });
 
-            Assert.IsTrue(isOnReady); //DCLTexture is ready on creation
+            Assert.IsTrue(isOnReady); //BLDTexture is ready on creation
         }
 
         [UnityTest]
         public IEnumerator Texture_OnReadyWaitLoading()
         {
-            DCLTexture dclTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+            BLDTexture bldTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
             bool isOnReady = false;
-            dclTexture.CallWhenReady((x) => { isOnReady = true; });
-            yield return dclTexture.routine;
+            bldTexture.CallWhenReady((x) => { isOnReady = true; });
+            yield return bldTexture.routine;
 
             Assert.IsTrue(isOnReady);
         }
@@ -74,11 +74,11 @@ namespace Tests
         [UnityTest]
         public IEnumerator Texture_OnReadyAfterLoadingInstantlyCalled()
         {
-            DCLTexture dclTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
-            yield return dclTexture.routine;
+            BLDTexture bldTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+            yield return bldTexture.routine;
 
             bool isOnReady = false;
-            dclTexture.CallWhenReady((x) => { isOnReady = true; });
+            bldTexture.CallWhenReady((x) => { isOnReady = true; });
             Assert.IsTrue(isOnReady);
         }
     }

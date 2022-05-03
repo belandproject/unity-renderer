@@ -1,10 +1,10 @@
 ﻿using System;
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public interface IPoolableComponentFactory
     {

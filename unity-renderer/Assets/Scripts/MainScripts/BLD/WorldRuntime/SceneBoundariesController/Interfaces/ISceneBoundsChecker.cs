@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using DCL.Models;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public interface ISceneBoundsChecker : IService
     {
-        event Action<IDCLEntity, bool> OnEntityBoundsCheckerStatusChanged;
+        event Action<IBLDEntity, bool> OnEntityBoundsCheckerStatusChanged;
 
         float timeBetweenChecks { get; set; }
         bool enabled { get; }
@@ -18,21 +18,21 @@ namespace DCL.Controllers
         List<Material> GetOriginalMaterials(MeshesInfo meshesInfo);
         void Start();
         void Stop();
-        void AddEntityToBeChecked(IDCLEntity entity);
+        void AddEntityToBeChecked(IBLDEntity entity);
 
         /// <summary>
         /// Add an entity that will be consistently checked, until manually removed from the list.
         /// </summary>
-        void AddPersistent(IDCLEntity entity);
+        void AddPersistent(IBLDEntity entity);
 
         /// <summary>
         /// Returns whether an entity was added to be consistently checked
         /// </summary>
         ///
-        bool WasAddedAsPersistent(IDCLEntity entity);
+        bool WasAddedAsPersistent(IBLDEntity entity);
 
-        void RemoveEntityToBeChecked(IDCLEntity entity);
-        void EvaluateEntityPosition(IDCLEntity entity);
-        bool IsEntityInsideSceneBoundaries(IDCLEntity entity);
+        void RemoveEntityToBeChecked(IBLDEntity entity);
+        void EvaluateEntityPosition(IBLDEntity entity);
+        bool IsEntityInsideSceneBoundaries(IBLDEntity entity);
     }
 }

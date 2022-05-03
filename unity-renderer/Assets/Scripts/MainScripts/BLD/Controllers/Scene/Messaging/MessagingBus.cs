@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using DCL.Interface;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Models;
 using UnityEngine.SceneManagement;
 
-namespace DCL
+namespace BLD
 {
     public enum QueueMode
     {

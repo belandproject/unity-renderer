@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
+using BLD;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
-using WaitUntil = DCL.WaitUntil;
+using WaitUntil = BLD.WaitUntil;
 
 namespace AssetPromiseKeeper_Mock_Tests
 {

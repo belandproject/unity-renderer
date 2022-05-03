@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal abstract class SectionBase : IDisposable
     {

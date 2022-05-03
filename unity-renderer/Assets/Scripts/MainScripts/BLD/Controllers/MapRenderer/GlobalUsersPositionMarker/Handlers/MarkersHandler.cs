@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Receive a list of hot scenes and handle what markers to show, what markers to hide and places them on the map

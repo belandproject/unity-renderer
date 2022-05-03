@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using DCL;
-using DCL.Configuration;
+using BLD;
+using BLD.Configuration;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

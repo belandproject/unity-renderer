@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     /// <summary>
     /// Small texture loader facade. Mainly used by LazyTextureObserver to make testing easier.

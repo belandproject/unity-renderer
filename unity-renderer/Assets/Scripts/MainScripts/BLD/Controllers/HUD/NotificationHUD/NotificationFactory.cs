@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Type = DCL.NotificationModel.Type;
+using Type = BLD.NotificationModel.Type;
 
 public class NotificationFactory : ScriptableObject
 {

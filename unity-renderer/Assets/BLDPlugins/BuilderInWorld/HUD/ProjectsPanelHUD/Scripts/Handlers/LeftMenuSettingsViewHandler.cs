@@ -1,10 +1,10 @@
-﻿using DCL;
+﻿using BLD;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     [Serializable]
     internal class LeftMenuSettingsViewReferences

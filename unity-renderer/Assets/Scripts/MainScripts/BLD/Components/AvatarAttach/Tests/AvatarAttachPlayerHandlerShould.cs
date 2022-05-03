@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Components;
+using BLD;
+using BLD.Components;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;

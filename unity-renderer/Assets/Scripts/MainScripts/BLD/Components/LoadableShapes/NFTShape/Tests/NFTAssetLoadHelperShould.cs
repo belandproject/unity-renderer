@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers.NFT;
+using BLD;
+using BLD.Helpers.NFT;
 using NFTShape_Internal;
 using NSubstitute;
 using NSubstitute.Extensions;

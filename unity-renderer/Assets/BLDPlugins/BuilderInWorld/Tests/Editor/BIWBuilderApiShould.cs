@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using DCL;
-using DCL.Builder;
-using DCL.Helpers;
+using BLD;
+using BLD.Builder;
+using BLD.Helpers;
 using Newtonsoft.Json;
 using NSubstitute;
 using NSubstitute.Core.Arguments;
@@ -38,7 +38,7 @@ public class BIWBuilderApiShould : IntegrationTestSuite
         context.sceneReferences.Configure().biwBridgeGameObject.Returns(gameObjectToDestroy);
         apiController.Initialize(context);
 
-        mockedRequestController = DCL.Environment.i.platform.webRequest;
+        mockedRequestController = BLD.Environment.i.platform.webRequest;
     }
 
     [UnityTearDown]

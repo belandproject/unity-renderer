@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Player for a Gif Asset.

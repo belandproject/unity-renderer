@@ -1,7 +1,7 @@
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
@@ -40,8 +40,8 @@ namespace Tests
                 uiImageShape.referencesContainer.layoutElementRT.anchoredPosition.ToString());
 
             // Update UIImage properties
-            DCLTexture texture =
-                TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture texture =
+                TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
             yield return texture.routine;
 
             yield return TestUtils.SharedComponentUpdate(uiImageShape, new UIImage.Model
@@ -123,8 +123,8 @@ namespace Tests
 
             Assert.IsFalse(screenSpaceShape == null);
 
-            DCLTexture texture =
-                TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture texture =
+                TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
             yield return texture.routine;
 
             UIImage uiImage = TestUtils.SharedComponentCreate<UIImage, UIImage.Model>(scene, CLASS_ID.UI_IMAGE_SHAPE);
@@ -194,7 +194,7 @@ namespace Tests
 
             Assert.IsFalse(screenSpaceShape == null);
 
-            DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
             yield return texture.routine;
 
             // --------------------------------------------------------------------------------------
@@ -246,7 +246,7 @@ namespace Tests
 
             Assert.IsFalse(screenSpaceShape == null);
 
-            DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
             yield return texture.routine;
 
             // --------------------------------------------------------------------------------------
@@ -313,8 +313,8 @@ namespace Tests
                 TestUtils.SharedComponentCreate<UIImage, UIImage.Model>(scene, CLASS_ID.UI_IMAGE_SHAPE);
             yield return uiImageShape.routine;
 
-            DCLTexture texture =
-                TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture texture =
+                TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
             yield return texture.routine;
 
             // Align to right-bottom

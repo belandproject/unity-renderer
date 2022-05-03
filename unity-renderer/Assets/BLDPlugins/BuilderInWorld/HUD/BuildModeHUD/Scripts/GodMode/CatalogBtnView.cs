@@ -9,7 +9,7 @@ public interface ICatalogBtnView
     event Action OnHideTooltip;
     event Action<BaseEventData, string> OnShowTooltip;
 
-    void OnPointerClick(DCLAction_Trigger action);
+    void OnPointerClick(BLDAction_Trigger action);
     void OnPointerEnter(PointerEventData eventData);
     void OnPointerExit();
     void SetActive(bool isActive);
@@ -26,7 +26,7 @@ public class CatalogBtnView : MonoBehaviour, ICatalogBtnView
     [SerializeField] internal EventTrigger catalogButtonEventTrigger;
     [SerializeField] internal InputAction_Trigger toggleCatalogInputAction;
 
-    private DCLAction_Trigger dummyActionTrigger = new DCLAction_Trigger();
+    private BLDAction_Trigger dummyActionTrigger = new BLDAction_Trigger();
 
     private const string VIEW_PATH = "GodMode/CatalogBtnView";
 
@@ -54,7 +54,7 @@ public class CatalogBtnView : MonoBehaviour, ICatalogBtnView
         BIWUtils.RemoveEventTrigger(catalogButtonEventTrigger, EventTriggerType.PointerExit);
     }
 
-    public void OnPointerClick(DCLAction_Trigger action) { OnCatalogButtonClick?.Invoke(); }
+    public void OnPointerClick(BLDAction_Trigger action) { OnCatalogButtonClick?.Invoke(); }
 
     public void OnPointerEnter(PointerEventData eventData) { OnShowTooltip?.Invoke(eventData, tooltipText); }
 

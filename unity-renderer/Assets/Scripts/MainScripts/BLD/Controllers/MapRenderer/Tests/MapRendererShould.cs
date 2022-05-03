@@ -1,4 +1,4 @@
-using DCL;
+using BLD;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -126,8 +126,8 @@ namespace Tests
         //     MapSceneIcon[] icons = MapRenderer.i.GetComponentsInChildren<MapSceneIcon>();
         //
         //     Assert.AreEqual(1, icons.Length, "There should be only 1 user icon");
-        //     Vector2 iconGridPosition = DCL.Helpers.Utils.WorldToGridPositionUnclamped(initialPosition);
-        //     Assert.AreEqual(DCL.Helpers.MapUtils.GetTileToLocalPosition(iconGridPosition.x, iconGridPosition.y), icons[0].transform.localPosition);
+        //     Vector2 iconGridPosition = BLD.Helpers.Utils.WorldToGridPositionUnclamped(initialPosition);
+        //     Assert.AreEqual(BLD.Helpers.MapUtils.GetTileToLocalPosition(iconGridPosition.x, iconGridPosition.y), icons[0].transform.localPosition);
         //
         //     // Modifify the position of the user icon
         //     userInfo.worldPosition = modifiedPosition;
@@ -137,8 +137,8 @@ namespace Tests
         //     icons = MapRenderer.i.GetComponentsInChildren<MapSceneIcon>();
         //
         //     Assert.AreEqual(1, icons.Length, "There should still be the same user icon");
-        //     iconGridPosition = DCL.Helpers.Utils.WorldToGridPositionUnclamped(modifiedPosition);
-        //     Assert.AreEqual(DCL.Helpers.MapUtils.GetTileToLocalPosition(iconGridPosition.x, iconGridPosition.y), icons[0].transform.localPosition);
+        //     iconGridPosition = BLD.Helpers.Utils.WorldToGridPositionUnclamped(modifiedPosition);
+        //     Assert.AreEqual(BLD.Helpers.MapUtils.GetTileToLocalPosition(iconGridPosition.x, iconGridPosition.y), icons[0].transform.localPosition);
         //
         //     // Remove the user icon
         //     MinimapMetadata.GetMetadata().RemoveUserInfo(userInfo.userId);

@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     [Serializable]
     public struct AudioSettings

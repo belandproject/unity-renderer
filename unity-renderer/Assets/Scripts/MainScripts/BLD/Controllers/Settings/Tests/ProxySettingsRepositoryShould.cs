@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 
-namespace DCL.SettingsCommon.Tests
+namespace BLD.SettingsCommon.Tests
 {
     public class ProxySettingsRepositoryShould
     {

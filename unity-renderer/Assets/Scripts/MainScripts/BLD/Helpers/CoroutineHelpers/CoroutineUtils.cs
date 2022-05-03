@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public static class CoroutineUtils
     {
@@ -23,7 +23,7 @@ namespace DCL
             Func<double, bool> timeBudgetCounter
         )
         {
-            return CoroutineStarter.Start(DCLCoroutineRunner.Run(enumerator, onException, timeBudgetCounter));
+            return CoroutineStarter.Start(BLDCoroutineRunner.Run(enumerator, onException, timeBudgetCounter));
         }
 
 
@@ -42,7 +42,7 @@ namespace DCL
             Action<Exception> onException
         )
         {
-            return CoroutineStarter.Start(DCLCoroutineRunner.Run(enumerator, onException, null));
+            return CoroutineStarter.Start(BLDCoroutineRunner.Run(enumerator, onException, null));
         }
 
 

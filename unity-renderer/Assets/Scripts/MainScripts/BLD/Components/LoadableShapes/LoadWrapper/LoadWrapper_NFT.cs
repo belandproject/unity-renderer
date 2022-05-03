@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class LoadWrapper_NFT : LoadWrapper
     {

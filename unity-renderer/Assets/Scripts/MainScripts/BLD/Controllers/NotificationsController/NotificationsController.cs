@@ -1,4 +1,4 @@
-using DCL.NotificationModel;
+using BLD.NotificationModel;
 using UnityEngine;
 
 public class NotificationsController : MonoBehaviour

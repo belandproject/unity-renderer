@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal interface IBuilderMainPanelView : IDisposable
     {
@@ -150,7 +150,7 @@ namespace DCL.Builder
 
         private void OnDestroy() { isDestroyed = true; }
 
-        private void CloseTriggerOnOnTriggered(DCLAction_Trigger action) { OnBackPressed?.Invoke(); }
+        private void CloseTriggerOnOnTriggered(BLDAction_Trigger action) { OnBackPressed?.Invoke(); }
 
         void ISceneListener.SetScenes(Dictionary<string, ISceneCardView> scenes) { scenesCount = scenes.Count; }
 

@@ -1,6 +1,6 @@
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     public class MapChunk_Mock : MapChunk
     {

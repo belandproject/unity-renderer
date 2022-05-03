@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL.Helpers.NFT.Markets.OpenSea_Internal
+namespace BLD.Helpers.NFT.Markets.OpenSea_Internal
 {
     public class RequestController : IDisposable
     {

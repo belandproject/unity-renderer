@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public interface IParcelScene
     {
         event System.Action<float> OnLoadingStateUpdated;
-        event System.Action<IDCLEntity> OnEntityAdded;
-        event System.Action<IDCLEntity> OnEntityRemoved;
+        event System.Action<IBLDEntity> OnEntityAdded;
+        event System.Action<IBLDEntity> OnEntityRemoved;
 
-        IDCLEntity CreateEntity(string id);
+        IBLDEntity CreateEntity(string id);
         Transform GetSceneTransform();
-        Dictionary<string, IDCLEntity> entities { get; }
+        Dictionary<string, IBLDEntity> entities { get; }
         Dictionary<string, ISharedComponent> disposableComponents { get; }
         T GetSharedComponent<T>() where T : class;
         ISharedComponent GetSharedComponent(string id);

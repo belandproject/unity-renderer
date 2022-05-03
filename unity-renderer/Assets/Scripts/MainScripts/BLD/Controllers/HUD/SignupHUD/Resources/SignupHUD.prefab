@@ -1899,7 +1899,7 @@ MonoBehaviour:
     affected.\r\n\r\n1.2 This Privacy Policy should be read in conjunction with the
     Terms of Use. By accessing the Tools, you are consenting to the information collection
     and use practices described in this Privacy Policy.\r\n\r\n1.3 Your use of the
-    DCL Client and any personal information you provide through the Tools remains
+    BLD Client and any personal information you provide through the Tools remains
     subject to the terms of this Privacy Policy and the Terms of Use, as each may
     be updated from time to time.\r\n\r\n1.4 Any questions, comments or complaints
     that you might have should be emailed to privacy@beland.io.\r\n\r\n2. Information
@@ -1909,7 +1909,7 @@ MonoBehaviour:
     model, operating system and version, and other unique device identifiers.\r\n\r\n2.2.
     Information about plugins you might be using, included but not limited to those
     related to the management of cryptocurrency assets and any information provided
-    by them.\r\n\r\n2.3. Your email and Ether address.\r\n\r\n2.4 The DCL Client
+    by them.\r\n\r\n2.3. Your email and Ether address.\r\n\r\n2.4 The BLD Client
     requires the highest level of browser permissions that could potentially lead
     to procurement of more personal information. Information on these permissions
     are used for a limited purpose, and why this is necessary, can be found in paragraph
@@ -1918,12 +1918,12 @@ MonoBehaviour:
     Information is used\r\n\r\n3.1 As with nearly all interactions that take place
     on the World Wide Web, the servers may receive information by virtue of your
     interaction with them, including but not limited to IP Addresses.\r\n\r\n3.2
-    The DCL Client requires full browser permissions that could potentially be used
+    The BLD Client requires full browser permissions that could potentially be used
     to access additional personal information. Such browser permissions are used
-    for an extremely limited technical purpose for allowing the DCL Client to properly
+    for an extremely limited technical purpose for allowing the BLD Client to properly
     interact with your browser. No additional information is obtained beyond what
-    is necessary to provide the DCL Client. No information received is shared with
-    any third-party except as required for provision of the DCL Client.\r\n\r\n3.3
+    is necessary to provide the BLD Client. No information received is shared with
+    any third-party except as required for provision of the BLD Client.\r\n\r\n3.3
     Segment.io is used for purposes of monitoring web traffic. Any identifying information
     collected via Segment.io is controlled by Segment.io, Inc.\r\n\r\n3.4 Public
     blockchains provide transparency into transactions and the Foundation is not
@@ -1937,12 +1937,12 @@ MonoBehaviour:
     that might interest you, or to respond to your comments or questions.\r\n\r\n4.2
     Your information may be shared with third parties who need to access it in order
     to do work related to the Site and the Tools, including doing things like helping
-    make the Site or DCL Client available, or providing analytics services. These
+    make the Site or BLD Client available, or providing analytics services. These
     third parties only access and use your information as necessary to perform their
     functions.\r\n\r\n4.3 Aggregations and anonymizations that contain your information
     may be created in a way that does not directly identify you. Those aggregations
     and anonymizations may be used or shared for a variety of purposes related to
-    the Site and the DCL Client.\r\n\r\n4.4 Your personal information may be disclosed
+    the Site and the BLD Client.\r\n\r\n4.4 Your personal information may be disclosed
     to agents, businesses, or service providers who process your personal information
     for providing the Site and the Tools to you. The agreements with these service
     providers limit the kinds of information they can use or process and ensure they
@@ -2002,7 +2002,7 @@ MonoBehaviour:
     Changes and Updates\r\n\r\n10.1 This Privacy Policy may be revised periodically
     and this will be reflected by the \u201CLast update posted\u201D date above.
     Please revisit this page to stay aware of any changes. Your continued use of
-    the DCL Client constitutes your agreement to this Privacy Policy and any future
+    the BLD Client constitutes your agreement to this Privacy Policy and any future
     revisions.\r\n\r\n10.2 Contact Information: privacy@beland.io."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0f2e4affe3f2438d9042ca1db45764f, type: 2}

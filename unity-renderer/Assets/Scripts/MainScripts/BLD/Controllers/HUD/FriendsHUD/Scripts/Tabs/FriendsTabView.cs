@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Interface;
+using BLD.Interface;
 
 public class FriendsTabView : FriendsTabViewBase
 {

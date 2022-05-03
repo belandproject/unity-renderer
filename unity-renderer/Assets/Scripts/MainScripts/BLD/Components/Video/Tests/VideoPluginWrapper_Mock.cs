@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using DCL.Components.Video.Plugin;
+using BLD.Components.Video.Plugin;
 using UnityEngine;
 using UnityEngine.Assertions;
 

@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Builder;
-using DCL.Camera;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Builder;
+using BLD.Camera;
+using BLD.Controllers;
+using BLD.Models;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;
@@ -65,7 +65,7 @@ public class BIWModeShould
     {
         //Arrange
         BIWEntity entity = new BIWEntity();
-        var rootEntity = Substitute.For<IDCLEntity>();
+        var rootEntity = Substitute.For<IBLDEntity>();
         GameObject rootGameObject = new GameObject("Entity");
         rootEntity.Configure().gameObject.Returns(rootGameObject);
         selectedEntities.Add(entity);

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Builder;
+using BLD;
+using BLD.Builder;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -21,14 +21,14 @@ namespace Tests
 
             var serviceLocator = new ServiceLocator();
             serviceLocator.Register<IWebRequestController>(() => Substitute.For<IWebRequestController>());
-            DCL.Environment.Setup(serviceLocator);
+            BLD.Environment.Setup(serviceLocator);
         }
 
         [TearDown]
         public void TearDown()
         {
             Object.Destroy(view.gameObject);
-            DCL.Environment.Dispose();
+            BLD.Environment.Dispose();
         }
 
         [Test]

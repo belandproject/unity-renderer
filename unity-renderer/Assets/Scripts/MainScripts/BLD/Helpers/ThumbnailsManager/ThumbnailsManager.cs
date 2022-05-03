@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using DCL;
+using BLD;
 
 //In the future the AssetManager will do this
 public static class ThumbnailsManager

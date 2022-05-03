@@ -1,17 +1,17 @@
 using System;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Models;
+using BLD.Models;
 using Ray = UnityEngine.Ray;
 
-namespace DCL
+namespace BLD
 {
     public class PointerEventsController : IPointerEventsController
     {
@@ -509,7 +509,7 @@ namespace DCL
                 && !AreCollidersFromSameEntity(potentialBlockerHit, targetOnClickHit); // Does potential blocker belong to other entity rather than target entity?
         }
 
-        bool EntityHasPointerEvent(IDCLEntity entity)
+        bool EntityHasPointerEvent(IBLDEntity entity)
         {
             return entity.components.ContainsKey(Models.CLASS_ID_COMPONENT.UUID_CALLBACK) ||
                    entity.components.ContainsKey(Models.CLASS_ID_COMPONENT.UUID_ON_UP) ||

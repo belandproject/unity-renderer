@@ -1,6 +1,6 @@
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromiseKeeper_GLTF : AssetPromiseKeeper<Asset_GLTF, AssetLibrary_GLTF, AssetPromise_GLTF>
     {

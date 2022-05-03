@@ -1,4 +1,4 @@
-using DCL.Models;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +25,9 @@ public class BIWEntityAction
         this.newValue = newValue;
     }
 
-    public BIWEntityAction(IDCLEntity entity) { this.entityId = entity.entityId; }
+    public BIWEntityAction(IBLDEntity entity) { this.entityId = entity.entityId; }
 
-    public BIWEntityAction(IDCLEntity entity, object oldValue, object newValue)
+    public BIWEntityAction(IBLDEntity entity, object oldValue, object newValue)
     {
         this.entityId = entity.entityId;
         this.oldValue = oldValue;

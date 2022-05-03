@@ -40,7 +40,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:BaseFemale
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -78,7 +78,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:BaseMale
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -122,7 +122,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:black_sun_glasses
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -169,7 +169,7 @@ MonoBehaviour:
       - helmet
       hides: []
     id: urn:beland:off-chain:base-avatars:blue_bandana
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -200,7 +200,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:eyes_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -231,7 +231,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:eyebrows_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -262,7 +262,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:mouth_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -294,7 +294,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:casual_hair_01
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -326,7 +326,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:beard
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -360,7 +360,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:green_hoodie
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -408,7 +408,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:sneakers
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -439,7 +439,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_eyes_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -470,7 +470,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_eyebrows_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -501,7 +501,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_mouth_00
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -533,7 +533,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:standard_hair
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -567,7 +567,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_sweater
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -599,7 +599,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_jeans
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -633,7 +633,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:bun_shoes
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -664,7 +664,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_eyebrows_01
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -712,7 +712,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:bear_slippers
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -744,7 +744,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_african_leggins
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -778,7 +778,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:bee_t_shirt
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -812,7 +812,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:brown_pants
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -844,7 +844,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_glasses_cat_style
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -875,7 +875,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_eyebrows_02
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -911,7 +911,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:halloween_2019:sad_clown_upper_body
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -944,7 +944,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:f_eyes_01
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -977,7 +977,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:dracula_mouth
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -1008,7 +1008,7 @@ MonoBehaviour:
       replaces: []
       hides: []
     id: urn:beland:off-chain:base-avatars:eyebrows_02
-    baseUrl: https://content.decentraland.org/contents/
+    baseUrl: https://hub.beland.io/ipfs/
     baseUrlBundles: 
     i18n:
     - code: en
@@ -1056,7 +1056,7 @@ MonoBehaviour:
       - eyewear
       - launch
       - 20.02.20
-      - decentraland
+      - beland
       - community
       - wearables
       - exclusive
@@ -1072,7 +1072,7 @@ MonoBehaviour:
       text: Raver Googles
     - code: es
       text: Antiparras de Raver
-    thumbnail: https://peer.decentraland.org/content/contents/QmPe2CPbt9JLdjpoH5sKAy9KYYL8bsYuUm1ddr3ipUMh6n
+    thumbnail: https://hub.beland.io/ipfs/QmPe2CPbt9JLdjpoH5sKAy9KYYL8bsYuUm1ddr3ipUMh6n
     rarity: legendary
     description: 
     issuedId: 0
@@ -1117,7 +1117,7 @@ MonoBehaviour:
     i18n:
     - code: en
       text: DC Nifty Blocksmith Boots
-    thumbnail: https://peer.decentraland.org/content/contents/QmehBEhwZQmuYaKE1Ck5sazZxcpML8f12cyE2WZusRPBcQ
+    thumbnail: https://hub.beland.io/ipfs/QmehBEhwZQmuYaKE1Ck5sazZxcpML8f12cyE2WZusRPBcQ
     rarity: legendary
     description: These boots will leave digital footprints wherever you go
     issuedId: 0
@@ -1127,9 +1127,9 @@ MonoBehaviour:
         - urn:beland:off-chain:base-avatars:BaseMale
         mainFile: Techtribal_Beast_Mask.glb
         contents:
-        - key: DCL-TechTribal-Alphas.png
+        - key: BLD-TechTribal-Alphas.png
           hash: 
-        - key: DCL-TechTribal-Masks.png
+        - key: BLD-TechTribal-Masks.png
           hash: 
         - key: Techtribal_Beast_Mask.glb
           hash: 
@@ -1139,9 +1139,9 @@ MonoBehaviour:
         - urn:beland:off-chain:base-avatars:BaseFemale
         mainFile: Techtribal_Beast_Mask.glb
         contents:
-        - key: DCL-TechTribal-Alphas.png
+        - key: BLD-TechTribal-Alphas.png
           hash: 
-        - key: DCL-TechTribal-Masks.png
+        - key: BLD-TechTribal-Masks.png
           hash: 
         - key: Techtribal_Beast_Mask.glb
           hash: 
@@ -1176,7 +1176,7 @@ MonoBehaviour:
       text: Tech Tribal Beast Mask
     - code: es
       text: "M\xE1scara de Bestia Tribal de Tecnolog\xEDas"
-    thumbnail: https://peer.decentraland.org/content/contents/Qme3E7qbVmRh51v9CAnXVG5U8yok9jYp8JiSGCxUCESWCq
+    thumbnail: https://hub.beland.io/ipfs/Qme3E7qbVmRh51v9CAnXVG5U8yok9jYp8JiSGCxUCESWCq
     rarity: legendary
     description: VR Infused Beast Mask created by Marc0Matic
     issuedId: 0
@@ -1217,7 +1217,7 @@ MonoBehaviour:
     i18n:
     - code: en
       text: COLDIE 3D shades
-    thumbnail: https://peer-eu1.decentraland.org/content/contents/QmUQkjk13EHRinBDABH4PVNx17xHMuVWVHfY6sQjqPjy7f
+    thumbnail: https://hub.beland.io/ipfs/QmUQkjk13EHRinBDABH4PVNx17xHMuVWVHfY6sQjqPjy7f
     rarity: legendary
     description: 'Legendary Coldie 3D shades designed by SugarClub '
     issuedId: 0
@@ -1269,7 +1269,7 @@ MonoBehaviour:
     i18n:
     - code: en
       text: Fire Warrior Face
-    thumbnail: https://peer-eu1.decentraland.org/content/contents/QmZAo85c5kuu9YWLxypwBEf3kF3HXHjQ13GjL7FEi7ZSxE
+    thumbnail: https://hub.beland.io/ipfs/QmZAo85c5kuu9YWLxypwBEf3kF3HXHjQ13GjL7FEi7ZSxE
     rarity: legendary
     description: Fire Warrior Face For Battle.
     issuedId: 0
@@ -1307,7 +1307,7 @@ MonoBehaviour:
       tags:
       - WonderZone
       - exclusive
-      - decentraland
+      - beland
       - mana
       - upper_body
       - coat
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       text: Steampunk Jacket
     - code: es
       text: Saco formal del Steampunk
-    thumbnail: https://peer.decentraland.org/content/contents/QmZv8xpUbyQgyLyJNKNGUSmXg8pcysjZdBP7hLQngkSCf7
+    thumbnail: https://hub.beland.io/ipfs/QmZv8xpUbyQgyLyJNKNGUSmXg8pcysjZdBP7hLQngkSCf7
     rarity: legendary
     description: Elegant Steampunk jacket. Gives a bonus in the WonderMine game.
       Created by Maricela
@@ -1370,7 +1370,7 @@ MonoBehaviour:
       tags:
       - WonderZone
       - exclusive
-      - decentraland
+      - beland
       - mana
       - hat
       - steampunk
@@ -1390,7 +1390,7 @@ MonoBehaviour:
       text: Sombrero de Steampunk
     - code: fr
       text: Chapeau haut-de-forme Steampunk
-    thumbnail: https://peer.decentraland.org/content/contents/QmUP7THwKQshPSUAEtczkUwKSEppz4Jgn8tvgbKGN26PCC
+    thumbnail: https://hub.beland.io/ipfs/QmUP7THwKQshPSUAEtczkUwKSEppz4Jgn8tvgbKGN26PCC
     rarity: legendary
     description: Steampunk top hat. Gives a bonus in the WonderMine game. Created
       by Maricela.

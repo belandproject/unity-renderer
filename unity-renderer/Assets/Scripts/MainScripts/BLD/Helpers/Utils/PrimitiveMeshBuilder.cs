@@ -1,18 +1,13 @@
 using UnityEngine;
 
-/*
-* PrimitiveMeshBuilder originated in the Beland that can be found at:
-* https://github.com/fairwood/DecentralandUnityPlugin
-*/
-
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public class PrimitiveMeshBuilder
     {
         public static Mesh BuildSphere(float radius)
         {
             Mesh mesh = new Mesh();
-            mesh.name = "DCL Sphere";
+            mesh.name = "BLD Sphere";
 
             //float radius = 1f;
             // Longitude |||
@@ -130,7 +125,7 @@ namespace DCL.Helpers
         public static Mesh BuildPlane(float _size)
         {
             Mesh mesh = new Mesh();
-            mesh.name = "DCL Plane";
+            mesh.name = "BLD Plane";
             Vector3[] vertices = new Vector3[8];
             Vector3[] normals = new Vector3[8];
             Vector2[] uvs = new Vector2[8];
@@ -210,7 +205,7 @@ namespace DCL.Helpers
         public static Mesh BuildCube(float _size)
         {
             Mesh mesh = new Mesh();
-            mesh.name = "DCL Box";
+            mesh.name = "BLD Box";
             Vector3[] vertices = new Vector3[24]; //top bottom left right front back
             Vector3[] normals = new Vector3[24];
             Vector2[] uvs = new Vector2[24];
@@ -430,10 +425,10 @@ namespace DCL.Helpers
             }
 
             string meshName = isCylinder
-                ? "DCL Cylinder"
-                : "DCL Cone" + numVertices + "v" + radiusTop + "t" + radiusBottom + "b" + length + "l" + length +
+                ? "BLD Cylinder"
+                : "BLD Cone" + numVertices + "v" + radiusTop + "t" + radiusBottom + "b" + length + "l" + length +
                   (outside ? "o" : "") + (inside ? "i" : "");
-            //string meshPrefabPath = "Assets/Decentraland/Internal/" + meshName + ".asset";
+            //string meshPrefabPath = "Assets/Beland/Internal/" + meshName + ".asset";
             Mesh mesh = null; //(Mesh)AssetDatabase.LoadAssetAtPath(meshPrefabPath, typeof(Mesh));
             if (mesh == null)
             {

@@ -1,20 +1,20 @@
 ﻿using System;
-using DCL;
-using DCL.Helpers;
-using DCL.Components;
-using DCL.Models;
+using BLD;
+using BLD.Helpers;
+using BLD.Components;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Components.Video.Plugin;
+using BLD.Components.Video.Plugin;
 using UnityEngine;
 using UnityEngine.TestTools;
-using DCL.Controllers;
-using DCL.Interface;
-using DCL.SettingsCommon;
+using BLD.Controllers;
+using BLD.Interface;
+using BLD.SettingsCommon;
 using NSubstitute;
 using UnityEngine.Assertions;
 using Assert = UnityEngine.Assertions.Assert;
-using AudioSettings = DCL.SettingsCommon.AudioSettings;
+using AudioSettings = BLD.SettingsCommon.AudioSettings;
 
 namespace Tests
 {
@@ -22,7 +22,7 @@ namespace Tests
     {
         private Func<IVideoPluginWrapper> originalVideoPluginBuilder;
 
-        private ISceneController sceneController => DCL.Environment.i.world.sceneController;
+        private ISceneController sceneController => BLD.Environment.i.world.sceneController;
         private ParcelScene scene;
 
         protected override IEnumerator SetUp()
@@ -31,13 +31,13 @@ namespace Tests
 
             scene = TestUtils.CreateTestScene();
             IVideoPluginWrapper pluginWrapper = new VideoPluginWrapper_Mock();
-            originalVideoPluginBuilder = DCLVideoTexture.videoPluginWrapperBuilder;
-            DCLVideoTexture.videoPluginWrapperBuilder = () => pluginWrapper;
+            originalVideoPluginBuilder = BLDVideoTexture.videoPluginWrapperBuilder;
+            BLDVideoTexture.videoPluginWrapperBuilder = () => pluginWrapper;
         }
 
         protected override IEnumerator TearDown()
         {
-            DCLVideoTexture.videoPluginWrapperBuilder = originalVideoPluginBuilder;
+            BLDVideoTexture.videoPluginWrapperBuilder = originalVideoPluginBuilder;
             sceneController.enabled = true;
             return base.TearDown();
         }
@@ -45,22 +45,22 @@ namespace Tests
         [UnityTest]
         public IEnumerator BeCreatedCorrectly()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "DCLVideoTexture started with attachedMaterials != 0");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "BLDVideoTexture started with attachedMaterials != 0");
         }
 
         [UnityTest]
         public IEnumerator SendMessageWhenVideoPlays()
         {
-            var id = CreateDCLVideoClip(scene, "http://it-wont-load-during-test").id;
-            DCLVideoTexture.Model model = new DCLVideoTexture.Model()
+            var id = CreateBLDVideoClip(scene, "http://it-wont-load-during-test").id;
+            BLDVideoTexture.Model model = new BLDVideoTexture.Model()
             {
                 videoClipId = id,
                 playing = true,
                 seek = 10
             };
-            var component = CreateDCLVideoTextureWithCustomTextureModel(scene, model);
+            var component = CreateBLDVideoTextureWithCustomTextureModel(scene, model);
             yield return component.routine;
 
             var expectedEvent = new WebInterface.SendVideoProgressEvent()
@@ -85,13 +85,13 @@ namespace Tests
         [UnityTest]
         public IEnumerator SendMessageWhenVideoStops()
         {
-            var id = CreateDCLVideoClip(scene, "http://it-wont-load-during-test").id;
-            DCLVideoTexture.Model model = new DCLVideoTexture.Model()
+            var id = CreateBLDVideoClip(scene, "http://it-wont-load-during-test").id;
+            BLDVideoTexture.Model model = new BLDVideoTexture.Model()
             {
                 videoClipId = id,
                 playing = false
             };
-            var component = CreateDCLVideoTextureWithCustomTextureModel(scene, model);
+            var component = CreateBLDVideoTextureWithCustomTextureModel(scene, model);
 
             var expectedEvent = new WebInterface.SendVideoProgressEvent()
             {
@@ -116,13 +116,13 @@ namespace Tests
         [UnityTest]
         public IEnumerator SendMessageWhenVideoIsUpdatedAfterTime()
         {
-            var id = CreateDCLVideoClip(scene, "http://it-wont-load-during-test").id;
-            DCLVideoTexture.Model model = new DCLVideoTexture.Model()
+            var id = CreateBLDVideoClip(scene, "http://it-wont-load-during-test").id;
+            BLDVideoTexture.Model model = new BLDVideoTexture.Model()
             {
                 videoClipId = id,
                 playing = true
             };
-            var component = CreateDCLVideoTextureWithCustomTextureModel(scene, model);
+            var component = CreateBLDVideoTextureWithCustomTextureModel(scene, model);
             yield return component.routine;
 
             var expectedEvent = new WebInterface.SendVideoProgressEvent()
@@ -147,34 +147,34 @@ namespace Tests
         [UnityTest]
         public IEnumerator VideoTextureReplaceOtherTextureCorrectly()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "DCLVideoTexture started with attachedMaterials != 0");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "BLDVideoTexture started with attachedMaterials != 0");
 
-            DCLTexture dclTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
+            BLDTexture bldTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/atlas.png");
 
-            yield return dclTexture.routine;
+            yield return bldTexture.routine;
 
             BasicMaterial mat = TestUtils.SharedComponentCreate<BasicMaterial, BasicMaterial.Model>
             (scene, CLASS_ID.BASIC_MATERIAL,
                 new BasicMaterial.Model
                 {
-                    texture = dclTexture.id
+                    texture = bldTexture.id
                 });
 
             yield return mat.routine;
 
             yield return TestUtils.SharedComponentUpdate(mat, new BasicMaterial.Model() { texture = videoTexture.id });
 
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 1, $"did DCLVideoTexture attach to material? {videoTexture.attachedMaterials.Count} expected 1");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 1, $"did BLDVideoTexture attach to material? {videoTexture.attachedMaterials.Count} expected 1");
         }
 
         [UnityTest]
         public IEnumerator AttachAndDetachCorrectly()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "DCLVideoTexture started with attachedMaterials != 0");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, "BLDVideoTexture started with attachedMaterials != 0");
 
             BasicMaterial mat2 = TestUtils.SharedComponentCreate<BasicMaterial, BasicMaterial.Model>
             (
@@ -188,22 +188,22 @@ namespace Tests
 
             yield return mat2.routine;
 
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 1, $"did DCLVideoTexture attach to material? {videoTexture.attachedMaterials.Count} expected 1");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 1, $"did BLDVideoTexture attach to material? {videoTexture.attachedMaterials.Count} expected 1");
 
-            // TEST: DCLVideoTexture detach on material disposed
+            // TEST: BLDVideoTexture detach on material disposed
             mat2.Dispose();
-            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, $"did DCLVideoTexture detach from material? {videoTexture.attachedMaterials.Count} expected 0");
+            Assert.IsTrue(videoTexture.attachedMaterials.Count == 0, $"did BLDVideoTexture detach from material? {videoTexture.attachedMaterials.Count} expected 0");
 
             videoTexture.Dispose();
 
             yield return null;
-            Assert.IsTrue(videoTexture.texture == null, "DCLVideoTexture didn't dispose correctly?");
+            Assert.IsTrue(videoTexture.texture == null, "BLDVideoTexture didn't dispose correctly?");
         }
 
         [UnityTest]
         public IEnumerator SetVisibleStateCorrectlyWhenAddedToAMaterialNotAttachedToShape()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -211,13 +211,13 @@ namespace Tests
             TestUtils.SharedComponentAttach(ent1Mat, ent1);
             yield return ent1Mat.routine;
 
-            Assert.IsTrue(!videoTexture.isVisible, "DCLVideoTexture should not be visible without a shape");
+            Assert.IsTrue(!videoTexture.isVisible, "BLDVideoTexture should not be visible without a shape");
         }
 
         [UnityTest]
         public IEnumerator SetVisibleStateCorrectly()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -230,18 +230,18 @@ namespace Tests
 
             TestUtils.SharedComponentAttach(ent1Shape, ent1);
             yield return new WaitForAllMessagesProcessed();
-            Assert.IsTrue(videoTexture.isVisible, "DCLVideoTexture should be visible");
+            Assert.IsTrue(videoTexture.isVisible, "BLDVideoTexture should be visible");
 
             yield return TestUtils.SharedComponentUpdate<BoxShape, BoxShape.Model>(ent1Shape, new BoxShape.Model() { visible = false });
             yield return new WaitForAllMessagesProcessed();
 
-            Assert.IsTrue(!videoTexture.isVisible, "DCLVideoTexture should not be visible ");
+            Assert.IsTrue(!videoTexture.isVisible, "BLDVideoTexture should not be visible ");
         }
 
         [UnityTest]
         public IEnumerator SetVisibleStateCorrectlyWhenAddedToAlreadyAttachedMaterial()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -256,18 +256,18 @@ namespace Tests
 
             yield return TestUtils.SharedComponentUpdate<BasicMaterial, BasicMaterial.Model>(ent1Mat, new BasicMaterial.Model() { texture = videoTexture.id });
             yield return new WaitForAllMessagesProcessed();
-            Assert.IsTrue(videoTexture.isVisible, "DCLVideoTexture should be visible");
+            Assert.IsTrue(videoTexture.isVisible, "BLDVideoTexture should be visible");
 
             yield return TestUtils.SharedComponentUpdate<BoxShape, BoxShape.Model>(ent1Shape, new BoxShape.Model() { visible = false });
             yield return new WaitForAllMessagesProcessed();
 
-            Assert.IsTrue(!videoTexture.isVisible, "DCLVideoTexture should not be visible ");
+            Assert.IsTrue(!videoTexture.isVisible, "BLDVideoTexture should not be visible ");
         }
 
         [UnityTest]
         public IEnumerator SetVisibleStateCorrectlyWhenEntityIsRemoved()
         {
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -280,12 +280,12 @@ namespace Tests
 
             TestUtils.SharedComponentAttach(ent1Shape, ent1);
             yield return new WaitForAllMessagesProcessed();
-            Assert.IsTrue(videoTexture.isVisible, "DCLVideoTexture should be visible");
+            Assert.IsTrue(videoTexture.isVisible, "BLDVideoTexture should be visible");
 
             scene.RemoveEntity(ent1.entityId, true);
             yield return new WaitForAllMessagesProcessed();
 
-            Assert.IsTrue(!videoTexture.isVisible, "DCLVideoTexture should not be visible ");
+            Assert.IsTrue(!videoTexture.isVisible, "BLDVideoTexture should not be visible ");
         }
 
         [UnityTest]
@@ -297,7 +297,7 @@ namespace Tests
             // Set current scene as a different one
             CommonScriptableObjects.sceneID.Set("non-existent-scene");
 
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -318,15 +318,15 @@ namespace Tests
         [UnityTest]
         public IEnumerator UpdateTexturePlayerVolumeWhenAudioSettingsChange()
         {
-            var id = CreateDCLVideoClip(scene, "http://it-wont-load-during-test").id;
+            var id = CreateBLDVideoClip(scene, "http://it-wont-load-during-test").id;
 
-            DCLVideoTexture.Model model = new DCLVideoTexture.Model()
+            BLDVideoTexture.Model model = new BLDVideoTexture.Model()
             {
                 videoClipId = id,
                 playing = true,
                 volume = 1
             };
-            var component = CreateDCLVideoTextureWithCustomTextureModel(scene, model);
+            var component = CreateBLDVideoTextureWithCustomTextureModel(scene, model);
 
             yield return component.routine;
 
@@ -344,7 +344,7 @@ namespace Tests
 
             Assert.AreApproximatelyEqual(1, component.texturePlayer.volume, 0.01f);
 
-            DCLVideoTexture.videoPluginWrapperBuilder = originalVideoPluginBuilder;
+            BLDVideoTexture.videoPluginWrapperBuilder = originalVideoPluginBuilder;
         }
 
 
@@ -357,7 +357,7 @@ namespace Tests
             // Set current scene with this scene's id
             CommonScriptableObjects.sceneID.Set(scene.sceneData.id);
 
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -385,7 +385,7 @@ namespace Tests
             CommonScriptableObjects.sceneID.Set(scene.sceneData.id);
             yield return null;
 
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -420,7 +420,7 @@ namespace Tests
             // Set current scene as a different one
             CommonScriptableObjects.sceneID.Set("unexistent-scene");
 
-            DCLVideoTexture videoTexture = CreateDCLVideoTexture(scene, "it-wont-load-during-test");
+            BLDVideoTexture videoTexture = CreateBLDVideoTexture(scene, "it-wont-load-during-test");
             yield return videoTexture.routine;
 
             var ent1 = TestUtils.CreateSceneEntity(scene);
@@ -446,35 +446,35 @@ namespace Tests
             Assert.AreEqual(videoTexture.GetVolume(), videoTexture.texturePlayer.volume);
         }
 
-        static DCLVideoClip CreateDCLVideoClip(ParcelScene scn, string url)
+        static BLDVideoClip CreateBLDVideoClip(ParcelScene scn, string url)
         {
-            return TestUtils.SharedComponentCreate<DCLVideoClip, DCLVideoClip.Model>
+            return TestUtils.SharedComponentCreate<BLDVideoClip, BLDVideoClip.Model>
             (
                 scn,
-                DCL.Models.CLASS_ID.VIDEO_CLIP,
-                new DCLVideoClip.Model
+                BLD.Models.CLASS_ID.VIDEO_CLIP,
+                new BLDVideoClip.Model
                 {
                     url = url
                 }
             );
         }
 
-        static DCLVideoTexture CreateDCLVideoTexture(ParcelScene scn, DCLVideoClip clip)
+        static BLDVideoTexture CreateBLDVideoTexture(ParcelScene scn, BLDVideoClip clip)
         {
-            return TestUtils.SharedComponentCreate<DCLVideoTexture, DCLVideoTexture.Model>
+            return TestUtils.SharedComponentCreate<BLDVideoTexture, BLDVideoTexture.Model>
             (
                 scn,
-                DCL.Models.CLASS_ID.VIDEO_TEXTURE,
-                new DCLVideoTexture.Model
+                BLD.Models.CLASS_ID.VIDEO_TEXTURE,
+                new BLDVideoTexture.Model
                 {
                     videoClipId = clip.id
                 }
             );
         }
 
-        static DCLVideoTexture CreateDCLVideoTextureWithModel(ParcelScene scn, DCLVideoTexture.Model model)
+        static BLDVideoTexture CreateBLDVideoTextureWithModel(ParcelScene scn, BLDVideoTexture.Model model)
         {
-            return TestUtils.SharedComponentCreate<DCLVideoTexture, DCLVideoTexture.Model>
+            return TestUtils.SharedComponentCreate<BLDVideoTexture, BLDVideoTexture.Model>
             (
                 scn,
                 CLASS_ID.VIDEO_TEXTURE,
@@ -482,7 +482,7 @@ namespace Tests
             );
         }
 
-        static DCLVideoTexture CreateDCLVideoTexture(ParcelScene scn, string url) { return CreateDCLVideoTexture(scn, CreateDCLVideoClip(scn, "http://" + url)); }
-        static DCLVideoTexture CreateDCLVideoTextureWithCustomTextureModel(ParcelScene scn, DCLVideoTexture.Model model) { return CreateDCLVideoTextureWithModel(scn, model); }
+        static BLDVideoTexture CreateBLDVideoTexture(ParcelScene scn, string url) { return CreateBLDVideoTexture(scn, CreateBLDVideoClip(scn, "http://" + url)); }
+        static BLDVideoTexture CreateBLDVideoTextureWithCustomTextureModel(ParcelScene scn, BLDVideoTexture.Model model) { return CreateBLDVideoTextureWithModel(scn, model); }
     }
 }

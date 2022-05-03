@@ -1,11 +1,11 @@
 using AvatarShape_Tests;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Interface;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -80,13 +80,13 @@ namespace Tests
             AvatarShape avatar = AvatarShapeTestHelpers.CreateAvatarShape(scene, "Abortitus", "TestAvatar.json");
 
             // We must wait for the AvatarShape to finish or the OnTransformChanged event is not used
-            yield return new DCL.WaitUntil(() => avatar.everythingIsLoaded, 20);
+            yield return new BLD.WaitUntil(() => avatar.everythingIsLoaded, 20);
 
             Assert.AreEqual(0f, avatar.entity.gameObject.transform.position.x);
             Assert.AreEqual(0f, avatar.entity.gameObject.transform.position.z);
 
             // Update position to the other end of the parcel
-            var transformModel = new DCLTransform.Model { position = new Vector3(15, 2, 15) };
+            var transformModel = new BLDTransform.Model { position = new Vector3(15, 2, 15) };
 
             TestUtils.SetEntityTransform(scene, avatar.entity, transformModel);
 
@@ -103,7 +103,7 @@ namespace Tests
         {
             AvatarAssetsTestHelpers.CreateTestCatalogLocal();
             AvatarShape avatar = AvatarShapeTestHelpers.CreateAvatarShape(scene, "Joan Darteis", "TestAvatar.json");
-            yield return new DCL.WaitUntil(() => avatar.everythingIsLoaded, 20);
+            yield return new BLD.WaitUntil(() => avatar.everythingIsLoaded, 20);
 
             AssertMaterialsAreCorrect(avatar.transform);
         }
@@ -121,7 +121,7 @@ namespace Tests
             avatar.transform.position = new Vector3(-5, 0, 0);
             avatar2.transform.position = new Vector3(5, 0, 0);
 
-            yield return new DCL.WaitUntil(() => avatar.everythingIsLoaded && avatar2.everythingIsLoaded, 25);
+            yield return new BLD.WaitUntil(() => avatar.everythingIsLoaded && avatar2.everythingIsLoaded, 25);
 
             AssertMaterialsAreCorrect(avatar.transform);
             AssertMaterialsAreCorrect(avatar2.transform);

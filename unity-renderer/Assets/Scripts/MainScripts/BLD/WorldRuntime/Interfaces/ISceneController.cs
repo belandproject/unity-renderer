@@ -1,8 +1,8 @@
 ﻿using System;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL
+namespace BLD
 {
     public interface ISceneController : IMessageProcessHandler, IMessageQueueHandler, IService
     {
@@ -22,8 +22,8 @@ namespace DCL
         void SortScenesByDistance();
         void UpdateParcelScenesExecute(LoadParcelScenesMessage.UnityParcelScene scene);
         void UnloadScene(string sceneKey);
-        void LoadParcelScenes(string decentralandSceneJSON);
-        void UpdateParcelScenes(string decentralandSceneJSON);
+        void LoadParcelScenes(string belandSceneJSON);
+        void UpdateParcelScenes(string belandSceneJSON);
         void UnloadAllScenesQueued();
         void CreateGlobalScene(string json);
         void IsolateScene(IParcelScene sceneToActive);

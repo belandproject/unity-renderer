@@ -1,13 +1,13 @@
 using System;
-using DCL.Configuration;
-using DCL.Helpers;
+using BLD.Configuration;
+using BLD.Helpers;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Rendering;
+using BLD.Rendering;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     /// <summary>
     /// This class is the loading blockers composite and instancing handler.
@@ -71,7 +71,7 @@ namespace DCL.Controllers
             if (!instant)
                 animationHandler.FadeIn(blockerGo);
 
-            DCL.Environment.i.platform.cullingController?.MarkDirty();
+            BLD.Environment.i.platform.cullingController?.MarkDirty();
         }
 
         private void EnsureBlockerPool()

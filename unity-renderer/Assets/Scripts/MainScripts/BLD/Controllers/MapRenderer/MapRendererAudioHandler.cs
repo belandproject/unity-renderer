@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapRendererAudioHandler : MonoBehaviour
 {
     [SerializeField]
-    DCL.MapRenderer mapRenderer;
+    BLD.MapRenderer mapRenderer;
 
     [SerializeField]
     AudioEvent eventMapParcelHighlight;

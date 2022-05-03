@@ -1,11 +1,11 @@
-using DCL.Models;
+using BLD.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public abstract class BaseDisposable : IDelayedComponent, ISharedComponent
     {
@@ -26,16 +26,16 @@ namespace DCL.Components
         public Coroutine routine => updateHandler.routine;
         public bool isRoutineRunning => updateHandler.isRoutineRunning;
 
-        public event System.Action<IDCLEntity> OnAttach;
-        public event System.Action<IDCLEntity> OnDetach;
+        public event System.Action<IBLDEntity> OnAttach;
+        public event System.Action<IBLDEntity> OnDetach;
         public event System.Action<BaseDisposable> OnDispose;
         public event Action<BaseDisposable> OnAppliedChanges;
 
-        public HashSet<IDCLEntity> attachedEntities = new HashSet<IDCLEntity>();
+        public HashSet<IBLDEntity> attachedEntities = new HashSet<IBLDEntity>();
 
         protected BaseModel model;
 
-        public HashSet<IDCLEntity> GetAttachedEntities() { return attachedEntities; }
+        public HashSet<IBLDEntity> GetAttachedEntities() { return attachedEntities; }
 
         public virtual void UpdateFromJSON(string json) { UpdateFromModel(model.GetDataFromJSON(json)); }
 
@@ -49,7 +49,7 @@ namespace DCL.Components
 
         public virtual void RaiseOnAppliedChanges() { OnAppliedChanges?.Invoke(this); }
 
-        public virtual void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public virtual void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (attachedEntities.Contains(entity))
             {
@@ -66,9 +66,9 @@ namespace DCL.Components
             OnAttach?.Invoke(entity);
         }
 
-        private void OnEntityRemoved(IDCLEntity entity) { DetachFrom(entity); }
+        private void OnEntityRemoved(IBLDEntity entity) { DetachFrom(entity); }
 
-        public virtual void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public virtual void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (!attachedEntities.Contains(entity))
                 return;
@@ -85,7 +85,7 @@ namespace DCL.Components
 
         public void DetachFromEveryEntity()
         {
-            IDCLEntity[] attachedEntitiesArray = new IDCLEntity[attachedEntities.Count];
+            IBLDEntity[] attachedEntitiesArray = new IBLDEntity[attachedEntities.Count];
 
             attachedEntities.CopyTo(attachedEntitiesArray);
 

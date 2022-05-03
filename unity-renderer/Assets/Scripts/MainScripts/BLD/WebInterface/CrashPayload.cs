@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Interface
+namespace BLD.Interface
 {
     [System.Serializable]
     public class CrashPayload

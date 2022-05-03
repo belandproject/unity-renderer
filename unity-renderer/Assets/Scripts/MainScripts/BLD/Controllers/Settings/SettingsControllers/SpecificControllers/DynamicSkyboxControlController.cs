@@ -1,8 +1,8 @@
-using DCL.Interface;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.Interface;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon.SettingsControllers.SpecificControllers
+namespace BLD.SettingsCommon.SettingsControllers.SpecificControllers
 {
     [CreateAssetMenu(menuName = "Settings/Controllers/Controls/Dynamic Skybox", fileName = "DynamicSkyboxControlController")]
     public class DynamicSkyboxControlController : ToggleSettingsControlController

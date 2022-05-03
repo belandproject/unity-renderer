@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using MainScripts.DCL.WebPlugin;
+using MainScripts.BLD.WebPlugin;
 using System;
 
 /// <summary>

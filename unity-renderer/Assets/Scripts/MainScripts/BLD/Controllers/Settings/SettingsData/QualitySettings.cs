@@ -1,8 +1,8 @@
 using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     [Serializable]
     public struct QualitySettings

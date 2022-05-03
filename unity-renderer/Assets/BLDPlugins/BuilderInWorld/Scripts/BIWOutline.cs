@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Configuration;
-using DCL.Helpers;
+using BLD.Configuration;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public interface IAvatarMeshCombinerHelper : IDisposable
     {

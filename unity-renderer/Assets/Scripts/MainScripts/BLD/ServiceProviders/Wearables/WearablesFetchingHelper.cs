@@ -5,17 +5,13 @@ using UnityEngine.Networking;
 using Random = UnityEngine.Random;
 using Collection = WearableCollectionsAPIData.Collection;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class WearablesFetchingHelper
     {
         // TODO: dinamically use ICatalyst.contentUrl, content server is not a const
         public const string WEARABLES_FETCH_URL = "https://nft-api-test.beland.io/v1/wearables?";
         public const string BASE_WEARABLES_COLLECTION_ID = "urn:beland:off-chain:base-avatars";
-
-        // TODO: change fetching logic to allow for auto-pagination
-        // The https://nft-api.decentraland.org/v1/ endpoint doesn't fetch L1 wearables right now, if those need to be re-converted we should use that old endpoint again and change the WearablesAPIData structure again for that response.
-        // public const string COLLECTIONS_FETCH_URL = "https://peer-lb.decentraland.org/lambdas/collections"; 
         public const string COLLECTIONS_FETCH_URL = "https://nft-api-test.beland.io/v1/collections?sortBy=newest&first=1000"; 
         private static Collection[] collections;
 

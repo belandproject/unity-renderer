@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Globalization;
 using System.Linq;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -19,7 +19,7 @@ public class PBRMaterialVisualTests : VisualTestsBase
     [Explicit, Category("Explicit")]
     public IEnumerator AlphaTextureShouldWork()
     {
-        DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/alphaTexture.png");
+        BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/alphaTexture.png");
         yield return texture.routine;
         Vector3 camTarget = new Vector3(5, 2, 5);
         VisualTestUtils.RepositionVisualTestsCamera(camera, camTarget - new Vector3(2, -1, 2), camTarget);
@@ -29,7 +29,7 @@ public class PBRMaterialVisualTests : VisualTestsBase
             albedoTexture = texture.id,
             transparencyMode = 2,
             albedoColor = Color.blue
-        }, camTarget, out IDCLEntity entity);
+        }, camTarget, out IBLDEntity entity);
         yield return matPBR.routine;
 
         yield return null;
@@ -51,8 +51,8 @@ public class PBRMaterialVisualTests : VisualTestsBase
             new LoadableShape.Model
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/MaterialsScene.glb"
-            }, out IDCLEntity entity);
-        TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = new Vector3(0, 0, 8), rotation = Quaternion.Euler(90, 180, 0) });
+            }, out IBLDEntity entity);
+        TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = new Vector3(0, 0, 8), rotation = Quaternion.Euler(90, 180, 0) });
 
         LoadWrapper loader = GLTFShape.GetLoaderForEntity(entity);
         yield return new WaitUntil(() => loader.alreadyLoaded);
@@ -74,7 +74,7 @@ public class PBRMaterialVisualTests : VisualTestsBase
         VisualTestUtils.RepositionVisualTestsCamera(camera, new Vector3(4.6f, 1.8f, 0.6f), camTarget);
 
         PlaneShape plane = TestUtils.CreateEntityWithPlaneShape(scene, new Vector3(5, 1, 5), true);
-        IDCLEntity planeEntity = plane.attachedEntities.FirstOrDefault();
+        IBLDEntity planeEntity = plane.attachedEntities.FirstOrDefault();
         TestUtils.SetEntityTransform(scene, planeEntity, new Vector3(5, 1, 5), Quaternion.identity, Vector3.one * 3);
         PBRMaterial planeMaterial = TestUtils.AttachPBRMaterialToEntity(scene, planeEntity, new PBRMaterial.Model { alphaTest = 1, transparencyMode = 1, albedoColor = Vector4.one });
         yield return plane.routine;
@@ -113,15 +113,15 @@ public class PBRMaterialVisualTests : VisualTestsBase
         Vector3 camTarget = new Vector3(5, 1, 5);
         VisualTestUtils.RepositionVisualTestsCamera(camera, new Vector3(4.6f, 1.8f, 0.6f), camTarget);
 
-        DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
-        DCLTexture alphaTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/alphaTexture.png");
-        DCLTexture emissionTexture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/Gradient A4.png");
+        BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+        BLDTexture alphaTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/alphaTexture.png");
+        BLDTexture emissionTexture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/Gradient A4.png");
         yield return texture.routine;
         yield return alphaTexture.routine;
         yield return emissionTexture.routine;
 
         PlaneShape plane = TestUtils.CreateEntityWithPlaneShape(scene, new Vector3(5, 1, 5), true);
-        IDCLEntity planeEntity = plane.attachedEntities.FirstOrDefault();
+        IBLDEntity planeEntity = plane.attachedEntities.FirstOrDefault();
         TestUtils.SetEntityTransform(scene, planeEntity, new Vector3(5, 1, 5), Quaternion.Euler(0, 0, 180), Vector3.one * 3);
         PBRMaterial planeMaterial = TestUtils.AttachPBRMaterialToEntity(scene, planeEntity, new PBRMaterial.Model
         {
@@ -154,11 +154,11 @@ public class PBRMaterialVisualTests : VisualTestsBase
         Vector3 camTarget = new Vector3(5, 1, 5);
         VisualTestUtils.RepositionVisualTestsCamera(camera, new Vector3(4.6f, 1.8f, 0.6f), camTarget);
 
-        DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+        BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
         yield return texture.routine;
 
         PlaneShape plane = TestUtils.CreateEntityWithPlaneShape(scene, new Vector3(5, 1, 5), true);
-        IDCLEntity planeEntity = plane.attachedEntities.FirstOrDefault();
+        IBLDEntity planeEntity = plane.attachedEntities.FirstOrDefault();
         TestUtils.SetEntityTransform(scene, planeEntity, new Vector3(5, 1, 5), Quaternion.Euler(0, 0, 180), Vector3.one * 3);
         PBRMaterial planeMaterial = TestUtils.AttachPBRMaterialToEntity(scene, planeEntity, new PBRMaterial.Model
         {
@@ -194,11 +194,11 @@ public class PBRMaterialVisualTests : VisualTestsBase
         Vector3 camTarget = new Vector3(5, 1, 5);
         VisualTestUtils.RepositionVisualTestsCamera(camera, new Vector3(4.6f, 1.8f, 0.6f), camTarget);
 
-        DCLTexture texture = TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
+        BLDTexture texture = TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + "/Images/avatar.png");
         yield return texture.routine;
 
         PlaneShape plane = TestUtils.CreateEntityWithPlaneShape(scene, new Vector3(5, 1, 5), true);
-        IDCLEntity planeEntity = plane.attachedEntities.FirstOrDefault();
+        IBLDEntity planeEntity = plane.attachedEntities.FirstOrDefault();
         TestUtils.SetEntityTransform(scene, planeEntity, new Vector3(5, 1, 5), Quaternion.Euler(0, 0, 180), Vector3.one * 3);
         PBRMaterial planeMaterial = TestUtils.AttachPBRMaterialToEntity(scene, planeEntity, new PBRMaterial.Model
         {

@@ -42,11 +42,11 @@ namespace InputController_Tests
         }
 
         [Test]
-        public void ReturnDCLActionProperly()
+        public void ReturnBLDActionProperly()
         {
-            action.dclAction = DCLAction_Trigger.CameraChange;
+            action.bldAction = BLDAction_Trigger.CameraChange;
 
-            Assert.AreEqual(DCLAction_Trigger.CameraChange, action.GetDCLAction());
+            Assert.AreEqual(BLDAction_Trigger.CameraChange, action.GetBLDAction());
         }
 
         [Test]
@@ -107,11 +107,11 @@ namespace InputController_Tests
         }
 
         [Test]
-        public void ReturnDCLActionProperly()
+        public void ReturnBLDActionProperly()
         {
-            action.dclAction = DCLAction_Hold.Sprint;
+            action.bldAction = BLDAction_Hold.Sprint;
 
-            Assert.AreEqual(DCLAction_Hold.Sprint, action.GetDCLAction());
+            Assert.AreEqual(BLDAction_Hold.Sprint, action.GetBLDAction());
         }
     }
 
@@ -154,11 +154,11 @@ namespace InputController_Tests
         }
 
         [Test]
-        public void ReturnDCLActionProperly()
+        public void ReturnBLDActionProperly()
         {
-            action.dclAction = DCLAction_Measurable.CameraXAxis;
+            action.bldAction = BLDAction_Measurable.CameraXAxis;
 
-            Assert.AreEqual(DCLAction_Measurable.CameraXAxis, action.GetDCLAction());
+            Assert.AreEqual(BLDAction_Measurable.CameraXAxis, action.GetBLDAction());
         }
     }
 }

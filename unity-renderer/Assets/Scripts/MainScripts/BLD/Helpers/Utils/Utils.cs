@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Configuration;
+using BLD.Configuration;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
@@ -16,7 +16,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class Utils
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using DCL.Helpers;
+using BLD.Helpers;
 
 /// <summary>
 /// GET Entities from connected Catalyst

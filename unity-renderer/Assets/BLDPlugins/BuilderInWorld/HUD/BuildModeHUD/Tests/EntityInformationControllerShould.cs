@@ -1,9 +1,9 @@
 using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Tests.BuildModeHUDControllers
 {
     /// <summary>
     /// TODO: This is using IntegrationTestSuite_Legacy instead of the normal because there is a bug in the NSustitute library
-    /// where the IDCLEntity are not mocked correctly, when you try to use Substitute.For<IDCLEntity>() there is a null reference in the variable pointer to an exception in the castle library
+    /// where the IBLDEntity are not mocked correctly, when you try to use Substitute.For<IBLDEntity>() there is a null reference in the variable pointer to an exception in the castle library
     /// After it is fixed, we should go to IntegrationTestSuite 
     /// </summary>
     public class EntityInformationControllerShould : IntegrationTestSuite_Legacy

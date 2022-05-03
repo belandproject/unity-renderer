@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using DCL.Helpers;
-using DCL;
+using BLD.Helpers;
+using BLD;
 
 public class TeleportPromptHUDView : MonoBehaviour
 {

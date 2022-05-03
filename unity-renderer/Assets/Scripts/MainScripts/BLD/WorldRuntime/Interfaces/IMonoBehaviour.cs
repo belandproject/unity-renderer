@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public interface IMonoBehaviour
     {

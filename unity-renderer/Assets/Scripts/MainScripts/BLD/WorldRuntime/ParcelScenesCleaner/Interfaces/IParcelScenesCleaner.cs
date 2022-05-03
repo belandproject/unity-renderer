@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL
+namespace BLD
 {
     public interface IParcelScenesCleaner : IService
     {
-        void MarkForCleanup(IDCLEntity entity);
-        void MarkRootEntityForCleanup(IParcelScene scene, IDCLEntity entity);
+        void MarkForCleanup(IBLDEntity entity);
+        void MarkRootEntityForCleanup(IParcelScene scene, IBLDEntity entity);
         void MarkDisposableComponentForCleanup(IParcelScene scene, string componentId);
         void CleanMarkedEntities();
         public IEnumerator CleanMarkedEntitiesAsync(bool immediate = false);

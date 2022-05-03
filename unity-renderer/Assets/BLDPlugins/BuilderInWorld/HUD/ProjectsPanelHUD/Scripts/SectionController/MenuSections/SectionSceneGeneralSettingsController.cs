@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal class SectionSceneGeneralSettingsController : SectionBase, ISelectSceneListener, ISectionUpdateSceneDataRequester
     {

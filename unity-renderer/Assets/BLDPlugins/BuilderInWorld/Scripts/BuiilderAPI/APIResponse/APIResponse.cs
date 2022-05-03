@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public class APIResponse
     {

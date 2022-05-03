@@ -1,11 +1,11 @@
 using System;
-using DCL.Models;
+using BLD.Models;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using DCL.Builder;
-using DCL.Controllers;
+using BLD.Builder;
+using BLD.Controllers;
 using UnityEngine;
 
 public interface IBIWActionController : IBIWController
@@ -17,6 +17,6 @@ public interface IBIWActionController : IBIWController
     void TryToUndoAction();
     void CreateActionEntityDeleted(List<BIWEntity> entityList);
     void CreateActionEntityDeleted(BIWEntity entity);
-    void CreateActionEntityCreated(IDCLEntity entity);
+    void CreateActionEntityCreated(IBLDEntity entity);
     void Clear();
 }

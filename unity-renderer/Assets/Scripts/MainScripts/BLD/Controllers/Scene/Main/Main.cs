@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.SettingsCommon;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.SettingsCommon;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// This is the InitialScene entry point.
@@ -66,7 +66,7 @@ namespace DCL
         {
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-            Debug.Log("DCL Unity Build Version: " + DCL.Configuration.ApplicationSettings.version);
+            Debug.Log("BLD Unity Build Version: " + BLD.Configuration.ApplicationSettings.version);
             Debug.unityLogger.logEnabled = false;
 
             kernelCommunication = new NativeBridgeCommunication(Environment.i.world.sceneController);
@@ -106,10 +106,10 @@ namespace DCL
             // it is used by the kernel to signal "EngineReady" or something like that
             // to prevent race conditions like "SceneController is not an object",
             // aka sending events before unity is ready
-            DCL.Interface.WebInterface.SendSystemInfoReport();
+            BLD.Interface.WebInterface.SendSystemInfoReport();
 
             // We trigger the Beland logic once everything is initialized.
-            DCL.Interface.WebInterface.StartDecentraland();
+            BLD.Interface.WebInterface.StartBeland();
         }
 
         protected virtual void Update()

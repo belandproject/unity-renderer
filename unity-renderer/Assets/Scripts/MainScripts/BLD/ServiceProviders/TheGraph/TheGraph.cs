@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -11,11 +11,11 @@ using UnityEngine.Networking;
 public class TheGraph : ITheGraph
 {
     private const float DEFAULT_CACHE_TIME = 5 * 60;
-    private const string LAND_SUBGRAPH_URL_ORG = "https://api.thegraph.com/subgraphs/name/decentraland/land-manager";
-    private const string LAND_SUBGRAPH_URL_ZONE = "https://api.thegraph.com/subgraphs/name/decentraland/land-manager-ropsten";
-    private const string LAND_SUBGRAPH_URL_MATIC = "https://api.thegraph.com/subgraphs/name/decentraland/mana-matic-mainnet";
-    private const string NFT_COLLECTIONS_SUBGRAPH_URL_ETHEREUM = "https://api.thegraph.com/subgraphs/name/decentraland/collections-ethereum-mainnet";
-    private const string NFT_COLLECTIONS_SUBGRAPH_URL_MATIC = "https://api.thegraph.com/subgraphs/name/decentraland/collections-matic-mainnet";
+    private const string LAND_SUBGRAPH_URL_ORG = "";
+    private const string LAND_SUBGRAPH_URL_ZONE = "";
+    private const string LAND_SUBGRAPH_URL_MATIC = "";
+    private const string NFT_COLLECTIONS_SUBGRAPH_URL_ETHEREUM = "";
+    private const string NFT_COLLECTIONS_SUBGRAPH_URL_MATIC = "";
 
     private readonly IDataCache<List<Land>> landQueryCache = new DataCache<List<Land>>();
 

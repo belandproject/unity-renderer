@@ -1,11 +1,11 @@
-using DCL.Models;
+using BLD.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using DCL.Builder;
-using DCL.Controllers;
+using BLD.Builder;
+using BLD.Controllers;
 using UnityEngine;
 
 public interface IBIWEntityHandler : IBIWController
@@ -15,12 +15,12 @@ public interface IBIWEntityHandler : IBIWController
     event Action<List<BIWEntity>> OnDeleteSelectedEntities;
     event Action<BIWEntity> OnEntityDeleted;
     BIWEntity GetConvertedEntity(string entityId);
-    BIWEntity GetConvertedEntity(IDCLEntity entity);
+    BIWEntity GetConvertedEntity(IBLDEntity entity);
     void DeleteEntity(BIWEntity entityToDelete);
     void DeleteEntity(string entityId);
     void DeleteFloorEntities();
     void DeleteSelectedEntities();
-    IDCLEntity CreateEntityFromJSON(string entityJson);
+    IBLDEntity CreateEntityFromJSON(string entityJson);
     BIWEntity CreateEmptyEntity(IParcelScene parcelScene, Vector3 entryPoint, Vector3 editionGOPosition, bool notifyEntityList = true);
     List<BIWEntity> GetAllEntitiesFromCurrentScene();
     void DeselectEntities();
@@ -32,14 +32,14 @@ public interface IBIWEntityHandler : IBIWController
     void DeleteEntitiesOutsideSceneBoundaries();
     bool AreAllEntitiesInsideBoundaries();
     void EntityListChanged();
-    void NotifyEntityIsCreated(IDCLEntity entity);
+    void NotifyEntityIsCreated(IBLDEntity entity);
     void SetEntityName(BIWEntity entityToApply, string newName, bool sendUpdateToKernel = true);
     void EntityClicked(BIWEntity entityToSelect);
     void ReportTransform(bool forceReport = false);
     void CancelSelection();
     bool IsPointerInSelectedEntity();
     void DestroyLastCreatedEntities();
-    void Select(IDCLEntity entity);
+    void Select(IBLDEntity entity);
     bool SelectEntity(BIWEntity entityEditable, bool selectedFromCatalog = false);
     void DeselectEntity(BIWEntity entity);
     int GetCurrentSceneEntityCount();

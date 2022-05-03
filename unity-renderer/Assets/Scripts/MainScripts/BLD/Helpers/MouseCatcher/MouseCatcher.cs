@@ -3,11 +3,11 @@
 #endif
 
 using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DCL
+namespace BLD
 {
     public interface IMouseCatcher
     {
@@ -102,7 +102,7 @@ namespace DCL
 
         #endregion
 
-        private void HandleUnlockInput(DCLAction_Trigger action)
+        private void HandleUnlockInput(BLDAction_Trigger action)
         {
             UnlockCursor();
         }

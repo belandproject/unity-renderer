@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DCL.NotificationModel;
+using BLD.NotificationModel;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     internal class CameraModeAreasController
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-namespace DCL
+namespace BLD
 {
     public static class MainSceneFactory
     {

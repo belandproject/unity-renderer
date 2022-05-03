@@ -1,11 +1,11 @@
 using System;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using DCL.Camera;
+using BLD.Camera;
 using UnityEngine;
 
 [ExcludeFromCodeCoverage]
@@ -241,7 +241,7 @@ public class VoxelController
             {
                 if (canVoxelsBeCreated)
                 {
-                    IDCLEntity entity = biwEntityHandler.DuplicateEntity(lastVoxelCreated).rootEntity;
+                    IBLDEntity entity = biwEntityHandler.DuplicateEntity(lastVoxelCreated).rootEntity;
                     entity.gameObject.tag = BIWSettings.VOXEL_TAG;
                     entity.gameObject.transform.position = voxelPosition;
 
@@ -284,9 +284,9 @@ public class VoxelController
         isCreatingMultipleVoxels = true;
     }
 
-    public void SetVoxelSelected(BIWEntity decentralandEntityToEdit)
+    public void SetVoxelSelected(BIWEntity belandEntityToEdit)
     {
-        lastVoxelCreated = decentralandEntityToEdit;
+        lastVoxelCreated = belandEntityToEdit;
         lastVoxelCreated.rootEntity.gameObject.transform.localPosition = Vector3.zero;
     }
 

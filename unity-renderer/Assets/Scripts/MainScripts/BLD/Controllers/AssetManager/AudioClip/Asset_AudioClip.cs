@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class Asset_AudioClip : Asset
     {

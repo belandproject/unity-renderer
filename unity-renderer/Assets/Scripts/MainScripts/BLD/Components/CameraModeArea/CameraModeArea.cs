@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class CameraModeArea : IEntityComponent, ICameraModeArea
     {
@@ -38,11 +38,11 @@ namespace DCL.Components
 
         public Model areaModel { private set; get; } = new Model();
         public IParcelScene areaScene { private set; get; }
-        public IDCLEntity areaEntity { private set; get; }
+        public IBLDEntity areaEntity { private set; get; }
 
         CameraMode.ModeId ICameraModeArea.cameraMode => areaModel.cameraMode;
 
-        IDCLEntity IEntityComponent.entity => areaEntity;
+        IBLDEntity IEntityComponent.entity => areaEntity;
 
         IParcelScene IComponent.scene => areaScene;
 
@@ -76,7 +76,7 @@ namespace DCL.Components
             DataStore.i.player.ownPlayer.OnChange -= OnOwnPlayerChange;
         }
 
-        void IEntityComponent.Initialize(IParcelScene scene, IDCLEntity entity)
+        void IEntityComponent.Initialize(IParcelScene scene, IBLDEntity entity)
         {
             Initialize(scene, entity, Environment.i.platform.updateEventHandler, DataStore.i.player.ownPlayer.Get()?.collider);
             DataStore.i.player.ownPlayer.OnChange += OnOwnPlayerChange;
@@ -100,7 +100,7 @@ namespace DCL.Components
             }
         }
 
-        internal void Initialize(in IParcelScene scene, in IDCLEntity entity, in IUpdateEventHandler updateEventHandler, in Collider playerCollider)
+        internal void Initialize(in IParcelScene scene, in IBLDEntity entity, in IUpdateEventHandler updateEventHandler, in Collider playerCollider)
         {
             areaScene = scene;
             areaEntity = entity;

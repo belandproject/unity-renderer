@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Builder;
+using BLD;
+using BLD.Builder;
 
 public class BuilderInWorldPlugin : IPlugin
 {
@@ -76,9 +76,9 @@ public class BuilderInWorldPlugin : IPlugin
         cameraController.Initialize(context);
         publisher.Initialize();
 
-        DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
-        DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
-        DCL.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.OnGui, OnGUI);
+        BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.Update, Update);
+        BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.LateUpdate, LateUpdate);
+        BLD.Environment.i.platform.updateEventHandler.AddListener(IUpdateEventHandler.EventType.OnGui, OnGUI);
 
         DataStore.i.builderInWorld.isInitialized.Set(true);
     }

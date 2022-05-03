@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Builder;
-using DCL.Helpers;
+using BLD;
+using BLD.Builder;
+using BLD.Helpers;
 using UnityEngine;
 
 public static class DeployedScenesFetcher

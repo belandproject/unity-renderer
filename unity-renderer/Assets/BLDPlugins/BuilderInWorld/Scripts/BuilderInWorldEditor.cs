@@ -1,14 +1,14 @@
-using DCL;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Tutorial;
+using BLD;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Tutorial;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 public class BuilderInWorldEditor : IBIWEditor
 {

@@ -1,14 +1,14 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIScrollRect : UIShape<UIScrollRectRefContainer, UIScrollRect.Model>
     {
@@ -33,13 +33,13 @@ namespace DCL.Components
 
         public UIScrollRect() { model = new Model(); }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             Debug.LogError(
                 "Aborted UIScrollRectShape attachment to an entity. UIShapes shouldn't be attached to entities.");
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         public override void OnChildAttached(UIShape parent, UIShape childComponent)
         {
@@ -72,13 +72,13 @@ namespace DCL.Components
             rc.childHookRectTransform.SetParent(rc.layoutElementRT, false);
             rc.childHookRectTransform.SetToMaxStretch();
             rc.childHookRectTransform.SetParent(rc.content, true);
-            RefreshDCLLayoutRecursively(false, true);
+            RefreshBLDLayoutRecursively(false, true);
         }
 
-        public override void RefreshDCLLayoutRecursively(bool refreshSize = true,
+        public override void RefreshBLDLayoutRecursively(bool refreshSize = true,
             bool refreshAlignmentAndPosition = true)
         {
-            base.RefreshDCLLayoutRecursively(refreshSize, refreshAlignmentAndPosition);
+            base.RefreshBLDLayoutRecursively(refreshSize, refreshAlignmentAndPosition);
             referencesContainer.fitter.RefreshRecursively();
         }
 

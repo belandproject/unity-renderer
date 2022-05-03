@@ -7,7 +7,7 @@ public static class GenericAnalytics
     {
         FillGenericData(data);
 
-        IAnalytics analytics = DCL.Environment.i.platform.serviceProviders.analytics;
+        IAnalytics analytics = BLD.Environment.i.platform.serviceProviders.analytics;
         analytics.SendAnalytic(eventName, data);
     }
 

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Builder;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityGLTF;
@@ -184,7 +184,7 @@ public class BIWCreatorShould : IntegrationTestSuite_Legacy
 
     protected override IEnumerator TearDown()
     {
-        yield return new DCL.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
+        yield return new BLD.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
         yield return null;
 
         Object.Destroy( assetCatalogBridge.gameObject );

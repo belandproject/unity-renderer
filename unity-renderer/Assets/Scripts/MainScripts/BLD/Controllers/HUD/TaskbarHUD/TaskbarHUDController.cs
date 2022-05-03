@@ -1,8 +1,8 @@
-using DCL;
-using DCL.Controllers;
-using DCL.HelpAndSupportHUD;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD;
+using BLD.Controllers;
+using BLD.HelpAndSupportHUD;
+using BLD.Helpers;
+using BLD.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,7 +120,7 @@ public class TaskbarHUDController : IHUD
 
     private void View_OnFriendsToggleOff() { friendsHud?.SetVisibility(false); }
 
-    private void ToggleFriendsTrigger_OnTriggered(DCLAction_Trigger action)
+    private void ToggleFriendsTrigger_OnTriggered(BLDAction_Trigger action)
     {
         if (!view.friendsButton.transform.parent.gameObject.activeSelf)
             return;
@@ -128,9 +128,9 @@ public class TaskbarHUDController : IHUD
         OnFriendsToggleInputPress();
     }
 
-    private void ToggleWorldChatTrigger_OnTriggered(DCLAction_Trigger action) { OnWorldChatToggleInputPress(); }
+    private void ToggleWorldChatTrigger_OnTriggered(BLDAction_Trigger action) { OnWorldChatToggleInputPress(); }
 
-    private void CloseWindowTrigger_OnTriggered(DCLAction_Trigger action) { OnCloseWindowToggleInputPress(); }
+    private void CloseWindowTrigger_OnTriggered(BLDAction_Trigger action) { OnCloseWindowToggleInputPress(); }
 
     private void View_OnChatToggleOn()
     {

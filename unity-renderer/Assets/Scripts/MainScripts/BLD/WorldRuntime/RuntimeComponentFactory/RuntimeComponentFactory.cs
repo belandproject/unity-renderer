@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class RuntimeComponentFactory : IRuntimeComponentFactory
     {
@@ -33,7 +33,7 @@ namespace DCL
             this.poolableComponentFactory = poolableComponentFactory ?? PoolableComponentFactory.Create();
 
             // Transform
-            builders.Add((int) CLASS_ID_COMPONENT.TRANSFORM, BuildComponent<DCLTransform>);
+            builders.Add((int) CLASS_ID_COMPONENT.TRANSFORM, BuildComponent<BLDTransform>);
             builders.Add((int) CLASS_ID_COMPONENT.AVATAR_ATTACH, BuildComponent<AvatarAttachComponent>);
 
             // Shapes
@@ -53,11 +53,11 @@ namespace DCL
             // Materials
             builders.Add((int) CLASS_ID.BASIC_MATERIAL, BuildComponent<BasicMaterial>);
             builders.Add((int) CLASS_ID.PBR_MATERIAL, BuildComponent<PBRMaterial>);
-            builders.Add((int) CLASS_ID.TEXTURE, BuildComponent<DCLTexture>);
-            builders.Add((int) CLASS_ID.AVATAR_TEXTURE, BuildComponent<DCLAvatarTexture>);
+            builders.Add((int) CLASS_ID.TEXTURE, BuildComponent<BLDTexture>);
+            builders.Add((int) CLASS_ID.AVATAR_TEXTURE, BuildComponent<BLDAvatarTexture>);
 
             // Audio
-            builders.Add((int) CLASS_ID.AUDIO_CLIP, BuildComponent<DCLAudioClip>);
+            builders.Add((int) CLASS_ID.AUDIO_CLIP, BuildComponent<BLDAudioClip>);
             builders.Add((int) CLASS_ID_COMPONENT.AUDIO_SOURCE, BuildPoolableComponent);
             builders.Add((int) CLASS_ID_COMPONENT.AUDIO_STREAM, BuildPoolableComponent);
 
@@ -70,16 +70,16 @@ namespace DCL
             builders.Add((int) CLASS_ID.UI_CONTAINER_STACK, BuildComponent<UIContainerStack>);
             builders.Add((int) CLASS_ID.UI_IMAGE_SHAPE, BuildComponent<UIImage>);
             builders.Add((int) CLASS_ID.UI_TEXT_SHAPE, BuildComponent<UIText>);
-            builders.Add((int) CLASS_ID.FONT, BuildComponent<DCLFont>);
+            builders.Add((int) CLASS_ID.FONT, BuildComponent<BLDFont>);
 
             // Video
-            builders.Add((int) CLASS_ID.VIDEO_CLIP, BuildComponent<DCLVideoClip>);
-            builders.Add((int) CLASS_ID.VIDEO_TEXTURE, BuildComponent<DCLVideoTexture>);
+            builders.Add((int) CLASS_ID.VIDEO_CLIP, BuildComponent<BLDVideoClip>);
+            builders.Add((int) CLASS_ID.VIDEO_TEXTURE, BuildComponent<BLDVideoTexture>);
 
             // Builder in world
-            builders.Add((int) CLASS_ID.NAME, BuildComponent<DCLName>);
-            builders.Add((int) CLASS_ID.LOCKED_ON_EDIT, BuildComponent<DCLLockedOnEdit>);
-            builders.Add((int) CLASS_ID.VISIBLE_ON_EDIT, BuildComponent<DCLVisibleOnEdit>);
+            builders.Add((int) CLASS_ID.NAME, BuildComponent<BLDName>);
+            builders.Add((int) CLASS_ID.LOCKED_ON_EDIT, BuildComponent<BLDLockedOnEdit>);
+            builders.Add((int) CLASS_ID.VISIBLE_ON_EDIT, BuildComponent<BLDVisibleOnEdit>);
 
             // Events
             builders.Add((int) CLASS_ID_COMPONENT.UUID_ON_UP, BuildUUIDComponent<OnPointerUp>);

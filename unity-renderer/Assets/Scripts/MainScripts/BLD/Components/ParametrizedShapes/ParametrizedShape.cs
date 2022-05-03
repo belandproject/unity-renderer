@@ -1,18 +1,18 @@
-﻿using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+﻿using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public abstract class ParametrizedShape<T> : BaseShape
         where T : BaseShape.Model, new()
     {
-        public Dictionary<IDCLEntity, Rendereable> attachedRendereables = new Dictionary<IDCLEntity, Rendereable>();
+        public Dictionary<IBLDEntity, Rendereable> attachedRendereables = new Dictionary<IBLDEntity, Rendereable>();
         bool visibilityDirty = false;
         bool collisionsDirty = false;
 
@@ -46,7 +46,7 @@ namespace DCL.Components
             base.UpdateFromModel(newModel);
         }
 
-        void UpdateRenderer(IDCLEntity entity, Model model = null)
+        void UpdateRenderer(IBLDEntity entity, Model model = null)
         {
             if (model == null)
                 model = (T) this.model;
@@ -69,7 +69,7 @@ namespace DCL.Components
             }
         }
 
-        void OnShapeAttached(IDCLEntity entity)
+        void OnShapeAttached(IBLDEntity entity)
         {
             if (entity == null)
                 return;
@@ -115,12 +115,12 @@ namespace DCL.Components
             AddRendereableToDataStore(entity);
         }
 
-        void OnShapeFinishedLoading(IDCLEntity entity)
+        void OnShapeFinishedLoading(IBLDEntity entity)
         {
             entity.OnShapeUpdated?.Invoke(entity);
         }
 
-        void OnShapeDetached(IDCLEntity entity)
+        void OnShapeDetached(IBLDEntity entity)
         {
             if (entity == null || entity.meshRootGameObject == null)
                 return;
@@ -201,7 +201,7 @@ namespace DCL.Components
             return null;
         }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (attachedEntities.Contains(entity))
                 return;
@@ -215,7 +215,7 @@ namespace DCL.Components
 
         protected virtual bool ShouldGenerateNewMesh(BaseShape.Model newModel) { return true; }
 
-        private void RemoveRendereableFromDataStore(IDCLEntity entity)
+        private void RemoveRendereableFromDataStore(IBLDEntity entity)
         {
             if (!attachedRendereables.ContainsKey(entity))
                 return;
@@ -224,7 +224,7 @@ namespace DCL.Components
             attachedRendereables.Remove(entity);
         }
 
-        private void AddRendereableToDataStore(IDCLEntity entity)
+        private void AddRendereableToDataStore(IBLDEntity entity)
         {
             if (attachedRendereables.ContainsKey(entity))
                 return;

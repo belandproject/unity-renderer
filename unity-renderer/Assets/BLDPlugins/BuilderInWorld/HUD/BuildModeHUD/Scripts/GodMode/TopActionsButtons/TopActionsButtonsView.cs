@@ -1,5 +1,5 @@
 using System;
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,14 +32,14 @@ public interface ITopActionsButtonsView
                                         OnSnapModePointerEnter;
 
     void ConfigureExtraActions(IExtraActionsController extraActionsController);
-    void OnChangeModeClick(DCLAction_Trigger action);
-    void OnDeleteClick(DCLAction_Trigger action);
-    void OnDuplicateClick(DCLAction_Trigger action);
-    void OnExtraClick(DCLAction_Trigger action);
-    void OnLogOutClick(DCLAction_Trigger action);
-    void OnRotateClick(DCLAction_Trigger action);
-    void OnScaleClick(DCLAction_Trigger action);
-    void OnTranslateClick(DCLAction_Trigger action);
+    void OnChangeModeClick(BLDAction_Trigger action);
+    void OnDeleteClick(BLDAction_Trigger action);
+    void OnDuplicateClick(BLDAction_Trigger action);
+    void OnExtraClick(BLDAction_Trigger action);
+    void OnLogOutClick(BLDAction_Trigger action);
+    void OnRotateClick(BLDAction_Trigger action);
+    void OnScaleClick(BLDAction_Trigger action);
+    void OnTranslateClick(BLDAction_Trigger action);
     void SetGizmosActive(string gizmos);
     void SetActionsInteractable(bool isActive);
     void SetUndoInteractable(bool isActive);
@@ -140,7 +140,7 @@ public class TopActionsButtonsView : MonoBehaviour, ITopActionsButtonsView
 
     [SerializeField] internal Color selectedBtnImgColor;
 
-    private DCLAction_Trigger dummyActionTrigger = new DCLAction_Trigger();
+    private BLDAction_Trigger dummyActionTrigger = new BLDAction_Trigger();
     internal IExtraActionsController extraActionsController;
 
     private const string VIEW_PATH = "GodMode/TopActionsButtons/TopActionsButtonsView";
@@ -340,12 +340,12 @@ public class TopActionsButtonsView : MonoBehaviour, ITopActionsButtonsView
         this.extraActionsController.Initialize(extraActionsView);
     }
 
-    public void OnChangeModeClick(DCLAction_Trigger action) { OnChangeModeClicked?.Invoke(); }
+    public void OnChangeModeClick(BLDAction_Trigger action) { OnChangeModeClicked?.Invoke(); }
 
-    public void OnExtraClick(DCLAction_Trigger action) { OnExtraClicked?.Invoke(); }
+    public void OnExtraClick(BLDAction_Trigger action) { OnExtraClicked?.Invoke(); }
 
-    public void OnTranslateClick(DCLAction_Trigger action) { OnTranslateClicked?.Invoke(); }
-    public void OnSnapModeClick(DCLAction_Trigger action) { OnSnapModeClicked?.Invoke(); }
+    public void OnTranslateClick(BLDAction_Trigger action) { OnTranslateClicked?.Invoke(); }
+    public void OnSnapModeClick(BLDAction_Trigger action) { OnSnapModeClicked?.Invoke(); }
 
     public void SetSnapActive(bool isActive) { snapModeBtnImg.color = isActive ? selectedBtnImgColor : normalBtnImgColor; }
 
@@ -379,16 +379,16 @@ public class TopActionsButtonsView : MonoBehaviour, ITopActionsButtonsView
 
     public void SetRedoInteractable(bool isActive) { redoBtn.interactable = isActive; }
 
-    public void OnRotateClick(DCLAction_Trigger action) { OnRotateClicked?.Invoke(); }
+    public void OnRotateClick(BLDAction_Trigger action) { OnRotateClicked?.Invoke(); }
 
-    public void OnScaleClick(DCLAction_Trigger action) { OnScaleClicked?.Invoke(); }
+    public void OnScaleClick(BLDAction_Trigger action) { OnScaleClicked?.Invoke(); }
 
     public void OnUndoClick() { OnUndoClicked?.Invoke(); }
     public void OnRedoClick() { OnRedoClicked?.Invoke(); }
 
-    public void OnDuplicateClick(DCLAction_Trigger action) { OnDuplicateClicked?.Invoke(); }
+    public void OnDuplicateClick(BLDAction_Trigger action) { OnDuplicateClicked?.Invoke(); }
 
-    public void OnDeleteClick(DCLAction_Trigger action) { OnDeleteClicked?.Invoke(); }
+    public void OnDeleteClick(BLDAction_Trigger action) { OnDeleteClicked?.Invoke(); }
 
-    public void OnLogOutClick(DCLAction_Trigger action) { OnLogOutClicked?.Invoke(); }
+    public void OnLogOutClick(BLDAction_Trigger action) { OnLogOutClicked?.Invoke(); }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using AvatarSystem;
 using Cysharp.Threading.Tasks;
-using DCL;
+using BLD;
 using GPUSkinning;
 using UnityEngine;
 
@@ -117,7 +117,7 @@ public class CharacterPreviewController : MonoBehaviour
 
     private IEnumerator TakeSnapshots_Routine(OnSnapshotsReady callback)
     {
-        DCL.Environment.i.platform.cullingController.Stop();
+        BLD.Environment.i.platform.cullingController.Stop();
 
         var current = camera.targetTexture;
         camera.targetTexture = null;
@@ -137,7 +137,7 @@ public class CharacterPreviewController : MonoBehaviour
 
         camera.targetTexture = current;
 
-        DCL.Environment.i.platform.cullingController.Start();
+        BLD.Environment.i.platform.cullingController.Start();
         callback?.Invoke(face256, body);
     }
 

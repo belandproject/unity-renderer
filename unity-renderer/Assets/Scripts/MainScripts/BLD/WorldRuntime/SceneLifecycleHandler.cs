@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     /// <summary>
     /// This handler is in charge of handling the scene lifecycle events

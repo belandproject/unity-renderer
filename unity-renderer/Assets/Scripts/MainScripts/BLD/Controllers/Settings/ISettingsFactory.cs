@@ -1,4 +1,4 @@
-﻿namespace DCL.SettingsCommon
+﻿namespace BLD.SettingsCommon
 {
     public interface ISettingsFactory
     {

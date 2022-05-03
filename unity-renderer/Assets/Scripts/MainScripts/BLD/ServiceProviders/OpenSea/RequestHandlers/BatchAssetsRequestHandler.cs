@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL.Helpers.NFT.Markets.OpenSea_Internal
+namespace BLD.Helpers.NFT.Markets.OpenSea_Internal
 {
     internal class BatchAssetsRequestHandler : IRequestHandler
     {

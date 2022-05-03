@@ -1,9 +1,9 @@
-using DCL.SettingsPanelHUD.Widgets;
+using BLD.SettingsPanelHUD.Widgets;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace DCL.SettingsPanelHUD.Sections
+namespace BLD.SettingsPanelHUD.Sections
 {
     /// <summary>
     /// Interface to implement a controller for a SECTION.

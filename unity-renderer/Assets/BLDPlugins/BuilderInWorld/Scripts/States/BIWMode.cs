@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Contexts;
-using DCL.Builder;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Builder;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Models;
 using UnityEngine;
 
 public class BIWMode : IBIWMode
@@ -170,9 +170,9 @@ public class BIWMode : IBIWMode
         freeMovementGO.transform.rotation = zeroAnglesQuaternion;
         editionGO.transform.rotation = zeroAnglesQuaternion;
 
-        foreach (BIWEntity decentralandEntityToEdit in selectedEntities)
+        foreach (BIWEntity belandEntityToEdit in selectedEntities)
         {
-            decentralandEntityToEdit.ResetTransfrom();
+            belandEntityToEdit.ResetTransfrom();
         }
 
         CenterGameObjectToEdit();
@@ -198,7 +198,7 @@ public class BIWMode : IBIWMode
         return new Vector3(centerX, centerY, centerZ);
     }
 
-    protected void TransformActionStarted(IDCLEntity entity, string type)
+    protected void TransformActionStarted(IBLDEntity entity, string type)
     {
         BIWEntityAction buildModeEntityAction = new BIWEntityAction(entity);
         switch (type)
@@ -217,7 +217,7 @@ public class BIWMode : IBIWMode
         actionList.Add(buildModeEntityAction);
     }
 
-    protected void TransformActionEnd(IDCLEntity entity, string type)
+    protected void TransformActionEnd(IBLDEntity entity, string type)
     {
         List<BIWEntityAction> removeList = new List<BIWEntityAction>();
         foreach (BIWEntityAction entityAction in actionList)

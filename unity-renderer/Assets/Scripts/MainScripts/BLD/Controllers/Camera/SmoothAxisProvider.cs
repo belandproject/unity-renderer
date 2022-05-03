@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Cinemachine.Utility;
-using DCL.Camera;
-using DCL.Helpers;
+using BLD.Camera;
+using BLD.Helpers;
 using UnityEngine;
 
 public class SmoothAxisProvider : MonoBehaviour, AxisState.IInputAxisProvider

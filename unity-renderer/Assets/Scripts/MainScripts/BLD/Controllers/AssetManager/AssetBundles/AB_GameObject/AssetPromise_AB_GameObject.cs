@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Linq;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using System.Collections.Generic;
-using DCL.Models;
+using BLD.Models;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_AB_GameObject : AssetPromise_WithUrl<Asset_AB_GameObject>
     {

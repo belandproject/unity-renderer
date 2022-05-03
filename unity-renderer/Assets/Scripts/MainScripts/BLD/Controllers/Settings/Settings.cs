@@ -1,9 +1,9 @@
 using System;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 using UnityEngine.Audio;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     public class Settings
     {

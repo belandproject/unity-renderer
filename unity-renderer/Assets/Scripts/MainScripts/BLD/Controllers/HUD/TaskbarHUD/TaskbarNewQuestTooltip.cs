@@ -1,5 +1,5 @@
-using DCL;
-using DCL.QuestsController;
+using BLD;
+using BLD.QuestsController;
 using UnityEngine;
 
 public class TaskbarNewQuestTooltip : MonoBehaviour

@@ -1,4 +1,4 @@
-using DCL.Interface;
+using BLD.Interface;
 using System;
 
 public class TermsOfServiceHUDController : IHUD

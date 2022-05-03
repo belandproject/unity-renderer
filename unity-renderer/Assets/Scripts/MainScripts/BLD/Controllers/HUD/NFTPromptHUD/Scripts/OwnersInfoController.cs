@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers.NFT;
+using BLD.Helpers.NFT;
 using Object = UnityEngine.Object;
 
 internal class OwnersInfoController : IDisposable

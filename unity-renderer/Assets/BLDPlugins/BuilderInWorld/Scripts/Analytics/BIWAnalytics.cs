@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
+using BLD;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -261,7 +261,7 @@ public static class BIWAnalytics
 
     private static void SendEvent(string eventName, Dictionary<string, string> events)
     {
-        IAnalytics analytics = DCL.Environment.i.platform.serviceProviders.analytics;
+        IAnalytics analytics = BLD.Environment.i.platform.serviceProviders.analytics;
         analytics.SendAnalytic(eventName, events);
     }
 }

@@ -1,9 +1,9 @@
-using DCL.Controllers;
-using DCL.Helpers;
+using BLD.Controllers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class WorldState : IWorldState
     {

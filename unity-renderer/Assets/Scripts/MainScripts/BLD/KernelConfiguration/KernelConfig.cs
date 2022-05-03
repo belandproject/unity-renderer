@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DCL;
+using BLD;
 using UnityEngine;
-using DCL.Helpers;
+using BLD.Helpers;
 
 public class KernelConfig
 {

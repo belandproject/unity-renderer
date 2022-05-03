@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DCL.Controllers;
-using DCL.Models;
-using DCLPlugins.DebugPlugins.Commons;
+using BLD.Controllers;
+using BLD.Models;
+using BLDPlugins.DebugPlugins.Commons;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -35,8 +35,8 @@ namespace Tests
         {
             WatchSceneHandler handler = new WatchSceneHandler(scene, listener);
 
-            IDCLEntity entity = CreateEntity();
-            scene.OnEntityAdded += Raise.Event<Action<IDCLEntity>>(entity);
+            IBLDEntity entity = CreateEntity();
+            scene.OnEntityAdded += Raise.Event<Action<IBLDEntity>>(entity);
 
             listener.Received(1).OnEntityAdded(Arg.Is(entity));
 
@@ -46,8 +46,8 @@ namespace Tests
         [Test]
         public void TriggerEntityAddedWhenEntityExistBeforeHandler()
         {
-            IDCLEntity entity = CreateEntity();
-            var sceneEntities = new Dictionary<string, IDCLEntity>() { { "1", entity } };
+            IBLDEntity entity = CreateEntity();
+            var sceneEntities = new Dictionary<string, IBLDEntity>() { { "1", entity } };
             scene.entities.Returns(sceneEntities);
 
             WatchSceneHandler handler = new WatchSceneHandler(scene, listener);
@@ -62,8 +62,8 @@ namespace Tests
         {
             WatchSceneHandler handler = new WatchSceneHandler(scene, listener);
 
-            IDCLEntity entity = CreateEntity();
-            scene.OnEntityRemoved += Raise.Event<Action<IDCLEntity>>(entity);
+            IBLDEntity entity = CreateEntity();
+            scene.OnEntityRemoved += Raise.Event<Action<IBLDEntity>>(entity);
 
             listener.Received(1).OnEntityRemoved(Arg.Is(entity));
 
@@ -78,12 +78,12 @@ namespace Tests
             listener.Received(1).Dispose();
         }
 
-        private IDCLEntity CreateEntity()
+        private IBLDEntity CreateEntity()
         {
             MeshesInfo meshesInfo = new MeshesInfo();
             meshesInfo.meshRootGameObject = meshesInfoGameObject;
             
-            IDCLEntity entity = Substitute.For<IDCLEntity>();
+            IBLDEntity entity = Substitute.For<IBLDEntity>();
             entity.meshesInfo.Returns(meshesInfo);
             return entity;
         }

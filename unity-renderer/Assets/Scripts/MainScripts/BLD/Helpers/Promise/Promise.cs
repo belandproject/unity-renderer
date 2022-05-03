@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public class Promise<T> : CustomYieldInstruction, IDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using System;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 
 /// <summary>
 /// Query profiles by name or address

@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL
+namespace BLD
 {
     public interface IHUDController : IService
     {

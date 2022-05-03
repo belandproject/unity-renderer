@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Linq;
-using DCL;
+using BLD;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -22,7 +22,7 @@ namespace Tests
             // It should start as not idle
             Assert.IsFalse(idleChecker.isIdle());
 
-            yield return new DCL.WaitUntil(() =>
+            yield return new BLD.WaitUntil(() =>
             {
                 idleChecker.Update(); // We need to update it to update the check the status...
                 return idleChecker.isIdle();

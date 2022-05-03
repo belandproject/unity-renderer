@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using System.Collections;
-using DCL;
+using BLD;
 using UnityEngine.TestTools;
-using DCL.TransactionHUDModel;
+using BLD.TransactionHUDModel;
 
 namespace Tests
 {

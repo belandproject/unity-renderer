@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using DCL.Components;
+using BLD.Components;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class PoolableObject : IPoolableObject
     {
@@ -80,7 +80,7 @@ namespace DCL
 
         public void RemoveFromPool() { pool.RemoveFromPool(this); }
 
-        public void OnCleanup(DCL.ICleanableEventDispatcher sender)
+        public void OnCleanup(BLD.ICleanableEventDispatcher sender)
         {
             sender.OnCleanupEvent -= this.OnCleanup;
             Release();

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class Asset_AB_GameObject : Asset_WithPoolableContainer
     {

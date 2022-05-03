@@ -1,4 +1,4 @@
-using DCL.Configuration;
+using BLD.Configuration;
 using UnityEngine;
 
 public class CatalogAssetPackListView : ListView<CatalogItemPack>

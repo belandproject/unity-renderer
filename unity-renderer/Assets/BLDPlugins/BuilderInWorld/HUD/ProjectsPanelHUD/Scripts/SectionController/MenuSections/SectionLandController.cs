@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     internal class SectionLandController : SectionBase, ILandsListener, ISectionOpenURLRequester, ISectionGotoCoordsRequester, ISectionEditSceneAtCoordsRequester
     {

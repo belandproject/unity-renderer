@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -21,10 +21,10 @@ public class PlaneShapeShould : IntegrationTestSuite_Legacy
     public IEnumerator BeUpdatedCorrectly()
     {
         string entityId = "3";
-        TestUtils.InstantiateEntityWithShape(scene, entityId, DCL.Models.CLASS_ID.PLANE_SHAPE, Vector3.zero);
+        TestUtils.InstantiateEntityWithShape(scene, entityId, BLD.Models.CLASS_ID.PLANE_SHAPE, Vector3.zero);
 
         var meshName = scene.entities[entityId].gameObject.GetComponentInChildren<MeshFilter>().mesh.name;
-        Assert.AreEqual("DCL Plane Instance", meshName);
+        Assert.AreEqual("BLD Plane Instance", meshName);
         yield break;
     }
 
@@ -33,11 +33,11 @@ public class PlaneShapeShould : IntegrationTestSuite_Legacy
     {
         float[] uvs = new float[] { 0, 0.75f, 0.25f, 0.75f, 0.25f, 1, 0, 1, 0, 0.75f, 0.25f, 0.75f, 0.25f, 1, 0, 1 };
 
-        IDCLEntity entity;
+        IBLDEntity entity;
 
         PlaneShape plane = TestUtils.InstantiateEntityWithShape<PlaneShape, PlaneShape.Model>(
             scene,
-            DCL.Models.CLASS_ID.PLANE_SHAPE,
+            BLD.Models.CLASS_ID.PLANE_SHAPE,
             Vector3.zero,
             out entity,
             new PlaneShape.Model()

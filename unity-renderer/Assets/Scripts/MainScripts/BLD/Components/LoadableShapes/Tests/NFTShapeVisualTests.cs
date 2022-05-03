@@ -1,7 +1,7 @@
-﻿using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+﻿using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
@@ -102,7 +102,7 @@ public class NFTShapeVisualTests : VisualTestsBase
     {
         var entity = TestUtils.CreateSceneEntity(scene);
 
-        TestUtils.SetEntityTransform(scene, entity, new DCLTransform.Model { position = position });
+        TestUtils.SetEntityTransform(scene, entity, new BLDTransform.Model { position = position });
 
         yield return null;
 

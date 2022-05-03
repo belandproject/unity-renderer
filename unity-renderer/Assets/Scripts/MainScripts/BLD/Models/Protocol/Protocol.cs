@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
 
-namespace DCL.Models
+namespace BLD.Models
 {
     public enum CLASS_ID_COMPONENT
     {
@@ -25,7 +25,7 @@ namespace DCL.Models
         AVATAR_MODIFIER_AREA = 205,
         AVATAR_ATTACH = 206,
         CAMERA_MODE_AREA = 207,
-        QUEST_TRACKING_INFORMATION = 1417815519 // This corresponds with dcl-ecs-quests
+        QUEST_TRACKING_INFORMATION = 1417815519 // This corresponds with bld-ecs-quests
     }
 
     public enum CLASS_ID

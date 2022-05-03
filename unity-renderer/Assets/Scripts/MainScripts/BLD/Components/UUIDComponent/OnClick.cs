@@ -1,10 +1,10 @@
 using UnityEngine;
-using DCL.Interface;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Helpers;
+using BLD.Models;
 using Ray = UnityEngine.Ray;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnClick : OnPointerEvent
     {
@@ -20,7 +20,7 @@ namespace DCL.Components
             if (IsAtHoverDistance(hit.distance)
                 && (model.button == "ANY" || buttonId.ToString() == model.button))
             {
-                DCL.Interface.WebInterface.ReportOnClickEvent(scene.sceneData.id, model.uuid);
+                BLD.Interface.WebInterface.ReportOnClickEvent(scene.sceneData.id, model.uuid);
             }
         }
 

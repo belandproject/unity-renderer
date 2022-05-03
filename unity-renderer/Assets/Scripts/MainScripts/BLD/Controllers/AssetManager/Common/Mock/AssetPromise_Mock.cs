@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace DCL
+namespace BLD
 {
     public class AssetPromise_Mock : AssetPromise<Asset_Mock>
     {

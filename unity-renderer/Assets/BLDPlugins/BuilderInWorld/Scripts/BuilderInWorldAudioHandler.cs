@@ -1,8 +1,8 @@
-using DCL.Controllers;
+using BLD.Controllers;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Builder;
+using BLD;
+using BLD.Builder;
 using UnityEngine;
 
 public class BuilderInWorldAudioHandler : MonoBehaviour
@@ -72,12 +72,12 @@ public class BuilderInWorldAudioHandler : MonoBehaviour
         creatorController.OnCatalogItemPlaced += OnAssetSpawn;
         entityHandler.OnDeleteSelectedEntities += OnAssetDelete;
         modeController.OnChangedEditModeState += OnChangedEditModeState;
-        DCL.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged += OnEntityBoundsCheckerStatusChanged;
+        BLD.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged += OnEntityBoundsCheckerStatusChanged;
 
-        if (DCL.Tutorial.TutorialController.i != null)
+        if (BLD.Tutorial.TutorialController.i != null)
         {
-            DCL.Tutorial.TutorialController.i.OnTutorialEnabled += OnTutorialEnabled;
-            DCL.Tutorial.TutorialController.i.OnTutorialDisabled += OnTutorialDisabled;
+            BLD.Tutorial.TutorialController.i.OnTutorialEnabled += OnTutorialEnabled;
+            BLD.Tutorial.TutorialController.i.OnTutorialDisabled += OnTutorialDisabled;
         }
 
         entityHandler.OnEntityDeselected += OnAssetDeselect;
@@ -202,7 +202,7 @@ public class BuilderInWorldAudioHandler : MonoBehaviour
         }
     }
 
-    private void OnEntityBoundsCheckerStatusChanged(DCL.Models.IDCLEntity entity, bool isInsideBoundaries)
+    private void OnEntityBoundsCheckerStatusChanged(BLD.Models.IBLDEntity entity, bool isInsideBoundaries)
     {
         if (state == IBIWModeController.EditModeState.Inactive)
             return;
@@ -258,12 +258,12 @@ public class BuilderInWorldAudioHandler : MonoBehaviour
         entityHandler.OnDeleteSelectedEntities -= OnAssetDelete;
         modeController.OnChangedEditModeState -= OnChangedEditModeState;
 
-        DCL.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged -= OnEntityBoundsCheckerStatusChanged;
+        BLD.Environment.i.world.sceneBoundsChecker.OnEntityBoundsCheckerStatusChanged -= OnEntityBoundsCheckerStatusChanged;
 
-        if (DCL.Tutorial.TutorialController.i != null)
+        if (BLD.Tutorial.TutorialController.i != null)
         {
-            DCL.Tutorial.TutorialController.i.OnTutorialEnabled -= OnTutorialEnabled;
-            DCL.Tutorial.TutorialController.i.OnTutorialDisabled -= OnTutorialDisabled;
+            BLD.Tutorial.TutorialController.i.OnTutorialEnabled -= OnTutorialEnabled;
+            BLD.Tutorial.TutorialController.i.OnTutorialDisabled -= OnTutorialDisabled;
         }
 
         entityHandler.OnEntityDeselected -= OnAssetDeselect;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Our custom implementation of the UnityWebRequestAssetBundle.

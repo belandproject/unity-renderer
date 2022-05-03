@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DCL.Bots;
-using DCL.Helpers;
+using BLD.Bots;
+using BLD.Helpers;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL
+namespace BLD
 {
     public class DebugController : IDebugController
     {

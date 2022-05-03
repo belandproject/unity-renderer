@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DCL;
+using BLD;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -25,19 +25,19 @@ public class CombineLayerUtilsCan
             Texture2D texEmission = new Texture2D(1, 1);
 
             if ( i % 4 == 0 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(albedo: texAlbedo, emission: texEmission);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(albedo: texAlbedo, emission: texEmission);
             else if ( i % 4 == 1 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(albedo: texAlbedo, emission: texEmission);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(albedo: texAlbedo, emission: texEmission);
             else if ( i % 4 == 2 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, albedo: texAlbedo, emission: texEmission);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, albedo: texAlbedo, emission: texEmission);
             else if ( i % 4 == 3 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Front, albedo: texAlbedo, emission: texEmission);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Front, albedo: texAlbedo, emission: texEmission);
 
             skrList.Add(r);
         }
 
         // Act
-        List<CombineLayer> result = DCL.CombineLayerUtils.Slice(skrList.ToArray());
+        List<CombineLayer> result = BLD.CombineLayerUtils.Slice(skrList.ToArray());
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(4));
@@ -63,7 +63,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -81,7 +81,7 @@ public class CombineLayerUtilsCan
         {
             Texture2D albedoTex = new Texture2D(1, 1);
             Texture2D emissionTex = new Texture2D(1, 1);
-            var r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, albedoTex, emissionTex);
+            var r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, albedoTex, emissionTex);
             skrList.Add(r);
             albedoList.Add(albedoTex);
             emissionList.Add(emissionTex);
@@ -93,7 +93,7 @@ public class CombineLayerUtilsCan
         layer.renderers = skrList;
 
         // Act
-        var result = DCL.CombineLayerUtils.SubsliceLayerByTextures(layer);
+        var result = BLD.CombineLayerUtils.SubsliceLayerByTextures(layer);
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(2));
@@ -122,7 +122,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -140,7 +140,7 @@ public class CombineLayerUtilsCan
         {
             Texture2D albedoTex = new Texture2D(1, 1);
             Texture2D emissionTex = new Texture2D(1, 1);
-            var r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, albedoTex, emissionTex);
+            var r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, albedoTex, emissionTex);
             skrList.Add(r);
             albedoList.Add(albedoTex);
             emissionList.Add(emissionTex);
@@ -152,7 +152,7 @@ public class CombineLayerUtilsCan
         layer.renderers = skrList;
 
         // Act
-        var result = DCL.CombineLayerUtils.SubsliceLayerByTextures(layer);
+        var result = BLD.CombineLayerUtils.SubsliceLayerByTextures(layer);
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(1));
@@ -162,7 +162,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -179,15 +179,15 @@ public class CombineLayerUtilsCan
             SkinnedMeshRenderer r = null;
 
             if ( i % 2 == 0 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
             else
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
 
             skrList.Add(r);
         }
 
         // Act
-        var result = DCL.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
+        var result = BLD.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(2));
@@ -198,7 +198,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -215,15 +215,15 @@ public class CombineLayerUtilsCan
             SkinnedMeshRenderer r = null;
 
             if ( i % 2 == 0 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
             else
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, null, null);
 
             skrList.Add(r);
         }
 
         // Act
-        var result = DCL.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
+        var result = BLD.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(2));
@@ -235,7 +235,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -252,19 +252,19 @@ public class CombineLayerUtilsCan
             SkinnedMeshRenderer r = null;
 
             if ( i % 4 == 0 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
             else if ( i % 4 == 1 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
             else if ( i % 4 == 2 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Front, null, null);
             else if ( i % 4 == 3 )
-                r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Front, null, null);
+                r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Front, null, null);
 
             skrList.Add(r);
         }
 
         // Act
-        var result = DCL.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
+        var result = BLD.CombineLayerUtils.SliceByRenderState(skrList.ToArray());
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(4));
@@ -286,7 +286,7 @@ public class CombineLayerUtilsCan
 
         for ( int i = 0; i < skrList.Count; i++ )
         {
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(skrList[i]);
         }
     }
 
@@ -298,13 +298,13 @@ public class CombineLayerUtilsCan
 
         Material[] mats = new Material[]
         {
-            DCL.Helpers.Material.Create(CullMode.Back, Texture2D.whiteTexture, Texture2D.blackTexture),
-            DCL.Helpers.Material.Create(CullMode.Back, Texture2D.redTexture, Texture2D.grayTexture),
-            DCL.Helpers.Material.Create(CullMode.Back, Texture2D.normalTexture, Texture2D.linearGrayTexture)
+            BLD.Helpers.Material.Create(CullMode.Back, Texture2D.whiteTexture, Texture2D.blackTexture),
+            BLD.Helpers.Material.Create(CullMode.Back, Texture2D.redTexture, Texture2D.grayTexture),
+            BLD.Helpers.Material.Create(CullMode.Back, Texture2D.normalTexture, Texture2D.linearGrayTexture)
         };
 
         // Act
-        var result = DCL.CombineLayerUtils.GetMapIds(new ReadOnlyDictionary<Texture2D, int>(textures), mats, 0);
+        var result = BLD.CombineLayerUtils.GetMapIds(new ReadOnlyDictionary<Texture2D, int>(textures), mats, 0);
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(6));
@@ -323,16 +323,16 @@ public class CombineLayerUtilsCan
 
         Material[] mats = new Material[]
         {
-            DCL.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.whiteTexture, Texture2D.blackTexture),
-            DCL.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.redTexture, Texture2D.grayTexture),
-            DCL.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.normalTexture, Texture2D.linearGrayTexture)
+            BLD.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.whiteTexture, Texture2D.blackTexture),
+            BLD.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.redTexture, Texture2D.grayTexture),
+            BLD.Helpers.Material.CreateOpaque(CullMode.Back, Texture2D.normalTexture, Texture2D.linearGrayTexture)
         };
 
         textures.Add( Texture2D.whiteTexture, 0 );
         textures.Add( Texture2D.blackTexture, 1 );
 
         // Act
-        var result = DCL.CombineLayerUtils.GetMapIds(new ReadOnlyDictionary<Texture2D, int>(textures), mats, 2);
+        var result = BLD.CombineLayerUtils.GetMapIds(new ReadOnlyDictionary<Texture2D, int>(textures), mats, 2);
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(4));
@@ -352,28 +352,28 @@ public class CombineLayerUtilsCan
     {
         {
             // Arrange
-            SkinnedMeshRenderer r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
+            SkinnedMeshRenderer r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(CullMode.Back, null, null);
 
             // Act
-            bool isOpaque = DCL.CombineLayerUtils.IsOpaque(r.sharedMaterials[0]);
+            bool isOpaque = BLD.CombineLayerUtils.IsOpaque(r.sharedMaterials[0]);
 
             // Assert
             Assert.That(isOpaque, Is.True);
 
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
         }
 
         {
             // Arrange
-            SkinnedMeshRenderer r = DCL.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
+            SkinnedMeshRenderer r = BLD.Helpers.SkinnedMeshRenderer.CreateWithTransparentMat(CullMode.Back, null, null);
 
             // Act
-            bool isOpaque = DCL.CombineLayerUtils.IsOpaque(r.sharedMaterials[0]);
+            bool isOpaque = BLD.CombineLayerUtils.IsOpaque(r.sharedMaterials[0]);
 
             // Assert
             Assert.That(isOpaque, Is.False);
 
-            DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
+            BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
         }
     }
 
@@ -384,15 +384,15 @@ public class CombineLayerUtilsCan
     public void ReturnCorrectValuesForGetCullMode(CullMode cullMode, CullMode expectedResult)
     {
         // Arrange
-        SkinnedMeshRenderer r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(cullMode, null, null);
+        SkinnedMeshRenderer r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(cullMode, null, null);
 
         // Act
-        CullMode resultMode = DCL.CombineLayerUtils.GetCullMode(r.sharedMaterials[0]);
+        CullMode resultMode = BLD.CombineLayerUtils.GetCullMode(r.sharedMaterials[0]);
 
         // Assert
         Assert.That( resultMode, Is.EqualTo(expectedResult));
 
-        DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
+        BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
     }
 
     [Test]
@@ -402,14 +402,14 @@ public class CombineLayerUtilsCan
     public void ReturnCorrectValuesForGetCullModeWithoutCullOff(CullMode cullMode, CullMode expectedResult)
     {
         // Arrange
-        SkinnedMeshRenderer r = DCL.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(cullMode, null, null);
+        SkinnedMeshRenderer r = BLD.Helpers.SkinnedMeshRenderer.CreateWithOpaqueMat(cullMode, null, null);
 
         // Act
-        CullMode resultMode = DCL.CombineLayerUtils.GetCullModeWithoutCullOff(r);
+        CullMode resultMode = BLD.CombineLayerUtils.GetCullModeWithoutCullOff(r);
 
         // Assert
         Assert.That( resultMode, Is.EqualTo(expectedResult));
 
-        DCL.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
+        BLD.Helpers.SkinnedMeshRenderer.DestroyAndUnload(r);
     }
 }

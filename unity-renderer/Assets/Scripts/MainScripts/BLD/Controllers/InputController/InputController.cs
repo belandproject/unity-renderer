@@ -1,15 +1,15 @@
-using DCL;
+using BLD;
 using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DCL.Configuration;
+using BLD.Configuration;
 
 /// <summary>
 /// Mapping for Trigger actions
 /// </summary>
-public enum DCLAction_Trigger
+public enum BLDAction_Trigger
 {
     //Remember to explicitly assign the value to each entry so we minimize issues with serialization + conflicts
     CameraChange = 100,
@@ -78,7 +78,7 @@ public enum DCLAction_Trigger
 /// <summary>
 /// Mapping for hold actions
 /// </summary>
-public enum DCLAction_Hold
+public enum BLDAction_Hold
 {
     //Remember to explicitly assign the value to each entry so we minimize issues with serialization + conflicts
     Sprint = 1,
@@ -104,7 +104,7 @@ public enum DCLAction_Hold
 /// <summary>
 /// Mapping for measurable actions
 /// </summary>
-public enum DCLAction_Measurable
+public enum BLDAction_Measurable
 {
     //Remember to explicitly assign the value to each entry so we minimize issues with serialization + conflicts
     CharacterXAxis = 1,
@@ -126,7 +126,7 @@ public enum InputTypeMode
 }
 
 /// <summary>
-/// Input Controller will map inputs(keys/mouse/axis) to DCL actions, check if they can be triggered (modifiers) and raise the events
+/// Input Controller will map inputs(keys/mouse/axis) to BLD actions, check if they can be triggered (modifiers) and raise the events
 /// </summary>
 public class InputController : MonoBehaviour
 {
@@ -190,9 +190,9 @@ public class InputController : MonoBehaviour
             if (action.isTriggerBlocked != null && action.isTriggerBlocked.Get())
                 continue;
 
-            switch (action.GetDCLAction())
+            switch (action.GetBLDAction())
             {
-                case DCLAction_Trigger.CameraChange:
+                case BLDAction_Trigger.CameraChange:
                     if (CommonScriptableObjects.cameraModeInputLocked.Get()) 
                         break;
 
@@ -201,178 +201,178 @@ public class InputController : MonoBehaviour
                         InputProcessor.FromKey(action, KeyCode.V,
                             modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.CursorUnlock:
+                case BLDAction_Trigger.CursorUnlock:
                     InputProcessor.FromMouseButtonUp(action, 1, InputProcessor.Modifier.NeedsPointerLocked);
 #if !WEB_PLATFORM
                     InputProcessor.FromKey(action, KeyCode.Escape, modifiers: InputProcessor.Modifier.NeedsPointerLocked);
 #endif
                     break;
-                case DCLAction_Trigger.ToggleNavMap:
+                case BLDAction_Trigger.ToggleNavMap:
                     if (allUIHidden)
                         break;
                     InputProcessor.FromKey(action, KeyCode.M, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleFriends:
+                case BLDAction_Trigger.ToggleFriends:
                     if (allUIHidden)
                         break;
                     InputProcessor.FromKey(action, KeyCode.L, modifiers: InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Trigger.ToggleWorldChat:
+                case BLDAction_Trigger.ToggleWorldChat:
                     if (allUIHidden)
                         break;
                     InputProcessor.FromKey(action, KeyCode.Return, modifiers: InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Trigger.ToggleUIVisibility:
+                case BLDAction_Trigger.ToggleUIVisibility:
                     InputProcessor.FromKey(action, KeyCode.U, modifiers: InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Trigger.CloseWindow:
+                case BLDAction_Trigger.CloseWindow:
                     if (allUIHidden || DataStore.i.common.isSignUpFlow.Get())
                         break;
                     InputProcessor.FromKey(action, KeyCode.Escape, modifiers: InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Trigger.OpenExpressions:
+                case BLDAction_Trigger.OpenExpressions:
                     if (allUIHidden)
                         break;
                     InputProcessor.FromKey(action, KeyCode.B, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleControlsHud:
+                case BLDAction_Trigger.ToggleControlsHud:
                     InputProcessor.FromKey(action, KeyCode.C, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleSettings:
+                case BLDAction_Trigger.ToggleSettings:
                     InputProcessor.FromKey(action, KeyCode.P, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleStartMenu:
+                case BLDAction_Trigger.ToggleStartMenu:
                     if (allUIHidden)
                         break;
                     InputProcessor.FromKey(action, KeyCode.Tab, modifiers: InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Trigger.TogglePlacesAndEventsHud:
+                case BLDAction_Trigger.TogglePlacesAndEventsHud:
                     InputProcessor.FromKey(action, KeyCode.X, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.Expression_Wave:
+                case BLDAction_Trigger.Expression_Wave:
                     InputProcessor.FromKey(action, KeyCode.Alpha1,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_FistPump:
+                case BLDAction_Trigger.Expression_FistPump:
                     InputProcessor.FromKey(action, KeyCode.Alpha2,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_Robot:
+                case BLDAction_Trigger.Expression_Robot:
                     InputProcessor.FromKey(action, KeyCode.Alpha3,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_RaiseHand:
+                case BLDAction_Trigger.Expression_RaiseHand:
                     InputProcessor.FromKey(action, KeyCode.Alpha4,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_Clap:
+                case BLDAction_Trigger.Expression_Clap:
                     InputProcessor.FromKey(action, KeyCode.Alpha5,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_ThrowMoney:
+                case BLDAction_Trigger.Expression_ThrowMoney:
                     InputProcessor.FromKey(action, KeyCode.Alpha6,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.Expression_SendKiss:
+                case BLDAction_Trigger.Expression_SendKiss:
                     InputProcessor.FromKey(action, KeyCode.Alpha7,
                         modifiers: InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Trigger.BuildEditModeChange:
+                case BLDAction_Trigger.BuildEditModeChange:
                     InputProcessor.FromKey(action, KeyCode.K, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleVoiceChatRecording:
+                case BLDAction_Trigger.ToggleVoiceChatRecording:
                     InputProcessor.FromKey(action, KeyCode.T, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftAlt });
                     break;
-                case DCLAction_Trigger.ToggleAvatarEditorHud:
+                case BLDAction_Trigger.ToggleAvatarEditorHud:
                     InputProcessor.FromKey(action, KeyCode.I, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeToggleUI:
+                case BLDAction_Trigger.BuildEditModeToggleUI:
                     InputProcessor.FromKey(action, KeyCode.U, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeToggleChangeCamera:
+                case BLDAction_Trigger.BuildEditModeToggleChangeCamera:
                     InputProcessor.FromKey(action, KeyCode.V, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeToggleControls:
+                case BLDAction_Trigger.BuildEditModeToggleControls:
                     InputProcessor.FromKey(action, KeyCode.C, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeToggleSnapMode:
+                case BLDAction_Trigger.BuildEditModeToggleSnapMode:
                     InputProcessor.FromKey(action, KeyCode.O, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeRedoAction:
+                case BLDAction_Trigger.BuildEditModeRedoAction:
                     InputProcessor.FromKey(action, KeyCode.Y, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditModeUndoAction:
+                case BLDAction_Trigger.BuildEditModeUndoAction:
                     InputProcessor.FromKey(action, KeyCode.Z, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar1:
+                case BLDAction_Trigger.BuildEditModeQuickBar1:
                     InputProcessor.FromKey(action, KeyCode.Alpha1, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar2:
+                case BLDAction_Trigger.BuildEditModeQuickBar2:
                     InputProcessor.FromKey(action, KeyCode.Alpha2, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar3:
+                case BLDAction_Trigger.BuildEditModeQuickBar3:
                     InputProcessor.FromKey(action, KeyCode.Alpha3, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar4:
+                case BLDAction_Trigger.BuildEditModeQuickBar4:
                     InputProcessor.FromKey(action, KeyCode.Alpha4, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar5:
+                case BLDAction_Trigger.BuildEditModeQuickBar5:
                     InputProcessor.FromKey(action, KeyCode.Alpha5, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar6:
+                case BLDAction_Trigger.BuildEditModeQuickBar6:
                     InputProcessor.FromKey(action, KeyCode.Alpha6, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar7:
+                case BLDAction_Trigger.BuildEditModeQuickBar7:
                     InputProcessor.FromKey(action, KeyCode.Alpha7, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar8:
+                case BLDAction_Trigger.BuildEditModeQuickBar8:
                     InputProcessor.FromKey(action, KeyCode.Alpha8, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeQuickBar9:
+                case BLDAction_Trigger.BuildEditModeQuickBar9:
                     InputProcessor.FromKey(action, KeyCode.Alpha9, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeDelete:
+                case BLDAction_Trigger.BuildEditModeDelete:
                     InputProcessor.FromKey(action, KeyCode.Delete, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.Backspace, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeDuplicate:
+                case BLDAction_Trigger.BuildEditModeDuplicate:
                     InputProcessor.FromKey(action, KeyCode.D, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditModeTranslate:
+                case BLDAction_Trigger.BuildEditModeTranslate:
                     InputProcessor.FromKey(action, KeyCode.G, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.M, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeRotate:
+                case BLDAction_Trigger.BuildEditModeRotate:
                     InputProcessor.FromKey(action, KeyCode.R, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeScale:
+                case BLDAction_Trigger.BuildEditModeScale:
                     InputProcessor.FromKey(action, KeyCode.S, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeFocusSelectedEntities:
+                case BLDAction_Trigger.BuildEditModeFocusSelectedEntities:
                     InputProcessor.FromKey(action, KeyCode.F, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeReset:
+                case BLDAction_Trigger.BuildEditModeReset:
                     InputProcessor.FromKey(action, KeyCode.R, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditHideSelectedEntities:
+                case BLDAction_Trigger.BuildEditHideSelectedEntities:
                     InputProcessor.FromKey(action, KeyCode.H, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditShowAllEntities:
+                case BLDAction_Trigger.BuildEditShowAllEntities:
                     InputProcessor.FromKey(action, KeyCode.H, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditModeResetCamera:
+                case BLDAction_Trigger.BuildEditModeResetCamera:
                     InputProcessor.FromKey(action, KeyCode.C, modifiers: InputProcessor.Modifier.FocusNotInInput, modifierKeys: new KeyCode[] { KeyCode.LeftShift });
                     break;
-                case DCLAction_Trigger.BuildEditModeZoomIn:
+                case BLDAction_Trigger.BuildEditModeZoomIn:
                     InputProcessor.FromKey(action, KeyCode.KeypadPlus, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.BuildEditModeZoomOut:
+                case BLDAction_Trigger.BuildEditModeZoomOut:
                     InputProcessor.FromKey(action, KeyCode.KeypadMinus, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleQuestsPanelHud:
+                case BLDAction_Trigger.ToggleQuestsPanelHud:
                     InputProcessor.FromKey(action, KeyCode.J, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Trigger.ToggleAvatarNamesHud:
+                case BLDAction_Trigger.ToggleAvatarNamesHud:
                     InputProcessor.FromKey(action, KeyCode.N, modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
                 default:
@@ -389,71 +389,71 @@ public class InputController : MonoBehaviour
         for (var i = 0; i < holdActions.Length; i++)
         {
             var action = holdActions[i];
-            switch (action.GetDCLAction())
+            switch (action.GetBLDAction())
             {
-                case DCLAction_Hold.Sprint:
+                case BLDAction_Hold.Sprint:
                     InputProcessor.FromKey(action, InputSettings.WalkButtonKeyCode,
                         InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Hold.Jump:
+                case BLDAction_Hold.Jump:
                     InputProcessor.FromKey(action, InputSettings.JumpButtonKeyCode,
                         InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Hold.ZoomIn:
+                case BLDAction_Hold.ZoomIn:
                     InputProcessor.FromKey(action, KeyCode.KeypadPlus, InputProcessor.Modifier.None);
                     InputProcessor.FromKey(action, KeyCode.Plus, InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Hold.ZoomOut:
+                case BLDAction_Hold.ZoomOut:
                     InputProcessor.FromKey(action, KeyCode.KeypadMinus, InputProcessor.Modifier.None);
                     InputProcessor.FromKey(action, KeyCode.Minus, InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Hold.FreeCameraMode:
+                case BLDAction_Hold.FreeCameraMode:
                     //Disable until the fine-tuning is ready
                     if (ENABLE_THIRD_PERSON_CAMERA)
                         InputProcessor.FromKey(action, KeyCode.Y, InputProcessor.Modifier.NeedsPointerLocked);
                     break;
-                case DCLAction_Hold.VoiceChatRecording:
+                case BLDAction_Hold.VoiceChatRecording:
                     // Push to talk functionality only triggers if no modifier key is pressed
                     InputProcessor.FromKey(action, KeyCode.T, InputProcessor.Modifier.FocusNotInInput, null);
                     break;
-                case DCLAction_Hold.DefaultConfirmAction:
+                case BLDAction_Hold.DefaultConfirmAction:
                     InputProcessor.FromKey(action, KeyCode.E, InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Hold.DefaultCancelAction:
+                case BLDAction_Hold.DefaultCancelAction:
                     InputProcessor.FromKey(action, KeyCode.F, InputProcessor.Modifier.None);
                     break;
-                case DCLAction_Hold.BuildEditModeMultiSelection:
+                case BLDAction_Hold.BuildEditModeMultiSelection:
                     InputProcessor.FromKey(action, KeyCode.LeftShift, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeSquareMultiSelection:
+                case BLDAction_Hold.BuildEditModeSquareMultiSelection:
                     InputProcessor.FromKey(action, KeyCode.LeftShift, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeFirstPersonRotation:
+                case BLDAction_Hold.BuildEditModeFirstPersonRotation:
                     InputProcessor.FromKey(action, KeyCode.R, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceFoward:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceFoward:
                     InputProcessor.FromKey(action, KeyCode.UpArrow, InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.W, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceBack:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceBack:
                     InputProcessor.FromKey(action, KeyCode.DownArrow, InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.S, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceLeft:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceLeft:
                     InputProcessor.FromKey(action, KeyCode.LeftArrow, InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.A, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceRight:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceRight:
                     InputProcessor.FromKey(action, KeyCode.RightArrow, InputProcessor.Modifier.FocusNotInInput);
                     InputProcessor.FromKey(action, KeyCode.D, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceUp:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceUp:
                     InputProcessor.FromKey(action, KeyCode.E, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraAdvanceDown:
+                case BLDAction_Hold.BuildEditModeCameraAdvanceDown:
                     InputProcessor.FromKey(action, KeyCode.Q, InputProcessor.Modifier.FocusNotInInput);
                     break;
-                case DCLAction_Hold.BuildEditModeCameraPan:
+                case BLDAction_Hold.BuildEditModeCameraPan:
                     InputProcessor.FromKey(action, KeyCode.LeftShift, InputProcessor.Modifier.FocusNotInInput);
                     break;
                 default:
@@ -470,23 +470,23 @@ public class InputController : MonoBehaviour
         for (var i = 0; i < measurableActions.Length; i++)
         {
             var action = measurableActions[i];
-            switch (action.GetDCLAction())
+            switch (action.GetBLDAction())
             {
-                case DCLAction_Measurable.CharacterXAxis:
+                case BLDAction_Measurable.CharacterXAxis:
                     InputProcessor.FromAxis(action, "Horizontal", 
                         InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Measurable.CharacterYAxis:
+                case BLDAction_Measurable.CharacterYAxis:
                     InputProcessor.FromAxis(action, "Vertical",
                         InputProcessor.Modifier.FocusNotInInput | InputProcessor.Modifier.NotInStartMenu);
                     break;
-                case DCLAction_Measurable.CameraXAxis:
+                case BLDAction_Measurable.CameraXAxis:
                     InputProcessor.FromAxis(action, "Mouse X", InputProcessor.Modifier.NeedsPointerLocked);
                     break;
-                case DCLAction_Measurable.CameraYAxis:
+                case BLDAction_Measurable.CameraYAxis:
                     InputProcessor.FromAxis(action, "Mouse Y", InputProcessor.Modifier.NeedsPointerLocked);
                     break;
-                case DCLAction_Measurable.MouseWheel:
+                case BLDAction_Measurable.MouseWheel:
                     InputProcessor.FromAxis(action, "Mouse ScrollWheel", modifiers: InputProcessor.Modifier.FocusNotInInput);
                     break;
                 default:
@@ -555,7 +555,7 @@ public static class InputProcessor
     /// <returns></returns>
     public static bool PassModifiers(Modifier modifiers)
     {
-        if (IsModifierSet(modifiers, Modifier.NeedsPointerLocked) && !DCL.Helpers.Utils.IsCursorLocked)
+        if (IsModifierSet(modifiers, Modifier.NeedsPointerLocked) && !BLD.Helpers.Utils.IsCursorLocked)
             return false;
 
         if (IsModifierSet(modifiers, Modifier.FocusNotInInput) && FocusIsInInputField())

@@ -1,8 +1,8 @@
 ﻿using System;
-using DCL.Helpers;
+using BLD.Helpers;
 using Object = UnityEngine.Object;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class LoadWrapper_OBJ : LoadWrapper
     {

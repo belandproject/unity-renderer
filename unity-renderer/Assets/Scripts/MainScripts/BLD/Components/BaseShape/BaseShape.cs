@@ -1,10 +1,10 @@
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public abstract class BaseShape : BaseDisposable, IShape
     {
@@ -22,7 +22,7 @@ namespace DCL.Components
 
         new public Model GetModel() { return (Model) model; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (attachedEntities.Contains(entity))
                 return;
@@ -34,7 +34,7 @@ namespace DCL.Components
             base.AttachTo(entity, typeof(BaseShape));
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             if (!attachedEntities.Contains(entity))
                 return;

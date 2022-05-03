@@ -1,6 +1,6 @@
 using System;
 
-namespace DCL.Helpers.NFT.Markets.OpenSea_Internal
+namespace BLD.Helpers.NFT.Markets.OpenSea_Internal
 {
     internal class SchedulableRequestHandler
     {

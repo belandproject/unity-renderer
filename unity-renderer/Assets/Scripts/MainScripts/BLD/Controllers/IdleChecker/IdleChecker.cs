@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class IdleChecker : IIdleChecker
     {
@@ -26,7 +26,7 @@ namespace DCL
             lastActivityTime = Time.time;
 
             if (this.updateEventHandler == null)
-                this.updateEventHandler = DCL.Environment.i.platform.updateEventHandler;
+                this.updateEventHandler = BLD.Environment.i.platform.updateEventHandler;
 
             updateEventHandler?.AddListener(IUpdateEventHandler.EventType.Update, Update);
         }
@@ -66,7 +66,7 @@ namespace DCL
 
             OnChangeStatus?.Invoke(idle);
 
-            DCL.Interface.WebInterface.ReportIdleStateChanged(idle);
+            BLD.Interface.WebInterface.ReportIdleStateChanged(idle);
         }
 
         private bool IdleCheck() { return Time.time - lastActivityTime > maxTime; }

@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Huds.QuestsTracker;
+using BLD;
+using BLD.Huds.QuestsTracker;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;

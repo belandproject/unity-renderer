@@ -1,10 +1,10 @@
-using DCL.SettingsPanelHUD.Controls;
-using DCL.SettingsPanelHUD.Widgets;
+using BLD.SettingsPanelHUD.Controls;
+using BLD.SettingsPanelHUD.Widgets;
 using NSubstitute;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 

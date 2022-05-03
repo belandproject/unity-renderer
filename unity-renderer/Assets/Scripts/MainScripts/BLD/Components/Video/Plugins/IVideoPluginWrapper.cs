@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.Components.Video.Plugin
+namespace BLD.Components.Video.Plugin
 {
     public interface IVideoPluginWrapper
     {

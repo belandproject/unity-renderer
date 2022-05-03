@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine;
 using Variables.RealmsInfo;
 
@@ -14,8 +14,8 @@ public class Catalyst : ICatalyst
     public string contentUrl => realmContentServerUrl;
     public string lambdasUrl => $"{realmDomain}/lambdas";
 
-    private string realmDomain = "https://peer-lb.decentraland.org";
-    private string realmContentServerUrl = "https://peer-lb.decentraland.org/content";
+    private string realmDomain = "";
+    private string realmContentServerUrl = "";
 
     private readonly IDataCache<CatalystSceneEntityPayload[]> deployedScenesCache = new DataCache<CatalystSceneEntityPayload[]>();
 
@@ -171,7 +171,7 @@ public class Catalyst : ICatalyst
     {
         Promise<string> promise = new Promise<string>();
 
-        DCL.Environment.i.platform.webRequest.Get(url, null, request =>
+        BLD.Environment.i.platform.webRequest.Get(url, null, request =>
         {
             promise.Resolve(request.webRequest.downloadHandler.text);
         }, request =>

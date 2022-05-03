@@ -1,9 +1,9 @@
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 using System.Collections;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public abstract class BaseComponent : MonoBehaviour, IEntityComponent, IDelayedComponent, IPoolLifecycleHandler, IPoolableObjectContainer
     {
@@ -14,7 +14,7 @@ namespace DCL.Components
 
         public IParcelScene scene { get; set; }
 
-        public IDCLEntity entity { get; set; }
+        public IBLDEntity entity { get; set; }
 
         public IPoolableObject poolableObject { get; set; }
 
@@ -24,7 +24,7 @@ namespace DCL.Components
 
         public void RaiseOnAppliedChanges() { }
 
-        public virtual void Initialize(IParcelScene scene, IDCLEntity entity)
+        public virtual void Initialize(IParcelScene scene, IBLDEntity entity)
         {
             this.scene = scene;
             this.entity = entity;

@@ -1,12 +1,12 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System;
 using System.Collections.Generic;
-using DCL.Builder;
+using BLD.Builder;
 using UnityEngine;
 
 public class BIWEntity
@@ -14,7 +14,7 @@ public class BIWEntity
     public GameObject gameObject => rootEntity.gameObject;
     public Transform transform => rootEntity.gameObject.transform;
 
-    public IDCLEntity rootEntity { protected set; get; }
+    public IBLDEntity rootEntity { protected set; get; }
     public string entityUniqueId;
 
     public event Action<BIWEntity> OnShapeFinishLoading;
@@ -109,7 +109,7 @@ public class BIWEntity
 
     #endregion
 
-    public void Initialize(IDCLEntity entity, Material editMaterial)
+    public void Initialize(IBLDEntity entity, Material editMaterial)
     {
         rootEntity = entity;
         rootEntity.OnShapeUpdated += OnShapeUpdate;
@@ -267,8 +267,8 @@ public class BIWEntity
                 }
             }
 
-            DCL.Environment.i.world.sceneBoundsChecker?.EvaluateEntityPosition(rootEntity);
-            DCL.Environment.i.world.sceneBoundsChecker?.RemoveEntityToBeChecked(rootEntity);
+            BLD.Environment.i.world.sceneBoundsChecker?.EvaluateEntityPosition(rootEntity);
+            BLD.Environment.i.world.sceneBoundsChecker?.RemoveEntityToBeChecked(rootEntity);
         }
 
         DestroyColliders();
@@ -334,7 +334,7 @@ public class BIWEntity
         {
             if (kvp.Value.GetClassId() == (int) CLASS_ID.LOCKED_ON_EDIT)
             {
-                return ((DCLLockedOnEdit.Model) kvp.Value.GetModel()).isLocked;
+                return ((BLDLockedOnEdit.Model) kvp.Value.GetModel()).isLocked;
             }
         }
 
@@ -349,14 +349,14 @@ public class BIWEntity
         {
             if (kvp.Value.GetClassId() == (int) CLASS_ID.LOCKED_ON_EDIT)
             {
-                ((DCLLockedOnEdit) kvp.Value).SetIsLocked(isLocked);
+                ((BLDLockedOnEdit) kvp.Value).SetIsLocked(isLocked);
                 foundComponent = true;
             }
         }
 
         if (!foundComponent)
         {
-            DCLLockedOnEdit.Model model = new DCLLockedOnEdit.Model();
+            BLDLockedOnEdit.Model model = new BLDLockedOnEdit.Model();
             model.isLocked = isLocked;
             
             EntityComponentsUtils.AddLockedOnEditComponent(rootEntity.scene , rootEntity, model, Guid.NewGuid().ToString());
@@ -371,11 +371,11 @@ public class BIWEntity
     {
         if (rootEntity.TryGetSharedComponent(CLASS_ID.NAME, out ISharedComponent nameComponent))
         {
-            ((DCLName) nameComponent).SetNewName(newName);
+            ((BLDName) nameComponent).SetNewName(newName);
         }
         else
         {
-            DCLName.Model model = new DCLName.Model();
+            BLDName.Model model = new BLDName.Model();
             model.value = newName;
             EntityComponentsUtils.AddNameComponent(rootEntity.scene , rootEntity,model, Guid.NewGuid().ToString());
         }
@@ -387,7 +387,7 @@ public class BIWEntity
     {
         if (rootEntity != null && rootEntity.TryGetSharedComponent(CLASS_ID.NAME, out ISharedComponent nameComponent))
         {
-            return ((DCLName.Model) nameComponent.GetModel()).value;
+            return ((BLDName.Model) nameComponent.GetModel()).value;
         }
 
         return "";
@@ -436,8 +436,8 @@ public class BIWEntity
 
         SaveOriginalMaterial();
 
-        DCL.Environment.i.world.sceneBoundsChecker.AddPersistent(rootEntity);
-        SetEntityBoundariesError(DCL.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(rootEntity));
+        BLD.Environment.i.world.sceneBoundsChecker.AddPersistent(rootEntity);
+        SetEntityBoundariesError(BLD.Environment.i.world.sceneBoundsChecker.IsEntityInsideSceneBoundaries(rootEntity));
     }
 
     private void HandleAnimation()
@@ -592,7 +592,7 @@ public class BIWEntity
 
     void OnNameUpdate(object model) { OnStatusUpdate?.Invoke(this); }
 
-    void OnShapeUpdate(IDCLEntity entity)
+    void OnShapeUpdate(IBLDEntity entity)
     {
         ShapeInit();
 
@@ -600,7 +600,7 @@ public class BIWEntity
             SetEditMaterial();
     }
 
-    void CreateCollidersForEntity(IDCLEntity entity)
+    void CreateCollidersForEntity(IBLDEntity entity)
     {
         MeshesInfo meshInfo = entity.meshesInfo;
         if (meshInfo == null ||

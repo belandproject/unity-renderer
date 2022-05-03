@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 
 public class PlayerInfoCardHUDViewShould : IntegrationTestSuite_Legacy
 {

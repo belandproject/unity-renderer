@@ -1,4 +1,4 @@
-namespace DCL
+namespace BLD
 {
     public class AssetPromiseKeeper_Gif : AssetPromiseKeeper<Asset_Gif, AssetLibrary_RefCounted<Asset_Gif>, AssetPromise_Gif>
     {

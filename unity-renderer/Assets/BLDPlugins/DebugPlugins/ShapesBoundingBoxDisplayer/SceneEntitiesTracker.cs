@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Models;
-using DCLPlugins.DebugPlugins.Commons;
+using BLD.Helpers;
+using BLD.Models;
+using BLDPlugins.DebugPlugins.Commons;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,7 +11,7 @@ internal class SceneEntitiesTracker : ISceneListener
     internal const string WIREFRAME_GAMEOBJECT_NAME = "ShapeBoundingBoxWireframe";
     private const string WIREFRAME_PREFAB_NAME = "Prefabs/WireframeCubeMesh";
 
-    private readonly Dictionary<IDCLEntity, WatchEntityShapeHandler> entityShapeHandler = new Dictionary<IDCLEntity, WatchEntityShapeHandler>();
+    private readonly Dictionary<IBLDEntity, WatchEntityShapeHandler> entityShapeHandler = new Dictionary<IBLDEntity, WatchEntityShapeHandler>();
     private GameObject wireframeOriginal;
     private Material wireframeMaterial;
 
@@ -26,17 +26,17 @@ internal class SceneEntitiesTracker : ISceneListener
         DestroyWireframeOriginal();
     }
 
-    void ISceneListener.OnEntityAdded(IDCLEntity entity)
+    void ISceneListener.OnEntityAdded(IBLDEntity entity)
     {
         WatchEntityShape(entity);
     }
 
-    void ISceneListener.OnEntityRemoved(IDCLEntity entity)
+    void ISceneListener.OnEntityRemoved(IBLDEntity entity)
     {
         KillWatchEntityShape(entity);
     }
 
-    private void WatchEntityShape(IDCLEntity entity)
+    private void WatchEntityShape(IBLDEntity entity)
     {
         if (entityShapeHandler.ContainsKey(entity))
         {
@@ -45,7 +45,7 @@ internal class SceneEntitiesTracker : ISceneListener
         entityShapeHandler.Add(entity, new WatchEntityShapeHandler(entity, new EntityWireframe(GetWireframeOriginal())));
     }
 
-    private void KillWatchEntityShape(IDCLEntity entity)
+    private void KillWatchEntityShape(IBLDEntity entity)
     {
         if (entityShapeHandler.TryGetValue(entity, out WatchEntityShapeHandler entityWatchHandler))
         {

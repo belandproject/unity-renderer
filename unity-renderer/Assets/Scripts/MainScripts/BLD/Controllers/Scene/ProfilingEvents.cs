@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DCL
+namespace BLD
 {
     public static class ProfilingEvents
     {

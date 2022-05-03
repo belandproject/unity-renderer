@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DCL.Interface;
+using BLD.Interface;
 using System.Collections;
-using UpdateMode = DCL.MapGlobalUsersPositionMarkerController.UpdateMode;
+using UpdateMode = BLD.MapGlobalUsersPositionMarkerController.UpdateMode;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Handle the fetch of hot scenes at intervals.

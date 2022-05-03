@@ -1,9 +1,9 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System;
 using UnityEngine;
-using static DCL.Interface.WebInterface;
+using static BLD.Interface.WebInterface;
 
-namespace DCL
+namespace BLD
 {
     public class RealmsInfoBridge : MonoBehaviour
     {

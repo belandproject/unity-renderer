@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class AvatarsLODController : IAvatarsLODController
     {
@@ -192,7 +192,7 @@ namespace DCL
 
             otherPlayers.OnAdded -= RegisterAvatar;
             otherPlayers.OnRemoved -= UnregisterAvatar;
-            DCL.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
+            BLD.Environment.i.platform.updateEventHandler.RemoveListener(IUpdateEventHandler.EventType.Update, Update);
         }
     }
 }

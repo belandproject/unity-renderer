@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIShapeUpdateHandler<ReferencesContainerType, ModelType> : ComponentUpdateHandler
         where ReferencesContainerType : UIReferencesContainer

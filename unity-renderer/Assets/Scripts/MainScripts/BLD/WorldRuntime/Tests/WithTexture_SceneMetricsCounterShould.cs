@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
@@ -50,7 +50,7 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
         var texture = CreateTexture(texturePaths[0]);
 
         List<BasicMaterial> materials = new List<BasicMaterial>();
-        List<IDCLEntity> entities = new List<IDCLEntity>();
+        List<IBLDEntity> entities = new List<IBLDEntity>();
 
         PlaneShape planeShape = CreatePlane();
 
@@ -91,7 +91,7 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
     {
         var material = CreateBasicMaterial("");
 
-        List<DCLTexture> textures = new List<DCLTexture>();
+        List<BLDTexture> textures = new List<BLDTexture>();
         SceneMetricsModel sceneMetrics;
 
         for ( int i = 0; i < 10; i++ )
@@ -100,7 +100,7 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
             yield return textures[i].routine;
         }
 
-        IDCLEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
         TestUtils.SharedComponentAttach(material, entity);
 
         PlaneShape planeShape = CreatePlane();
@@ -184,8 +184,8 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
     [UnityTest]
     public IEnumerator CountWhenAdded()
     {
-        DCLTexture texture = CreateTexture(texturePaths[0]);
-        IDCLEntity entity;
+        BLDTexture texture = CreateTexture(texturePaths[0]);
+        IBLDEntity entity;
         BasicMaterial material;
         PlaneShape planeShape = CreatePlane();
 
@@ -209,8 +209,8 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
     [UnityTest]
     public IEnumerator CountWhenRemoved()
     {
-        DCLTexture texture = CreateTexture(texturePaths[0]);
-        IDCLEntity entity = null;
+        BLDTexture texture = CreateTexture(texturePaths[0]);
+        IBLDEntity entity = null;
         BasicMaterial material = null;
         PlaneShape planeShape = CreatePlane();
 
@@ -238,10 +238,10 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
     [UnityTest]
     public IEnumerator NotCountWhenAttachedToIgnoredEntities()
     {
-        IDCLEntity entity = CreateEntityWithTransform();
+        IBLDEntity entity = CreateEntityWithTransform();
         DataStore.i.sceneWorldObjects.AddExcludedOwner(scene.sceneData.id, entity.entityId);
 
-        DCLTexture texture = CreateTexture(texturePaths[0]);
+        BLDTexture texture = CreateTexture(texturePaths[0]);
         BasicMaterial material = CreateBasicMaterial(texture.id);
         PlaneShape planeShape = CreatePlane();
 
@@ -264,8 +264,8 @@ public class WithTexture_SceneMetricsCounterShould : IntegrationTestSuite_SceneM
     [UnityTest]
     public IEnumerator NotCountWhenNoMaterialIsPresent()
     {
-        DCLTexture texture = CreateTexture(texturePaths[0]);
-        IDCLEntity entity = CreateEntityWithTransform();
+        BLDTexture texture = CreateTexture(texturePaths[0]);
+        IBLDEntity entity = CreateEntityWithTransform();
         PlaneShape planeShape = CreatePlane();
 
         yield return planeShape.routine;

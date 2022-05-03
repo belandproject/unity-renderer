@@ -2,7 +2,7 @@
 using System;
 using Variables.RealmsInfo;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// Wrapper class to handle user's marker GameObject

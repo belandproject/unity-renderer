@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIScrollRectRefContainer : UIReferencesContainer
     {

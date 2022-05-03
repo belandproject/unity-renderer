@@ -1,7 +1,7 @@
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
@@ -38,7 +38,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator CheckLookAtPlayer()
         {
-            DCLCharacterController.i.PauseGravity();
+            BLDCharacterController.i.PauseGravity();
 
             yield return CreateComponent(x: true, y: true, z: true);
 
@@ -82,7 +82,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator CheckLookAtPlayerWhileTransformMoves()
         {
-            DCLCharacterController.i.PauseGravity();
+            BLDCharacterController.i.PauseGravity();
 
             yield return CreateComponent(x: true, y: true, z: true);
 

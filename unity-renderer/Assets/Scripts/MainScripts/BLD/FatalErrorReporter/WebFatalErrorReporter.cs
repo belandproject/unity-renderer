@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Interface;
+using BLD.Interface;
 
-namespace DCL.FatalErrorReporter
+namespace BLD.FatalErrorReporter
 {
     public class WebFatalErrorReporter : IFatalErrorReporter
     {

@@ -1,13 +1,13 @@
-using DCL.Helpers;
-using DCL.SettingsPanelHUD.Common;
-using DCL.SettingsPanelHUD.Controls;
+using BLD.Helpers;
+using BLD.SettingsPanelHUD.Common;
+using BLD.SettingsPanelHUD.Controls;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace DCL.SettingsPanelHUD.Widgets
+namespace BLD.SettingsPanelHUD.Widgets
 {
     /// <summary>
     /// Interface to implement a view for a WIDGET.

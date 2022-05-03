@@ -1,14 +1,14 @@
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIScreenSpace : UIShape
     {
@@ -27,13 +27,13 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.UI_SCREEN_SPACE_SHAPE; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             Debug.LogError(
                 "Aborted UIScreenShape attachment to an entity. UIShapes shouldn't be attached to entities.");
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         private bool initialized = false;
 
@@ -56,7 +56,7 @@ namespace DCL.Components
         public override void Dispose()
         {
             CommonScriptableObjects.playerWorldPosition.OnChange -= OnPlayerWorldPositionChanged;
-            //DCLCharacterController.OnCharacterMoved -= OnCharacterMoved;
+            //BLDCharacterController.OnCharacterMoved -= OnCharacterMoved;
             CommonScriptableObjects.allUIHidden.OnChange -= AllUIHidden_OnChange;
 
             if (childHookRectTransform != null)

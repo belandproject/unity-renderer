@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Material = DCL.Helpers.Material;
+using Material = BLD.Helpers.Material;
 using SkinnedMeshRenderer = UnityEngine.SkinnedMeshRenderer;
 
 public class AvatarMeshCombinerHelperShould

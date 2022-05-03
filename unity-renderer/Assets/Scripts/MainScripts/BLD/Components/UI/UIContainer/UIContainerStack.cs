@@ -1,13 +1,13 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIContainerStack : UIShape<UIContainerRectReferencesContainer, UIContainerStack.Model>
     {
@@ -39,13 +39,13 @@ namespace DCL.Components
 
         public override int GetClassId() { return (int) CLASS_ID.UI_CONTAINER_STACK; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null)
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null)
         {
             Debug.LogError(
                 "Aborted UIContainerStack attachment to an entity. UIShapes shouldn't be attached to entities.");
         }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         public override IEnumerator ApplyChanges(BaseModel newModel)
         {
@@ -117,10 +117,10 @@ namespace DCL.Components
             childComponent.OnAppliedChanges += RefreshContainerForShape;
         }
 
-        public override void RefreshDCLLayoutRecursively(bool refreshSize = true,
+        public override void RefreshBLDLayoutRecursively(bool refreshSize = true,
             bool refreshAlignmentAndPosition = true)
         {
-            base.RefreshDCLLayoutRecursively(refreshSize, refreshAlignmentAndPosition);
+            base.RefreshBLDLayoutRecursively(refreshSize, refreshAlignmentAndPosition);
             referencesContainer.sizeFitter.RefreshRecursively();
         }
 
@@ -140,7 +140,7 @@ namespace DCL.Components
             }
 
             childComponent.OnAppliedChanges -= RefreshContainerForShape;
-            RefreshDCLLayout();
+            RefreshBLDLayout();
         }
 
         public override void Dispose()

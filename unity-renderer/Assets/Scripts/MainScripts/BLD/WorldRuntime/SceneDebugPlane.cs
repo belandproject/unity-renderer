@@ -1,10 +1,10 @@
 ﻿using System;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 
-namespace DCL.Controllers.ParcelSceneDebug
+namespace BLD.Controllers.ParcelSceneDebug
 {
     public class SceneDebugPlane : IDisposable
     {
@@ -38,7 +38,7 @@ namespace DCL.Controllers.ParcelSceneDebug
 
                 plane.transform.position = PositionUtils.WorldToUnityPosition(position);
 
-                if (DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED)
+                if (BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED)
                 {
                     Material finalMaterial = Utils.EnsureResourcesMaterial("Materials/DefaultPlane");
                     var matTransition = plane.AddComponent<MaterialTransitionController>();

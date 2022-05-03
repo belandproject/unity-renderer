@@ -1,10 +1,10 @@
-using DCL.Interface;
+using BLD.Interface;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public class QuestsPanelTask_Single : MonoBehaviour, IQuestsPanelTask
     {

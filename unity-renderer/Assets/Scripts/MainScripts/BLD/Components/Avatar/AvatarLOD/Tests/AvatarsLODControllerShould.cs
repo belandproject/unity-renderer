@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using AvatarSystem;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using KernelConfigurationTypes;
 using NSubstitute;
 using NSubstitute.Extensions;
@@ -14,7 +14,7 @@ namespace Tests.AvatarsLODController
 {
     public class AvatarsLODControllerShould
     {
-        private DCL.AvatarsLODController controller;
+        private BLD.AvatarsLODController controller;
         private BaseDictionary<string, Player> otherPlayers => DataStore.i.player.otherPlayers;
 
         [SetUp]
@@ -22,10 +22,10 @@ namespace Tests.AvatarsLODController
         {
             ServiceLocator serviceLocator = new ServiceLocator();
             serviceLocator.Register<IUpdateEventHandler>( () => Substitute.For<IUpdateEventHandler>());
-            DCL.Environment.Setup(serviceLocator);
+            BLD.Environment.Setup(serviceLocator);
 
             CommonScriptableObjects.cameraMode.Set(CameraMode.ModeId.FirstPerson);
-            controller = Substitute.ForPartsOf<DCL.AvatarsLODController>();
+            controller = Substitute.ForPartsOf<BLD.AvatarsLODController>();
             controller.Initialize();
         }
 
@@ -39,7 +39,7 @@ namespace Tests.AvatarsLODController
         [Test]
         public void BeInitializedProperly()
         {
-            FeatureFlag flag =  TestUtils.CreateFeatureFlag(new List<string>() { DCL.AvatarsLODController.AVATAR_LODS_FLAG_NAME });
+            FeatureFlag flag =  TestUtils.CreateFeatureFlag(new List<string>() { BLD.AvatarsLODController.AVATAR_LODS_FLAG_NAME });
             controller.Initialize(flag);
 
             Assert.IsTrue(controller.enabled);
@@ -53,7 +53,7 @@ namespace Tests.AvatarsLODController
             controller.Configure().CreateLodController(Arg.Any<Player>()).Returns(lodController);
 
             otherPlayers.Add("player0", new Player { name = "player0", id = "player0", avatar = Substitute.For<IAvatar>() });
-            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { DCL.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
+            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { BLD.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
 
             Assert.IsTrue(controller.enabled);
             Assert.AreEqual(1, controller.lodControllers.Count);
@@ -65,7 +65,7 @@ namespace Tests.AvatarsLODController
         {
             IAvatarLODController lodController = Substitute.For<IAvatarLODController>();
             controller.Configure().CreateLodController(Arg.Any<Player>()).Returns(lodController);
-            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { DCL.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
+            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { BLD.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
 
             otherPlayers.Add("player0", CreateMockPlayer("player0"));
 
@@ -79,7 +79,7 @@ namespace Tests.AvatarsLODController
             IAvatarLODController lodController = Substitute.For<IAvatarLODController>();
             controller.Configure().CreateLodController(Arg.Any<Player>()).Returns(lodController);
             otherPlayers.Add("player0", CreateMockPlayer("player0"));
-            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { DCL.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
+            controller.Initialize( TestUtils.CreateFeatureFlag(new List<string>() { BLD.AvatarsLODController.AVATAR_LODS_FLAG_NAME }));
 
             otherPlayers.Remove("player0");
 
@@ -383,7 +383,7 @@ namespace Tests.AvatarsLODController
         {
             controller.Dispose();
             DataStore.Clear();
-            DCL.Environment.Dispose();
+            BLD.Environment.Dispose();
         }
     }
 }

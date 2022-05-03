@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class MapUtils
     {

@@ -1,8 +1,8 @@
-using DCL.Interface;
+using BLD.Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.HelpAndSupportHUD
+namespace BLD.HelpAndSupportHUD
 {
     public class HelpAndSupportHUDView : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace DCL.HelpAndSupportHUD
 
         private const string PATH = "HelpAndSupportHUD";
         private const string VIEW_OBJECT_NAME = "_HelpAndSupportHUD";
-        private const string JOIN_DISCORD_URL = "https://dcl.gg/discord";
+        private const string JOIN_DISCORD_URL = "https://bld.gg/discord";
         private const string FAQ_URL = "https://docs.beland.io/beland/faq/";
 
         [SerializeField] private ShowHideAnimator helpAndSupportAnimator;

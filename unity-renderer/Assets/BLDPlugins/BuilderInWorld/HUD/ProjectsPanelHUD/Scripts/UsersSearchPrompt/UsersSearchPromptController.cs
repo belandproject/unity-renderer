@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
 internal class UsersSearchPromptController : IDisposable

@@ -45,7 +45,7 @@ public static class AssetBundleDepMapLoadHelper
         string url = baseUrl + hash + ".depmap";
 
         downloadingDepmap.Add(hash);
-        yield return DCL.Environment.i.platform.webRequest.Get(
+        yield return BLD.Environment.i.platform.webRequest.Get(
             url: url,
             OnSuccess: (depmapRequest) =>
             {

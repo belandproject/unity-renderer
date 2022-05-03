@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     internal class TextureLoader : ITextureLoader
     {

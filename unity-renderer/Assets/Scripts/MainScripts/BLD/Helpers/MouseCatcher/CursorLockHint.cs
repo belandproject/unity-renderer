@@ -1,7 +1,7 @@
-﻿using DCL.Helpers;
+﻿using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class CursorLockHint : MonoBehaviour
     {

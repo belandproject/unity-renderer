@@ -1,11 +1,11 @@
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using Tests;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -51,14 +51,14 @@ public class BIWSceneBoundariesShould : IntegrationTestSuite
             scene.entities[entityId].gameObject.GetComponentInChildren<UnityGLTF.InstantiatedGLTFObject>() == null,
             "Since the shape hasn't been updated yet, the 'GLTFScene' child object shouldn't exist");
 
-        TestUtils.CreateAndSetShape(scene, entityId, DCL.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
+        TestUtils.CreateAndSetShape(scene, entityId, BLD.Models.CLASS_ID.GLTF_SHAPE, JsonConvert.SerializeObject(
             new
             {
                 src = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb"
             }));
 
         LoadWrapper gltfShape = GLTFShape.GetLoaderForEntity(scene.entities[entityId]);
-        yield return new DCL.WaitUntil(() => gltfShape.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => gltfShape.alreadyLoaded);
 
         //Act
         scene.entities[entityId].gameObject.transform.position = new Vector3(100, 100, 100);

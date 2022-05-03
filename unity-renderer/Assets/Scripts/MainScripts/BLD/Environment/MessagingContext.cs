@@ -1,4 +1,4 @@
-﻿namespace DCL
+﻿namespace BLD
 {
     /// <summary>
     /// Context related to enqueueing and processing of world runtime scene messages.

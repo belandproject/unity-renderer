@@ -1,11 +1,11 @@
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace DCL
+namespace BLD
 {
     public class MessagingController : IDisposable
     {

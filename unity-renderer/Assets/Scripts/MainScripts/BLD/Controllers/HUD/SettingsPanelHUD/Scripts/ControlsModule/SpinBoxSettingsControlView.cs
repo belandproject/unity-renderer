@@ -1,7 +1,7 @@
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     /// <summary>
     /// MonoBehaviour that represents the view of a SPIN-BOX type CONTROL.

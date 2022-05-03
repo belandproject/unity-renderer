@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DCL.Helpers.NFT
+namespace BLD.Helpers.NFT
 {
     public struct NFTOwner
     {

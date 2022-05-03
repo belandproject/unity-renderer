@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Error: Failed to fetch https://peer.decentraland.zone/content/entities.
+  m_text: 'Error: Failed to fetch entities.
     Got status 400. Response was ''The provided Eth Address does not have access
     to the following parcel: (100,100)'''
   m_isRightToLeft: 0

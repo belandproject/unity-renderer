@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     public class PlayerPrefsQualitySettingsRepository : ISettingsRepository<QualitySettings>
     {

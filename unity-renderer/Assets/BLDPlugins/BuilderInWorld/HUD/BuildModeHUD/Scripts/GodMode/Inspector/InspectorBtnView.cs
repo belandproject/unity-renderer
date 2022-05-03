@@ -9,7 +9,7 @@ public interface IInspectorBtnView
     event Action OnInspectorButtonClick;
     event Action<BaseEventData, string> OnShowTooltip;
 
-    void OnPointerClick(DCLAction_Trigger action);
+    void OnPointerClick(BLDAction_Trigger action);
     void OnPointerEnter(PointerEventData eventData);
     void OnPointerExit();
 }
@@ -25,7 +25,7 @@ public class InspectorBtnView : MonoBehaviour, IInspectorBtnView
     [SerializeField] internal EventTrigger inspectorButtonEventTrigger;
     [SerializeField] internal InputAction_Trigger toggleOpenEntityListInputAction;
 
-    private DCLAction_Trigger dummyActionTrigger = new DCLAction_Trigger();
+    private BLDAction_Trigger dummyActionTrigger = new BLDAction_Trigger();
 
     private const string VIEW_PATH = "GodMode/Inspector/InspectorBtnView";
 
@@ -53,7 +53,7 @@ public class InspectorBtnView : MonoBehaviour, IInspectorBtnView
         BIWUtils.RemoveEventTrigger(inspectorButtonEventTrigger, EventTriggerType.PointerExit);
     }
 
-    public void OnPointerClick(DCLAction_Trigger action) { OnInspectorButtonClick?.Invoke(); }
+    public void OnPointerClick(BLDAction_Trigger action) { OnInspectorButtonClick?.Invoke(); }
 
     public void OnPointerEnter(PointerEventData eventData) { OnShowTooltip?.Invoke(eventData, tooltipText); }
 

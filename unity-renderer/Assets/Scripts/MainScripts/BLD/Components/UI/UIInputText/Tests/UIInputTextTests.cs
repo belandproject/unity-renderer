@@ -1,12 +1,12 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Color = UnityEngine.Color;
@@ -39,7 +39,7 @@ namespace Tests
         {
             ssshape = TestUtils.SharedComponentCreate<UIScreenSpace, UIScreenSpace.Model>(
                 scene,
-                DCL.Models.CLASS_ID.UI_SCREEN_SPACE_SHAPE);
+                BLD.Models.CLASS_ID.UI_SCREEN_SPACE_SHAPE);
 
             yield return ssshape.routine;
 
@@ -53,7 +53,7 @@ namespace Tests
 
             textInput = TestUtils.SharedComponentCreate<UIInputText, UIInputText.Model>(
                 scene,
-                DCL.Models.CLASS_ID.UI_INPUT_TEXT_SHAPE,
+                BLD.Models.CLASS_ID.UI_INPUT_TEXT_SHAPE,
                 new UIInputText.Model()
                 {
                     color = Color.white,

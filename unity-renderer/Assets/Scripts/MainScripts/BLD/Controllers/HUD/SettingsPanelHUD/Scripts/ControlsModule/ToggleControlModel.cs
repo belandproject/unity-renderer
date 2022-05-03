@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     /// <summary>
     /// Model that represents a TOGGLE type CONTROL.

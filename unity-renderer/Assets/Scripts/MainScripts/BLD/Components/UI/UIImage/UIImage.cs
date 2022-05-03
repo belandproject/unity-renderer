@@ -1,12 +1,12 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UIImage : UIShape<UIImageReferencesContainer, UIImage.Model>
     {
@@ -29,15 +29,15 @@ namespace DCL.Components
 
         public override string referencesContainerPrefabName => "UIImage";
 
-        DCLTexture dclTexture = null;
+        BLDTexture bldTexture = null;
 
         public UIImage() { model = new Model(); }
 
         public override int GetClassId() { return (int) CLASS_ID.UI_IMAGE_SHAPE; }
 
-        public override void AttachTo(IDCLEntity entity, System.Type overridenAttachedType = null) { Debug.LogError("Aborted UIImageShape attachment to an entity. UIShapes shouldn't be attached to entities."); }
+        public override void AttachTo(IBLDEntity entity, System.Type overridenAttachedType = null) { Debug.LogError("Aborted UIImageShape attachment to an entity. UIShapes shouldn't be attached to entities."); }
 
-        public override void DetachFrom(IDCLEntity entity, System.Type overridenAttachedType = null) { }
+        public override void DetachFrom(IBLDEntity entity, System.Type overridenAttachedType = null) { }
 
         Coroutine fetchRoutine;
 
@@ -48,7 +48,7 @@ namespace DCL.Components
             // Fetch texture
             if (!string.IsNullOrEmpty(model.source))
             {
-                if (dclTexture == null || (dclTexture != null && dclTexture.id != model.source))
+                if (bldTexture == null || (bldTexture != null && bldTexture.id != model.source))
                 {
                     if (fetchRoutine != null)
                     {
@@ -56,13 +56,13 @@ namespace DCL.Components
                         fetchRoutine = null;
                     }
 
-                    IEnumerator fetchIEnum = DCLTexture.FetchTextureComponent(scene, model.source, (downloadedTexture) =>
+                    IEnumerator fetchIEnum = BLDTexture.FetchTextureComponent(scene, model.source, (downloadedTexture) =>
                     {
                         referencesContainer.image.texture = downloadedTexture.texture;
                         fetchRoutine = null;
-                        dclTexture?.DetachFrom(this);
-                        dclTexture = downloadedTexture;
-                        dclTexture.AttachTo(this);
+                        bldTexture?.DetachFrom(this);
+                        bldTexture = downloadedTexture;
+                        bldTexture.AttachTo(this);
 
                         ConfigureUVRect(parentRecTransform);
                     });
@@ -73,8 +73,8 @@ namespace DCL.Components
             else
             {
                 referencesContainer.image.texture = null;
-                dclTexture?.DetachFrom(this);
-                dclTexture = null;
+                bldTexture?.DetachFrom(this);
+                bldTexture = null;
             }
 
             referencesContainer.image.enabled = model.visible;
@@ -122,7 +122,7 @@ namespace DCL.Components
                 fetchRoutine = null;
             }
 
-            dclTexture?.DetachFrom(this);
+            bldTexture?.DetachFrom(this);
 
             if (referencesContainer != null)
                 Utils.SafeDestroy(referencesContainer.gameObject);

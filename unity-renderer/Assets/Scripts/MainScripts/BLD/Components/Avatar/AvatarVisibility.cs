@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// This class handles the avatar's visibility. Different callers will determine whether they want the avatar to be visible or not.

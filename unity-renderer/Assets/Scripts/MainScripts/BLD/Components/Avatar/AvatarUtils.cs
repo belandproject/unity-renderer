@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using UnityEngine;
 
 public static class AvatarUtils

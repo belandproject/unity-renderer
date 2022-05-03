@@ -22,7 +22,7 @@ namespace Tests.BuildModeHUDViews
             catalogBtnView.OnCatalogButtonClick += () => isClicked = true;
 
             // Act
-            catalogBtnView.OnPointerClick(new DCLAction_Trigger());
+            catalogBtnView.OnPointerClick(new BLDAction_Trigger());
 
             // Assert
             Assert.IsTrue(isClicked, "isClicked is false!");

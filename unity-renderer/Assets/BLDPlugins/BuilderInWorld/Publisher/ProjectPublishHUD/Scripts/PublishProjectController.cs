@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public interface IPublishProjectController
     {

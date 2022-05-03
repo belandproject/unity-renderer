@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Components;
+using BLD.Components;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Models
+namespace BLD.Models
 {
     [Serializable]
     public class MeshesInfo

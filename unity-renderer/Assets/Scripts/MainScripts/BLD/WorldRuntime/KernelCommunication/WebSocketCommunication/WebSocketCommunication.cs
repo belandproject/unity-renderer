@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
-using DCL;
+using BLD;
 using UnityEngine;
 using WebSocketSharp.Server;
 
@@ -17,7 +17,7 @@ public class WebSocketCommunication : IKernelCommunication
     public Dictionary<string, string> messageTypeToBridgeName = new Dictionary<string, string>(); // Public to be able to modify it from `explorer-desktop`
 
     [System.NonSerialized]
-    public static Queue<DCLWebSocketService.Message> queuedMessages = new Queue<DCLWebSocketService.Message>();
+    public static Queue<BLDWebSocketService.Message> queuedMessages = new Queue<BLDWebSocketService.Message>();
 
     [System.NonSerialized]
     public static volatile bool queuedMessagesDirty;
@@ -31,7 +31,7 @@ public class WebSocketCommunication : IKernelCommunication
             throw new SocketException((int)SocketError.AddressAlreadyInUse);
         }
         string wssServerUrl;
-        string wssServiceId = "dcl";
+        string wssServiceId = "bld";
         try
         {
             if (withSSL)
@@ -55,7 +55,7 @@ public class WebSocketCommunication : IKernelCommunication
                 ws = new WebSocketServer(wssServerUrl);
             }
 
-            ws.AddWebSocketService<DCLWebSocketService>("/" + wssServiceId);
+            ws.AddWebSocketService<BLDWebSocketService>("/" + wssServiceId);
             ws.Start();
         }
         catch (InvalidOperationException e)
@@ -80,7 +80,7 @@ public class WebSocketCommunication : IKernelCommunication
     {
         InitMessageTypeToBridgeName();
 
-        DCL.DataStore.i.debugConfig.isWssDebugMode = true;
+        BLD.DataStore.i.debugConfig.isWssDebugMode = true;
 
         string url = StartServer(startPort, endPort, withSSL);
 
@@ -198,16 +198,16 @@ public class WebSocketCommunication : IKernelCommunication
                 {
                     while (queuedMessages.Count > 0)
                     {
-                        DCLWebSocketService.Message msg = queuedMessages.Dequeue();
+                        BLDWebSocketService.Message msg = queuedMessages.Dequeue();
 
                         switch (msg.type)
                         {
                             // Add to this list the messages that are used a lot and you want better performance
                             case "SendSceneMessage":
-                                DCL.Environment.i.world.sceneController.SendSceneMessage(msg.payload);
+                                BLD.Environment.i.world.sceneController.SendSceneMessage(msg.payload);
                                 break;
                             case "Reset":
-                                DCL.Environment.i.world.sceneController.UnloadAllScenesQueued();
+                                BLD.Environment.i.world.sceneController.UnloadAllScenesQueued();
                                 break;
                             case "SetVoiceChatEnabledByScene":
                                 if (int.TryParse(msg.payload, out int value)) // The payload should be `string`, this will be changed in a `renderer-protocol` refactor
@@ -240,7 +240,7 @@ public class WebSocketCommunication : IKernelCommunication
                                 break;
                         }
 
-                        if (DCLWebSocketService.VERBOSE)
+                        if (BLDWebSocketService.VERBOSE)
                         {
                             Debug.Log(
                                 "<b><color=#0000FF>WebSocketCommunication</color></b> >>> Got it! passing message of type " +

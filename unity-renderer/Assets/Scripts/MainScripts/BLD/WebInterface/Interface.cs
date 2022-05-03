@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Helpers;
+using BLD.Models;
 using UnityEngine;
 using Ray = UnityEngine.Ray;
 
@@ -9,10 +9,10 @@ using Ray = UnityEngine.Ray;
 using System.Runtime.InteropServices;
 #endif
 
-namespace DCL.Interface
+namespace BLD.Interface
 {
     /**
-     * This class contains the outgoing interface of Decentraland.
+     * This class contains the outgoing interface of Beland.
      * You must call those functions to interact with the WebInterface.
      *
      * The messages comming from the WebInterface instead, are reported directly to
@@ -680,7 +680,7 @@ namespace DCL.Interface
      * This method is called after the first render. It marks the loading of the
      * rest of the JS client.
      */
-    [DllImport("__Internal")] public static extern void StartDecentraland();
+    [DllImport("__Internal")] public static extern void StartBeland();
     [DllImport("__Internal")] public static extern void MessageFromEngine(string type, string message);
     [DllImport("__Internal")] public static extern string GetGraphicCard();
     [DllImport("__Internal")] public static extern bool CheckURLParam(string targetParam);
@@ -703,7 +703,7 @@ namespace DCL.Interface
         
         private static bool hasQueuedMessages = false;
         private static List<(string, string)> queuedMessages = new List<(string, string)>();
-        public static void StartDecentraland() { }
+        public static void StartBeland() { }
         public static bool CheckURLParam(string targetParam)
         {
             return false;
@@ -1585,7 +1585,7 @@ namespace DCL.Interface
             timeReportPayload.isPaused = isPaused;
             timeReportPayload.timeNormalizationFactor = timeNormalizationFactor;
             timeReportPayload.cycleTime = cycleTime;
-            SendMessage("ReportDecentralandTime", timeReportPayload);
+            SendMessage("ReportBelandTime", timeReportPayload);
         }
     }
 }

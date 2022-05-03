@@ -1,4 +1,4 @@
-namespace DCL.HelpAndSupportHUD
+namespace BLD.HelpAndSupportHUD
 {
     public class HelpAndSupportHUDController : IHUD
     {

@@ -52,7 +52,7 @@ public class VoiceChatButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         buttonAnimator.SetBool(disabledAnimation, !isEnabledByScene);
     }
 
-    private void OnVoiceChatInput(DCLAction_Hold action)
+    private void OnVoiceChatInput(BLDAction_Hold action)
     {
         if (!isEnabledByScene)
         {

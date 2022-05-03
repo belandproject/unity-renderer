@@ -444,10 +444,10 @@ public class HUDController : IHUDController
         newModel.userId = "test-id";
         newModel.inventory = new[]
         {
-            "dcl://halloween_2019/machete_headband_top_head",
-            "dcl://halloween_2019/bee_suit_upper_body",
-            "dcl://halloween_2019/bride_of_frankie_upper_body",
-            "dcl://halloween_2019/creepy_nurse_upper_body",
+            "bld://halloween_2019/machete_headband_top_head",
+            "bld://halloween_2019/bee_suit_upper_body",
+            "bld://halloween_2019/bride_of_frankie_upper_body",
+            "bld://halloween_2019/creepy_nurse_upper_body",
         };
 
         UserProfileController.i.AddUserProfileToCatalog(newModel);

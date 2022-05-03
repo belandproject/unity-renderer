@@ -1,11 +1,11 @@
-using DCL;
-using DCL.Interface;
-using MainScripts.DCL.WebPlugin;
+using BLD;
+using BLD.Interface;
+using MainScripts.BLD.WebPlugin;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace MainScripts.DCL.Controllers.HUD.TaskbarHUD
+namespace MainScripts.BLD.Controllers.HUD.TaskbarHUD
 {
     public class ReportBugButton : MonoBehaviour
     {

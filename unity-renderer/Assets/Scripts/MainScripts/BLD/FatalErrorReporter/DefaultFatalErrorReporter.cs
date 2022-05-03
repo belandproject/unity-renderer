@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DCL.FatalErrorReporter
+namespace BLD.FatalErrorReporter
 {
     public class DefaultFatalErrorReporter : IFatalErrorReporter
     {

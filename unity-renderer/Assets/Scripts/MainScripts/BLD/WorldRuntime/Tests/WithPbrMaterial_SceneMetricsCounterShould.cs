@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 

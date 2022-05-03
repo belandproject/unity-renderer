@@ -28,21 +28,21 @@ public class TransactionBridge : MonoBehaviour
         
         var model = JsonUtility.FromJson<RequestWeb3ApiUseMessage>(payload);
 
-        var requestType = DCL.TransactionHUDModel.Type.REQUIRE_PAYMENT;
+        var requestType = BLD.TransactionHUDModel.Type.REQUIRE_PAYMENT;
         switch (model.requestType)
         {
             case "requirePayment":
-                requestType = DCL.TransactionHUDModel.Type.REQUIRE_PAYMENT;
+                requestType = BLD.TransactionHUDModel.Type.REQUIRE_PAYMENT;
                 break;
             case "signMessage":
-                requestType = DCL.TransactionHUDModel.Type.SIGN_MESSAGE;
+                requestType = BLD.TransactionHUDModel.Type.SIGN_MESSAGE;
                 break;
             case "sendAsync":
-                requestType = DCL.TransactionHUDModel.Type.SEND_ASYNC;
+                requestType = BLD.TransactionHUDModel.Type.SEND_ASYNC;
                 break;
         }
 
-        transactionController.ShowTransaction(new DCL.TransactionHUDModel.Model
+        transactionController.ShowTransaction(new BLD.TransactionHUDModel.Model
         {
             id = model.id,
             requestType = requestType,

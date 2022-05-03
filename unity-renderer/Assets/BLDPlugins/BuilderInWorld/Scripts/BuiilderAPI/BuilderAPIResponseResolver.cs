@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
     public interface IBuilderAPIResponseResolver
     {

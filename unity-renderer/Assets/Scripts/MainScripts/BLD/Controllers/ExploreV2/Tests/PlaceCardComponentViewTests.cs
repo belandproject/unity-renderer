@@ -1,4 +1,4 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using NSubstitute;
 using NUnit.Framework;
 using System.Linq;
@@ -342,7 +342,7 @@ public class PlaceCardComponentViewTests
         placeCardModalComponent.Show();
 
         // Act
-        placeCardModalComponent.OnCloseActionTriggered(new DCLAction_Trigger());
+        placeCardModalComponent.OnCloseActionTriggered(new BLDAction_Trigger());
 
         // Assert
         Assert.IsFalse(placeCardModalComponent.isVisible);

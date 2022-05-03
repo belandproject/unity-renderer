@@ -1,14 +1,14 @@
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Interface;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Interface;
+using BLD.Models;
 using Google.Protobuf;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -22,7 +22,7 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
     bool alreadyInitialized = false;
 
     private ParcelScene scene;
-    private ISceneController sceneController => DCL.Environment.i.world.sceneController;
+    private ISceneController sceneController => BLD.Environment.i.world.sceneController;
 
     [UnitySetUp]
     protected override IEnumerator SetUp()
@@ -34,7 +34,7 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
 
     private void ConfigureRaycastQuery(string queryType)
     {
-        DCLCharacterController.i.SetPosition(startPos);
+        BLDCharacterController.i.SetPosition(startPos);
 
         raycastQuery = new PB_RayQuery();
         raycastQuery.QueryId = "123456" + queryType;
@@ -66,7 +66,7 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
     {
         ConfigureRaycastQuery("HitFirst");
 
-        List<IDCLEntity> entities = new List<IDCLEntity>();
+        List<IBLDEntity> entities = new List<IBLDEntity>();
         Vector3 pos = new Vector3(5, 0, 10);
 
         for (int i = 0; i < ENTITIES_COUNT; i++)
@@ -74,12 +74,12 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
             BoxShape shape = TestUtils.CreateEntityWithBoxShape(scene, pos);
             yield return shape.routine;
 
-            IDCLEntity entity = shape.attachedEntities.First();
+            IBLDEntity entity = shape.attachedEntities.First();
 
             TestUtils.SetEntityTransform(scene, entity, pos, Quaternion.identity, new Vector3(5, 10, 1));
             yield return null;
 
-            DCL.CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, true, false, entity);
+            BLD.CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, true, false, entity);
 
             entities.Add(entity);
 
@@ -132,7 +132,7 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
     {
         ConfigureRaycastQuery("HitAll");
 
-        List<IDCLEntity> entities = new List<IDCLEntity>();
+        List<IBLDEntity> entities = new List<IBLDEntity>();
         Vector3 pos = new Vector3(5, 0, 10);
 
         for (int i = 0; i < ENTITIES_COUNT; i++)
@@ -140,12 +140,12 @@ public class PhysicsCast_Tests : IntegrationTestSuite_Legacy
             BoxShape shape = TestUtils.CreateEntityWithBoxShape(scene, pos);
             yield return shape.routine;
 
-            IDCLEntity entity = shape.attachedEntities.First();
+            IBLDEntity entity = shape.attachedEntities.First();
 
             TestUtils.SetEntityTransform(scene, entity, pos, Quaternion.identity, new Vector3(5, 10, 1));
             yield return null;
 
-            DCL.CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, true, false, entity);
+            BLD.CollidersManager.i.ConfigureColliders(entity.meshRootGameObject, true, false, entity);
 
             entities.Add(entity);
 

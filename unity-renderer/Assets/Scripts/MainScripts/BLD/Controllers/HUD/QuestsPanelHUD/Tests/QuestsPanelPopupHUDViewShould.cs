@@ -1,5 +1,5 @@
-using DCL;
-using DCL.Huds.QuestsPanel;
+using BLD;
+using BLD.Huds.QuestsPanel;
 using NUnit.Framework;
 using UnityEngine;
 

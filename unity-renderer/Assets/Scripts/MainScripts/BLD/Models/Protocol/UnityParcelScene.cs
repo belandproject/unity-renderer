@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Models
+namespace BLD.Models
 {
     [Serializable]
     public struct CreateGlobalSceneMessage

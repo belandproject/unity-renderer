@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL
+namespace BLD
 {
     public static class CombineLayerUtils
     {

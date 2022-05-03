@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using DCL.Helpers;
+using BLD.Helpers;
 
 namespace AvatarSystem
 {

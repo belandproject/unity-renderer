@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace DCL.Builder.Manifest
+namespace BLD.Builder.Manifest
 {
     [Serializable]
     public class BuilderComponent

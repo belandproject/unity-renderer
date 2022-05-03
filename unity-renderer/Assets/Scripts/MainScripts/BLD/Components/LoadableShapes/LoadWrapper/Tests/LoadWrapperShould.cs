@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NSubstitute;
 using NSubstitute.ReceivedExtensions;
 using Tests;
@@ -26,7 +26,7 @@ public class LoadWrapperShould : IntegrationTestSuite
 
         string url = TestAssetsUtils.GetPath() + "/GLB/Trunk/Trunk.glb";
 
-        IDCLEntity entity = Substitute.For<IDCLEntity>();
+        IBLDEntity entity = Substitute.For<IBLDEntity>();
         entity.meshRootGameObject.Returns(meshRootGameObject);
 
         LoadWrapper_GLTF wrapper = Substitute.ForPartsOf<LoadWrapper_GLTF>();

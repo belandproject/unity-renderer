@@ -1,10 +1,10 @@
 using System.Net;
 using UnityEngine;
-using DCL.Interface;
-using DCL.Models;
-using DCL.Components;
+using BLD.Interface;
+using BLD.Models;
+using BLD.Components;
 
-namespace DCL
+namespace BLD
 {
     public static class MessageDecoder
     {
@@ -31,7 +31,7 @@ namespace DCL
 #endif
             byte[] bytes = System.Convert.FromBase64String(payload);
 
-            sendSceneMessage = DCL.Interface.PB_SendSceneMessage.Parser.ParseFrom(bytes);
+            sendSceneMessage = BLD.Interface.PB_SendSceneMessage.Parser.ParseFrom(bytes);
             sceneId = sendSceneMessage.SceneId;
             tag = sendSceneMessage.Tag;
 
@@ -139,14 +139,14 @@ namespace DCL
             }
         }
 
-        public static void DecodeTransform(string payload, ref DCLTransform.Model model)
+        public static void DecodeTransform(string payload, ref BLDTransform.Model model)
         {
 #if UNITY_EDITOR
             DumpMessage(payload, TRANSFORM_FILENAME, ref transformDumpStr, ref transformCount);
 #endif
             byte[] bytes = System.Convert.FromBase64String(payload);
 
-            DCL.Interface.PB_Transform pbTransform = DCL.Interface.PB_Transform.Parser.ParseFrom(bytes);
+            BLD.Interface.PB_Transform pbTransform = BLD.Interface.PB_Transform.Parser.ParseFrom(bytes);
             model.position = new Vector3(pbTransform.Position.X, pbTransform.Position.Y, pbTransform.Position.Z);
             model.scale = new Vector3(pbTransform.Scale.X, pbTransform.Scale.Y, pbTransform.Scale.Z);
             model.rotation = new Quaternion((float)pbTransform.Rotation.X, (float)pbTransform.Rotation.Y, (float)pbTransform.Rotation.Z, (float)pbTransform.Rotation.W);
@@ -165,7 +165,7 @@ namespace DCL
             query.payload = new RaycastQuery();
             query.payload.id = pbRayQuery.QueryId;
             query.payload.raycastType = Protocol.RaycastLiteralToType(pbRayQuery.QueryType);
-            query.payload.ray = new DCL.Models.Ray();
+            query.payload.ray = new BLD.Models.Ray();
             query.payload.ray.direction = new Vector3(pbRayQuery.Ray.Direction.X, pbRayQuery.Ray.Direction.Y, pbRayQuery.Ray.Direction.Z);
             query.payload.ray.distance = pbRayQuery.Ray.Distance;
             query.payload.ray.origin = new Vector3(pbRayQuery.Ray.Origin.X, pbRayQuery.Ray.Origin.Y, pbRayQuery.Ray.Origin.Z);

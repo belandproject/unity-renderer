@@ -1,9 +1,9 @@
-using DCL.Interface;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Interface;
+using BLD.Helpers;
+using BLD.Models;
 using Ray = UnityEngine.Ray;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnPointerUp : OnPointerEvent
     {

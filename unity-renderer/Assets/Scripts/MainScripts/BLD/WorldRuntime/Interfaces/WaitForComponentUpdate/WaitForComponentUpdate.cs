@@ -1,4 +1,4 @@
-﻿namespace DCL.Components
+﻿namespace BLD.Components
 {
     /// <summary>
     /// Unity is unable to yield a coroutine while is already being yielded by another one.

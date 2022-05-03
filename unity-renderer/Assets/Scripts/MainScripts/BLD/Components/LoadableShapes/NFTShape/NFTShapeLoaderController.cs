@@ -1,9 +1,9 @@
-using DCL.Components;
-using DCL.Helpers.NFT;
+using BLD.Components;
+using BLD.Helpers.NFT;
 using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using DCL;
+using BLD;
 using NFTShape_Internal;
 
 public class NFTShapeLoaderController : MonoBehaviour
@@ -181,7 +181,7 @@ public class NFTShapeLoaderController : MonoBehaviour
 
     internal IEnumerator LoadNFTAssetCoroutine(NFTInfo nftInfo)
     {
-        yield return new DCL.WaitUntil(() => (CommonScriptableObjects.playerUnityPosition - transform.position).sqrMagnitude < (config.loadingMinDistance * config.loadingMinDistance));
+        yield return new BLD.WaitUntil(() => (CommonScriptableObjects.playerUnityPosition - transform.position).sqrMagnitude < (config.loadingMinDistance * config.loadingMinDistance));
 
         // We download the "preview" 256px image
         yield return nftAssetLoadHelper.LoadNFTAsset(

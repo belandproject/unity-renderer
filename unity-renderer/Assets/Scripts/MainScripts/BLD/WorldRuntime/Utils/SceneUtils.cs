@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public static class SceneUtils
     {
-        public static IDCLEntity DuplicateEntity(ParcelScene scene, IDCLEntity entity)
+        public static IBLDEntity DuplicateEntity(ParcelScene scene, IBLDEntity entity)
         {
             if (!scene.entities.ContainsKey(entity.entityId))
                 return null;
 
-            IDCLEntity newEntity = scene.CreateEntity(System.Guid.NewGuid().ToString());
+            IBLDEntity newEntity = scene.CreateEntity(System.Guid.NewGuid().ToString());
 
             if (entity.children.Count > 0)
             {
@@ -19,7 +19,7 @@ namespace DCL.Controllers
                 {
                     while (iterator.MoveNext())
                     {
-                        IDCLEntity childDuplicate = DuplicateEntity(scene, iterator.Current.Value);
+                        IBLDEntity childDuplicate = DuplicateEntity(scene, iterator.Current.Value);
                         childDuplicate.SetParent(newEntity);
                     }
                 }
@@ -28,9 +28,9 @@ namespace DCL.Controllers
             if (entity.parent != null)
                 scene.SetEntityParent(newEntity.entityId, entity.parent.entityId);
 
-            DCLTransform.model.position = WorldStateUtils.ConvertUnityToScenePosition(entity.gameObject.transform.position);
-            DCLTransform.model.rotation = entity.gameObject.transform.rotation;
-            DCLTransform.model.scale = entity.gameObject.transform.lossyScale;
+            BLDTransform.model.position = WorldStateUtils.ConvertUnityToScenePosition(entity.gameObject.transform.position);
+            BLDTransform.model.rotation = entity.gameObject.transform.rotation;
+            BLDTransform.model.scale = entity.gameObject.transform.lossyScale;
 
             foreach (KeyValuePair<CLASS_ID_COMPONENT, IEntityComponent> component in entity.components)
             {

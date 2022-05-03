@@ -1,6 +1,6 @@
-using DCL.Components;
-using DCL.Models;
-using DCLPlugins.DebugPlugins.Commons;
+using BLD.Components;
+using BLD.Models;
+using BLDPlugins.DebugPlugins.Commons;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -9,7 +9,7 @@ namespace Tests
 {
     public class WatchEntityShapeHandlerShould
     {
-        private IDCLEntity entity;
+        private IBLDEntity entity;
         private IShapeListener listener;
         private MeshesInfo meshesInfo;
         private GameObject meshesInfoGameObject;
@@ -17,7 +17,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            entity = Substitute.For<IDCLEntity>();
+            entity = Substitute.For<IBLDEntity>();
             listener = Substitute.For<IShapeListener>();
             meshesInfo = new MeshesInfo();
             meshesInfoGameObject = new GameObject("MeshesInfoGO");

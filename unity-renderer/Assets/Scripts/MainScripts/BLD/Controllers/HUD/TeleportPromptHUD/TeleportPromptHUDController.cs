@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
-using DCL.Helpers;
-using DCL.Interface;
+using BLD.Helpers;
+using BLD.Interface;
 
 public class TeleportPromptHUDController : IHUD
 {

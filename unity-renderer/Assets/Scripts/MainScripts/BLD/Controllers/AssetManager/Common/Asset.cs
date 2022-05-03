@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public abstract class Asset_WithPoolableContainer : Asset
     {

@@ -1,12 +1,12 @@
 using System.Collections;
-using DCL.Helpers;
-using DCL.Configuration;
+using BLD.Helpers;
+using BLD.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DCL;
+using BLD;
 
 public class FriendsTabViewBase : MonoBehaviour, IPointerDownHandler
 {

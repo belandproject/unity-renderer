@@ -1,11 +1,11 @@
-using DCL.SettingsPanelHUD.Sections;
+using BLD.SettingsPanelHUD.Sections;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.SettingsCommon;
+using BLD.SettingsCommon;
 using UnityEngine;
-using DCL.HelpAndSupportHUD;
+using BLD.HelpAndSupportHUD;
 
-namespace DCL.SettingsPanelHUD
+namespace BLD.SettingsPanelHUD
 {
     /// <summary>
     /// Interface to implement a controller for the main settings panel.

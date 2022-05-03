@@ -1,10 +1,10 @@
-using DCL.Configuration;
+using BLD.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityGLTF;
 
-namespace DCL
+namespace BLD
 {
     public class Asset_GLTF : Asset_WithPoolableContainer
     {

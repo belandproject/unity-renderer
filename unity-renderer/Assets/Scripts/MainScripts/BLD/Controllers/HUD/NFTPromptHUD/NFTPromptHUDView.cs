@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using DCL;
-using DCL.Helpers;
-using DCL.Helpers.NFT;
-using DCL.Interface;
+using BLD;
+using BLD.Helpers;
+using BLD.Helpers.NFT;
+using BLD.Interface;
 using System.Collections;
 using NFTShape_Internal;
 

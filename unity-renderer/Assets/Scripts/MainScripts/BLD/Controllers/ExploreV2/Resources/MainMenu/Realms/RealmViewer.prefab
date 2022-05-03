@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 6299674685314815803}
   - component: {fileID: 4125281595057957692}
   m_Layer: 5
-  m_Name: DCLTitle
+  m_Name: BLDTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954072973432043684}
   m_Layer: 5
-  m_Name: DCLHeader
+  m_Name: BLDHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,7 +1218,7 @@ PrefabInstance:
     - target: {fileID: 6719010960977733696, guid: 4849d2ed3b5a18948bf3cd46256869a4,
         type: 3}
       propertyPath: m_Name
-      value: DCLLogo
+      value: BLDLogo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4849d2ed3b5a18948bf3cd46256869a4, type: 3}

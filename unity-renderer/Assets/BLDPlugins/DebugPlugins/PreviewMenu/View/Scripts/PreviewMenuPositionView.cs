@@ -1,11 +1,11 @@
 using System;
-using DCL;
-using DCL.NotificationModel;
+using BLD;
+using BLD.NotificationModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Environment = DCL.Environment;
-using Type = DCL.NotificationModel.Type;
+using Environment = BLD.Environment;
+using Type = BLD.NotificationModel.Type;
 
 public class PreviewMenuPositionView : MonoBehaviour, IDisposable
 {

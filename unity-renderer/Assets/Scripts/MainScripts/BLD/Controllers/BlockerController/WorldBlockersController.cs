@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Rendering;
+using BLD.Helpers;
+using BLD.Rendering;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     /// <summary>
     /// This class is the domain-specific glue for BlockerInstanceHandler.
@@ -114,7 +114,7 @@ namespace DCL.Controllers
             }
 
             if ( this.sceneHandler == null )
-                this.sceneHandler = DCL.Environment.i.world.state;
+                this.sceneHandler = BLD.Environment.i.world.state;
 
             blockerInstanceHandler.SetParent(blockersParent);
 

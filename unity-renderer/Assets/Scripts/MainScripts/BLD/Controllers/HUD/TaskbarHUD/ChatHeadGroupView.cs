@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using DCL.Helpers;
+using BLD.Helpers;
 using UnityEngine;
 
 public class ChatHeadGroupView : MonoBehaviour
@@ -51,7 +51,7 @@ public class ChatHeadGroupView : MonoBehaviour
     private void Update()
     {
         // NOTE: Update is only enabled when SetParentContainerAsDirty is called 
-        DCL.Helpers.Utils.ForceUpdateLayout(contentParentRT, delayed: true);
+        BLD.Helpers.Utils.ForceUpdateLayout(contentParentRT, delayed: true);
         this.enabled = false;
     }
 
@@ -98,10 +98,10 @@ public class ChatHeadGroupView : MonoBehaviour
         CommonScriptableObjects.rendererState.OnChange -= RendererState_OnChange;
     }
 
-    private void ChatController_OnAddMessage(DCL.Interface.ChatMessage obj)
+    private void ChatController_OnAddMessage(BLD.Interface.ChatMessage obj)
     {
         if (!CommonScriptableObjects.rendererState.Get() ||
-            obj.messageType != DCL.Interface.ChatMessage.Type.PRIVATE ||
+            obj.messageType != BLD.Interface.ChatMessage.Type.PRIVATE ||
             obj.timestamp < rendererStateTimeMark)
             return;
 

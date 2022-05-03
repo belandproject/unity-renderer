@@ -1,6 +1,6 @@
 using AvatarShape_Tests;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
@@ -45,7 +45,7 @@ namespace Tests
 
             VisualTestUtils.RepositionVisualTestsCamera(camera, camPos, camTarget);
 
-            yield return new DCL.WaitUntil(() => avatar.everythingIsLoaded, 20);
+            yield return new BLD.WaitUntil(() => avatar.everythingIsLoaded, 20);
 
             yield return new WaitForSeconds(5.0f);
 
@@ -72,7 +72,7 @@ namespace Tests
 
             VisualTestUtils.RepositionVisualTestsCamera(camera, camPos, camTarget);
 
-            yield return new DCL.WaitUntil(() => avatar.everythingIsLoaded, 20);
+            yield return new BLD.WaitUntil(() => avatar.everythingIsLoaded, 20);
 
             yield return VisualTestUtils.TakeSnapshot("AvatarShape_B", camera);
         }

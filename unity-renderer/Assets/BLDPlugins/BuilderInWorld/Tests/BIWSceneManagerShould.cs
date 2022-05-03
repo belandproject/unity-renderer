@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Builder;
-using DCL.Camera;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Camera;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NSubstitute;
 using NSubstitute.Extensions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityGLTF;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 public class BIWSceneManagerShould :  IntegrationTestSuite_Legacy
 {
@@ -167,7 +167,7 @@ public class BIWSceneManagerShould :  IntegrationTestSuite_Legacy
     public void ChangeEditModeByShortcut()
     {
         // Act
-        mainController.ChangeEditModeStatusByShortcut(DCLAction_Trigger.BuildEditModeChange);
+        mainController.ChangeEditModeStatusByShortcut(BLDAction_Trigger.BuildEditModeChange);
 
         // Assert
         Assert.IsTrue(mainController.isWaitingForPermission);
@@ -280,7 +280,7 @@ public class BIWSceneManagerShould :  IntegrationTestSuite_Legacy
         mainController.currentState = SceneManager.State.EDITING;
 
         // Act
-        mainController.ExitAfterCharacterTeleport(new DCLCharacterPosition());
+        mainController.ExitAfterCharacterTeleport(new BLDCharacterPosition());
 
         // Assert
         Assert.AreEqual(mainController.currentState,  SceneManager.State.IDLE);
@@ -308,7 +308,7 @@ public class BIWSceneManagerShould :  IntegrationTestSuite_Legacy
 
     protected override IEnumerator TearDown()
     {
-        yield return new DCL.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
+        yield return new BLD.WaitUntil( () => GLTFComponent.downloadingCount == 0 );
         UnityEngine.Object.Destroy(biwBridge.gameObject);
         mainController.context.Dispose();
         mainController.Dispose();

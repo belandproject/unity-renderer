@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using AssetPromiseKeeper_Tests;
-using DCL;
-using DCL.Helpers;
+using BLD;
+using BLD.Helpers;
 
 namespace AssetPromiseKeeper_AudioClip_Tests
 {
@@ -12,7 +12,7 @@ namespace AssetPromiseKeeper_AudioClip_Tests
     {
         protected override IEnumerator SetUp()
         {
-            ServiceLocator serviceLocator = DCL.ServiceLocatorTestFactory.CreateMocked();
+            ServiceLocator serviceLocator = BLD.ServiceLocatorTestFactory.CreateMocked();
             serviceLocator.Register<IWebRequestController>(WebRequestController.Create);
             Environment.Setup(serviceLocator);
             return base.SetUp();

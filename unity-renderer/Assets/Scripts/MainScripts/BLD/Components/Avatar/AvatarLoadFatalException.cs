@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DCL
+namespace BLD
 {
     public class AvatarLoadFatalException : Exception
     {

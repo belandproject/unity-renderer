@@ -1,8 +1,8 @@
-﻿using DCL.Helpers;
+﻿using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL.Helpers
+namespace BLD.Helpers
 {
     public static class MaterialUtils
     {

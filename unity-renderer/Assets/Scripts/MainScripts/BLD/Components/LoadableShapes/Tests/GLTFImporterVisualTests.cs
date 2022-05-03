@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -21,7 +21,7 @@ public class GLTFImporterVisualTests : VisualTestsBase
     [Explicit]
     public IEnumerator ProcessTextureOffsetAndScale()
     {
-        GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero, TestAssetsUtils.GetPath() + "/GLB/PlaneUVsOffset/planeUVsOffset.glb", out IDCLEntity entity);
+        GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero, TestAssetsUtils.GetPath() + "/GLB/PlaneUVsOffset/planeUVsOffset.glb", out IBLDEntity entity);
 
         yield return gltfShape.routine;
         yield return new WaitForAllMessagesProcessed();
@@ -48,7 +48,7 @@ public class GLTFImporterVisualTests : VisualTestsBase
     [Explicit]
     public IEnumerator ProcessTexturesUVs()
     {
-        GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero, TestAssetsUtils.GetPath() + "/GLB/PlaneUVsMultichannel/PlaneUVsMultichannel.glb", out IDCLEntity entity);
+        GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero, TestAssetsUtils.GetPath() + "/GLB/PlaneUVsMultichannel/PlaneUVsMultichannel.glb", out IBLDEntity entity);
 
         yield return gltfShape.routine;
         yield return new WaitForAllMessagesProcessed();

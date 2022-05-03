@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.Builder;
-using DCL.Helpers;
+using BLD.Builder;
+using BLD.Helpers;
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Builder
+namespace BLD.Builder
 {
 
 

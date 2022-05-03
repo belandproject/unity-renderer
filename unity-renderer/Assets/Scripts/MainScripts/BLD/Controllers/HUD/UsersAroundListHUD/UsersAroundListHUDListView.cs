@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DCL.SettingsCommon;
+using BLD.SettingsCommon;
 using UnityEngine;
 using UnityEngine.UI;
 

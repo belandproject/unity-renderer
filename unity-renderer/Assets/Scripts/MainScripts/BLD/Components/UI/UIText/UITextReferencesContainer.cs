@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class UITextReferencesContainer : UIReferencesContainer
     {

@@ -1,5 +1,5 @@
 using System;
-using DCL.TransactionHUDModel;
+using BLD.TransactionHUDModel;
 using UnityEngine;
 
 public class TransactionListHUDView : MonoBehaviour

@@ -1,5 +1,5 @@
 using System;
-using DCL;
+using BLD;
 
 internal class OtherPlayerGetAnchorPointsHandler : IAnchorPointsGetterHandler
 {

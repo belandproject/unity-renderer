@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using TMPro;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class TextShape : BaseComponent
     {
@@ -89,12 +89,12 @@ namespace DCL.Components
             PrepareRectTransform();
 
             // We avoid using even yield break; as this instruction skips a frame and we don't want that.
-            if ( !DCLFont.IsFontLoaded(scene, model.font) )
+            if ( !BLDFont.IsFontLoaded(scene, model.font) )
             {
-                yield return DCLFont.WaitUntilFontIsReady(scene, model.font);
+                yield return BLDFont.WaitUntilFontIsReady(scene, model.font);
             }
 
-            DCLFont.SetFontFromComponent(scene, model.font, text);
+            BLDFont.SetFontFromComponent(scene, model.font, text);
             ApplyModelChanges(text, model);
 
             if (entity.meshRootGameObject == null)

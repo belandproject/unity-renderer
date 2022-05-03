@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
-using DCL;
-using DCL.Camera;
+using BLD;
+using BLD.Camera;
 using UnityEngine;
 
 public class OverrideCinemachineAxisInput : MonoBehaviour

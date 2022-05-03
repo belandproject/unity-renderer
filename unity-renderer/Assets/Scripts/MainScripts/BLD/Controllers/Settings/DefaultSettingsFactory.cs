@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace DCL.SettingsCommon
+namespace BLD.SettingsCommon
 {
     public class DefaultSettingsFactory : ISettingsFactory
     {

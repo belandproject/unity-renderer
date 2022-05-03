@@ -1,10 +1,10 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using Tests;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -28,7 +28,7 @@ public class NFTShape_Tests : IntegrationTestSuite
 
         scene = TestUtils.CreateTestScene();
         scene.contentProvider = new ContentProvider_Dummy();
-        DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+        BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
         CommonScriptableObjects.rendererState.Set(true);
     }
 
@@ -97,7 +97,7 @@ public class NFTShape_Tests : IntegrationTestSuite
         TestUtils.SharedComponentAttach(shapeComponent, entity);
 
         var shapeLoader = entity.gameObject.GetComponentInChildren<LoadWrapper_NFT>(true);
-        yield return new DCL.WaitUntil(() => shapeLoader.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => shapeLoader.alreadyLoaded);
 
         yield return TestUtils.TestShapeCollision(shapeComponent, shapeModel, entity);
     }
@@ -122,7 +122,7 @@ public class NFTShape_Tests : IntegrationTestSuite
         TestUtils.SharedComponentAttach(shapeComponent, entity);
 
         var shapeLoader = entity.gameObject.GetComponentInChildren<LoadWrapper_NFT>(true);
-        yield return new DCL.WaitUntil(() => shapeLoader.alreadyLoaded);
+        yield return new BLD.WaitUntil(() => shapeLoader.alreadyLoaded);
 
         yield return TestUtils.TestShapeVisibility(shapeComponent, shapeModel, entity);
     }

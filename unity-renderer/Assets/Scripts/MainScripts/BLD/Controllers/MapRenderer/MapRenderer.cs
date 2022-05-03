@@ -1,4 +1,4 @@
-using DCL.Helpers;
+using BLD.Helpers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using KernelConfigurationTypes;
 
-namespace DCL
+namespace BLD
 {
     public class MapRenderer : MonoBehaviour
     {

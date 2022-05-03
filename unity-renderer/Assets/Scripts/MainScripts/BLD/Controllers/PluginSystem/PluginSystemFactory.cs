@@ -1,7 +1,7 @@
-using DCL.Tutorial;
-using DCL.Skybox;
+using BLD.Tutorial;
+using BLD.Skybox;
 
-namespace DCL
+namespace BLD
 {
     public static class PluginSystemFactory
     {

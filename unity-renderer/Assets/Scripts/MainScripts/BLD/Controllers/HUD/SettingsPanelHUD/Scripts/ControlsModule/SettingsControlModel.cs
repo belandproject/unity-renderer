@@ -1,9 +1,9 @@
 using ReorderableList;
 using System.Collections.Generic;
-using DCL.SettingsCommon.SettingsControllers.BaseControllers;
+using BLD.SettingsCommon.SettingsControllers.BaseControllers;
 using UnityEngine;
 
-namespace DCL.SettingsPanelHUD.Controls
+namespace BLD.SettingsPanelHUD.Controls
 {
     [System.Serializable]
     public class SettingsControlGroupList : ReorderableArray<SettingsControlGroup> { }

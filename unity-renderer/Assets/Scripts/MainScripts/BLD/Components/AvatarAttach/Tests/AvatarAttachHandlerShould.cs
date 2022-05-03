@@ -1,8 +1,8 @@
-using DCL;
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Controllers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Controllers;
+using BLD.Models;
 using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
@@ -92,7 +92,7 @@ namespace AvatarAttach_Tests
             entityGo.transform.position = Vector3.zero;
             entityGo.transform.rotation = Quaternion.identity;
 
-            IDCLEntity entity = Substitute.For<IDCLEntity>();
+            IBLDEntity entity = Substitute.For<IBLDEntity>();
             entity.gameObject.Returns(entityGo);
 
             IAvatarAnchorPoints anchorPoints = Substitute.For<IAvatarAnchorPoints>();
@@ -125,7 +125,7 @@ namespace AvatarAttach_Tests
             entityGo.transform.position = Vector3.zero;
             entityGo.transform.rotation = Quaternion.identity;
 
-            IDCLEntity entity = Substitute.For<IDCLEntity>();
+            IBLDEntity entity = Substitute.For<IBLDEntity>();
             entity.gameObject.Returns(entityGo);
 
             IAvatarAnchorPoints anchorPoints = Substitute.For<IAvatarAnchorPoints>();

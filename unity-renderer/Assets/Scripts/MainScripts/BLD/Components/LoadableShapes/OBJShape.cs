@@ -1,7 +1,7 @@
 ﻿using System;
-using DCL.Controllers;
+using BLD.Controllers;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OBJShape : LoadableShape<LoadWrapper_OBJ, LoadableShape.Model>
     {

@@ -1,5 +1,5 @@
-using DCL.SettingsPanelHUD;
-using DCL.SettingsPanelHUD.Sections;
+using BLD.SettingsPanelHUD;
+using BLD.SettingsPanelHUD.Sections;
 using NSubstitute;
 using System.Collections;
 using UnityEngine;

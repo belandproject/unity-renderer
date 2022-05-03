@@ -1,10 +1,10 @@
-using DCL.Components;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
-using DCL.Controllers;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -37,11 +37,11 @@ namespace Tests
 
             Assert.IsTrue(hologramShader != null, "Hologram shader == null??");
 
-            IDCLEntity entity = null;
+            IBLDEntity entity = null;
 
             GLTFShape shape = TestUtils.InstantiateEntityWithShape<GLTFShape, GLTFShape.Model>
             (scene,
-                DCL.Models.CLASS_ID.GLTF_SHAPE,
+                BLD.Models.CLASS_ID.GLTF_SHAPE,
                 Vector3.zero,
                 out entity,
                 new GLTFShape.Model() { src = TestAssetsUtils.GetPath() + "/GLB/Lantern/Lantern.glb" });
@@ -95,17 +95,17 @@ namespace Tests
         [UnityTest]
         public IEnumerator MaterialTransitionWithParametrizableMeshes()
         {
-            DCL.Configuration.EnvironmentSettings.DEBUG = true;
+            BLD.Configuration.EnvironmentSettings.DEBUG = true;
 
             var entity1 = TestUtils.CreateSceneEntity(scene);
 
             ParcelSettings.VISUAL_LOADING_ENABLED = true;
 
-            IDCLEntity entity = null;
+            IBLDEntity entity = null;
             ConeShape shape = TestUtils.InstantiateEntityWithShape<ConeShape, ConeShape.Model>
             (
                 scene,
-                DCL.Models.CLASS_ID.CONE_SHAPE,
+                BLD.Models.CLASS_ID.CONE_SHAPE,
                 new Vector3(2, 1, 3),
                 out entity,
                 new ConeShape.Model());
@@ -132,7 +132,7 @@ namespace Tests
                         Assert.IsTrue(c.placeholder == null,
                             "placeholder must be null because we're not using holograms with parametric shapes.");
 
-                        yield return new DCL.WaitUntil( () => c == null, 5.0f);
+                        yield return new BLD.WaitUntil( () => c == null, 5.0f);
 
                         Assert.IsTrue(c == null, "MaterialTransitionController should be destroyed by now!");
 

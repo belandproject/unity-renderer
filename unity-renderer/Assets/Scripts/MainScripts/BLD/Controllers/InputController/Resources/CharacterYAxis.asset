@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5be435f87ae7c6498a97f8c8a2c4acf, type: 3}
   m_Name: CharacterYAxis
   m_EditorClassIdentifier: 
-  dclAction: 2
+  bldAction: 2
   currentValue: 0

@@ -1,10 +1,10 @@
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using System;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class CylinderShape : ParametrizedShape<CylinderShape.Model>
     {

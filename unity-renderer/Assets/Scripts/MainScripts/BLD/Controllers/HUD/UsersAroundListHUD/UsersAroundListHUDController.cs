@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Interface;
+using BLD;
+using BLD.Interface;
 using UnityEngine;
 
 public class UsersAroundListHUDController : IHUD

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using DCL;
-using DCL.Controllers;
-using DCLPlugins.DebugPlugins.Commons;
+using BLD;
+using BLD.Controllers;
+using BLDPlugins.DebugPlugins.Commons;
 
 public class DebugShapesBoundingBoxDisplayer : IPlugin
 {

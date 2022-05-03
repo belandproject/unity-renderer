@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL
+namespace BLD
 {
     /// <summary>
     /// This class is used by the AvatarMeshCombiner to combine meshes. Each layer represents a new generated sub-mesh.

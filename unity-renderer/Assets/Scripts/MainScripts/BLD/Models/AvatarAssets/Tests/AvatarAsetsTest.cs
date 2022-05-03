@@ -1,4 +1,4 @@
-﻿using DCL.Helpers;
+﻿using BLD.Helpers;
 using NUnit.Framework;
 
 namespace AvatarAssets_Test

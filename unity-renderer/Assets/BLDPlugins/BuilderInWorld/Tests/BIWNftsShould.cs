@@ -1,8 +1,8 @@
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Tests;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Environment = DCL.Environment;
+using Environment = BLD.Environment;
 
 public class BIWNftsShould : IntegrationTestSuite
 {

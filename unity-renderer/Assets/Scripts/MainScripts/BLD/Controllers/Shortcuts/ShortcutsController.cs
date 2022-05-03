@@ -1,5 +1,5 @@
 using System;
-using DCL;
+using BLD;
 using ExploreV2Analytics;
 using UnityEngine;
 
@@ -53,9 +53,9 @@ public class ShortcutsController : IDisposable
         togglePlacesAndEvents.OnTriggered -= TogglePlacesAndEventsTriggered;
     }
 
-    private void ToggleControlsTriggered(DCLAction_Trigger action) { DataStore.i.HUDs.controlsVisible.Set(!DataStore.i.HUDs.controlsVisible.Get()); }
+    private void ToggleControlsTriggered(BLDAction_Trigger action) { DataStore.i.HUDs.controlsVisible.Set(!DataStore.i.HUDs.controlsVisible.Get()); }
     
-    private void ToggleAvatarEditorTriggered(DCLAction_Trigger action) 
+    private void ToggleAvatarEditorTriggered(BLDAction_Trigger action) 
     {
         if (!DataStore.i.HUDs.isAvatarEditorInitialized.Get())
             return;
@@ -63,9 +63,9 @@ public class ShortcutsController : IDisposable
         DataStore.i.HUDs.avatarEditorVisible.Set(!DataStore.i.HUDs.avatarEditorVisible.Get()); 
     }
 
-    private void ToggleAvatarNamesTriggered(DCLAction_Trigger action) { DataStore.i.HUDs.avatarNamesVisible.Set(!DataStore.i.HUDs.avatarNamesVisible.Get()); }
+    private void ToggleAvatarNamesTriggered(BLDAction_Trigger action) { DataStore.i.HUDs.avatarNamesVisible.Set(!DataStore.i.HUDs.avatarNamesVisible.Get()); }
 
-    private void ToggleQuestPanel(DCLAction_Trigger action)
+    private void ToggleQuestPanel(BLDAction_Trigger action)
     {
         if (!DataStore.i.Quests.isInitialized.Get())
             return;
@@ -75,7 +75,7 @@ public class ShortcutsController : IDisposable
         DataStore.i.HUDs.questsPanelVisible.Set(value);
     }
 
-    private void ToggleStartMenuTriggered(DCLAction_Trigger action)
+    private void ToggleStartMenuTriggered(BLDAction_Trigger action)
     {
         bool value = !DataStore.i.exploreV2.isOpen.Get();
         if (DataStore.i.common.isSignUpFlow.Get()) return;
@@ -91,9 +91,9 @@ public class ShortcutsController : IDisposable
         }
     }
 
-    private void ToggleExpressionsTriggered(DCLAction_Trigger action) { DataStore.i.HUDs.emotesVisible.Set(!DataStore.i.HUDs.emotesVisible.Get()); }
+    private void ToggleExpressionsTriggered(BLDAction_Trigger action) { DataStore.i.HUDs.emotesVisible.Set(!DataStore.i.HUDs.emotesVisible.Get()); }
     
-    private void ToggleNavMapTriggered(DCLAction_Trigger action) 
+    private void ToggleNavMapTriggered(BLDAction_Trigger action) 
     {
         if (!DataStore.i.HUDs.isNavMapInitialized.Get())
             return;
@@ -101,7 +101,7 @@ public class ShortcutsController : IDisposable
         DataStore.i.HUDs.navmapVisible.Set(!DataStore.i.HUDs.navmapVisible.Get()); 
     }
 
-    private void TogglePlacesAndEventsTriggered(DCLAction_Trigger action)
+    private void TogglePlacesAndEventsTriggered(BLDAction_Trigger action)
     {
         if (!DataStore.i.exploreV2.isPlacesAndEventsSectionInitialized.Get())
             return;

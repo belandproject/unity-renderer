@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class CameraStateFPS : CameraStateBase
     {

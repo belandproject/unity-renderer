@@ -175,23 +175,23 @@ public class QuickBarView : MonoBehaviour, IQuickBarView
         shortcutsImgs[shortcutIndex].SetEmpty();
     }
 
-    private void OnQuickBar1InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(0); }
+    private void OnQuickBar1InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(0); }
 
-    private void OnQuickBar2InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(1); }
+    private void OnQuickBar2InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(1); }
 
-    private void OnQuickBar3InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(2); }
+    private void OnQuickBar3InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(2); }
 
-    private void OnQuickBar4InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(3); }
+    private void OnQuickBar4InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(3); }
 
-    private void OnQuickBar5InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(4); }
+    private void OnQuickBar5InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(4); }
 
-    private void OnQuickBar6InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(5); }
+    private void OnQuickBar6InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(5); }
 
-    private void OnQuickBar7InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(6); }
+    private void OnQuickBar7InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(6); }
 
-    private void OnQuickBar8InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(7); }
+    private void OnQuickBar8InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(7); }
 
-    private void OnQuickBar9InputTriggered(DCLAction_Trigger action) { RaiseQuickBarInputTriggered(8); }
+    private void OnQuickBar9InputTriggered(BLDAction_Trigger action) { RaiseQuickBarInputTriggered(8); }
 
     public void RaiseQuickBarInputTriggered(int index) { OnQuickBarInputTriggered?.Invoke(index); }
 

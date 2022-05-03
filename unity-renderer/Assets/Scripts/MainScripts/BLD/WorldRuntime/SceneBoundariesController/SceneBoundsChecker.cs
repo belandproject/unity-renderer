@@ -1,27 +1,27 @@
-using DCL.Components;
-using DCL.Models;
+using BLD.Components;
+using BLD.Models;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
-using DCL.Helpers;
+using BLD.Helpers;
 
-namespace DCL.Controllers
+namespace BLD.Controllers
 {
     public class SceneBoundsChecker : ISceneBoundsChecker
     {
         public const int TRIGGER_HIGHPRIO_VALUE = 1000;
-        public event Action<IDCLEntity, bool> OnEntityBoundsCheckerStatusChanged;
+        public event Action<IBLDEntity, bool> OnEntityBoundsCheckerStatusChanged;
         public bool enabled => entitiesCheckRoutine != null;
         public float timeBetweenChecks { get; set; } = 0.5f;
 
         // We use Hashset instead of Queue to be able to have a unique representation of each entity when added.
-        HashSet<IDCLEntity> highPrioEntitiesToCheck = new HashSet<IDCLEntity>();
-        HashSet<IDCLEntity> entitiesToCheck = new HashSet<IDCLEntity>();
-        HashSet<IDCLEntity> checkedEntities = new HashSet<IDCLEntity>();
+        HashSet<IBLDEntity> highPrioEntitiesToCheck = new HashSet<IBLDEntity>();
+        HashSet<IBLDEntity> entitiesToCheck = new HashSet<IBLDEntity>();
+        HashSet<IBLDEntity> checkedEntities = new HashSet<IBLDEntity>();
         Coroutine entitiesCheckRoutine = null;
         float lastCheckTime;
-        private HashSet<IDCLEntity> persistentEntities = new HashSet<IDCLEntity>();
+        private HashSet<IBLDEntity> persistentEntities = new HashSet<IBLDEntity>();
 
         public int entitiesToCheckCount => entitiesToCheck.Count;
         public int highPrioEntitiesToCheckCount => highPrioEntitiesToCheck.Count;
@@ -61,12 +61,12 @@ namespace DCL.Controllers
                     //TODO(Brian): Remove later when we implement a centralized way of handling time budgets
                     var messagingManager = Environment.i.messaging.manager as MessagingControllersManager;
 
-                    void processEntitiesList(HashSet<IDCLEntity> entities)
+                    void processEntitiesList(HashSet<IBLDEntity> entities)
                     {
                         if (messagingManager != null && messagingManager.timeBudgetCounter <= 0f)
                             return;
 
-                        using HashSet<IDCLEntity>.Enumerator iterator = entities.GetEnumerator();
+                        using HashSet<IBLDEntity>.Enumerator iterator = entities.GetEnumerator();
                         while (iterator.MoveNext())
                         {
                             if (messagingManager != null && messagingManager.timeBudgetCounter <= 0f)
@@ -138,7 +138,7 @@ namespace DCL.Controllers
             Stop();
         }
 
-        public void AddEntityToBeChecked(IDCLEntity entity)
+        public void AddEntityToBeChecked(IBLDEntity entity)
         {
             if (!enabled)
                 return;
@@ -149,7 +149,7 @@ namespace DCL.Controllers
         /// <summary>
         /// Add an entity that will be consistently checked, until manually removed from the list.
         /// </summary>
-        public void AddPersistent(IDCLEntity entity)
+        public void AddPersistent(IBLDEntity entity)
         {
             if (!enabled)
                 return;
@@ -163,9 +163,9 @@ namespace DCL.Controllers
         /// Returns whether an entity was added to be consistently checked
         /// </summary>
         ///
-        public bool WasAddedAsPersistent(IDCLEntity entity) { return persistentEntities.Contains(entity); }
+        public bool WasAddedAsPersistent(IBLDEntity entity) { return persistentEntities.Contains(entity); }
 
-        public void RemoveEntityToBeChecked(IDCLEntity entity)
+        public void RemoveEntityToBeChecked(IBLDEntity entity)
         {
             if (!enabled)
                 return;
@@ -173,7 +173,7 @@ namespace DCL.Controllers
             OnRemoveEntity(entity);
         }
 
-        public void EvaluateEntityPosition(IDCLEntity entity)
+        public void EvaluateEntityPosition(IBLDEntity entity)
         {
             if (entity == null || entity.scene == null || entity.gameObject == null)
                 return;
@@ -209,7 +209,7 @@ namespace DCL.Controllers
             EvaluateMeshBounds(entity);
         }
 
-        public bool IsEntityInsideSceneBoundaries(IDCLEntity entity)
+        public bool IsEntityInsideSceneBoundaries(IBLDEntity entity)
         {
             if (entity.meshesInfo == null || entity.meshesInfo.meshRootGameObject == null || entity.meshesInfo.mergedBounds == null)
                 return false;
@@ -226,7 +226,7 @@ namespace DCL.Controllers
             return isInsideBoundaries;
         }
 
-        void EvaluateMeshBounds(IDCLEntity entity)
+        void EvaluateMeshBounds(IBLDEntity entity)
         {
             bool isInsideBoundaries = IsEntityInsideSceneBoundaries(entity);
             if (entity.isInsideBoundaries != isInsideBoundaries)
@@ -240,7 +240,7 @@ namespace DCL.Controllers
             UpdateComponents(entity, isInsideBoundaries);
         }
 
-        protected bool AreSubmeshesInsideBoundaries(IDCLEntity entity)
+        protected bool AreSubmeshesInsideBoundaries(IBLDEntity entity)
         {
             for (int i = 0; i < entity.meshesInfo.renderers.Length; i++)
             {
@@ -279,7 +279,7 @@ namespace DCL.Controllers
             }
         }
 
-        protected void UpdateComponents(IDCLEntity entity, bool isInsideBoundaries)
+        protected void UpdateComponents(IBLDEntity entity, bool isInsideBoundaries)
         {
             IOutOfSceneBoundariesHandler[] components = entity.gameObject.GetComponentsInChildren<IOutOfSceneBoundariesHandler>();
 
@@ -289,12 +289,12 @@ namespace DCL.Controllers
             }
         }
 
-        protected void OnAddEntity(IDCLEntity entity)
+        protected void OnAddEntity(IBLDEntity entity)
         {
             AddEntityBasedOnPriority(entity);
         }
 
-        protected void OnRemoveEntity(IDCLEntity entity)
+        protected void OnRemoveEntity(IBLDEntity entity)
         {
             highPrioEntitiesToCheck.Remove(entity);
             entitiesToCheck.Remove(entity);
@@ -302,7 +302,7 @@ namespace DCL.Controllers
             feedbackStyle.ApplyFeedback(entity.meshesInfo, true);
         }
 
-        protected void AddEntityBasedOnPriority(IDCLEntity entity)
+        protected void AddEntityBasedOnPriority(IBLDEntity entity)
         {
             if (IsHighPrioEntity(entity) && !highPrioEntitiesToCheck.Contains(entity))
                 highPrioEntitiesToCheck.Add(entity);
@@ -310,7 +310,7 @@ namespace DCL.Controllers
                 entitiesToCheck.Add(entity);
         }
 
-        protected bool IsHighPrioEntity(IDCLEntity entity)
+        protected bool IsHighPrioEntity(IBLDEntity entity)
         {
             if (entity.gameObject == null)
                 return false;

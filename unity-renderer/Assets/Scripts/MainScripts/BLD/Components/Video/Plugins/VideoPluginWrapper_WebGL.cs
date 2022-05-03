@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace DCL.Components.Video.Plugin
+namespace BLD.Components.Video.Plugin
 {
     public class VideoPluginWrapper_WebGL : IVideoPluginWrapper
     {

@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
-using DCL.Helpers;
-using DCL.Helpers.NFT;
+using BLD.Helpers;
+using BLD.Helpers.NFT;
 using System.IO;
 using System.Linq;
-using DCL;
-using DCL.Builder;
-using DCL.Camera;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Models;
+using BLD;
+using BLD.Builder;
+using BLD.Camera;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Models;
 using NSubstitute;
 using NSubstitute.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using CameraController = DCL.Camera.CameraController;
+using CameraController = BLD.Camera.CameraController;
 using Object = UnityEngine.Object;
 
 public static class BIWTestUtils

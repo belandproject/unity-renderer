@@ -1,11 +1,11 @@
-using DCL.Controllers;
-using DCL.Models;
+using BLD.Controllers;
+using BLD.Models;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public struct ColliderInfo
     {
-        public IDCLEntity entity;
+        public IBLDEntity entity;
         public IParcelScene scene;
         public string meshName;
     }

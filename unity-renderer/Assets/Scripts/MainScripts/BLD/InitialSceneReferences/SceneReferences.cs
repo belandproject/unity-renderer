@@ -1,11 +1,11 @@
 using System.Data.Common;
 using Cinemachine;
-using DCL.Camera;
-using DCL.Helpers;
+using BLD.Camera;
+using BLD.Helpers;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace DCL
+namespace BLD
 {
     public class SceneReferences : Singleton<SceneReferences>, ISceneReferences
     {

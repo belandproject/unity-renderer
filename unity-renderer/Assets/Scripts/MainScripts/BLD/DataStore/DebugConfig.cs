@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace DCL
+namespace BLD
 {
     [System.Serializable]
     public class DebugConfig

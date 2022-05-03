@@ -1,4 +1,4 @@
-using DCL;
+using BLD;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -409,7 +409,7 @@ public class ExploreV2MenuComponentView : BaseComponentView, IExploreV2MenuCompo
             closeAction.OnTriggered += OnCloseActionTriggered;
     }
 
-    internal void OnCloseActionTriggered(DCLAction_Trigger action) { OnCloseButtonPressed?.Invoke(true); }
+    internal void OnCloseActionTriggered(BLDAction_Trigger action) { OnCloseButtonPressed?.Invoke(true); }
 
     internal void CheckIfProfileCardShouldBeClosed()
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using DCL;
-using DCL.Components;
-using DCL.Controllers;
-using DCL.Helpers;
-using DCL.Models;
+using BLD;
+using BLD.Components;
+using BLD.Controllers;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using Tests;
 using UnityEngine;
@@ -36,7 +36,7 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
 
         scene = TestUtils.CreateTestScene();
         scene.contentProvider = new ContentProvider_Dummy();
-        DCL.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
+        BLD.Configuration.ParcelSettings.VISUAL_LOADING_ENABLED = false;
 
         // TODO(Brian): Move these variants to a DataStore object to avoid having to reset them
         //              like this.
@@ -55,7 +55,7 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
     {
         PlaneShape planeShape = TestUtils.SharedComponentCreate<PlaneShape, PlaneShape.Model>(
             scene,
-            DCL.Models.CLASS_ID.PLANE_SHAPE,
+            BLD.Models.CLASS_ID.PLANE_SHAPE,
             new PlaneShape.Model()
             {
                 height = 1.5f,
@@ -69,7 +69,7 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
     {
         ConeShape coneShape = TestUtils.SharedComponentCreate<ConeShape, ConeShape.Model>(
             scene,
-            DCL.Models.CLASS_ID.CONE_SHAPE,
+            BLD.Models.CLASS_ID.CONE_SHAPE,
             new ConeShape.Model()
             {
                 radiusTop = 1,
@@ -83,7 +83,7 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
     {
         PBRMaterial basicMaterial = TestUtils.SharedComponentCreate<PBRMaterial, PBRMaterial.Model>(
             scene,
-            DCL.Models.CLASS_ID.PBR_MATERIAL,
+            BLD.Models.CLASS_ID.PBR_MATERIAL,
             new PBRMaterial.Model()
             {
                 albedoTexture = albedoTexId,
@@ -98,7 +98,7 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
     {
         BasicMaterial basicMaterial = TestUtils.SharedComponentCreate<BasicMaterial, BasicMaterial.Model>(
             scene,
-            DCL.Models.CLASS_ID.BASIC_MATERIAL,
+            BLD.Models.CLASS_ID.BASIC_MATERIAL,
             new BasicMaterial.Model()
             {
                 texture = textureId
@@ -106,14 +106,14 @@ public class IntegrationTestSuite_SceneMetricsCounter : IntegrationTestSuite
         return basicMaterial;
     }
 
-    protected DCLTexture CreateTexture( string path )
+    protected BLDTexture CreateTexture( string path )
     {
-        return TestUtils.CreateDCLTexture(scene, TestAssetsUtils.GetPath() + path);
+        return TestUtils.CreateBLDTexture(scene, TestAssetsUtils.GetPath() + path);
     }
 
-    protected IDCLEntity CreateEntityWithTransform()
+    protected IBLDEntity CreateEntityWithTransform()
     {
-        IDCLEntity entity = TestUtils.CreateSceneEntity(scene);
+        IBLDEntity entity = TestUtils.CreateSceneEntity(scene);
         TestUtils.SetEntityTransform(scene, entity, Vector3.one, Quaternion.identity, Vector3.one);
         return entity;
     }

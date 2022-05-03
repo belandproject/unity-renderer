@@ -1,7 +1,7 @@
-﻿using DCL.QuestsController;
+﻿using BLD.QuestsController;
 using System.Collections.Generic;
 
-namespace DCL.Huds.QuestsTracker
+namespace BLD.Huds.QuestsTracker
 {
     public class QuestsTrackerHUDController : IHUD
     {

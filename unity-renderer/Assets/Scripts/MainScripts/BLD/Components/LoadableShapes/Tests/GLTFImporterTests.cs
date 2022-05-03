@@ -1,11 +1,11 @@
-using DCL.Components;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Components;
+using BLD.Helpers;
+using BLD.Models;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
+using BLD;
+using BLD.Controllers;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityGLTF;
@@ -21,18 +21,18 @@ public class GLTFImporterTests : IntegrationTestSuite_Legacy
         scene = TestUtils.CreateTestScene();
     }
 
-    public IEnumerator LoadModel(string path, System.Action<IDCLEntity, InstantiatedGLTFObject> OnFinishLoading)
+    public IEnumerator LoadModel(string path, System.Action<IBLDEntity, InstantiatedGLTFObject> OnFinishLoading)
     {
         string src = TestAssetsUtils.GetPath() + path;
 
-        IDCLEntity entity = null;
+        IBLDEntity entity = null;
 
         GLTFShape gltfShape = TestUtils.CreateEntityWithGLTFShape(scene, Vector3.zero, src, out entity);
 
         yield return gltfShape.routine;
 
         yield return new WaitForAllMessagesProcessed();
-        yield return new DCL.WaitUntil(() => GLTFComponent.downloadingCount == 0);
+        yield return new BLD.WaitUntil(() => GLTFComponent.downloadingCount == 0);
 
         if (OnFinishLoading != null)
         {
@@ -140,7 +140,7 @@ public class GLTFImporterTests : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator TexturesCacheWorksProperly()
     {
-        IDCLEntity entity = null;
+        IBLDEntity entity = null;
         PersistentAssetCache.ImageCacheByUri.Clear();
         yield return LoadModel("/GLTF/Trunk/Trunk.gltf", (e, model) => entity = e);
 
@@ -156,7 +156,7 @@ public class GLTFImporterTests : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator TexturesOffsetAndScaleWorkProperly()
     {
-        IDCLEntity entity = null;
+        IBLDEntity entity = null;
         PersistentAssetCache.ImageCacheByUri.Clear();
         yield return LoadModel("/GLB/PlaneUVsOffset/planeUVsOffset.glb", (e, model) => entity = e);
 
@@ -170,7 +170,7 @@ public class GLTFImporterTests : IntegrationTestSuite_Legacy
     [UnityTest]
     public IEnumerator TexturesProcessTexCoords()
     {
-        IDCLEntity entity = null;
+        IBLDEntity entity = null;
         PersistentAssetCache.ImageCacheByUri.Clear();
         yield return LoadModel("/GLB/PlaneUVsMultichannel/PlaneUVsMultichannel.glb", (e, model) => entity = e);
 

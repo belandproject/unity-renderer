@@ -1,11 +1,11 @@
 using System;
-using DCL.Configuration;
-using DCL.Helpers;
-using DCL.Models;
+using BLD.Configuration;
+using BLD.Helpers;
+using BLD.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL.Components
+namespace BLD.Components
 {
     public class OnPointerEventColliders : IDisposable
     {
@@ -22,9 +22,9 @@ namespace DCL.Components
             return null;
         }
 
-        private IDCLEntity ownerEntity;
+        private IBLDEntity ownerEntity;
 
-        public void Initialize(IDCLEntity entity)
+        public void Initialize(IBLDEntity entity)
         {
             Renderer[] rendererList = entity?.meshesInfo?.renderers;
 

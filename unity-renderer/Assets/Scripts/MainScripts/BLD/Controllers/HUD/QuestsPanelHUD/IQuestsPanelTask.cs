@@ -1,4 +1,4 @@
-namespace DCL.Huds.QuestsPanel
+namespace BLD.Huds.QuestsPanel
 {
     public interface IQuestsPanelTask
     {

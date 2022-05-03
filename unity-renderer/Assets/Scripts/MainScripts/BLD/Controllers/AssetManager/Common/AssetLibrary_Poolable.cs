@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DCL
+namespace BLD
 {
     public class AssetLibrary_Poolable<AssetType> : AssetLibrary<AssetType>
         where AssetType : Asset_WithPoolableContainer

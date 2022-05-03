@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DCL.SettingsCommon;
+using BLD.SettingsCommon;
 using UnityEngine;
 
-namespace DCL.Camera
+namespace BLD.Camera
 {
     public class FreeCameraMovement : CameraStateBase, IFreeCameraMovement
     {
