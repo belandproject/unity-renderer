@@ -75,7 +75,7 @@ async function buildRollup() {
   const outputOptions: OutputOptions = {
     file: "./dist/index.js",
     format: "iife",
-    name: "DclRenderer",
+    name: "BLDRenderer",
     sourcemap: true,
     banner,
   }

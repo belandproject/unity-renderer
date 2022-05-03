@@ -8,7 +8,7 @@
 set -u # no unbound variables
 
 # Upload artifacts
-npx @dcl/cdn-uploader@next \
+npx @beland/cdn-uploader@next \
   --bucket "$S3_BUCKET" \
   --local-folder "/tmp/workspace/unity-renderer/browser-interface/dist" \
   --bucket-folder "branch/${CIRCLE_BRANCH}"

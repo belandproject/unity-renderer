@@ -39,7 +39,7 @@ export type RendererOptions = {
   enableBrotli?: boolean
 }
 
-export type DecentralandRendererInstance = {
+export type BelandRendererInstance = {
   /**
    * Signal sent by unity after it started correctly
    * it is a promise, that makes it awaitable.
@@ -48,12 +48,12 @@ export type DecentralandRendererInstance = {
    */
   engineStartedFuture: Promise<{}>
 
-  // soon there will be more protocol functions here https://github.com/decentraland/renderer-protocol
+  // soon there will be more protocol functions here https://github.com/belandproject/renderer-protocol
   // and originalUnity will be deprecated to decouple the kernel from unity's impl internals
   originalUnity: UnityGame
 }
 
-export async function initializeWebRenderer(options: RendererOptions): Promise<DecentralandRendererInstance> {
+export async function initializeWebRenderer(options: RendererOptions): Promise<BelandRendererInstance> {
   if (isMobile()) {
     throw new Error("Mobile is not supported")
   }
@@ -93,9 +93,8 @@ export async function initializeWebRenderer(options: RendererOptions): Promise<D
 
   const engineStartedFuture = future<{}>()
 
-  // The namespace DCL is exposed to global because the unity template uses it to send the messages
-  // @see https://github.com/belandproject/unity-renderer/blob/bc2bf1ee0d685132c85606055e592bac038b3471/unity-renderer/Assets/Plugins/JSFunctions.jslib#L6-L29
-  ;(globalThis as any).DCL = {
+  // The namespace BLD is exposed to global because the unity template uses it to send the messages
+  ;(globalThis as any).BLD = {
     // This function get's called by the engine
     EngineStarted() {
       engineStartedFuture.resolve({})
