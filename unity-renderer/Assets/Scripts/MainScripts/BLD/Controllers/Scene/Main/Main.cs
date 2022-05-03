@@ -109,7 +109,7 @@ namespace BLD
             BLD.Interface.WebInterface.SendSystemInfoReport();
 
             // We trigger the Beland logic once everything is initialized.
-            BLD.Interface.WebInterface.StartDecentraland();
+            BLD.Interface.WebInterface.StartBeland();
         }
 
         protected virtual void Update()

@@ -303,8 +303,8 @@ public class BuilderMainPanelController : IHUD, IBuilderMainPanelController
             network = TESTING_TLD;
             DataStore.i.realm.playerRealm.Set(new CurrentRealmModel()
             {
-                domain = $"https://peer-lb.decentraland.{TESTING_TLD}",
-                contentServerUrl = $"https://peer-lb.decentraland.{TESTING_TLD}/content",
+                domain = $"https://hub.beland.io",
+                contentServerUrl = $"https://hub.beland.io/ipfs",
             });
         }
 #endif

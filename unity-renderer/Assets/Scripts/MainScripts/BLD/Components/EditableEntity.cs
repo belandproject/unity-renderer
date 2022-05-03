@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Note (Adrian): DLCBuilderEntity and DecentralandEntityToEdit should be merged somehow and this class should change or dissapear
+//Note (Adrian): DLCBuilderEntity and BelandEntityToEdit should be merged somehow and this class should change or dissapear
 public class EditableEntity : MonoBehaviour
 {
     public IBLDEntity rootEntity { protected set; get; }

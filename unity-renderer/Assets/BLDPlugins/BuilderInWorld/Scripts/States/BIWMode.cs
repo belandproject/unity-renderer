@@ -170,9 +170,9 @@ public class BIWMode : IBIWMode
         freeMovementGO.transform.rotation = zeroAnglesQuaternion;
         editionGO.transform.rotation = zeroAnglesQuaternion;
 
-        foreach (BIWEntity decentralandEntityToEdit in selectedEntities)
+        foreach (BIWEntity belandEntityToEdit in selectedEntities)
         {
-            decentralandEntityToEdit.ResetTransfrom();
+            belandEntityToEdit.ResetTransfrom();
         }
 
         CenterGameObjectToEdit();

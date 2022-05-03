@@ -14,8 +14,8 @@ public class Catalyst : ICatalyst
     public string contentUrl => realmContentServerUrl;
     public string lambdasUrl => $"{realmDomain}/lambdas";
 
-    private string realmDomain = "https://peer-lb.decentraland.org";
-    private string realmContentServerUrl = "https://peer-lb.decentraland.org/content";
+    private string realmDomain = "";
+    private string realmContentServerUrl = "";
 
     private readonly IDataCache<CatalystSceneEntityPayload[]> deployedScenesCache = new DataCache<CatalystSceneEntityPayload[]>();
 

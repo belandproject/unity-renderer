@@ -76,7 +76,7 @@ public class BLDCharacterController : MonoBehaviour
     public static System.Action<BLDCharacterPosition> OnPositionSet;
     public event System.Action<float> OnUpdateFinish;
 
-    // Will allow the game objects to be set, and create the DecentralandEntity manually during the Awake
+    // Will allow the game objects to be set, and create the BelandEntity manually during the Awake
     public BLD.Models.IBLDEntity avatarReference { get; private set; }
     public BLD.Models.IBLDEntity firstPersonCameraReference { get; private set; }
 
@@ -137,8 +137,8 @@ public class BLDCharacterController : MonoBehaviour
             throw new System.Exception("Both the avatar and first person camera game objects must be set.");
         }
 
-        avatarReference = new BLD.Models.DecentralandEntity { gameObject = avatarGameObject };
-        firstPersonCameraReference = new BLD.Models.DecentralandEntity { gameObject = firstPersonCameraGameObject };
+        avatarReference = new BLD.Models.BelandEntity { gameObject = avatarGameObject };
+        firstPersonCameraReference = new BLD.Models.BelandEntity { gameObject = firstPersonCameraGameObject };
     }
 
     private void SubscribeToInput()

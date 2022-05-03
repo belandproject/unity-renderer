@@ -9,7 +9,7 @@ using UnityEngine;
 namespace BLD.Models
 {
     [Serializable]
-    public class DecentralandEntity : IBLDEntity
+    public class BelandEntity : IBLDEntity
     {
         public IParcelScene scene { get; set; }
         public bool markedForCleanup { get; set; } = false;
@@ -41,7 +41,7 @@ namespace BLD.Models
 
         bool isReleased = false;
 
-        public DecentralandEntity()
+        public BelandEntity()
         {
             meshesInfo = new MeshesInfo();
             OnShapeUpdated += (entity) => meshesInfo.UpdateRenderersCollection();

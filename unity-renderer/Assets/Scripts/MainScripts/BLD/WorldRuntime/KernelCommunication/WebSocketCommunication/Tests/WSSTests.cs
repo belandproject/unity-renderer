@@ -39,7 +39,7 @@ namespace Tests
                 catch (Exception e)
                 {
                     Debug.LogError("message: " + e.ToString());
-                    Assert.Fail("Failed to connect to decentraland service!");
+                    Assert.Fail("Failed to connect to beland service!");
                 }
 
                 string payloadTest = (Resources.Load("TestJSON/SceneLoadingTest") as TextAsset).text;

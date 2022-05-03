@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 namespace BLD.Interface
 {
     /**
-     * This class contains the outgoing interface of Decentraland.
+     * This class contains the outgoing interface of Beland.
      * You must call those functions to interact with the WebInterface.
      *
      * The messages comming from the WebInterface instead, are reported directly to
@@ -680,7 +680,7 @@ namespace BLD.Interface
      * This method is called after the first render. It marks the loading of the
      * rest of the JS client.
      */
-    [DllImport("__Internal")] public static extern void StartDecentraland();
+    [DllImport("__Internal")] public static extern void StartBeland();
     [DllImport("__Internal")] public static extern void MessageFromEngine(string type, string message);
     [DllImport("__Internal")] public static extern string GetGraphicCard();
     [DllImport("__Internal")] public static extern bool CheckURLParam(string targetParam);
@@ -703,7 +703,7 @@ namespace BLD.Interface
         
         private static bool hasQueuedMessages = false;
         private static List<(string, string)> queuedMessages = new List<(string, string)>();
-        public static void StartDecentraland() { }
+        public static void StartBeland() { }
         public static bool CheckURLParam(string targetParam)
         {
             return false;
@@ -1585,7 +1585,7 @@ namespace BLD.Interface
             timeReportPayload.isPaused = isPaused;
             timeReportPayload.timeNormalizationFactor = timeNormalizationFactor;
             timeReportPayload.cycleTime = cycleTime;
-            SendMessage("ReportDecentralandTime", timeReportPayload);
+            SendMessage("ReportBelandTime", timeReportPayload);
         }
     }
 }

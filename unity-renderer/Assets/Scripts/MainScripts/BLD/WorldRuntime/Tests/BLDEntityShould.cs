@@ -8,7 +8,7 @@ public class BLDEntityShould
     [Test]
     public void CleanUpEntityComponents()
     {
-        DecentralandEntity entity = new DecentralandEntity();
+        BelandEntity entity = new BelandEntity();
         IEntityComponent component = Substitute.For<IEntityComponent>();
         entity.components.Add(CLASS_ID_COMPONENT.NONE, component);
 

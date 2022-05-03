@@ -22,8 +22,8 @@ namespace BLD
         void SortScenesByDistance();
         void UpdateParcelScenesExecute(LoadParcelScenesMessage.UnityParcelScene scene);
         void UnloadScene(string sceneKey);
-        void LoadParcelScenes(string decentralandSceneJSON);
-        void UpdateParcelScenes(string decentralandSceneJSON);
+        void LoadParcelScenes(string belandSceneJSON);
+        void UpdateParcelScenes(string belandSceneJSON);
         void UnloadAllScenesQueued();
         void CreateGlobalScene(string json);
         void IsolateScene(IParcelScene sceneToActive);

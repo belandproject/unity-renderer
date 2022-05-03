@@ -1,10 +1,5 @@
 using UnityEngine;
 
-/*
-* PrimitiveMeshBuilder originated in the Beland that can be found at:
-* https://github.com/fairwood/DecentralandUnityPlugin
-*/
-
 namespace BLD.Helpers
 {
     public class PrimitiveMeshBuilder
@@ -433,7 +428,7 @@ namespace BLD.Helpers
                 ? "BLD Cylinder"
                 : "BLD Cone" + numVertices + "v" + radiusTop + "t" + radiusBottom + "b" + length + "l" + length +
                   (outside ? "o" : "") + (inside ? "i" : "");
-            //string meshPrefabPath = "Assets/Decentraland/Internal/" + meshName + ".asset";
+            //string meshPrefabPath = "Assets/Beland/Internal/" + meshName + ".asset";
             Mesh mesh = null; //(Mesh)AssetDatabase.LoadAssetAtPath(meshPrefabPath, typeof(Mesh));
             if (mesh == null)
             {

@@ -108,7 +108,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestConstrainedPanelMaskDoesntApplyToDecentralandUI()
+        public IEnumerator TestConstrainedPanelMaskDoesntApplyToBelandUI()
         {
             scene.isPersistent = true;
 

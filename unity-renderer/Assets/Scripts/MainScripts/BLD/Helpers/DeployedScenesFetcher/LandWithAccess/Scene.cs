@@ -84,7 +84,7 @@ namespace BLD.Builder
         static string GetNavmapThumbnailUrl(CatalystSceneEntityPayload pointerData, string contentUrl)
         {
             const string contentDownloadUrlFormat = "{0}/contents/{1}";
-            const string builderUrlFormat = "https://builder-api.decentraland.org/v1/projects/{0}/media/preview.png";
+            const string builderUrlFormat = "https://builder-api.beland.io/v1/projects/{0}/media/preview.png";
 
             string thumbnail = pointerData.metadata.display.navmapThumbnail;
 

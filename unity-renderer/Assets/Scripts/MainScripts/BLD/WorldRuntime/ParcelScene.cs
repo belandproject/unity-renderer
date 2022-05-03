@@ -258,7 +258,7 @@ namespace BLD.Controllers
                 return entities[id];
             }
 
-            var newEntity = new DecentralandEntity();
+            var newEntity = new BelandEntity();
             newEntity.entityId = id;
 
             PoolManagerFactory.EnsureEntityPool(false);
@@ -585,14 +585,14 @@ namespace BLD.Controllers
 
         public void EntityComponentRemove(string entityId, string name)
         {
-            IBLDEntity decentralandEntity = GetEntityForUpdate(entityId);
+            IBLDEntity belandEntity = GetEntityForUpdate(entityId);
 
-            if (decentralandEntity == null)
+            if (belandEntity == null)
             {
                 return;
             }
 
-            RemoveEntityComponent(decentralandEntity, name);
+            RemoveEntityComponent(belandEntity, name);
         }
 
         public T GetSharedComponent<T>()

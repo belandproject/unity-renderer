@@ -41,12 +41,12 @@ public class BLDName : BaseDisposable
         }
 
 #if UNITY_EDITOR
-        foreach (IBLDEntity decentralandEntity in this.attachedEntities)
+        foreach (IBLDEntity belandEntity in this.attachedEntities)
         {
             if (!string.IsNullOrEmpty(oldName))
-                decentralandEntity.gameObject.name.Replace(oldName, "");
+                belandEntity.gameObject.name.Replace(oldName, "");
 
-            decentralandEntity.gameObject.name += $"-{modelToApply.value}";
+            belandEntity.gameObject.name += $"-{modelToApply.value}";
         }
 #endif
         oldName = modelToApply.value;

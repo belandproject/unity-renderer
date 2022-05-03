@@ -724,12 +724,12 @@ namespace BLD
             }
         }
 
-        public void LoadParcelScenes(string decentralandSceneJSON)
+        public void LoadParcelScenes(string belandSceneJSON)
         {
             var queuedMessage = new QueuedSceneMessage()
             {
                 type = QueuedSceneMessage.Type.LOAD_PARCEL,
-                message = decentralandSceneJSON
+                message = belandSceneJSON
             };
 
             ProfilingEvents.OnMessageWillQueue?.Invoke(MessagingTypes.SCENE_LOAD);
@@ -737,13 +737,13 @@ namespace BLD
             Environment.i.messaging.manager.ForceEnqueueToGlobal(MessagingBusType.INIT, queuedMessage);
 
             if (VERBOSE)
-                Debug.Log($"{Time.frameCount} : Load parcel scene queue {decentralandSceneJSON}");
+                Debug.Log($"{Time.frameCount} : Load parcel scene queue {belandSceneJSON}");
         }
 
-        public void UpdateParcelScenes(string decentralandSceneJSON)
+        public void UpdateParcelScenes(string belandSceneJSON)
         {
             var queuedMessage = new QueuedSceneMessage()
-                { type = QueuedSceneMessage.Type.UPDATE_PARCEL, message = decentralandSceneJSON };
+                { type = QueuedSceneMessage.Type.UPDATE_PARCEL, message = belandSceneJSON };
 
             ProfilingEvents.OnMessageWillQueue?.Invoke(MessagingTypes.SCENE_UPDATE);
 

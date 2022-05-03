@@ -284,9 +284,9 @@ public class VoxelController
         isCreatingMultipleVoxels = true;
     }
 
-    public void SetVoxelSelected(BIWEntity decentralandEntityToEdit)
+    public void SetVoxelSelected(BIWEntity belandEntityToEdit)
     {
-        lastVoxelCreated = decentralandEntityToEdit;
+        lastVoxelCreated = belandEntityToEdit;
         lastVoxelCreated.rootEntity.gameObject.transform.localPosition = Vector3.zero;
     }
 
