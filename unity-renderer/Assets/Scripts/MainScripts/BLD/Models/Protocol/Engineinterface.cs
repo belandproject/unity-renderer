@@ -120,7 +120,7 @@ namespace BLD.Interface {
             "b3NpdGlvbhI0Cghjb250ZW50cxgEIAMoCzIiLmVuZ2luZWludGVyZmFjZS5Q",
             "Ql9Db250ZW50TWFwcGluZxIPCgdiYXNlVXJsGAUgASgJIi8KEFBCX0NyZWF0",
             "ZVVJU2NlbmUSCgoCaWQYASABKAkSDwoHYmFzZVVybBgCIAEoCSIhCg5QQl9V",
-            "bmxvYWRTY2VuZRIPCgdzY2VuZUlkGAEgASgJIowECg1QQl9EY2xNZXNzYWdl",
+            "bmxvYWRTY2VuZRIPCgdzY2VuZUlkGAEgASgJIowECg1QQl9CbGRNZXNzYWdl",
             "EioKCHNldERlYnVnGAEgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5SAAS",
             "NAoSc2V0U2NlbmVEZWJ1Z1BhbmVsGAIgASgLMhYuZ29vZ2xlLnByb3RvYnVm",
             "LkVtcHR5SAASNQoTc2V0RW5naW5lRGVidWdQYW5lbBgDIAEoCzIWLmdvb2ds",
@@ -331,7 +331,7 @@ namespace BLD.Interface {
             "X09wZW5FeHRlcm5hbFVybBILCgN1cmwYASABKAkiUgoQUEJfT3Blbk5GVERp",
             "YWxvZxIcChRhc3NldENvbnRyYWN0QWRkcmVzcxgBIAEoCRIPCgd0b2tlbklk",
             "GAIgASgJEg8KB2NvbW1lbnQYAyABKAkqNQoVUEJfVUlTdGFja09yaWVudGF0",
-            "aW9uEgwKCFZFUlRJQ0FMEAASDgoKSE9SSVpPTlRBTBABQhCqAg1EQ0wuSW50",
+            "aW9uEgwKCFZFUlRJQ0FMEAASDgoKSE9SSVpPTlRBTBABQhCqAg1CTEQuSW50",
             "ZXJmYWNlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
@@ -362,7 +362,7 @@ namespace BLD.Interface {
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_LoadParcelScenes), global::BLD.Interface.PB_LoadParcelScenes.Parser, new[]{ "Id", "BasePosition", "Parcels", "Contents", "BaseUrl" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_CreateUIScene), global::BLD.Interface.PB_CreateUIScene.Parser, new[]{ "Id", "BaseUrl" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_UnloadScene), global::BLD.Interface.PB_UnloadScene.Parser, new[]{ "SceneId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_DclMessage), global::BLD.Interface.PB_DclMessage.Parser, new[]{ "SetDebug", "SetSceneDebugPanel", "SetEngineDebugPanel", "SendSceneMessage", "LoadParcelScenes", "UnloadScene", "SetPosition", "Reset", "CreateUIScene" }, new[]{ "Message" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_BldMessage), global::BLD.Interface.PB_BldMessage.Parser, new[]{ "SetDebug", "SetSceneDebugPanel", "SetEngineDebugPanel", "SendSceneMessage", "LoadParcelScenes", "UnloadScene", "SetPosition", "Reset", "CreateUIScene" }, new[]{ "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_AnimationState), global::BLD.Interface.PB_AnimationState.Parser, new[]{ "Clip", "Looping", "Weight", "Playing", "ShouldReset", "Speed" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_Animator), global::BLD.Interface.PB_Animator.Parser, new[]{ "WithCollisions", "Visible" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::BLD.Interface.PB_AudioClip), global::BLD.Interface.PB_AudioClip.Parser, new[]{ "Url", "Loop", "Volume" }, null, null, null, null),
@@ -6979,11 +6979,11 @@ namespace BLD.Interface {
 
   }
 
-  public sealed partial class PB_DclMessage : pb::IMessage<PB_DclMessage> {
-    private static readonly pb::MessageParser<PB_DclMessage> _parser = new pb::MessageParser<PB_DclMessage>(() => new PB_DclMessage());
+  public sealed partial class PB_BldMessage : pb::IMessage<PB_BldMessage> {
+    private static readonly pb::MessageParser<PB_BldMessage> _parser = new pb::MessageParser<PB_BldMessage>(() => new PB_BldMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PB_DclMessage> Parser { get { return _parser; } }
+    public static pb::MessageParser<PB_BldMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -6996,14 +6996,14 @@ namespace BLD.Interface {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PB_DclMessage() {
+    public PB_BldMessage() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PB_DclMessage(PB_DclMessage other) : this() {
+    public PB_BldMessage(PB_BldMessage other) : this() {
       switch (other.MessageCase) {
         case MessageOneofCase.SetDebug:
           SetDebug = other.SetDebug.Clone();
@@ -7038,8 +7038,8 @@ namespace BLD.Interface {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PB_DclMessage Clone() {
-      return new PB_DclMessage(this);
+    public PB_BldMessage Clone() {
+      return new PB_BldMessage(this);
     }
 
     /// <summary>Field number for the "setDebug" field.</summary>
@@ -7169,11 +7169,11 @@ namespace BLD.Interface {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as PB_DclMessage);
+      return Equals(other as PB_BldMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PB_DclMessage other) {
+    public bool Equals(PB_BldMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -7297,7 +7297,7 @@ namespace BLD.Interface {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PB_DclMessage other) {
+    public void MergeFrom(PB_BldMessage other) {
       if (other == null) {
         return;
       }

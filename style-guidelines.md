@@ -10,4 +10,4 @@ We don't use the `.resharper` extensions for `.editorconfig`. So if you use `res
 
 ### Rider
 
-You can find a settings export file in the root of the project called "rider_codeStyleDCLSetting". Bear in mind that the conversion between VS and Rider is not 1 on 1 but it's good enough.
+You can find a settings export file in the root of the project called "rider_codeStyleBLDSetting". Bear in mind that the conversion between VS and Rider is not 1 on 1 but it's good enough.
