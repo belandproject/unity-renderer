@@ -62,7 +62,7 @@ public class HUDBridge : MonoBehaviour
 
     public void RequestTeleport(string teleportDataJson) { HUDController.i.teleportHud?.RequestTeleport(teleportDataJson); }
 
-    public void UpdateBalanceOfMANA(string balance) { HUDController.i.profileHud?.SetManaBalance(balance); }
+    public void UpdateBalanceOfBEAN(string balance) { HUDController.i.profileHud?.SetBeanBalance(balance); }
 
     public void ShowAvatarEditorInSignUp()
     {

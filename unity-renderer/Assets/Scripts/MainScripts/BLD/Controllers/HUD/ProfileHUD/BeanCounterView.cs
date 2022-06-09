@@ -3,23 +3,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ProfileHUD sub-view that shows the user MANA balance.
+/// ProfileHUD sub-view that shows the user BEAN balance.
 /// </summary>
-internal class ManaCounterView : MonoBehaviour
+internal class BeanCounterView : MonoBehaviour
 {
     [SerializeField] internal TextMeshProUGUI balanceText;
-    [SerializeField] internal Button_OnPointerDown buttonManaInfo;
-    [SerializeField] internal Button buttonManaPurchase;
+    [SerializeField] internal Button_OnPointerDown buttonBeanInfo;
+    [SerializeField] internal Button buttonBeanPurchase;
 
     /// <summary>
-    /// Set the amount of MANA in the HUD.
+    /// Set the amount of BEAN in the HUD.
     /// </summary>
-    /// <param name="balance">Amount of MANA.</param>
+    /// <param name="balance">Amount of BEAN.</param>
     public void SetBalance(string balance)
     {
-        double manaBalance = 0;
-        if (double.TryParse(balance, out manaBalance))
-            SetBalance(manaBalance);
+        double beanBalance = 0;
+        if (double.TryParse(balance, out beanBalance))
+            SetBalance(beanBalance);
     }
 
     public void SetBalance(double balance) { balanceText.text = FormatBalanceToString(balance); }

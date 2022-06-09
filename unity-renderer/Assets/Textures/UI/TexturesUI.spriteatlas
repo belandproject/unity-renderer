@@ -56,7 +56,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 1eee3b038d846456b84c415627892c52, type: 3}
-    totalSpriteSurfaceArea: 2552760
+    totalSpriteSurfaceArea: 2550804
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -90,7 +90,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 511aa971d8654400498da53ce8f013b7, type: 3}
   - {fileID: 21300000, guid: 0d4bfb71b11af4dc0967886c03434d5b, type: 3}
   - {fileID: 21300000, guid: a26c049177d1b423cbf29f2f44dd73c2, type: 3}
-  - {fileID: 21300000, guid: db7198b10e7b549a68d088ccdf7377cf, type: 3}
   - {fileID: 21300000, guid: a6b6c8b1877c9c7498c971402965bdc0, type: 3}
   - {fileID: 21300000, guid: 25cfbec1e937f574abd4894b73b3ad4f, type: 3}
   - {fileID: 21300000, guid: 094ba0d1e5a654e69b2896b2e8b7393e, type: 3}
@@ -108,7 +107,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: aa3440b27b8b9423f9821f663863c0c0, type: 3}
   - {fileID: 21300000, guid: f0a40db225b774307b56e6cfbc73889a, type: 3}
   - {fileID: 21300000, guid: 03b222c2450ce4c57ba7e9d6268b0c92, type: 3}
-  - {fileID: 21300000, guid: 147d94c24838a2647bbaf2fb16ac913c, type: 3}
   - {fileID: 21300000, guid: 166eccd2b230b3a45b65e30f02348cd6, type: 3}
   - {fileID: 21300000, guid: 01b18fd2b4265411bbd6afcd11e373cc, type: 3}
   - {fileID: 21300000, guid: a628efe28360b426c8ca23b43ad06c2b, type: 3}
@@ -221,6 +219,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f28ec019b47e944689f27d8e149db2d5, type: 3}
   - {fileID: 21300000, guid: c1506c194eaa4321e99cad949f271045, type: 3}
   - {fileID: 21300000, guid: 1c63e329c16184c1bb493ada5f85c91b, type: 3}
+  - {fileID: 21300000, guid: b613324933c70a612bcd6db9bb85f69b, type: 3}
   - {fileID: 21300000, guid: f9934449af9e15443befe12f639d5979, type: 3}
   - {fileID: 21300000, guid: e36f3569fbdef4c609c33f7a1cebace5, type: 3}
   - {fileID: 21300000, guid: 247c07994d33848d5be25ccac8f0538d, type: 3}
@@ -374,7 +373,6 @@ SpriteAtlas:
   - SceneInfoContainer
   - Button16
   - BlockedUser
-  - ManaIcon
   - RectangleGreen
   - WarpIcon
   - NFTUniqueFrame
@@ -392,7 +390,6 @@ SpriteAtlas:
   - ExpandIcon
   - DialogBubble
   - WifiIcon
-  - PolygonManaIcon
   - MicrophoneVoiceChatOn
   - VoiceChatOn
   - DisclaimerBackground
@@ -505,6 +502,7 @@ SpriteAtlas:
   - BackpackOn
   - BelandLogoColor
   - Frame12
+  - BeanIcon
   - ContainerRadius24Shadow
   - Ellipse128
   - MessageIcon

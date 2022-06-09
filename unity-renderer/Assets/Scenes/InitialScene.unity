@@ -220,8 +220,8 @@ MonoBehaviour:
   kernelVersion: 
   useCustomContentServer: 1
   customContentServerUrl: https://ipfs-test.beland.io/ipfs/
-  baseUrlMode: 0
-  baseUrlCustom: http://localhost:8080/
+  baseUrlMode: 1
+  baseUrlCustom: https://play-test.beland.io/?
   environment: 1
   realm: loki
   startInCoords: {x: 0, y: 0}

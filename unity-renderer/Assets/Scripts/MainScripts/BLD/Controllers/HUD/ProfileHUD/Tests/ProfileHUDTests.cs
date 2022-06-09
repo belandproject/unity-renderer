@@ -32,7 +32,7 @@ public class ProfileHUDTests : IntegrationTestSuite_Legacy
     public void Creation()
     {
         Assert.NotNull(controller.view);
-        Assert.NotNull(controller.view.manaCounterView);
+        Assert.NotNull(controller.view.beanCounterView);
     }
 
     [Test]
@@ -40,7 +40,7 @@ public class ProfileHUDTests : IntegrationTestSuite_Legacy
     {
         Assert.IsTrue(controller.view.gameObject.activeInHierarchy);
         Assert.IsFalse(controller.view.menuShowHideAnimator.isVisible);
-        Assert.IsFalse(controller.view.manaCounterView.gameObject.activeInHierarchy);
+        Assert.IsFalse(controller.view.beanCounterView.gameObject.activeInHierarchy);
     }
 
     [Test]
@@ -107,12 +107,12 @@ public class ProfileHUDTests : IntegrationTestSuite_Legacy
     }
 
     [Test]
-    public void SetManaBalanceCorrectly()
+    public void SetBeanBalanceCorrectly()
     {
         string balance = "5";
 
-        controller.SetManaBalance(balance);
-        Assert.AreEqual(Convert.ToDouble(balance), Convert.ToDouble(controller.view.manaCounterView.balanceText.text));
+        controller.SetBeanBalance(balance);
+        Assert.AreEqual(Convert.ToDouble(balance), Convert.ToDouble(controller.view.beanCounterView.balanceText.text));
     }
 
     [Test]

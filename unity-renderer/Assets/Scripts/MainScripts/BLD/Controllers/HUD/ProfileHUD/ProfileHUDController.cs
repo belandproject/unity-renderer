@@ -18,19 +18,18 @@ public class ProfileHUDController : IHUD
     }
 
     private const string URL_CLAIM_NAME = "https://builder.beland.io/claim-name";
-    private const string URL_MANA_INFO = "https://docs.beland.io/examples/get-a-wallet";
-    private const string URL_MANA_PURCHASE = "https://account.beland.io";
+    private const string URL_BEAN_INFO = "https://docs.beland.io/examples/get-a-wallet";
+    private const string URL_BEAN_PURCHASE = "https://account.beland.io";
     private const string URL_TERMS_OF_USE = "https://beland.io/terms";
     private const string URL_PRIVACY_POLICY = "https://beland.io/privacy";
-    private const float FETCH_MANA_INTERVAL = 60;
+    private const float FETCH_BEAN_INTERVAL = 60;
 
     public readonly ProfileHUDView view;
     internal AvatarEditorHUDController avatarEditorHud;
 
     private UserProfile ownUserProfile => UserProfile.GetOwnUserProfile();
     private IMouseCatcher mouseCatcher;
-    private Coroutine fetchManaIntervalRoutine = null;
-    private Coroutine fetchPolygonManaIntervalRoutine = null;
+    private Coroutine fetchBeanIntervalRoutine = null;
 
     public RectTransform tutorialTooltipReference { get => view.tutorialTooltipReference; }
 
@@ -69,16 +68,16 @@ public class ProfileHUDController : IHUD
         };
         view.OnClose += () => OnClose?.Invoke();
 
-        if (view.manaCounterView)
+        if (view.beanCounterView)
         {
-            view.manaCounterView.buttonManaInfo.onPointerDown += () => WebInterface.OpenURL(URL_MANA_INFO);
-            view.manaCounterView.buttonManaPurchase.onClick.AddListener(() => WebInterface.OpenURL(URL_MANA_PURCHASE));
+            view.beanCounterView.buttonBeanInfo.onPointerDown += () => WebInterface.OpenURL(URL_BEAN_INFO);
+            view.beanCounterView.buttonBeanPurchase.onClick.AddListener(() => WebInterface.OpenURL(URL_BEAN_PURCHASE));
         }
 
-        if (view.polygonManaCounterView)
+        if (view.polygonBeanCounterView)
         {
-            view.polygonManaCounterView.buttonManaInfo.onPointerDown += () => WebInterface.OpenURL(URL_MANA_INFO);
-            view.polygonManaCounterView.buttonManaPurchase.onClick.AddListener(() => WebInterface.OpenURL(URL_MANA_PURCHASE));
+            view.polygonBeanCounterView.buttonBeanInfo.onPointerDown += () => WebInterface.OpenURL(URL_BEAN_INFO);
+            view.polygonBeanCounterView.buttonBeanPurchase.onClick.AddListener(() => WebInterface.OpenURL(URL_BEAN_PURCHASE));
         }
 
         ownUserProfile.OnUpdate += OnProfileUpdated;
@@ -106,33 +105,23 @@ public class ProfileHUDController : IHUD
     {
         view?.SetVisibility(visible);
 
-        if (visible && fetchManaIntervalRoutine == null)
+        if (visible && fetchBeanIntervalRoutine == null)
         {
-            fetchManaIntervalRoutine = CoroutineStarter.Start(ManaIntervalRoutine());
+            fetchBeanIntervalRoutine = CoroutineStarter.Start(BeanIntervalRoutine());
         }
-        else if (!visible && fetchManaIntervalRoutine != null)
+        else if (!visible && fetchBeanIntervalRoutine != null)
         {
-            CoroutineStarter.Stop(fetchManaIntervalRoutine);
-            fetchManaIntervalRoutine = null;
-        }
-
-        if (visible && fetchPolygonManaIntervalRoutine == null)
-        {
-            fetchPolygonManaIntervalRoutine = CoroutineStarter.Start(PolygonManaIntervalRoutine());
-        }
-        else if (!visible && fetchPolygonManaIntervalRoutine != null)
-        {
-            CoroutineStarter.Stop(fetchPolygonManaIntervalRoutine);
-            fetchPolygonManaIntervalRoutine = null;
+            CoroutineStarter.Stop(fetchBeanIntervalRoutine);
+            fetchBeanIntervalRoutine = null;
         }
     }
 
     public void Dispose()
     {
-        if (fetchManaIntervalRoutine != null)
+        if (fetchBeanIntervalRoutine != null)
         {
-            CoroutineStarter.Stop(fetchManaIntervalRoutine);
-            fetchManaIntervalRoutine = null;
+            CoroutineStarter.Stop(fetchBeanIntervalRoutine);
+            fetchBeanIntervalRoutine = null;
         }
 
         if (view)
@@ -160,42 +149,20 @@ public class ProfileHUDController : IHUD
 
     void OnMouseLocked() { HideProfileMenu(); }
 
-    IEnumerator ManaIntervalRoutine()
+    IEnumerator BeanIntervalRoutine()
     {
         while (true)
         {
-            WebInterface.FetchBalanceOfMANA();
-            yield return WaitForSecondsCache.Get(FETCH_MANA_INTERVAL);
-        }
-    }
-
-    IEnumerator PolygonManaIntervalRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => ownUserProfile != null && !string.IsNullOrEmpty(ownUserProfile.userId));
-
-            Promise<double> promise = Environment.i.platform.serviceProviders.theGraph.QueryPolygonMana(ownUserProfile.userId);
-
-            // This can be null if theGraph is mocked
-            if ( promise != null )
-            {
-                yield return promise;
-                SetPolygonManaBalance(promise.value);
-            }
-
-            yield return WaitForSecondsCache.Get(FETCH_MANA_INTERVAL);
+            WebInterface.FetchBalanceOfBEAN();
+            yield return WaitForSecondsCache.Get(FETCH_BEAN_INTERVAL);
         }
     }
 
     /// <summary>
-    /// Set an amount of MANA on the HUD.
+    /// Set an amount of BEAN on the HUD.
     /// </summary>
-    /// <param name="balance">Amount of MANA.</param>
-    public void SetManaBalance(string balance) { view.manaCounterView?.SetBalance(balance); }
-
-    public void SetPolygonManaBalance(double balance) { view.polygonManaCounterView.SetBalance(balance); }
-
+    /// <param name="balance">Amount of BEAN.</param>
+    public void SetBeanBalance(string balance) { view.beanCounterView?.SetBalance(balance); }
     /// <summary>
     /// Close the Profile menu.
     /// </summary>

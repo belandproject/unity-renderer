@@ -73,7 +73,7 @@ namespace Tests
                 id = "2",
                 requestType = Type.REQUIRE_PAYMENT,
                 toAddress = "0x11110000000000000000000000000000000002222",
-                currency = "MANA",
+                currency = "BEAN",
                 amount = 10.0f
             };
 

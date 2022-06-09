@@ -105,10 +105,10 @@ public class ProfileHUDView : MonoBehaviour
     internal TextMeshProUGUI textCharLimit;
 
     [SerializeField]
-    internal ManaCounterView manaCounterView;
+    internal BeanCounterView beanCounterView;
 
     [SerializeField]
-    internal ManaCounterView polygonManaCounterView;
+    internal BeanCounterView polygonBeanCounterView;
 
     [Header("Tutorial Config")]
     [SerializeField]

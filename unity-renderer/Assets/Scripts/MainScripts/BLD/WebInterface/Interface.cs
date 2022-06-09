@@ -1439,9 +1439,9 @@ namespace BLD.Interface
             SendMessage("Track", analyticsEvent);
         }
 
-        public static void FetchBalanceOfMANA()
+        public static void FetchBalanceOfBEAN()
         {
-            SendMessage("FetchBalanceOfMANA");
+            SendMessage("FetchBalanceOfBEAN");
         }
 
         public static void SendSceneExternalActionEvent(string sceneId, string type, string payload)
