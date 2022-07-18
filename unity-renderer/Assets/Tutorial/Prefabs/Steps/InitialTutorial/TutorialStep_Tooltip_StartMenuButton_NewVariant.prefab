@@ -34,7 +34,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: a02669827dd9144f39b4b164e753a21a,
+      objectReference: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c,
         type: 2}
     - target: {fileID: 3947925781027475414, guid: e5f5e18a835a34e45830f29570029838,
         type: 3}
@@ -45,7 +45,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 74b83fa9a54124695b9bdd8bea96fa17, type: 2}
+      objectReference: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+        type: 2}
     - target: {fileID: 3947925781027475414, guid: e5f5e18a835a34e45830f29570029838,
         type: 3}
       propertyPath: m_HorizontalAlignment

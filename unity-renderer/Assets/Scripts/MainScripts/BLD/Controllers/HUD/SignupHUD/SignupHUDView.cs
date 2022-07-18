@@ -80,7 +80,7 @@ namespace SignupHUD
             {
                 UpdateNameAndEmailNextButton();
                 nameCurrentCharacters.text = $"{text.Length} / {MAX_NAME_LENGTH}";
-                nameCurrentCharacters.color = text.Length < MAX_NAME_LENGTH ? Color.black : colorForCharLimit;
+//                nameCurrentCharacters.color = text.Length < MAX_NAME_LENGTH ? Color.black : colorForCharLimit;
                 nameInputInvalidLabel.SetActive(!IsValidName(text));
                 nameInputFieldFullOrInvalid.SetActive(text.Length >= MAX_NAME_LENGTH || !IsValidName(text));
             });
