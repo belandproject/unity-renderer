@@ -9,5 +9,9 @@ public class ImageColorOnToggle : UIToggle
 
     [SerializeField] private Color offColor;
 
-    protected override void OnValueChanged(bool isOn) { targetImage.color = isOn ? onColor : offColor; }
+    protected override void OnValueChanged(bool isOn)
+    {
+        if (targetImage)
+            targetImage.color = isOn ? onColor : offColor;
+    }
 }
