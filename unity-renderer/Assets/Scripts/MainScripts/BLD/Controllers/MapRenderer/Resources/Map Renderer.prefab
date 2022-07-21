@@ -236,7 +236,7 @@ MonoBehaviour:
   overlayContainer: {fileID: 90597117798403300}
   globalUserMarkerContainer: {fileID: 3332934504654532118}
   playerPositionIcon: {fileID: 1340394175305253205}
-  scaleFactor: 1
+  scaleFactor: 0.5
   centeredReferenceParcel: {fileID: 1025416073224921776}
   scenesOfInterestIconPrefab: {fileID: 4461918297282884638, guid: f7b91bf31609c8a43b5dbc0ae70e47ab,
     type: 3}

@@ -72,7 +72,7 @@ namespace BLD
 
         List<WorldRange> validWorldRanges = new List<WorldRange>
         {
-            new WorldRange(-150, -150, 150, 150) // default range
+            new WorldRange(-150, -150, 150, 450) // default range
         };
 
         public bool parcelHighlightEnabled
