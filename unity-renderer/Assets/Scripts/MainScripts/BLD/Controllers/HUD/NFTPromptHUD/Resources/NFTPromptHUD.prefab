@@ -2972,7 +2972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33333334, g: 0.38039216, b: 1, a: 1}
+  m_Color: {r: 0.02745098, g: 0.5529412, b: 0.5647059, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4673,15 +4673,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e798386ae9422d2428a43e293bb4add7, type: 3}
---- !u!1 &4660436856838827317 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5312981286632553295, guid: e798386ae9422d2428a43e293bb4add7,
-    type: 3}
-  m_PrefabInstance: {fileID: 654907563950986874}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1460111516450856479 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2113852084972505189, guid: e798386ae9422d2428a43e293bb4add7,
+    type: 3}
+  m_PrefabInstance: {fileID: 654907563950986874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4660436856838827317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5312981286632553295, guid: e798386ae9422d2428a43e293bb4add7,
     type: 3}
   m_PrefabInstance: {fileID: 654907563950986874}
   m_PrefabAsset: {fileID: 0}
@@ -4846,7 +4846,7 @@ PrefabInstance:
     - target: {fileID: 1893788018749953862, guid: 19d77508a9e1e44029db75cc00b71c03,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2020970618945887429, guid: 19d77508a9e1e44029db75cc00b71c03,
         type: 3}
@@ -4873,6 +4873,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7560448809391730908, guid: 19d77508a9e1e44029db75cc00b71c03,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 7560448809391730908, guid: 19d77508a9e1e44029db75cc00b71c03,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8688966823738186866, guid: 19d77508a9e1e44029db75cc00b71c03,
         type: 3}
       propertyPath: m_Pivot.x
