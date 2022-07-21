@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 7254021865256056288}
   - component: {fileID: 4202176874027567383}
   m_Layer: 0
-  m_Name: TutorialConfigurator
+  m_Name: TutorialView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3965287617212903447
 Transform:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9205389087709058025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -664,12 +664,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d0266082c982c74ca6a22ca078096e5, type: 3}
---- !u!4 &7315846179680627107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2928789317189127501, guid: 8d0266082c982c74ca6a22ca078096e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5558072008560305390}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &977289631841785178 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4661853114400076212, guid: 8d0266082c982c74ca6a22ca078096e5,
@@ -682,3 +676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920355c0499a8ac478eeeaf9775d7049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7315846179680627107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2928789317189127501, guid: 8d0266082c982c74ca6a22ca078096e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5558072008560305390}
+  m_PrefabAsset: {fileID: 0}
