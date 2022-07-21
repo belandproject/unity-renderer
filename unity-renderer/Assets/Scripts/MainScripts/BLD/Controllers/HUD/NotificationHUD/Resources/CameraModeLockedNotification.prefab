@@ -206,8 +206,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The scene is inforcing the camera view.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0a1ac072b8a9ae346a5a1cabcd698d6a, type: 2}
-  m_sharedMaterial: {fileID: -4268856414219321495, guid: 0a1ac072b8a9ae346a5a1cabcd698d6a,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -325,7 +325,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 0a1ac072b8a9ae346a5a1cabcd698d6a,
+      objectReference: {fileID: 11400000, guid: c7cbe32c455d3401e8463bc3b897b808,
         type: 2}
     - target: {fileID: 723221196117829797, guid: 0282a050c09634ed299130b8e9c2c035,
         type: 3}
@@ -356,7 +356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 26b03903800224f718b64e9afbc91b61,
+      objectReference: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610,
         type: 2}
     - target: {fileID: 1448454455420767778, guid: 0282a050c09634ed299130b8e9c2c035,
         type: 3}
@@ -376,13 +376,13 @@ PrefabInstance:
     - target: {fileID: 1448454455420767778, guid: 0282a050c09634ed299130b8e9c2c035,
         type: 3}
       propertyPath: m_textAlignment
-      value: 513
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 1448454455420767778, guid: 0282a050c09634ed299130b8e9c2c035,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -6892909264025736228, guid: 26b03903800224f718b64e9afbc91b61,
+      objectReference: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
         type: 2}
     - target: {fileID: 1448454455420767778, guid: 0282a050c09634ed299130b8e9c2c035,
         type: 3}

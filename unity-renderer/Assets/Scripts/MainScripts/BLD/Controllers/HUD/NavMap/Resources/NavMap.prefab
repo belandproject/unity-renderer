@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Created by: Pepitos'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -800,8 +800,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: jump in
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: c7cbe32c455d3401e8463bc3b897b808, type: 2}
+  m_sharedMaterial: {fileID: -6289635634085359586, guid: c7cbe32c455d3401e8463bc3b897b808,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1360812066862971457
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1302,7 +1302,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1810,8 +1810,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99,99
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2492,8 +2492,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Scene Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3133,7 +3133,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3911,7 +3911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &891848572563123208
 RectTransform:
   m_ObjectHideFlags: 0

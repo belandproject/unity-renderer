@@ -221,8 +221,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Are you sure you want to continue?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -356,8 +356,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: https://beland.io/whitepaper.pdf
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -491,8 +491,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CANCEL
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: c7cbe32c455d3401e8463bc3b897b808, type: 2}
+  m_sharedMaterial: {fileID: -6289635634085359586, guid: c7cbe32c455d3401e8463bc3b897b808,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -761,8 +761,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: beland.io
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -896,8 +896,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'This scene is trying to redirect you to:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1373,8 +1373,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CONTINUE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: c7cbe32c455d3401e8463bc3b897b808, type: 2}
+  m_sharedMaterial: {fileID: -6289635634085359586, guid: c7cbe32c455d3401e8463bc3b897b808,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2123,8 +2123,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Do you recognize this domain?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a88877e23b56c9643a480f2665a3a48c, type: 2}
-  m_sharedMaterial: {fileID: 643374587533961540, guid: a88877e23b56c9643a480f2665a3a48c,
+  m_fontAsset: {fileID: 11400000, guid: 458f6d9a9449efc9194f0896f8cf2610, type: 2}
+  m_sharedMaterial: {fileID: 2668560621619663676, guid: 458f6d9a9449efc9194f0896f8cf2610,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
